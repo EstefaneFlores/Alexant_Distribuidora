@@ -38,19 +38,20 @@ public class Biene  implements Serializable{
     @Column(name = "descripcion_biene")
     private Integer descripcion_biene;
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
-
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
     
-    @Column(name = "usuario_registro")
+    @Column(name = "fec_registroB")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    private Date registroB;
 
-    @Column(name = "usuario_modificacion")
+    @Column(name = "fec_modificacionB")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date modificacionB;
+    
+    @Column(name = "usuario_registroB")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_registroB;
+
+    @Column(name = "usuario_modificacionB")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionB;
 }

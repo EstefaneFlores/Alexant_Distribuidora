@@ -17,35 +17,35 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "categoria")
-public class Categoria  implements Serializable{
+@Table(name = "tiempo_en_cargo")
+public class Tiempo_en_cargo  implements Serializable{
     
     private static long serialVersion = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
-    private Integer id_categoria;
+    @Column(name = "id_tiempo_en_cargo")
+    private Integer id_tiempo_en_cargo;
 
-    @Column(name = "tipo_categoria")
-    private Integer tipo_categoria;
+    @Column(name = "FINAL_TCARGO")
+    private Date FINAL_TCARGO;
 
-    @Column(name = "estado_categoria")
-    private Integer estado_categoria;
+    @Column(name = "INICIO_TCARGO")
+    private Date INICIO_TCARGO;
+
     
+    @Column(name = "fec_registroB")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date registroB;
+
+    @Column(name = "fec_modificacionB")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modificacionB;
     
-    @Column(name = "fec_registroCa")
+    @Column(name = "usuario_registroB")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date registroCa;
+    private Date usuario_registroB;
 
-    @Column(name = "fec_modificacionCa")
+    @Column(name = "usuario_modificacionB")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionCa;
-
-    @Column(name = "usuario_registroCa")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroCa;
-
-    @Column(name = "usuario_modificacionCa")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionCa;
+    private Date usuario_modificacionB;
 }

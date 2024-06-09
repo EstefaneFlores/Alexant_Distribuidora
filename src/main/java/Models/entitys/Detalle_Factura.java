@@ -38,6 +38,9 @@ public class Detalle_Factura  implements Serializable{
     @Column(name = "estado_det_f")
     private Integer estado_det_f;
 
+
+    
+
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;

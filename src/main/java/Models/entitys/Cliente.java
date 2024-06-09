@@ -44,19 +44,22 @@ public class Cliente  implements Serializable{
     @Column(name = "estado_cliente")
     private Integer estado_cliente;
     
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
 
-    @Column(name = "usuario_registro")
+    
+    @Column(name = "fec_registroCl")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    private Date registroCl;
 
-    @Column(name = "usuario_modificacion")
+    @Column(name = "fec_modificacionCl")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date modificacionCl;
+
+    @Column(name = "usuario_registroCl")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_registroCl;
+
+    @Column(name = "usuario_modificacionCl")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionCl;
 }
