@@ -14,8 +14,8 @@ public interface IPersonaService {
 
     public void delete(Integer id);
 
-    public List<Persona> getListarPersonasActivas();
+    /*public List<Persona> getListarPersonasActivas();
 
     Persona buscarPorCi(String ci);
-
+*/
 }

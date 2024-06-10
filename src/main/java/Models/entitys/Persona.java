@@ -20,44 +20,53 @@ import lombok.Setter;
 @Table(name = "persona")
 public class Persona implements Serializable {
 
-    private static long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_persona")
     private Integer id_persona;
 
+    @Column(name = "nombre_persona")
+    private String nombre_persona;
+
+    @Column(name = "apellido_paterno")
+    private String apellido_paterno;
+
+    @Column(name = "apellido_materno")
+    private String apellido_materno;
+
+    @Column(name = "direccion")
+    private String direccion;
+
     @Column(name = "ci")
     private String ci;
 
-    @Column(name = "nombres")
-    private String nombres;
+    @Column(name = "numero_celular")
+    private String numero_celular;
 
-    @Column(name = "paterno")
-    private String paterno;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "materno")
-    private String materno;
+    @Column(name = "estado_per")
+    private String estado_per;
 
-    @Column(name = "correo")
-    private String correo;
-
-    @Column(name = "celular")
-    private String celular;
-
-    @Column(name = "id_estado")
-    private String id_estado;
-
-    @Column(name = "id_rol")
-    private String id_rol;
+ /*------------------------------------------------------- */
 
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
-
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-
-    ////////////////////////////////////////////////////////////////////////////
+ 
+   @Column(name = "fec_modificacion")
+   @Temporal(TemporalType.TIMESTAMP)
+   private Date modificaion;
+ 
+   @Column(name = "usuario_registro")
+   @Temporal(TemporalType.TIMESTAMP)
+   private Date usuario_registro;
+ 
+   @Column(name = "usuario_modificacion")
+   @Temporal(TemporalType.TIMESTAMP)
+   private Date usuario_modificacion;
     
 }

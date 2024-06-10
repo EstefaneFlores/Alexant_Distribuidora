@@ -2,20 +2,12 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -29,21 +21,42 @@ import lombok.Setter;
 @Table(name = "producto")
 public class Producto implements Serializable {
     
-    private static final long serialVersionUID = -2851287322656142733L;
+    private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name = "id_producto")
 	private Long id_producto;
 
+	@Column (name = "nombre_producto")
 	private String nombre_producto;
 
+	@Column (name = "codigo_producto")
 	private String codigo_producto;
-
+	
+	@Column (name = "stock_producto")
 	private String stock_producto;
 
+	@Column (name = "cantidad_caja")
 	private String cantidad_caja;
 
-	private String fecha_registro;
+/*------------------------------------------ */
+	
+@Column(name = "fec_registro")
+@Temporal(TemporalType.TIMESTAMP)
+private Date registro;
+
+@Column(name = "fec_modificacion")
+@Temporal(TemporalType.TIMESTAMP)
+private Date modificaion;
+
+@Column(name = "usuario_registro")
+@Temporal(TemporalType.TIMESTAMP)
+private Date usuario_registro;
+
+@Column(name = "usuario_modificacion")
+@Temporal(TemporalType.TIMESTAMP)
+private Date usuario_modificacion;
 
 	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
 	// private List<Tutor> tutor;
@@ -67,7 +80,7 @@ public class Producto implements Serializable {
 	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
     // private List<Usuario> usuario;
 
-
+	/*
 	@Column
     @Temporal(TemporalType.DATE)
     @JsonFormat(pattern = "dd-MM-yy")
@@ -81,4 +94,5 @@ public class Producto implements Serializable {
     @Column(name = "fec_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacion;
+	*/
 }

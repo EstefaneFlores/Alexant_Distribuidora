@@ -17,29 +17,23 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table (name = "proveedor")
-public class Proveedor implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+@Table(name = "ruta")
+public class Ruta implements Serializable{
+    
+     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_proveedor")
-    private Integer id_proveedor;
-   
-    @Column (name = "nombre_proveedor")
-    private String nombre_proveedor;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column (name = "id_ruta")
+    private Integer id_ruta;
 
-    @Column (name = "telefono_proveedor")
-    private Integer telefono_proveedor;
+    @Column (name = "nro_ruta")
+    private Integer nro_ruta;
 
-    @Column (name = "descripcion_proveedor")
-    private String descripcion_proveedor;
+    @Column (name = "estado_ruta")
+    private String estado_ruta;
 
-    @Column (name = "estado proveedor")
-    private String estado_proveedor;
-
-    /*----------------------------------------------------- */
+/*--------------------------------------------------- */
 
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
@@ -56,6 +50,4 @@ public class Proveedor implements Serializable {
     @Column(name = "usuario_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
-
-    
 }

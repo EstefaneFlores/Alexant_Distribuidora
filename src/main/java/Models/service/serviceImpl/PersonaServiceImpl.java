@@ -34,7 +34,7 @@ public class PersonaServiceImpl implements IPersonaService{
         personaDao.deleteById(id);
     }
 
-    @Override
+    /*@Override
     public List<Persona> getListarPersonasActivas() {
         return personaDao.getListarPersonasActivas();
     }
@@ -42,4 +42,5 @@ public class PersonaServiceImpl implements IPersonaService{
     public Persona buscarPorCi(String ci) {
         return personaDao.buscarPorCi(ci); 
     }
+    */
 }

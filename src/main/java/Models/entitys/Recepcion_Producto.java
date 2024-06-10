@@ -9,6 +9,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +24,8 @@ public class Recepcion_Producto implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column (name = "id_registro")
+    private Integer id_registro;
 
     @Column (name = "precio_producto")
     private String precio_producto;
@@ -44,6 +48,23 @@ public class Recepcion_Producto implements Serializable{
     @Column (name = "estado_recepcion_producto")
     private String estado_recepcion_producto;
 
+/*--------------------------------------------------- */
+
+    @Column(name = "fec_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date registro;
+
+    @Column(name = "fec_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modificacion;
+    
+    @Column(name = "usuario_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_registro;
+
+    @Column(name = "usuario_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacion;
 
     
 }
