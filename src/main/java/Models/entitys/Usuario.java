@@ -39,6 +39,7 @@ public class Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registro;
 	// testCambioooooooooooooooo
+	// testando
 	@Column(name = "modificacion")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modificacion;
