@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "tiempo_en_cargo")
 public class Tiempo_en_cargo  implements Serializable{
     
-    private static long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tiempo_en_cargo")
