@@ -1,13 +1,14 @@
 package Models.entitys;
-
 import java.io.Serializable;
-
+import java.util.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "tipo_biene")
 public class Tipo_Biene implements Serializable {
-    private static Long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_biene")
@@ -27,4 +28,23 @@ public class Tipo_Biene implements Serializable {
 
     @Column(name = "estado_tipo_biene")
     private Integer estado_tipo_biene;
+
+/*========================================================= */
+/*========================================================= */
+
+    @Column(name = "fec_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date registro;
+ 
+    @Column(name = "fec_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modificaion;
+ 
+    @Column(name = "usuario_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_registro;
+ 
+    @Column(name = "usuario_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacion;
 }

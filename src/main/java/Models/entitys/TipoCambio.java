@@ -2,7 +2,6 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,40 +13,40 @@ import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @Entity
-@Table(name = "empleado")
-public class Empleado  implements Serializable{
-    
+@Table(name = "tipo_cambio")
+public class TipoCambio implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_empleado")
-    private Integer id_cliente;
+    @Column(name = "id_tipo_cambio")
+    private Integer id_tipo_cambio;
 
-    @Column(name = "ruta_empleado")
-    private Integer ruta_empleado;
+    @Column(name = "valor_tipo_cambio")
+    private Integer valor_tipo_cambio;
 
-    @Column(name = "nro_codigo")
-    private Integer nro_codigo;
-    
-    @Column(name = "estado_empleado")
-    private Integer estado_empleado;
-    
+    @Column(name = "estado_tipo_cambio")
+    private Integer estado_tipo_cambio;
+
+/*========================================================= */
+/*========================================================= */
+
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
-
+ 
     @Column(name = "fec_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-
+    private Date modificaion;
+ 
     @Column(name = "usuario_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_registro;
-
+ 
     @Column(name = "usuario_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
-}
+ 
+ }
