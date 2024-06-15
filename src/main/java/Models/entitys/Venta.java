@@ -2,10 +2,13 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -67,15 +71,21 @@ public class Venta implements Serializable{
     private Date usuario_modificacionVe;
 
     @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
-
-    @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 
-    // @ManyToMany(fetch = FetchType.LAZY)
-    // @JoinTable(name = "venta_pago", joinColumns = @JoinColumn(name = "id_venta"), inverseJoinColumns = @JoinColumn(name = "id_pago"))
-    // private Set<Pago> pago;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "venta_pago", joinColumns = @JoinColumn(name = "id_venta"), inverseJoinColumns = @JoinColumn(name = "id_pago"))
+    private Set<Pago> pago;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
+    private List<Det_Venta> det_Ventas;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
+    private List<Factura> facturas;
 
 }
