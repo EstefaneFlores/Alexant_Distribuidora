@@ -11,7 +11,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -60,12 +62,13 @@ public class Biene  implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionB;
 
+// -----------------
 
+     
+@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_tipo_biene")
+	private Tipo_Biene tipo_Biene;
 
-       @OneToMany(cascade = CascadeType.ALL, mappedBy = "biene", fetch = FetchType.LAZY)
-    private List<Tipo_Biene> tipo_Biene;
-
-
-    @ManyToMany(mappedBy = "bienes")
+    @ManyToMany(mappedBy = "biene")
     private List<Persona> personas;
 }
