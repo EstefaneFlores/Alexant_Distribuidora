@@ -3,11 +3,13 @@ package Models.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Models.dao.IProductoDao;
 import Models.entitys.Producto;
 import Models.service.service.IProductoService;
 
+@Service
 public class ProductoServiceImpl implements IProductoService{
     
     @Autowired
