@@ -2,12 +2,16 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -48,4 +52,10 @@ public class Tiempo_en_cargo  implements Serializable{
     @Column(name = "usuario_modificacionB")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionB;
+
+// -------------------------------------------------
+
+     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_tiempo_en_cargo", fetch = FetchType.LAZY)
+    private List<Cargo> cargo;
+
 }
