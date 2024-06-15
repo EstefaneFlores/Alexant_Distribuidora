@@ -16,7 +16,9 @@ import lombok.Setter;
 @Entity
 @Table(name = "tipo_biene")
 public class Tipo_Biene implements Serializable {
+
     private static Long serialVersion = 1L;
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tipo_biene")
