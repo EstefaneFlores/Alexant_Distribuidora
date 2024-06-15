@@ -2,6 +2,8 @@ package Models.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface IRolDao extends CrudRepository {
+import Models.entitys.Rol;
+
+public interface IRolDao extends CrudRepository<Rol, Integer> {
     
 }

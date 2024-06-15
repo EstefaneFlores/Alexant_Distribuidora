@@ -43,6 +43,9 @@ public class Producto implements Serializable {
 	@Column (name = "cantidad_caja")
 	private String cantidad_caja;
 
+	@Column (name = "estado_pro")
+	private String estado_pro;
+
 /*------------------------------------------ */
 	
 @Column(name = "fec_registro")

@@ -7,4 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sistema/usuario")
 public class UsuarioController {
     
+    // model.addAttribute("per", new Usuario());
+        // model.addAttribute("personas", personaServicio.listarPersonas());
+        
+        // // List<Usuario> usuario = usuarioService.listarDocenteEstado("X");
+
+
+        // return "index";
 }
