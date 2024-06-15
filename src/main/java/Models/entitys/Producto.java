@@ -2,12 +2,18 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -61,41 +67,38 @@ private Date usuario_registro;
 @Temporal(TemporalType.TIMESTAMP)
 private Date usuario_modificacion;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
-	// private List<Tutor> tutor;
+/*---------------------------RELACION CON RECEPCION_PRODUCTO------------------------------------------------ */
 
-	// @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
-	// private Estudiante estudiante;
+@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_registro")
+	private Recepcion_Producto recepcion_Producto;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
-	// private List<Firma> firma;
+/*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
-	// private List<Asistencia> asistencias;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_proveedor"))
+    private Set<Proveedor> proveedor;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
-	// private List<Preinscripcion> preinscripciones;
+/*-----------------------------RELACION CON DETALLE LOTE----------------------------------------------------- */
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_universidad")
-	// private Universidad universidad;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
+    private Set<Detalle_lote> detalle_lote;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
-    // private List<Usuario> usuario;
+/*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
 
-	/*
-	@Column
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "dd-MM-yy")
-    private Date fechaRegistro;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalleVenta"))
+    private Set<Det_Venta> det_venta;
 
-    @Column
-    @Temporal(TemporalType.TIME)
-    @JsonFormat(pattern = "HH:mm:ss")
-    private Date horaRegistro;
+/*-------------------------------RELACION CON CATEGORIA--------------------------------------*/
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-	*/
+@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_categoria")
+	private Categoria categoria;
+
+
+
+
 }
+
