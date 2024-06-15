@@ -2,16 +2,12 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -21,21 +17,31 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "cargo")
-public class Cargo implements Serializable{
+@Table(name = "pago")
+public class Pago implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cargo")
+    @Column(name = "id_pago")
     private Integer id_cargo;
 
 
-    @Column(name = "nombre_cargo")
-    private String nombre_cargo;
+    @Column(name = "tipo_pago")
+    private String Tipo_pago;
 
-    @Column(name = "estado_cargo")
-    private String estado_cargo;
+    @Column(name = "estado_pago")
+    private String estado_pago;
+
+        @Column(name = "fec_registro_inicial")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fec_registro_inicial;
+
+        @Column(name = "fec_registro_final")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fec_registro_final;
+
+
 
     @Column(name = "fec_registroC")
     @Temporal(TemporalType.TIMESTAMP)
@@ -55,7 +61,6 @@ public class Cargo implements Serializable{
     
     // ---------------------------------------
 
-      @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_cargo", fetch = FetchType.LAZY)
-    private List<Tiempo_en_cargo> tiempo_en_cargo;
+ 
 
 }

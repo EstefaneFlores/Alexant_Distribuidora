@@ -2,12 +2,18 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -68,5 +74,20 @@ public class Persona implements Serializable {
    @Column(name = "usuario_modificacion")
    @Temporal(TemporalType.TIMESTAMP)
    private Date usuario_modificacion;
+ /*------------------------------------------------------- */
+
+   @ManyToMany
+    @JoinTable(
+        name = "persona_biene",
+        joinColumns = @JoinColumn(name = "persona_id"),
+        inverseJoinColumns = @JoinColumn(name = "biene_id")
+    )
+    private List<Biene> bienes;
+
+        @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente;
+
+    
     
 }
