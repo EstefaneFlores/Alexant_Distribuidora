@@ -2,12 +2,14 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -33,9 +35,9 @@ public class Tiempo_en_cargo  implements Serializable{
     private Date INICIO_TCARGO;
 
     
-    @Column(name = "fec_registroB")
+    @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date registroB;
+    private Date registro;
 
     @Column(name = "fec_modificacionB")
     @Temporal(TemporalType.TIMESTAMP)
@@ -48,4 +50,12 @@ public class Tiempo_en_cargo  implements Serializable{
     @Column(name = "usuario_modificacionB")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionB;
+    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cargo")
+	private Cargo cargo;
+    
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_empleado")
+	private Empleado Empleado;
 }
