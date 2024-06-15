@@ -2,12 +2,16 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -53,5 +57,10 @@ public class Rol implements Serializable {
     @Column(name = "usuario_modificacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
+
+/*-------------------------------RELACION CON USrROL--------------------------------------------*/
+
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.LAZY)
+    private List<UsuarioRol> usuariorol;
 
 }

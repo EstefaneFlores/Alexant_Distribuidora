@@ -2,12 +2,17 @@ package Models.entitys;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -57,5 +62,10 @@ public class Proveedor implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
 
+/*--------------------------RELACION CON PRODUCTO------------------------------------------- */
+
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "proveedor", joinColumns = @JoinColumn(name = "id_proveedor"), inverseJoinColumns = @JoinColumn(name = "id_producto"))
+    private Set<Producto> Producto;
     
 }
