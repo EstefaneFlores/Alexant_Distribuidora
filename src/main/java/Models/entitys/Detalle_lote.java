@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "detalle_lote")
 public class Detalle_lote  implements Serializable{
     
-    private static long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 

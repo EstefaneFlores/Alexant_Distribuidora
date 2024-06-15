@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "detalle_factura")
 public class Detalle_Factura  implements Serializable{
     
-    private static long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_detalleFactura")
@@ -37,6 +37,9 @@ public class Detalle_Factura  implements Serializable{
 
     @Column(name = "estado_det_f")
     private Integer estado_det_f;
+
+
+    
 
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)

@@ -20,7 +20,7 @@ import lombok.Setter;
 @Table(name = "categoria")
 public class Categoria  implements Serializable{
     
-    private static long serialVersion = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
@@ -32,19 +32,20 @@ public class Categoria  implements Serializable{
     @Column(name = "estado_categoria")
     private Integer estado_categoria;
     
-    @Column(name = "fec_registro")
+    
+    @Column(name = "fec_registroCa")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+    private Date registroCa;
 
-    @Column(name = "fec_modificacion")
+    @Column(name = "fec_modificacionCa")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+    private Date modificacionCa;
 
-    @Column(name = "usuario_registro")
+    @Column(name = "usuario_registroCa")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    private Date usuario_registroCa;
 
-    @Column(name = "usuario_modificacion")
+    @Column(name = "usuario_modificacionCa")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_modificacionCa;
 }

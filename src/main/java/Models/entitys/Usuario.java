@@ -1,5 +1,6 @@
 package Models.entitys;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -19,8 +20,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "usuario")
-public class Usuario {
-    private static long serialVersionUID = 1L;
+public class Usuario implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario")
@@ -43,7 +44,6 @@ public class Usuario {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modificacion;
 
-	////////////////////////////////
 	@ManyToOne
     @JoinColumn(name = "id_persona")
     private Persona persona;
