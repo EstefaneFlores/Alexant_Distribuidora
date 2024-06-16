@@ -14,10 +14,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -70,11 +66,6 @@ private Date usuario_registro;
 @Column(name = "usuario_modificacion")
 @Temporal(TemporalType.TIMESTAMP)
 private Date usuario_modificacion;
-
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_categoria")
-	// private Categoria categoria;
-
 
 
 /*---------------------------RELACION CON RECEPCION_PRODUCTO------------------------------------------------ */
