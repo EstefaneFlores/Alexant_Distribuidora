@@ -2,7 +2,6 @@ package Models.service.service;
 
 import java.util.List;
 
-
 import Models.entitys.Recepcion_Producto;
 
 public interface IRecepcion_ProductoService {
