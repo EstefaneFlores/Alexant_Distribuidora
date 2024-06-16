@@ -49,7 +49,7 @@ public class Cliente  implements Serializable{
     private Integer contacto_cliente;
     
     @Column(name = "estado_cliente")
-    private Integer estado_cliente;
+    private String estado_cliente;
     
 
 

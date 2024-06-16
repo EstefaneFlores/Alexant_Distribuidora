@@ -1,8 +1,8 @@
 package Models.entitys;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,8 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -21,43 +20,43 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "tiempo_en_cargo")
-public class Tiempo_en_cargo  implements Serializable{
-    
+@Table(name = "tipo_biene")
+public class TipoBiene implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_tiempo_en_cargo")
-    private Integer id_tiempo_en_cargo;
+    @Column(name = "id_tipo_biene")
+    private Integer id_tipo_biene;
 
-    @Column(name = "FINAL_TCARGO")
-    private Date FINAL_TCARGO;
+    @Column(name = "nombre_tipo_biene")
+    private Integer nombre_tipo_biene;
 
-    @Column(name = "INICIO_TCARGO")
-    private Date INICIO_TCARGO;
+    @Column(name = "estado_tipo_biene")
+    private Integer estado_tipo_biene;
 
-    
+/*========================================================= */
+/*========================================================= */
+
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
+ 
+    @Column(name = "fec_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modificaion;
+ 
+    @Column(name = "usuario_registro")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_registro;
+ 
+    @Column(name = "usuario_modificacion")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacion;
 
-    @Column(name = "fec_modificacionB")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionB;
-    
-    @Column(name = "usuario_registroB")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroB;
 
-    @Column(name = "usuario_modificacionB")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionB;
+    // ------------------------
     
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_cargo")
-	private Cargo cargo;
-    
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_empleado")
-	private Empleado Empleado;
+      @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_Biene", fetch = FetchType.LAZY)
+    private List<Biene> biene;
+	
 }
