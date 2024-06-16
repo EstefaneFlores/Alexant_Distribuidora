@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import Models.entitys.Biene;
-import Models.entitys.Usuario;
 import Models.entitys.Venta;
 import Models.service.service.IVentaService;
 import jakarta.servlet.http.HttpServletRequest;

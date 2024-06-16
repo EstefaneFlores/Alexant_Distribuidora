@@ -2,8 +2,8 @@ package Models.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import Models.entitys.Tipo_Biene;
+import Models.entitys.TipoBiene;
 
-public interface ITieneBieneDao extends CrudRepository<Tipo_Biene,Integer>{
+public interface ITieneBieneDao extends CrudRepository<TipoBiene,Integer>{
     
 } 

@@ -65,7 +65,7 @@ public class Biene  implements Serializable{
      
 @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_tipo_biene")
-	private Tipo_Biene tipo_Biene;
+	private TipoBiene tipoBiene;
 
     @ManyToMany(mappedBy = "biene")
     private List<Persona> personas;
