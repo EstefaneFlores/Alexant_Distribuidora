@@ -34,7 +34,7 @@ public class Categoria  implements Serializable{
     private Integer tipo_categoria;
 
     @Column(name = "estado_categoria")
-    private Integer estado_categoria;
+    private String estado_categoria;
     
     
     @Column(name = "fec_registroCa")
