@@ -26,19 +26,19 @@ public class BieneController {
     // ----------- Formulario para registrar --------
 
     @GetMapping(value = "/formRegistroBiene")
-    public String registroDip(@Validated Biene biene, Model model) {
+    public String registroBiene(@Validated Biene biene, Model model) {
 
         model.addAttribute("biene", new Biene());
         model.addAttribute("bienes", iBieneService.findAll());
 
-        return "formularios/formModeloReceta";
+        return "formularios/formModeloBiene";
     }
 
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarDip")
-    public String RegistrarDip(@Validated Biene biene) {
-        biene.setEstado_biene(1);
+    public String RegistrarBiene(@Validated Biene biene) {
+        biene.setEstado_biene("A");
         iBieneService.save(biene);
         return "redirect:/ListasBiene";
     }
@@ -47,11 +47,11 @@ public class BieneController {
 
     /*--------------- eliminar -----------*/
 
-    @RequestMapping(value = "/eliminarDip/{id_biene}")
-    public String eliminarDip(@PathVariable("id_biene") Integer id_biene) {
+    @RequestMapping(value = "/eliminarBiene/{id_biene}")
+    public String eliminarBiene(@PathVariable("id_biene") Integer id_biene) {
 
         Biene biene = iBieneService.findOne(id_biene);
-        biene.setEstado_biene(0);
+        biene.setEstado_biene("X");
         iBieneService.save(biene);
         return "redirect:/ListasDip";
 
@@ -75,32 +75,32 @@ public class BieneController {
 
     /* Modificación Modal */
     @RequestMapping(value = "/biene/{idBiene}")
-    public String getContentDip(@PathVariable(value = "idBiene") Integer idBiene, Model model,
+    public String getContentBiene(@PathVariable(value = "idBiene") Integer idBiene, Model model,
             HttpServletRequest request) {
 
         model.addAttribute("biene", iBieneService.findOne(idBiene));
 
-        return "contentDip :: contentbiene";
+        return "contentBiene :: contentbiene";
 
     }
 
     /* Registrar DIP model */
     @RequestMapping(value = "/registrarBiene")
-    public String getRegistroDIP(Model model) {
+    public String getRegistroBiene(Model model) {
 
         model.addAttribute("biene", new Biene());
         model.addAttribute("bienes", iBieneService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentDip :: contentdip";
+        return "contentBiene :: contentbiene";
     }
 
     // --------------------------------------------
 
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosDip")
-    public String guardarCambiosDip(@ModelAttribute Biene biene) {
-        biene.setEstado_biene(1);
+    public String guardarCambiosBiene(@ModelAttribute Biene biene) {
+        biene.setEstado_biene("A");
         iBieneService.save(biene);
         return "redirect:/ListasBiene";
     }

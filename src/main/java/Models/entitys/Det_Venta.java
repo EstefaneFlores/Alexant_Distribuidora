@@ -12,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -70,7 +72,15 @@ public class Det_Venta  implements Serializable{
     	@OneToMany(cascade = CascadeType.ALL, mappedBy = "det_venta", fetch = FetchType.LAZY)
     private List<Detalle_Factura> detalle_factura;
 
-    	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_Venta")
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_venta")
 	private Venta venta;
+
+    @ManyToMany
+    @JoinTable(
+        name = "venta_detventa",
+        joinColumns = @JoinColumn(name = "det_venta_id"),
+        inverseJoinColumns = @JoinColumn(name = "producto_id")
+    )
+    private List<Producto> producto;
 }
