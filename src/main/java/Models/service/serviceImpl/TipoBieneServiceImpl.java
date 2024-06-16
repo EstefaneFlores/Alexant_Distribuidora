@@ -3,13 +3,15 @@ package Models.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Models.dao.ITieneBieneDao;
 import Models.entitys.Tipo_Biene;
 import Models.service.service.ITipoBieneService;
 
+@Service
 public class TipoBieneServiceImpl implements ITipoBieneService {
-     @Autowired
+    @Autowired
     private ITieneBieneDao iTieneBieneDao;
 
     @Override

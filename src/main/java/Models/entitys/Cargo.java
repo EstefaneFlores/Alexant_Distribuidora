@@ -56,6 +56,6 @@ public class Cargo implements Serializable{
     // ---------------------------------------
 
       @OneToMany(cascade = CascadeType.ALL, mappedBy = "id_cargo", fetch = FetchType.LAZY)
-    private List<Tiempo_en_cargo> tiempo_en_cargo;
+    private List<TiempoCargo> tiempoCargos;
 
 }
