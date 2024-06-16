@@ -2,15 +2,15 @@ package Models.service.service;
 
 import java.util.List;
 
-import Models.entitys.Tipo_Biene;
+import Models.entitys.TipoBiene;
 
 public interface ITipoBieneService {
 
-    public List<Tipo_Biene> findAll();
+    public List<TipoBiene> findAll();
 
-    public void save(Tipo_Biene tipo_Biene);
+    public void save(TipoBiene tipoBiene);
 
-    public Tipo_Biene findOne(Integer id);
+    public TipoBiene findOne(Integer id);
 
     public void delete(Integer id);
 

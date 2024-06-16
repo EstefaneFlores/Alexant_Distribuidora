@@ -1,11 +1,13 @@
 package Models.service.serviceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import Models.dao.IUsuarioDao;
 import Models.entitys.Usuario;
 import Models.service.service.IUsuarioService;
 
+@Service
 public class UsuarioServiceImpl implements IUsuarioService{
     @Autowired
     private IUsuarioDao iUsuarioDao;
