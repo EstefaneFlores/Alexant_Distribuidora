@@ -1,7 +1,5 @@
 package Models.service.serviceImpl;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +9,7 @@ import Models.service.service.ITiempoCargoService;
 
 @Service
 public class TiempoCargoServiceImpl implements ITiempoCargoService{
+
     @Autowired
     private ITiempoCargoDao tiempoCargoDao;
 

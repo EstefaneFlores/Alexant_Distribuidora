@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Models.dao.ITieneBieneDao;
-import Models.entitys.Tipo_Biene;
+import Models.entitys.TipoBiene;
 import Models.service.service.ITipoBieneService;
 
 @Service
@@ -15,17 +15,17 @@ public class TipoBieneServiceImpl implements ITipoBieneService {
     private ITieneBieneDao iTieneBieneDao;
 
     @Override
-    public List<Tipo_Biene> findAll() {
-        return (List<Tipo_Biene>) iTieneBieneDao.findAll();
+    public List<TipoBiene> findAll() {
+        return (List<TipoBiene>) iTieneBieneDao.findAll();
     }
 
     @Override
-    public void save(Tipo_Biene tipo_Biene) {
+    public void save(TipoBiene tipo_Biene) {
         iTieneBieneDao.save(tipo_Biene);
     }
 
     @Override
-    public Tipo_Biene findOne(Integer id) {
+    public TipoBiene findOne(Integer id) {
         return iTieneBieneDao.findById(id).orElse(null);
     }
 

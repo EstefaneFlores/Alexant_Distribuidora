@@ -23,8 +23,8 @@ public class TipoBieneController {
 
     // ========= Formulario para registrar =========
 
-    @GetMapping(value = "/formRegistroVenta")
-    public String registroVenta(@Validated TipoBiene tipo_Biene, Model model) {
+    @GetMapping(value = "/formRegistroTipoBiene")
+    public String registroTipoCambio(@Validated TipoBiene tipo_Biene, Model model) {
 
         model.addAttribute("tipoBiene", new TipoBiene());
         model.addAttribute("tieneBienes", tipoBieneService.findAll());
@@ -35,7 +35,7 @@ public class TipoBieneController {
 
     /* ================= GUARDAR =================== */
 
-    @PostMapping(value = "/guardarVenta")
+    @PostMapping(value = "/guardarTipoBiene")
     public String guardarTipoBiene(@Validated TipoBiene tipoBiene) {
         tipoBiene.setEstado_tipo_biene(1);
         tipoBieneService.save(tipoBiene);

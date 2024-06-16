@@ -1,7 +1,5 @@
 package Models.service.service;
-
 import java.util.List;
-
 import Models.entitys.TiempoCargo;
 
 public interface ITiempoCargoService {
