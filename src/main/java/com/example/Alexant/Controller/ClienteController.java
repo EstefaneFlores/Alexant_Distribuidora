@@ -10,18 +10,28 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Alexant.Models.entitys.Cliente;
+import com.example.Alexant.Models.service.service.IClienteService;
 
 import Models.entitys.Cliente;
+import Models.entitys.Persona;
+import Models.entitys.Ruta;
 import Models.service.service.IClienteService;
+import Models.service.service.IPersonaService;
+import Models.service.service.IRutaService;
 import jakarta.servlet.http.HttpServletRequest;
 
-
-
-@Controller
+@RestController
 public class ClienteController {
 
     @Autowired
     private IClienteService iClienteService;
+    @Autowired
+    private IRutaService iRutaService;
+    @Autowired
+    private IPersonaService iPersonaService;
 
     // ----------- Formulario para registrar --------
 
@@ -31,6 +41,12 @@ public class ClienteController {
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
 
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
+
+         model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", iPersonaService.findAll());
+
         return "formularios/formModeloCliente";
     }
 
@@ -38,8 +54,10 @@ public class ClienteController {
 
     @PostMapping(value = "/guardarCliente")
     public String RegistrarCliente(@Validated Cliente cliente) {
+
         cliente.setEstado_cliente("A");
         iClienteService.save(cliente);
+
         return "redirect:/ListasCliente";
     }
 
@@ -53,6 +71,7 @@ public class ClienteController {
         Cliente cliente = iClienteService.findOne(id_cliente);
         cliente.setEstado_cliente("X");
         iClienteService.save(cliente);
+
         return "redirect:/ListasCliente";
 
     }
@@ -61,11 +80,17 @@ public class ClienteController {
 
     /* ------------ Lista ----------------- */
 
-    @GetMapping(value = "/Listascliente")
+    @GetMapping(value = "/ListasCliente")
     public String listarcliente(Model model) {
 
-        model.addAttribute("cliente", new Cliente());
+       model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
+
+         model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", iPersonaService.findAll());
 
         return "listas/listaCategoria";
     }
@@ -78,18 +103,31 @@ public class ClienteController {
     public String getContentCliente(@PathVariable(value = "idCliente") Integer idCliente, Model model,
             HttpServletRequest request) {
 
-        model.addAttribute("cliente", iClienteService.findOne(idCliente));
+              model.addAttribute("cliente", new Cliente());
+        model.addAttribute("clientes", iClienteService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
+
+         model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", iPersonaService.findAll());
 
         return "contentCliente :: contentcliente";
 
     }
 
-    /* Registrar Cargo model */
+    /* Registrar Cliente model */
     @RequestMapping(value = "/registrarCliente")
     public String getRegistroCategoria(Model model) {
 
-        model.addAttribute("cliente", new Cliente());
+           model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
+
+         model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", iPersonaService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentCliente :: contentcliente";
@@ -102,7 +140,7 @@ public class ClienteController {
     public String guardarCambiosCliente(@ModelAttribute Cliente cliente) {
         cliente.setEstado_cliente("A");
         iClienteService.save(cliente);
-        return "redirect:/ListasCategoria";
+        return "redirect:/ListasCliente";
     }
 
     // -------------------------------------------------

@@ -9,15 +9,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import Models.entitys.TipoBiene;
-import Models.entitys.TipoCambio;
-import Models.service.service.ITipoCambioService;
+import com.example.Alexant.Models.entitys.TipoBiene;
+import com.example.Alexant.Models.entitys.TipoCambio;
+import com.example.Alexant.Models.service.service.ITipoCambioService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class TipoCambioController {
-      @Autowired
+    
+    @Autowired
     private ITipoCambioService tipoCambioService;
 
     // ========= Formulario para registrar =========

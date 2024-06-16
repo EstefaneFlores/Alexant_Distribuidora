@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import Models.entitys.TipoBiene;
-import Models.entitys.Venta;
-import Models.service.service.ITipoBieneService;
+import com.example.Alexant.Models.entitys.TipoBiene;
+import com.example.Alexant.Models.service.service.ITipoBieneService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class TipoBieneController {
      
     @Autowired

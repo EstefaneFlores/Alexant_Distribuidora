@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import Models.entitys.Cargo;
-import Models.entitys.Categoria;
-import Models.service.service.ICategoriaService;
+import com.example.Alexant.Models.entitys.Cargo;
+import com.example.Alexant.Models.entitys.Categoria;
+import com.example.Alexant.Models.service.service.ICategoriaService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
-
-
-@Controller
+@RestController
 public class CategoriaController {
 
     @Autowired
