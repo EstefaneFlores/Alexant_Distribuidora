@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Models.entitys.Rol;
-import Models.service.service.IRolService;
+import com.example.Alexant.Models.entitys.Rol;
+import com.example.Alexant.Models.service.service.IRolService;
+
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
