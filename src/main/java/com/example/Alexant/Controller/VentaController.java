@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import Models.entitys.Venta;
-import Models.service.service.IVentaService;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Alexant.Models.entitys.Venta;
+import com.example.Alexant.Models.service.service.IVentaService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 @RequestMapping("/alexant")
 public class VentaController {
     

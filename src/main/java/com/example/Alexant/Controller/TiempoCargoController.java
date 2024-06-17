@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import Models.service.service.ITiempoCargoService;
+import com.example.Alexant.Models.service.service.ITiempoCargoService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class TiempoCargoController {
     @Autowired
     private ITiempoCargoService tiempoCargoService;
