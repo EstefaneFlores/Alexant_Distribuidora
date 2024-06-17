@@ -53,11 +53,11 @@ public class UsuarioRol implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_usuario")
-	// private Usuario usuario;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_rol")
-	// private Rol rol;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_rol")
+	private Rol rol;
 }

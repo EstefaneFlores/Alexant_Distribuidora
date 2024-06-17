@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.example.Alexant.Models.entitys.Detalle_lote;
 
-public interface iDetalleLoteService {
+public interface IDetalleLoteService {
 
     public List<Detalle_lote> findAll();
 

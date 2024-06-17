@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.Alexant.Models.dao.IDetalle_loteDao;
 import com.example.Alexant.Models.entitys.Detalle_lote;
-import com.example.Alexant.Models.service.service.iDetalleLoteService;
+import com.example.Alexant.Models.service.service.IDetalleLoteService;
 
 @Service
-public class DetalleLoteServiceImpl implements iDetalleLoteService{
+public class DetalleLoteServiceImpl implements IDetalleLoteService{
     @Autowired
     private IDetalle_loteDao detalle_loteDao;
 

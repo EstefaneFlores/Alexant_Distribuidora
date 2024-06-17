@@ -77,7 +77,7 @@ public class VentaController {
 
         model.addAttribute("venta", iVentaService.findOne(id_venta));
 
-        return "contentDip :: contentVenta";
+        return "contentVenta :: contentVenta";
 
     }
 
@@ -95,8 +95,8 @@ public class VentaController {
     // --------------------------------------------
 
     /* Guardar Cambios */
-    @PostMapping(value = "/guardarCambiosDip")
-    public String guardarCambiosDip(@ModelAttribute Venta venta) {
+    @PostMapping(value = "/guardarCambiosVenta")
+    public String guardarCambiosVenta(@ModelAttribute Venta venta) {
         venta.setEstado_venta(1);
         iVentaService.save(venta);
         return "redirect:/ListasVenta";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */

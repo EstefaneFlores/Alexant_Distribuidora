@@ -37,7 +37,7 @@ public class Moneda {
     private String valor_moneda;
 
     @Column(name = "estado_moneda")
-    private String estado_moneda;
+    private Integer estado_moneda;
 
  /*==============================================================*/
  /*==============================================================*/
