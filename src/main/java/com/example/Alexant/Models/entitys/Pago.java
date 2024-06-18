@@ -35,7 +35,7 @@ public class Pago implements Serializable {
     private String Tipo_pago;
 
     @Column(name = "estado_pago")
-    private String estado_pago;
+    private Integer estado_pago;
 
     @Column(name = "fec_registro_inicial")
     @Temporal(TemporalType.TIMESTAMP)

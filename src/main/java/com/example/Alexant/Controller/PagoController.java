@@ -1,103 +1,96 @@
-// package com.example.Alexant.Controller;
+package com.example.Alexant.Controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.validation.annotation.Validated;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.ModelAttribute;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-// import com.example.Alexant.Models.entitys.Pago;
-// import com.example.Alexant.Models.service.service.IPagoService;
+import com.example.Alexant.Models.entitys.Pago;
+import com.example.Alexant.Models.entitys.Venta;
+import com.example.Alexant.Models.service.service.IPagoService;
 
-// import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
-// @Controller
-// public class PagoController {
-//     @Autowired
-//     private IPagoService pagoService;
+@Controller
+public class PagoController {
 
-//     // ========= Formulario para registrar =========
+    @Autowired
+    private IPagoService pagoService;
 
-//     @GetMapping(value = "/formRegistroVenta")
-//     public String registroVenta(@Validated Pago venta, Model model) {
+    // ========= Formulario para registrar =========
 
-//         model.addAttribute("venta", new Venta());
-//         model.addAttribute("ventas", iVentaService.findAll());
+    @GetMapping(value = "/formRegistroPago")
+    public String registroPago(@Validated Pago pago, Model model) {
+        model.addAttribute("pago", new Pago());
+        model.addAttribute("pagos", pagoService.findAll());
+        return "alexant/formPago"; /*No tenemos formularios todavía
+     */
+    }
 
-//         return "alexant/formVenta"; /*No tenemos formularios todavía
-//      */
-//     }
+    /* ================= GUARDAR =================== */
 
-//     /* ================= GUARDAR =================== */
+    @PostMapping(value = "/guardarPago")
+    public String guardarPago(@Validated Pago pago) {
+        pago.setEstado_pago(1);
+        pagoService.save(pago);
+        return "redirect:/ListasPago"; /*No teneos listasVentas*/
+    }
 
-//     @PostMapping(value = "/guardarVenta")
-//     public String guardarVenta(@Validated Venta venta) {
-//         venta.setEstado_venta(1);
-//         iVentaService.save(venta);
-//         return "redirect:/ListasVenta"; /*No teneos listasVentas*/
-//     }
+    /*=============== ELIMINAR =====================*/
 
-//     /*=============== ELIMINAR =====================*/
+    @RequestMapping(value = "/eliminarPago/{id_pago}")
+    public String eliminarPago(@PathVariable("id_pago") Integer id_pago) {
+        Pago pago = pagoService.findOne(id_pago);
+        pago.setEstado_pago(0);
+        pagoService.save(pago);
+        return "redirect:/ListasPago"; /*Falta el formulario*/ 
 
-//     @RequestMapping(value = "/eliminarVenta/{id_venta}")
-//     public String eliminarVenta(@PathVariable("id_venta") Integer id_venta) {
+    }
 
-//         Venta venta = iVentaService.findOne(id_venta);
-//         venta.setEstado_venta(0);
-//         iVentaService.save(venta);
-//         return "redirect:/ListasVenta"; /*Falta el formulario*/ 
+    /*=============== LISTAR =====================*/
 
-//     }
-
-//     /*=============== LISTAR =====================*/
-
-//     @GetMapping(value = "/ListasVentas")
-//     public String listarVentas(Model model) {
-
-//         model.addAttribute("venta", new Venta());
-//         model.addAttribute("ventas", iVentaService.findAll());
-
-//         return "listas/listaVenta";/*Falta el formulario*/ 
-//     }
+    @GetMapping(value = "/ListasPago")
+    public String listarPago(Model model) {
+        model.addAttribute("pago", new Pago());
+        model.addAttribute("pagos", pagoService.findAll());
+        return "listas/listaPago";/*Falta el formulario*/ 
+    }
 
   
-//     /*=============== MODIFICAR =====================*/
+    /*=============== MODIFICAR =====================*/
 
-//     /* Modificación Modal */
-//     @RequestMapping(value = "/venta/{id_venta}")
-//     public String getContentVenta(@PathVariable(value = "id_venta") Integer id_venta, Model model,
-//         HttpServletRequest request) {
+    /* Modificación Modal */
+    @RequestMapping(value = "/pago/{id_pago}")
+    public String getContentPago(@PathVariable(value = "id_pago") Integer id_pago, Model model,
+        HttpServletRequest request) {
+        model.addAttribute("pago", pagoService.findOne(id_pago));
+        return "contentPago :: contentPago";
 
-//         model.addAttribute("venta", iVentaService.findOne(id_venta));
+    }
 
-//         return "contentVenta :: contentVenta";
+    /* Registrar DIP model */
+    @RequestMapping(value = "/registrarPago")
+    public String getRegistroPago(Model model) {
+        model.addAttribute("pago", new Pago());
+        model.addAttribute("pagos", pagoService.findAll());
+        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
+        return "contentPago :: contentPago"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+    }
 
-//     }
+    // --------------------------------------------
 
-//     /* Registrar DIP model */
-//     @RequestMapping(value = "/registrarVenta")
-//     public String getRegistroVenta(Model model) {
+    /* Guardar Cambios */
+    @PostMapping(value = "/guardarCambiosPago")
+    public String guardarCambiosPago(@ModelAttribute Pago pago) {
+        pago.setEstado_pago(1);
+        pagoService.save(pago);
+        return "redirect:/ListasPago";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+    }
 
-//         model.addAttribute("venta", new Venta());
-//         model.addAttribute("ventas", iVentaService.findAll());
-
-//         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-//         return "contentDip :: contentdip"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
-//     }
-
-//     // --------------------------------------------
-
-//     /* Guardar Cambios */
-//     @PostMapping(value = "/guardarCambiosVenta")
-//     public String guardarCambiosVenta(@ModelAttribute Venta venta) {
-//         venta.setEstado_venta(1);
-//         iVentaService.save(venta);
-//         return "redirect:/ListasVenta";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
-//     }
-
-//     // -------------------------------------------------
-// }
+    // -------------------------------------------------
+}
