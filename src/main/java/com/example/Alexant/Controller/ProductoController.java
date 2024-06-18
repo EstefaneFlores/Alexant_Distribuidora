@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Models.entitys.Producto;
-import Models.service.service.IProductoService;
+import com.example.Alexant.Models.entitys.Producto;
+import com.example.Alexant.Models.service.service.IProductoService;
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller

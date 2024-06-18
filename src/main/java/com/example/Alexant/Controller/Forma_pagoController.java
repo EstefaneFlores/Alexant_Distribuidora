@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Models.entitys.Forma_pago;
-import Models.service.service.IForma_pagoService;
+import com.example.Alexant.Models.entitys.Forma_pago;
+import com.example.Alexant.Models.service.service.IForma_pagoService;
+
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller

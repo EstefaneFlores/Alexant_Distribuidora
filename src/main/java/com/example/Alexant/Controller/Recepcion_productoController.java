@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import Models.entitys.Recepcion_Producto;
-import Models.service.service.IRecepcion_ProductoService;
+import com.example.Alexant.Models.entitys.Recepcion_Producto;
+import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
+
+
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
@@ -100,6 +103,6 @@ public class Recepcion_productoController {
     public String guardarCambiosRecepcion_Producto(@ModelAttribute Recepcion_Producto recepcion_producto) {
         recepcion_producto.setEstado_recepcion_producto("A");
         iRecepcion_ProductoService.save(recepcion_producto);
-        return "redirect:/ListasRecepcion_Producto";
+        return "redirect:/ListasProveedor";
     }
 }
