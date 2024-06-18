@@ -91,7 +91,7 @@ public class ClienteController {
          model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
 
-        return "listas/listaCategoria";
+        return "listas/listaCliente";
     }
 
   
@@ -117,7 +117,7 @@ public class ClienteController {
 
     /* Registrar Cliente model */
     @RequestMapping(value = "/registrarCliente")
-    public String getRegistroCategoria(Model model) {
+    public String getRegistroCliente(Model model) {
 
            model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());

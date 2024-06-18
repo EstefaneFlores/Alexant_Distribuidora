@@ -47,7 +47,7 @@ public class Det_Venta  implements Serializable{
     private Integer unidad_medida;
     
     @Column(name = "estado_det_venta")
-    private Integer estado_det_venta;
+    private String estado_det_venta;
 
     
     
