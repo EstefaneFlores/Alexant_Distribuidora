@@ -23,7 +23,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "pago")
-public class Pago implements Serializable{
+public class Pago implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,22 +31,19 @@ public class Pago implements Serializable{
     @Column(name = "id_pago")
     private Integer id_cargo;
 
-
     @Column(name = "tipo_pago")
     private String Tipo_pago;
 
     @Column(name = "estado_pago")
-    private String estado_pago;
+    private Integer estado_pago;
 
-        @Column(name = "fec_registro_inicial")
+    @Column(name = "fec_registro_inicial")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fec_registro_inicial;
 
-        @Column(name = "fec_registro_final")
+    @Column(name = "fec_registro_final")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fec_registro_final;
-
-
 
     @Column(name = "fec_registroC")
     @Temporal(TemporalType.TIMESTAMP)
@@ -55,7 +52,7 @@ public class Pago implements Serializable{
     @Column(name = "fec_modificacionC")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacionC;
-    
+
     @Column(name = "usuario_registroC")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_registroC;
@@ -63,18 +60,18 @@ public class Pago implements Serializable{
     @Column(name = "usuario_modificacionC")
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionC;
-    
-    // ---------------------------------------
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_forma_pago")
-	// private Forma_pago forma_pago;
+    // ----------------RELACIÓN PAGO-----------------------
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_moneda")
-	// private Moneda moneda;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_forma_pago")
+    private Forma_pago forma_pago;
 
-    // @ManyToMany(mappedBy = "pago")
-    // private List<Persona> personas;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_moneda")
+    private Moneda moneda;
+
+    @ManyToMany(mappedBy = "pago")
+    private List<Persona> personas;
 
 }

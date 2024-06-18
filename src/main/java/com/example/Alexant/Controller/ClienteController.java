@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Alexant.Models.entitys.Cliente;
-import com.example.Alexant.Models.service.service.IClienteService;
-
 import com.example.Alexant.Models.entitys.Persona;
 import com.example.Alexant.Models.entitys.Ruta;
+import com.example.Alexant.Models.service.service.IClienteService;
 import com.example.Alexant.Models.service.service.IPersonaService;
 import com.example.Alexant.Models.service.service.IRutaService;
+
+
+
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController

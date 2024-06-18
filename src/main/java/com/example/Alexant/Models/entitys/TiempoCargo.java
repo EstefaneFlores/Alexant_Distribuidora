@@ -2,7 +2,6 @@ package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -56,12 +55,12 @@ public class TiempoCargo implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "id_cargo")
-    // private Cargo cargo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_cargo")
+    private Cargo cargo;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "id_empleado")
-    // private Empleado Empleado;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_empleado")
+    private Empleado Empleado;
 
 }
