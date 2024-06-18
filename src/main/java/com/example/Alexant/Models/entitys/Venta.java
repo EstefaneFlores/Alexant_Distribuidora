@@ -69,22 +69,22 @@ public class Venta implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionVe;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_cliente")
-	// private Cliente cliente;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_usuario")
-	// private Usuario usuario;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
-    // @ManyToMany(fetch = FetchType.LAZY)
-    // @JoinTable(name = "venta_pago", joinColumns = @JoinColumn(name = "id_venta"), inverseJoinColumns = @JoinColumn(name = "id_pago"))
-    // private Set<Pago> pago;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "venta_pago", joinColumns = @JoinColumn(name = "id_venta"), inverseJoinColumns = @JoinColumn(name = "id_pago"))
+    private Set<Pago> pago;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
-    // private List<Det_Venta> det_Ventas;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
+    private List<Det_Venta> det_Ventas;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
-    // private List<Factura> facturas;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
+    private List<Factura> facturas;
 
 }

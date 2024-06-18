@@ -10,7 +10,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -56,7 +57,8 @@ public class TipoBiene implements Serializable {
 
     // ------------------------
     
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_Biene", fetch = FetchType.LAZY)
-    // private List<Biene> biene;
-	
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_biene")
+    private Biene biene;
+
 }

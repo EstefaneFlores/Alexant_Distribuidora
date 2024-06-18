@@ -59,13 +59,13 @@ public class Lote  implements Serializable{
 
     // -------------------------------
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote", fetch = FetchType.LAZY)
-	// private List<Recepcion_Producto> recepcion_Producto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote", fetch = FetchType.LAZY)
+	private List<Recepcion_Producto> recepcion_Producto;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote", fetch = FetchType.LAZY)
-	// private List<Detalle_lote> dDetalle_lote;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote", fetch = FetchType.LAZY)
+	private List<Detalle_lote> detalle_lote;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_proveedor")
-	// private Proveedor proveedors;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_proveedor")
+	private Proveedor proveedors;
 }

@@ -30,7 +30,7 @@ public class Empleado  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_empleado")
-    private Integer id_cliente;
+    private Integer id_empleado;
 
     @Column(name = "ruta_empleado")
     private Integer ruta_empleado;

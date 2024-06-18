@@ -64,8 +64,8 @@ public class Proveedor implements Serializable {
 
 /*--------------------------RELACION CON PRODUCTO------------------------------------------- */
 
-// @ManyToMany(fetch = FetchType.LAZY)
-//     @JoinTable(name = "proveedor", joinColumns = @JoinColumn(name = "id_proveedor"), inverseJoinColumns = @JoinColumn(name = "id_producto"))
-//     private Set<Producto> Producto;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "proveedor", joinColumns = @JoinColumn(name = "id_proveedor"), inverseJoinColumns = @JoinColumn(name = "id_producto"))
+    private Set<Producto> Producto;
     
 }

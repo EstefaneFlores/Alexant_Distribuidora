@@ -3,12 +3,13 @@ package com.example.Alexant.Models.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.Alexant.Models.dao.IRecepcio_ProductoDao;
 import com.example.Alexant.Models.entitys.Recepcion_Producto;
 import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
 
-
+@Service
 public class Recepcion_ProductoImpl implements IRecepcion_ProductoService {
 
    @Autowired

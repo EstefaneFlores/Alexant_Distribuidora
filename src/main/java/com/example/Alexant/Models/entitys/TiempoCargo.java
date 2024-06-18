@@ -37,7 +37,6 @@ public class TiempoCargo implements Serializable {
     private Integer estado_tcargo;
 
     /* ========================================================= */
-    /* ========================================================= */
 
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
@@ -55,12 +54,14 @@ public class TiempoCargo implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
 
+    /* ========================================================= */
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cargo")
     private Cargo cargo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_empleado")
-    private Empleado Empleado;
+    private Empleado empleado;
 
 }

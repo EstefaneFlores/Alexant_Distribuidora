@@ -72,15 +72,15 @@ public class Cliente  implements Serializable{
 
 // -----------------------------------
 
-    // @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
-    // private Persona persona;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
+    private Persona persona;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_ruta")
-	// private Ruta ruta;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_ruta")
+	private Ruta ruta;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
-	// private List<Venta> preinscripciones;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
+	private List<Venta> preinscripciones;
 
     
 }
