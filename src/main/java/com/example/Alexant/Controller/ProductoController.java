@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.Alexant.Models.entitys.Categoria;
 import com.example.Alexant.Models.entitys.Producto;
+import com.example.Alexant.Models.entitys.Recepcion_Producto;
+import com.example.Alexant.Models.service.service.ICategoriaService;
 import com.example.Alexant.Models.service.service.IProductoService;
+import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -21,6 +25,12 @@ public class ProductoController {
     @Autowired
     private IProductoService iProductoService;
 
+    @Autowired
+    private ICategoriaService iCategoriaService;
+
+    @Autowired
+    private IRecepcion_ProductoService iRecepcion_ProductoService;
+
     // ----------- Formulario para registrar --------
 
     @GetMapping(value = "/formRegistroProducto")
@@ -28,6 +38,12 @@ public class ProductoController {
 
         model.addAttribute("producto", new Producto());
         model.addAttribute("productos", iProductoService.findAll());
+
+        model.addAttribute("categoria", new Categoria());
+        model.addAttribute("categorias", iCategoriaService.findAll());
+
+        model.addAttribute("recepcion_Producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_Productos", iRecepcion_ProductoService.findAll());
 
         return "formularios/formModeloProducto";
     }
@@ -66,6 +82,13 @@ public class ProductoController {
         model.addAttribute("producto", new Producto());
         model.addAttribute("productos", iProductoService.findAll());
 
+        model.addAttribute("categoria", new Categoria());
+        model.addAttribute("categorias", iCategoriaService.findAll());
+
+        model.addAttribute("recepcion_Producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_Productos", iRecepcion_ProductoService.findAll());
+
+
         return "listas/listaProducto";
     }
 
@@ -78,6 +101,13 @@ public class ProductoController {
             HttpServletRequest request) {
 
         model.addAttribute("producto", iProductoService.findOne(idProducto));
+        
+        model.addAttribute("categoria", new Categoria());
+        model.addAttribute("categorias", iCategoriaService.findAll());
+
+        model.addAttribute("recepcion_Producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_Productos", iRecepcion_ProductoService.findAll());
+
 
         return "contentProducto :: contentproducto";
 
@@ -89,6 +119,13 @@ public class ProductoController {
 
         model.addAttribute("producto", new Producto());
         model.addAttribute("productos", iProductoService.findAll());
+
+        model.addAttribute("categoria", new Categoria());
+        model.addAttribute("categorias", iCategoriaService.findAll());
+
+        model.addAttribute("recepcion_Producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_Productos", iRecepcion_ProductoService.findAll());
+
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentProducto :: contentproducto";

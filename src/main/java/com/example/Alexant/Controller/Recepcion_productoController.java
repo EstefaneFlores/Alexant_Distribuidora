@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.Alexant.Models.entitys.Lote;
 import com.example.Alexant.Models.entitys.Recepcion_Producto;
+import com.example.Alexant.Models.service.service.ILoteService;
 import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
 
 
@@ -23,6 +25,10 @@ public class Recepcion_productoController {
     @Autowired
     private IRecepcion_ProductoService iRecepcion_ProductoService;
 
+    
+    @Autowired
+    private ILoteService iLoteService;
+
     // ----------- Formulario para registrar --------
 
     @GetMapping(value = "/formRegistroRecepcion_Producto")
@@ -30,6 +36,9 @@ public class Recepcion_productoController {
 
         model.addAttribute("recepcion_producto", new Recepcion_Producto());
         model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", iLoteService.findAll());
 
         return "formularios/formModeloRecepcion_Producto";
     }
@@ -68,6 +77,9 @@ public class Recepcion_productoController {
         model.addAttribute("recepcion_producto", new Recepcion_Producto());
         model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
 
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", iLoteService.findAll());
+
         return "listas/listaRecepcion_Producto";
     }
 
@@ -81,6 +93,9 @@ public class Recepcion_productoController {
 
         model.addAttribute("Recepcion_Producto", iRecepcion_ProductoService.findOne(idRegistro));
 
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", iLoteService.findAll());
+
         return "contentRecepcion_Producto :: contentRecepcion_Producto";
 
     }
@@ -91,6 +106,9 @@ public class Recepcion_productoController {
 
         model.addAttribute("recepcion_producto", new Recepcion_Producto());
         model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", iLoteService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentRecepcion_Producto :: contentpRecepcion_Producto";

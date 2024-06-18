@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Alexant.Models.entitys.Empleado;
-import com.example.Alexant.Models.entitys.Venta;
+import com.example.Alexant.Models.entitys.Persona;
 import com.example.Alexant.Models.service.service.IEmpleadoService;
+import com.example.Alexant.Models.service.service.IPersonaService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -21,6 +22,10 @@ public class EmpleadoController {
     @Autowired
     private IEmpleadoService empleadoService;
 
+    @Autowired
+    private IPersonaService IpersonaService;
+
+
     // ========= Formulario para registrar =========
 
     @GetMapping(value = "/formRegistroEmpleado")
@@ -28,6 +33,10 @@ public class EmpleadoController {
 
         model.addAttribute("empleado", new Empleado());
         model.addAttribute("empleados", empleadoService.findAll());
+
+        
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", IpersonaService.findAll());
 
         return "alexant/formEmpleado"; /*No tenemos formularios todavía
      */
@@ -62,6 +71,9 @@ public class EmpleadoController {
         model.addAttribute("empleado", new Empleado());
         model.addAttribute("empleados", empleadoService.findAll());
 
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", IpersonaService.findAll());
+
         return "listas/listaEmpleado";/*Falta el formulario*/ 
     }
 
@@ -75,6 +87,9 @@ public class EmpleadoController {
 
         model.addAttribute("empleado", empleadoService.findOne(id_empleado));
 
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", IpersonaService.findAll());
+
         return "contentEmpleado :: contentEmpleado";
 
     }
@@ -85,6 +100,9 @@ public class EmpleadoController {
 
         model.addAttribute("empleado", new Empleado());
         model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", IpersonaService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentEmpleado :: contentEmpleado"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */

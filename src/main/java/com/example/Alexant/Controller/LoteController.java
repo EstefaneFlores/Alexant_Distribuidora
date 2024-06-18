@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Alexant.Models.entitys.Lote;
-import com.example.Alexant.Models.entitys.Venta;
+import com.example.Alexant.Models.entitys.Proveedor;
 import com.example.Alexant.Models.service.service.ILoteService;
+import com.example.Alexant.Models.service.service.IProveedorService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -23,12 +24,19 @@ public class LoteController {
     @Autowired
     private ILoteService loteService;
 
+    @Autowired
+    private IProveedorService iProveedorService;
+
     // ========= Formulario para registrar =========
 
     @GetMapping(value = "/formRegistroLote")
     public String registroLote(@Validated Lote lote, Model model) {
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", iProveedorService.findAll());
+
         return "alexant/formLote"; /*No tenemos formularios todavía
      */
     }
@@ -59,6 +67,10 @@ public class LoteController {
     public String listarLote(Model model) {
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", iProveedorService.findAll());
+
         return "listas/listaLote";/*Falta el formulario*/ 
     }
 
@@ -70,6 +82,10 @@ public class LoteController {
     public String getContentLote(@PathVariable(value = "id_lote") Integer id_lote, Model model,
         HttpServletRequest request) {
         model.addAttribute("lote", loteService.findOne(id_lote));
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", iProveedorService.findAll());
+
         return "contentLote :: contentLote";
 
     }
@@ -79,6 +95,9 @@ public class LoteController {
     public String getRegistroLote(Model model) {
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", loteService.findAll());
+        
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", iProveedorService.findAll());
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentLote :: contentLote"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }

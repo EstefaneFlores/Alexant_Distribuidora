@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Alexant.Models.entitys.Detalle_lote;
-import com.example.Alexant.Models.entitys.UsuarioRol;
+import com.example.Alexant.Models.entitys.Empleado;
+import com.example.Alexant.Models.entitys.Lote;
+import com.example.Alexant.Models.entitys.Ruta;
 import com.example.Alexant.Models.service.service.IDetalleLoteService;
+import com.example.Alexant.Models.service.service.IEmpleadoService;
+import com.example.Alexant.Models.service.service.ILoteService;
+import com.example.Alexant.Models.service.service.IRutaService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -22,6 +27,15 @@ public class DetalleLoteController {
     @Autowired
     private IDetalleLoteService detalleLoteService;
 
+    @Autowired
+    private ILoteService loteService;
+
+    @Autowired
+    private IEmpleadoService empleadoService;
+    
+    @Autowired
+    private IRutaService rutaService;
+
     // ========= Formulario para registrar =========
 
     @GetMapping(value = "/formRegistroDetalleLote")
@@ -29,6 +43,15 @@ public class DetalleLoteController {
 
         model.addAttribute("detalleLote", new Detalle_lote());
         model.addAttribute("detalleLotes", detalleLoteService.findAll());
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", rutaService.findAll());
 
         return "alexant/formUsuarioRol"; /*No tenemos formularios todavía
      */
@@ -61,6 +84,15 @@ public class DetalleLoteController {
         model.addAttribute("detalle_lote", new Detalle_lote());
         model.addAttribute("detalle_lotes", detalleLoteService.findAll());
 
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", rutaService.findAll());
+
         return "listas/listaDetalle_lote";/*Falta el formulario*/ 
     }
 
@@ -74,6 +106,16 @@ public class DetalleLoteController {
 
         model.addAttribute("detalle_lote", detalleLoteService.findOne(id_detalle_lote));
 
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", rutaService.findAll());
+
         return "contentDetalle_lote :: contentDetalle_lote";
 
     }
@@ -84,6 +126,15 @@ public class DetalleLoteController {
 
         model.addAttribute("detalle_lote", new Detalle_lote());
         model.addAttribute("detalle_lotes", detalleLoteService.findAll());
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", rutaService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentDetalle_lote :: contentDetalle_lote"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */

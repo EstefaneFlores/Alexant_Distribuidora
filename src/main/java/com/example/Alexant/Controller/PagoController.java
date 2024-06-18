@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.Alexant.Models.entitys.Moneda;
 import com.example.Alexant.Models.entitys.Pago;
-import com.example.Alexant.Models.entitys.Venta;
+import com.example.Alexant.Models.service.service.IMonedaService;
 import com.example.Alexant.Models.service.service.IPagoService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,12 +23,18 @@ public class PagoController {
     @Autowired
     private IPagoService pagoService;
 
+    @Autowired
+    private IMonedaService iMonedaService;
+
     // ========= Formulario para registrar =========
 
     @GetMapping(value = "/formRegistroPago")
     public String registroPago(@Validated Pago pago, Model model) {
         model.addAttribute("pago", new Pago());
         model.addAttribute("pagos", pagoService.findAll());
+
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("monedas", iMonedaService.findAll());
         return "alexant/formPago"; /*No tenemos formularios todavía
      */
     }
@@ -58,6 +65,10 @@ public class PagoController {
     public String listarPago(Model model) {
         model.addAttribute("pago", new Pago());
         model.addAttribute("pagos", pagoService.findAll());
+
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("monedas", iMonedaService.findAll());
+
         return "listas/listaPago";/*Falta el formulario*/ 
     }
 
@@ -69,6 +80,10 @@ public class PagoController {
     public String getContentPago(@PathVariable(value = "id_pago") Integer id_pago, Model model,
         HttpServletRequest request) {
         model.addAttribute("pago", pagoService.findOne(id_pago));
+
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("monedas", iMonedaService.findAll());
+
         return "contentPago :: contentPago";
 
     }
@@ -78,6 +93,10 @@ public class PagoController {
     public String getRegistroPago(Model model) {
         model.addAttribute("pago", new Pago());
         model.addAttribute("pagos", pagoService.findAll());
+
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("monedas", iMonedaService.findAll());
+
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentPago :: contentPago"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
