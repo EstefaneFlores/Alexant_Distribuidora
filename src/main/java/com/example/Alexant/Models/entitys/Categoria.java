@@ -55,8 +55,8 @@ public class Categoria  implements Serializable{
 
 
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
-    // private List<Producto> producto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
+    private List<Producto> producto;
 
 
 }

@@ -62,12 +62,12 @@ public class Detalle_Factura  implements Serializable{
 
     // -----------------------
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_det_venta")
-	// private Det_Venta det_venta;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_det_venta")
+	private Det_Venta det_venta;
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_factura")
-	// private Factura factura;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_factura")
+	private Factura factura;
 
 }

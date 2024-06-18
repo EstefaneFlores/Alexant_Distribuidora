@@ -74,41 +74,41 @@ private Date usuario_modificacion;
 
 // // -----------------------------------------------
 
-// 	@ManyToOne(fetch = FetchType.LAZY)
-// 	@JoinColumn(name = "id_categoria")
-// 	private Categoria categoria2;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_categoria")
+	private Categoria categoria2;
 
 
 
-// /*---------------------------RELACION CON RECEPCION_PRODUCTO------------------------------------------------ */
+/*---------------------------RELACION CON RECEPCION_PRODUCTO------------------------------------------------ */
 
-// @ManyToOne(fetch = FetchType.LAZY)
-// 	@JoinColumn(name = "id_registro")
-// 	private Recepcion_Producto recepcion_Producto;
+@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_registro")
+	private Recepcion_Producto recepcion_Producto;
 
-// /*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
+/*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
 
-// @ManyToMany(fetch = FetchType.LAZY)
-//     @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_proveedor"))
-//     private Set<Proveedor> proveedor;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_proveedor"))
+    private Set<Proveedor> proveedor;
 
-// /*-----------------------------RELACION CON DETALLE LOTE----------------------------------------------------- */
+/*-----------------------------RELACION CON DETALLE LOTE----------------------------------------------------- */
 
-// @ManyToMany(fetch = FetchType.LAZY)
-//     @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
-//     private Set<Detalle_lote> detalle_lote;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
+    private Set<Detalle_lote> detalle_lote;
 
-// /*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
+/*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
 
-// @ManyToMany(fetch = FetchType.LAZY)
-//     @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalleVenta"))
-//     private Set<Det_Venta> det_venta;
+@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalleVenta"))
+    private Set<Det_Venta> det_venta;
 
-// /*-------------------------------RELACION CON CATEGORIA--------------------------------------*/
+/*-------------------------------RELACION CON CATEGORIA--------------------------------------*/
 
-// @ManyToOne(fetch = FetchType.LAZY)
-// 	@JoinColumn(name = "id_categoria")
-// 	private Categoria categoria;
+@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_categoria")
+	private Categoria categoria;
 
 
 

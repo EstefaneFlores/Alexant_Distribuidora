@@ -76,13 +76,13 @@ public class Persona implements Serializable {
    private Date usuario_modificacion;
  /*------------------------------------------------------- */
 
-//  @ManyToMany
-//  @JoinTable(name = "persona_biene", joinColumns = @JoinColumn(name = "persona_id"), inverseJoinColumns = @JoinColumn(name = "biene_id"))
-//  private List<Biene> bienes;
+ @ManyToMany
+ @JoinTable(name = "persona_biene", joinColumns = @JoinColumn(name = "persona_id"), inverseJoinColumns = @JoinColumn(name = "biene_id"))
+ private List<Biene> bienes;
 
-//  @OneToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "cliente_id", nullable = false)
-//  private Cliente cliente;
+ @OneToOne(fetch = FetchType.LAZY)
+ @JoinColumn(name = "cliente_id", nullable = false)
+ private Cliente cliente;
 
     
     

@@ -51,8 +51,8 @@ public class TipoCambio implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacion;
 
-    // @OneToOne
-	// @JoinColumn(name = "id_moneda")
-	// private Moneda moneda;
+    @OneToOne
+	@JoinColumn(name = "id_moneda")
+	private Moneda moneda;
  
  }

@@ -60,12 +60,12 @@ public class Biene  implements Serializable{
 
 // -----------------
 
-// @ManyToOne(fetch = FetchType.LAZY)
-// @JoinColumn(name = "id_tipo_biene")
-// private TipoBiene tipoBiene;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_tipo_biene")
+private TipoBiene tipoBiene;
 
-// @ManyToMany(fetch = FetchType.LAZY)
-// @JoinTable(name = "bienePersona", joinColumns = @JoinColumn(name = "id_biene"), inverseJoinColumns = @JoinColumn(name = "id_persona"))
-// private Set<Persona> personas;
+@ManyToMany(fetch = FetchType.LAZY)
+@JoinTable(name = "bienePersona", joinColumns = @JoinColumn(name = "id_biene"), inverseJoinColumns = @JoinColumn(name = "id_persona"))
+private Set<Persona> personas;
 
 }

@@ -37,8 +37,8 @@ public class Usuario implements Serializable {
 	@Column(name = "contrasena")
 	private String contrasena;
 
-	@Column(name = "id_estado")
-	private String id_estado;
+	@Column(name = "estado_usuario")
+	private Integer estado_usuario;
 
 	@Column(name = "registro")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -48,14 +48,17 @@ public class Usuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modificacion;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-    // private List<UsuarioRol> UsuarioRol;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<UsuarioRol> UsuarioRol;
 
-	// @OneToOne
-	// @JoinColumn(name = "id_empleado")
-	// private Empleado empleado;
+	@OneToOne
+	@JoinColumn(name = "id_empleado")
+	private Empleado empleado;
 
-	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-    // private List<Venta> venta;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Venta> venta;
+
+  
+	
 
 }

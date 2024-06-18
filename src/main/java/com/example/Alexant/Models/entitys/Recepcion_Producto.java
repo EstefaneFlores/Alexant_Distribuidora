@@ -72,7 +72,7 @@ public class Recepcion_Producto implements Serializable{
 
 /*-------------------RELACION CON PRODUCTO----------------------------------- */    
 
-// @OneToMany(cascade = CascadeType.ALL, mappedBy = "recepcion_producto", fetch = FetchType.LAZY)
-//     private List<Producto> producto;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "recepcion_producto", fetch = FetchType.LAZY)
+    private List<Producto> producto;
     
 }

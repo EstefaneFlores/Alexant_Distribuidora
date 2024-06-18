@@ -57,7 +57,7 @@ public class Ruta implements Serializable{
 
 /*--------------------RELACION CON CLIENTE------------------------------ */
 
-// @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta", fetch = FetchType.LAZY)
-// 	private List<Cliente> cliente;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta", fetch = FetchType.LAZY)
+	private List<Cliente> cliente;
 
 }

@@ -60,7 +60,7 @@ public class Rol implements Serializable {
 
 /*-------------------------------RELACION CON USrROL--------------------------------------------*/
 
-// @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.LAZY)
-//     private List<UsuarioRol> usuariorol;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "rol", fetch = FetchType.LAZY)
+    private List<UsuarioRol> usuariorol;
 
 }

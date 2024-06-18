@@ -56,7 +56,7 @@ public class TipoBiene implements Serializable {
 
     // ------------------------
     
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_Biene", fetch = FetchType.LAZY)
-    // private List<Biene> biene;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipo_Biene", fetch = FetchType.LAZY)
+    private List<Biene> biene;
 	
 }

@@ -68,12 +68,12 @@ public class Factura  implements Serializable{
 
 // ----------------------------------------
 
-    // @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "id_venta")
-	// private Venta venta;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_venta")
+	private Venta venta;
 
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "factura", fetch = FetchType.LAZY)
-	// private List<Det_Venta> preinscripciones;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "factura", fetch = FetchType.LAZY)
+	private List<Det_Venta> preinscripciones;
 
 }
