@@ -59,19 +59,19 @@ public class Empleado  implements Serializable{
 
     /*=======================================================*/
 
-    // @OneToOne
-	// @JoinColumn(name = "id_persona")
-	// private Persona persona;
+    @OneToOne
+	@JoinColumn(name = "id_persona")
+	private Persona persona;
 
-    // @OneToOne
-	// @JoinColumn(name = "id_usuario")
-	// private Usuario usuario;
+    @OneToOne
+	@JoinColumn(name = "id_usuario")
+	private Usuario usuario;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
-    // private List<TiempoCargo> tiempoCargos;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
+    private List<TiempoCargo> tiempoCargos;
 
-    // @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
-    // private List<Detalle_lote> detalle_lotes;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
+    private List<Detalle_lote> detalle_lotes;
 
 
 }

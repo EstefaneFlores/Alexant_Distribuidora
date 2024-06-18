@@ -13,5 +13,4 @@ public interface ITiempoCargoService {
 
     public void delete(Integer id);
 
-
 }
