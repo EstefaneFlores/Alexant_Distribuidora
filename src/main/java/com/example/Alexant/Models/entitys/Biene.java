@@ -1,7 +1,10 @@
 package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -60,9 +64,8 @@ public class Biene  implements Serializable{
 
 // -----------------
 
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_tipo_biene")
-private TipoBiene tipoBiene;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "biene", fetch = FetchType.LAZY)
+private List<TipoBiene> tipoBienes;
 
 @ManyToMany(fetch = FetchType.LAZY)
 @JoinTable(name = "bienePersona", joinColumns = @JoinColumn(name = "id_biene"), inverseJoinColumns = @JoinColumn(name = "id_persona"))

@@ -63,7 +63,7 @@ public class Detalle_lote  implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_empleado")
-	private Empleado Empleado;
+	private Empleado empleado;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "detalle_lote_producto", joinColumns = @JoinColumn(name = "id_detalle_lote"), inverseJoinColumns = @JoinColumn(name = "id_producto"))

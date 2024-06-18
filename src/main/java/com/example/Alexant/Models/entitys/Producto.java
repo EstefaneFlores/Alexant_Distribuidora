@@ -72,20 +72,11 @@ private Date usuario_registro;
 private Date usuario_modificacion;
 
 
-// // -----------------------------------------------
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_categoria")
-	private Categoria categoria2;
-
-
-
 /*---------------------------RELACION CON RECEPCION_PRODUCTO------------------------------------------------ */
 
 @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_registro")
 	private Recepcion_Producto recepcion_Producto;
-
 /*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
 
 @ManyToMany(fetch = FetchType.LAZY)

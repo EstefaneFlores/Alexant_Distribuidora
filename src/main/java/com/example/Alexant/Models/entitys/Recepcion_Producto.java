@@ -11,6 +11,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -72,7 +74,11 @@ public class Recepcion_Producto implements Serializable{
 
 /*-------------------RELACION CON PRODUCTO----------------------------------- */    
 
-@OneToMany(cascade = CascadeType.ALL, mappedBy = "recepcion_producto", fetch = FetchType.LAZY)
-    private List<Producto> producto;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "recepcion_Producto", fetch = FetchType.LAZY)
+    private List<Producto> productos;
+
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_lote")
+private Lote lote;
     
 }

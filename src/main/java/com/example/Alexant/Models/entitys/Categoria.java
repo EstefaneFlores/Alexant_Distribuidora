@@ -54,7 +54,6 @@ public class Categoria  implements Serializable{
     private Date usuario_modificacionCa;
 
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
     private List<Producto> producto;
 

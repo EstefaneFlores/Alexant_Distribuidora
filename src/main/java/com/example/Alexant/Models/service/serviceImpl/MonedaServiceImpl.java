@@ -3,11 +3,13 @@ package com.example.Alexant.Models.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.Alexant.Models.dao.IMonedaDao;
 import com.example.Alexant.Models.entitys.Moneda;
 import com.example.Alexant.Models.service.service.IMonedaService;
 
+@Service
 public class MonedaServiceImpl implements IMonedaService {
 
     @Autowired

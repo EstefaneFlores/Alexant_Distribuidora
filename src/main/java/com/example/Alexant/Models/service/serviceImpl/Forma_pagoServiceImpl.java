@@ -3,11 +3,13 @@ package com.example.Alexant.Models.service.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.Alexant.Models.dao.IForma_pagoDao;
 import com.example.Alexant.Models.entitys.Forma_pago;
 import com.example.Alexant.Models.service.service.IForma_pagoService;
 
+@Service
 public class Forma_pagoServiceImpl implements IForma_pagoService {
 
     @Autowired

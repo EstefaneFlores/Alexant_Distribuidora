@@ -31,7 +31,7 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_persona")
-    private Integer id_persona;
+    private Integer idPersona;
 
     @Column(name = "nombre_persona")
     private String nombre_persona;
@@ -77,7 +77,7 @@ public class Persona implements Serializable {
  /*------------------------------------------------------- */
 
  @ManyToMany
- @JoinTable(name = "persona_biene", joinColumns = @JoinColumn(name = "persona_id"), inverseJoinColumns = @JoinColumn(name = "biene_id"))
+ @JoinTable(name = "persona_biene", joinColumns = @JoinColumn(name = "id_persona"), inverseJoinColumns = @JoinColumn(name = "id_biene"))
  private List<Biene> bienes;
 
  @OneToOne(fetch = FetchType.LAZY)
