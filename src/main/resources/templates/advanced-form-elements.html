@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html class="no-js " lang="en">
 <head>
 <meta charset="utf-8">
@@ -9,18 +9,30 @@
 <title>:: Alpino Menu Rught ::</title>
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Favicon-->
-<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-<!-- JQuery DataTable Css -->
-<link rel="stylesheet" href="assets/plugins/jquery-datatable/dataTables.bootstrap4.min.css">
+<link  rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+<!-- Morris Chart Css-->
+<link rel="stylesheet" href="/assets/plugins/morrisjs/morris.css" />
+<!-- Colorpicker Css -->
+<link rel="stylesheet" href="/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" />
+<!-- Multi Select Css -->
+<link rel="stylesheet" href="/assets/plugins/multi-select/css/multi-select.css">
+<!-- Bootstrap Spinner Css -->
+<link rel="stylesheet" href="/assets/plugins/jquery-spinner/css/bootstrap-spinner.css">
+<!-- Bootstrap Tagsinput Css -->
+<link rel="stylesheet" href="/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+<!-- Bootstrap Select Css -->
+<link rel="stylesheet" href="/assets/plugins/bootstrap-select/css/bootstrap-select.css" />
+<!-- noUISlider Css -->
+<link rel="stylesheet" href="/assets/plugins/nouislider/nouislider.min.css" />
 <!-- Custom Css -->
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/color_skins.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/color_skins.css">
 </head>
 <body class="theme-black menu_dark">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="assets/images/logo.svg" width="48" height="48" alt="Alpino"></div>
+        <div class="m-t-30"><img src="/assets/images/logo.svg" width="48" height="48" alt="Alpino"></div>
         <p>Please wait...</p>        
     </div>
 </div>
@@ -41,7 +53,7 @@
             <div class="card links">
                 <div class="body">
                     <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12">
                             <h6>App</h6>
                             <ul class="list-unstyled">
                                 <li><a href="mail-inbox.html">Inbox</a></li>
@@ -51,7 +63,7 @@
                                 <li><a href="contact.html">Contact list</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12">
                             <h6>User Interface (UI)</h6>
                             <ul class="list-unstyled">
                                 <li><a href="ui_kit.html">UI KIT</a></li>
@@ -63,10 +75,10 @@
                                 <li><a href="collapse.html">Collapse</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12">
                             <h6>Sample Pages</h6>
                             <ul class="list-unstyled">                            
-                                <li><a href="image-gallery.html">Image Gallery</a></li>
+                                <li><a href="image-gallery.html">Image Gallery</a> </li>
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="timeline.html">Timeline</a></li>
                                 <li><a href="pricing.html">Pricing</a></li>
@@ -74,7 +86,7 @@
                                 <li><a href="search-results.html">Search Results</a></li>
                             </ul>
                         </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-sm-12">
                             <h6>About</h6>
                             <ul class="list-unstyled">
                                 <li><a href="http://thememakker.com/about/" target="_blank">About</a></li>
@@ -93,8 +105,8 @@
                 <div class="social">
                     <a class="icon" href="https://www.facebook.com/thememakkerteam" target="_blank"><i class="zmdi zmdi-facebook"></i></a>
                     <a class="icon" href="https://www.behance.net/thememakker" target="_blank"><i class="zmdi zmdi-behance"></i></a>
-                    <a class="icon" href="javascript:void(0);"><i class="zmdi zmdi-twitter"></i></a>
-                    <a class="icon" href="javascript:void(0);"><i class="zmdi zmdi-linkedin"></i></a>                    
+                    <a class="icon" href="#"><i class="zmdi zmdi-twitter"></i></a>
+                    <a class="icon" href="#"><i class="zmdi zmdi-linkedin"></i></a>                    
                     <p>Coded by WrapTheme<br> Designed by <a href="http://thememakker.com/" target="_blank">thememakker.com</a></p>
                 </div>
             </div>
@@ -486,7 +498,7 @@
                 </li>
                 <li class="header">MAIN</li>
                 <li> <a href="index.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
-                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>App</span> <span class="badge badge-success float-right">7</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>App</span> <span class="badge badge-success float-right">7</span></a>
                     <ul class="ml-menu">
                         <li><a href="mail-inbox.html">Inbox</a></li>
                         <li><a href="chat.html">Chat</a></li>
@@ -494,7 +506,7 @@
                         <li><a href="file-dashboard.html">File Manager</a></li>
                         <li><a href="contact.html">Contact list</a></li>
                         <li><a href="blog-dashboard.html">Blog</a></li>
-                        <li class="active"><a href="app-ticket.html">Support Ticket</a></li>
+                        <li><a href="app-ticket.html">Support Ticket</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>UI Elements</span> <span class="badge badge-default float-right">15</span></a>
@@ -517,10 +529,10 @@
                     </ul>
                 </li>
                 <li class="header">FORMS, CHARTS, TABLES</li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Forms</span> <span class="badge badge-warning float-right">9</span></a>
+                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Forms</span> <span class="badge badge-warning float-right">9</span></a>
                     <ul class="ml-menu">
                         <li><a href="basic-form-elements.html">Basic Elements</a></li>
-                        <li><a href="advanced-form-elements.html">Advanced Elements</a></li>
+                        <li class="active"><a href="advanced-form-elements.html">Advanced Elements</a></li>
                         <li><a href="form-examples.html">Form Examples</a></li>
                         <li><a href="form-validation.html">Form Validation</a></li>
                         <li><a href="form-wizard.html">Form Wizard</a></li>
@@ -598,18 +610,18 @@
     </div>
 </aside>
 
-<section class="content page-calendar">
+<section class="content">   
     <div class="container-fluid">
         <div class="block-header">
-            <div class="row clearfix">
+            <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Support Ticket</h2>
+                    <h2>Advanced Elements</h2>
                     <ul class="breadcrumb padding-0">
                         <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0);">App</a></li>
-                        <li class="breadcrumb-item active">Support Ticket</li>
+                        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                        <li class="breadcrumb-item active">Advanced Elements</li>
                     </ul>
-                </div>            
+                </div>
                 <div class="col-lg-7 col-md-7 col-sm-12">
                     <div class="input-group m-b-0">                
                         <input type="text" class="form-control" placeholder="Search...">
@@ -620,274 +632,447 @@
                 </div>
             </div>
         </div>
+        <!-- Color Pickers -->
         <div class="row clearfix">
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="body l-parpl text-center">
-                        <div class="sparkline" data-type="bar" data-width="97%" data-height="15px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#ffffff">8,3,2,6,5,9,4,5</div>
-                        <h3 class="m-b-0 m-t-10 text-white number count-to" data-from="0" data-to="2078" data-speed="2000" data-fresh-interval="700">2078</h3>
-                        <span class="text-white">Total Tickets</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="body l-seagreen text-center">
-                        <div class="sparkline" data-type="bar" data-width="97%" data-height="15px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#ffffff">2,3,5,6,9,8,7,8,7</div>
-                        <h3 class="m-b-0 m-t-10 text-white number count-to" data-from="0" data-to="1278" data-speed="2000" data-fresh-interval="700">1278</h3>
-                        <span class="text-white">Resolve</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="body l-amber text-center">
-                        <div class="sparkline" data-type="bar" data-width="97%" data-height="15px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#ffffff">5,2,8,3,6,9,7,5,1,2</div>
-                        <h3 class="m-b-0 m-t-10 text-white number count-to" data-from="0" data-to="521" data-speed="2000" data-fresh-interval="700">521</h3>
-                        <span class="text-white">Pending</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="body l-blue text-center">
-                        <div class="sparkline" data-type="bar" data-width="97%" data-height="15px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#ffffff">9,3,1,6,9,8,1,8,7</div>
-                        <h3 class="m-b-0 m-t-10 text-white number count-to" data-from="0" data-to="978" data-speed="2000" data-fresh-interval="700">978</h3>
-                        <span class="text-white">Responded</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="header">
-                        <h2><strong>Support</strong> & Ticket List</h2>
+                        <h2><strong>Color</strong> Pickers</h2>
                         <ul class="header-dropdown">
-                            <li><a href="javascript:void(0);" data-toggle="modal" data-target="#addevent"><i class="zmdi zmdi-plus-circle"></i></a></li>
                             <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                <ul class="dropdown-menu slideUp">
+                                <ul class="dropdown-menu dropdown-menu-right">
                                     <li><a href="javascript:void(0);">Action</a></li>
                                     <li><a href="javascript:void(0);">Another action</a></li>
                                     <li><a href="javascript:void(0);">Something else</a></li>
-                                    <li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
                     </div>
                     <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Assign By</th>
-                                        <th>Assign to</th>
-                                        <th>Email</th>
-                                        <th>Sbuject</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>                                
-                                <tbody>
-                                    <tr>
-                                        <td>231</td>
-                                        <td>Airi Satou</td>
-                                        <td>Angelica Ramos</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-default">Pending</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>235</td>
-                                        <td>Brenden Wagner</td>
-                                        <td>Ashton Cox</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-success">Complete</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>236</td>
-                                        <td>Bradley Greer</td>
-                                        <td>Cara Stevens</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-success">Complete</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>245</td>
-                                        <td>Cara Stevens</td>
-                                        <td>Airi Satou</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-default">Pending</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>248</td>
-                                        <td>Airi Satou</td>
-                                        <td>Angelica Ramos</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-success">Complete</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>250</td>
-                                        <td>Jenette Caldwell</td>
-                                        <td>Hermione Butler</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-warning">New</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>260</td>
-                                        <td>Paul Byrd</td>
-                                        <td>Michael Bruce</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-warning">New</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>261</td>
-                                        <td>Lael Greer</td>
-                                        <td>Martena Mccray</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-warning">New</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>262</td>
-                                        <td>Airi Satou</td>
-                                        <td>Angelica Ramos</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-warning">New</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>278</td>
-                                        <td>Airi Satou</td>
-                                        <td>Angelica Ramos</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-default">Pending</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>278</td>
-                                        <td>Airi Satou</td>
-                                        <td>Angelica Ramos</td>
-                                        <td>airi@example.com</td>
-                                        <td>New Code Update</td>
-                                        <td><span class="badge badge-default">Pending</span></td>
-                                        <td>24-04-2018</td>
-                                        <td>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-edit"></i></button>
-                                            <button class="btn btn-icon btn-neutral btn-icon-mini margin-0"><i class="zmdi zmdi-delete"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="row clearfix">
+                            <div class="col-md-6"> <b>HEX CODE</b>
+                                <div class="input-group colorpicker">                                   
+                                    <input type="text" class="form-control" value="#00AABB">                                    
+                                    <span class="input-group-addon"> <i></i> </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6"> <b>RGB(A) CODE</b>
+                                <div class="input-group colorpicker">                                    
+                                    <input type="text" class="form-control" value="rgba(0,0,0,0.7)">
+                                    <span class="input-group-addon"> <i></i> </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
-    </div>
-</section>
-
-<!-- Default Size -->
-<div class="modal fade" id="addevent" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="title" id="defaultModalLabel">Add New Contact</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <div class="form-line">
-                        <input type="number" class="form-control" placeholder="Assign to">
+        </div>
+        <!-- #END# Color Pickers --> 
+        <!-- Masked Input -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Masked</strong> Input</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="demo-masked-input">
+                            <div class="row clearfix">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <b>Date</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i> </span>
+                                        <input type="text" class="form-control date" placeholder="Ex: 30/07/2016">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Time (24 hour)</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-time"></i></span>                                        
+                                        <input type="text" class="form-control time24" placeholder="Ex: 23:59">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Time (12 hour)</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-time"></i></span>
+                                        <input type="text" class="form-control time12" placeholder="Ex: 11:59 pm">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Date Time</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"> <i class="zmdi zmdi-calendar-note"></i></span>
+                                        <input type="text" class="form-control datetime" placeholder="Ex: 30/07/2016 23:59">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Mobile Phone Number</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-smartphone"></i></span>
+                                        <input type="text" class="form-control mobile-phone-number" placeholder="Ex: +00 (000) 000-00-00">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Phone Number</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-phone"></i></span>
+                                        <input type="text" class="form-control mobile-phone-number" placeholder="Ex: +00 (000) 000-00-00">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Money (Dollar)</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-money"></i></span>
+                                        <input type="text" class="form-control money-dollar" placeholder="Ex: 99,99 $">
+                                    </div>
+                                </div>                               
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>IP Address</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-laptop"></i></span>
+                                        <input type="text" class="form-control ip" placeholder="Ex: 255.255.255.255">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Credit Card</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-card"></i></span>
+                                        <input type="text" class="form-control credit-card" placeholder="Ex: 0000 0000 0000 0000">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Email Address</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                                        <input type="text" class="form-control email" placeholder="Ex: example@example.com">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12"> <b>Serial Key</b>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-key"></i></span>
+                                        <input type="text" class="form-control key" placeholder="Ex: XXX0-XXXX-XX00-0XXX">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="form-line">
-                        <input type="text" class="form-control" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-line">
-                        <input type="text" class="form-control" placeholder="Sbuject">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-line">
-                        <input type="text" class="form-control" placeholder="Date">
-                    </div>
-                </div>       
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary btn-round waves-effect">Save</button>
-                <button type="button" class="btn btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
             </div>
         </div>
+        <!-- #END# Masked Input -->        
+        <!-- Multi Select -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2> <strong>Multi</strong> Select</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <select id="optgroup" class="ms" multiple="multiple">
+                            <optgroup label="Alaskan/Hawaiian Time Zone">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                            </optgroup>
+                            <optgroup label="Pacific Time Zone">
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                            </optgroup>
+                            <optgroup label="Mountain Time Zone">
+                            <option value="AZ">Arizona</option>
+                            <option value="CO">Colorado</option>
+                            <option value="ID">Idaho</option>
+                            <option value="MT">Montana</option>
+                            <option value="NE">Nebraska</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="UT">Utah</option>
+                            <option value="WY">Wyoming</option>
+                            </optgroup>
+                            <optgroup label="Central Time Zone">
+                            <option value="AL">Alabama</option>
+                            <option value="AR">Arkansas</option>
+                            <option value="IL">Illinois</option>
+                            <option value="IA">Iowa</option>
+                            <option value="KS">Kansas</option>
+                            <option value="KY">Kentucky</option>
+                            <option value="LA">Louisiana</option>
+                            <option value="MN">Minnesota</option>
+                            <option value="MS">Mississippi</option>
+                            <option value="MO">Missouri</option>
+                            <option value="OK">Oklahoma</option>
+                            <option value="SD">South Dakota</option>
+                            <option value="TX">Texas</option>
+                            <option value="TN">Tennessee</option>
+                            <option value="WI">Wisconsin</option>
+                            </optgroup>
+                            <optgroup label="Eastern Time Zone">
+                            <option value="CT">Connecticut</option>
+                            <option value="DE">Delaware</option>
+                            <option value="FL">Florida</option>
+                            <option value="GA">Georgia</option>
+                            <option value="IN">Indiana</option>
+                            <option value="ME">Maine</option>
+                            <option value="MD">Maryland</option>
+                            <option value="MA">Massachusetts</option>
+                            <option value="MI">Michigan</option>
+                            <option value="NH">New Hampshire</option>
+                            <option value="NJ">New Jersey</option>
+                            <option value="NY">New York</option>
+                            <option value="NC">North Carolina</option>
+                            <option value="OH">Ohio</option>
+                            <option value="PA">Pennsylvania</option>
+                            <option value="RI">Rhode Island</option>
+                            <option value="SC">South Carolina</option>
+                            <option value="VT">Vermont</option>
+                            <option value="VA">Virginia</option>
+                            <option value="WV">West Virginia</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Multi Select -->
+        
+        <div class="row clearfix"> 
+            <!-- Spinners -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Spinners</strong></h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-md-6">
+                                <div class="input-group spinner" data-trigger="spinner">                                    
+                                    <input type="text" class="form-control text-center" value="1" data-rule="quantity">
+                                    <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group spinner" data-trigger="spinner">
+                                    <input type="text" class="form-control text-center" value="1" data-rule="currency">
+                                    <span class="input-group-addon"> <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="zmdi zmdi-caret-up"></i></a> <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="zmdi zmdi-caret-down"></i></a> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Spinners --> 
+            <!-- Tags Input -->
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Tags</strong> Input</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="form-group demo-tagsinput-area m-b-0">
+                            <div class="form-line">
+                                <input type="text" class="form-control" data-role="tagsinput" value="Amsterdam,Sydney,Beijing,Cairo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Tags Input --> 
+        </div>
+        <!-- Advanced Select -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Advanced</strong> Select </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>Basic</b>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>With OptGroups</b>
+                                <select class="form-control show-tick">
+                                    <optgroup label="Picnic">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                    </optgroup>
+                                    <optgroup label="Camping">
+                                    <option>Tent</option>
+                                    <option>Flashlight</option>
+                                    <option>Toilet Paper</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>Multiple Select</b>
+                                <select class="form-control show-tick" multiple>
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>With Search Bar</b>
+                                <select class="form-control z-index show-tick" data-live-search="true">
+                                    <option>Hot Dog, Fries and a Soda</option>
+                                    <option>Burger, Shake and a Smile</option>
+                                    <option>Sugar, Spice and all things nice</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>Max Selection Limit: 2</b>
+                                <select class="form-control show-tick" multiple>
+                                    <optgroup label="Condiments" data-max-options="2">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                    </optgroup>
+                                    <optgroup label="Breads" data-max-options="2">
+                                    <option>Plain</option>
+                                    <option>Steamed</option>
+                                    <option>Toasted</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>Display Count</b>
+                                <select class="form-control show-tick" multiple data-selected-text-format="count">
+                                    <option>Mustard</option>
+                                    <option>Ketchup</option>
+                                    <option>Relish</option>
+                                    <option>Onions</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>With SubText</b>
+                                <select class="form-control show-tick" data-show-subtext="true">
+                                    <option data-subtext="French's">Mustard</option>
+                                    <option data-subtext="Heinz">Ketchup</option>
+                                    <option data-subtext="Sweet">Relish</option>
+                                    <option data-subtext="Miracle Whip">Mayonnaise</option>
+                                    <option data-divider="true"></option>
+                                    <option data-subtext="Honey">Barbecue Sauce</option>
+                                    <option data-subtext="Ranch">Salad Dressing</option>
+                                    <option data-subtext="Sweet &amp; Spicy">Tabasco</option>
+                                    <option data-subtext="Chunky">Salsa</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 m-b-20">
+                                <b>Disabled Option</b>
+                                <select class="form-control show-tick">
+                                    <option>Mustard</option>
+                                    <option disabled>Ketchup</option>
+                                    <option>Relish</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Advanced Select --> 
+        <!-- Input Slider -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2> <strong>Input</strong> Slider</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-12">
+                                <p><b>Basic Example</b></p>
+                                <div id="nouislider_basic_example"></div>
+                                <div class="m-t-20 font-12"><b>Value: </b><span class="js-nouislider-value"></span></div>
+                            </div>
+                            <div class="col-lg-6 col-md-12">
+                                <p><b>Range Example</b></p>
+                                <div id="nouislider_range_example"></div>
+                                <div class="m-t-20 font-12"><b>Value: </b><span class="js-nouislider-value"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Input Slider --> 
     </div>
-</div>
+</section>
 <!-- Jquery Core Js --> 
 <script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 
-<script src="assets/bundles/datatablescripts.bundle.js"></script>
-<script src="assets/bundles/sparkline.bundle.js"></script> <!-- sparkline Plugin Js --> 
+<script src="assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script> <!-- Bootstrap Colorpicker Js --> 
+<script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script> <!-- Input Mask Plugin Js --> 
+<script src="assets/plugins/multi-select/js/jquery.multi-select.js"></script> <!-- Multi Select Plugin Js --> 
+<script src="assets/plugins/jquery-spinner/js/jquery.spinner.js"></script> <!-- Jquery Spinner Plugin Js --> 
+<script src="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script> <!-- Bootstrap Tags Input Plugin Js --> 
+<script src="assets/plugins/nouislider/nouislider.js"></script> <!-- noUISlider Plugin Js --> 
 
-<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
-<script src="assets/js/pages/tables/jquery-datatable.js"></script>
+<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="assets/js/pages/forms/advanced-form-elements.js"></script> 
 </body>
 </html>

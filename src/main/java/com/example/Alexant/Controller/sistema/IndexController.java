@@ -30,11 +30,31 @@ public class IndexController {
 	private IPersonaService iPersonaService;
 
 	// Archive archive = new Archive();
+
+	@RequestMapping(value = "/")
+	public String index(Model model, HttpServletRequest request) {
+		// Verifica si el usuario está logueado
+		if (request.getSession().getAttribute("userLog") != null) {
+			Usuario user = (Usuario) request.getSession().getAttribute("userLog");
+			Usuario userLog = usuarioService.findOne(user.getId_usuario());
+			Persona persona = userLog.getPersona();
+			
+			// Añade atributos al modelo
+			model.addAttribute("userLog", userLog);
+			model.addAttribute("persona", persona);
+			
+			// Retorna la vista principal
+			return "index";
+		} else {
+			// Si no hay usuario logueado, también retorna la vista principal
+			return "index";
+		}
+	}
 	@RequestMapping(value = "/buscar")
 	public String buscarP(Model model) {
 		model.addAttribute("persona", new Persona());
 
-		return "descarga";
+		return "index";
 	}
 
 	@RequestMapping(value = "/buscar", method = RequestMethod.POST)
@@ -55,21 +75,7 @@ public class IndexController {
 			return "login";
 		}
 	}
-
-	@RequestMapping(value = "/")
-	public String index(Model model, HttpServletRequest request) {
-		model.addAttribute("ventas", iVentaService.getAllVentas());
-		if (request.getSession().getAttribute("userLog") != null) {
-			Usuario user = (Usuario) request.getSession().getAttribute("userLog");
-			Usuario userLog = usuarioService.findOne(user.getId_usuario());
-			Persona persona = userLog.getPersona();
-			model.addAttribute("userLog", userLog);
-			return "index";
-		} else {
-			return "index";
-		}
-
-	}
+	
 
 	@RequestMapping(value = "/persona/{id}")
     public String buscarPersonaPorId(@PathVariable(value = "id") Integer id, Model model, RedirectAttributes flash) {
