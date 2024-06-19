@@ -1,7 +1,6 @@
 package com.example.Alexant.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Alexant.Models.entitys.Cliente;
+import com.example.Alexant.Models.entitys.Usuario;
 import com.example.Alexant.Models.entitys.Venta;
+import com.example.Alexant.Models.service.service.IClienteService;
+import com.example.Alexant.Models.service.service.IUsuarioService;
 import com.example.Alexant.Models.service.service.IVentaService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,9 +22,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestController
 @RequestMapping("/alexant")
 public class VentaController {
-    
+
     @Autowired
     private IVentaService iVentaService;
+    @Autowired
+    private IUsuarioService usuarioService;
+    @Autowired
+    private IClienteService iClienteService;
 
     // ========= Formulario para registrar =========
 
@@ -31,8 +38,15 @@ public class VentaController {
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iVentaService.findAll());
 
-        return "alexant/formVenta"; /*No tenemos formularios todavía
-     */
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+
+        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("clientes", iClienteService.findAll());
+
+        return "alexant/formVenta"; /*
+                                     * No tenemos formularios todavía
+                                     */
     }
 
     /* ================= GUARDAR =================== */
@@ -41,10 +55,10 @@ public class VentaController {
     public String guardarVenta(@Validated Venta venta) {
         venta.setEstado_venta(1);
         iVentaService.save(venta);
-        return "redirect:/ListasVenta"; /*No teneos listasVentas*/
+        return "redirect:/ListasVenta"; /* No teneos listasVentas */
     }
 
-    /*=============== ELIMINAR =====================*/
+    /* =============== ELIMINAR ===================== */
 
     @RequestMapping(value = "/eliminarVenta/{id_venta}")
     public String eliminarVenta(@PathVariable("id_venta") Integer id_venta) {
@@ -52,11 +66,11 @@ public class VentaController {
         Venta venta = iVentaService.findOne(id_venta);
         venta.setEstado_venta(0);
         iVentaService.save(venta);
-        return "redirect:/ListasVenta"; /*Falta el formulario*/ 
+        return "redirect:/ListasVenta"; /* Falta el formulario */
 
     }
 
-    /*=============== LISTAR =====================*/
+    /* =============== LISTAR ===================== */
 
     @GetMapping(value = "/ListasVentas")
     public String listarVentas(Model model) {
@@ -64,18 +78,30 @@ public class VentaController {
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iVentaService.findAll());
 
-        return "listas/listaVenta";/*Falta el formulario*/ 
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+
+        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("clientes", iClienteService.findAll());
+
+        return "listas/listaVenta";/* Falta el formulario */
     }
 
-  
-    /*=============== MODIFICAR =====================*/
+    /* =============== MODIFICAR ===================== */
 
     /* Modificación Modal */
     @RequestMapping(value = "/venta/{id_venta}")
     public String getContentVenta(@PathVariable(value = "id_venta") Integer id_venta, Model model,
-        HttpServletRequest request) {
+            HttpServletRequest request) {
 
-        model.addAttribute("venta", iVentaService.findOne(id_venta));
+        model.addAttribute("venta", new Venta());
+        model.addAttribute("ventas", iVentaService.findAll());
+
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+
+        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("clientes", iClienteService.findAll());
 
         return "contentVenta :: contentVenta";
 
@@ -88,8 +114,14 @@ public class VentaController {
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iVentaService.findAll());
 
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+
+        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("clientes", iClienteService.findAll());
+
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentDip :: contentdip"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "contentDip :: contentdip"; /* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
 
     // --------------------------------------------
@@ -99,7 +131,7 @@ public class VentaController {
     public String guardarCambiosVenta(@ModelAttribute Venta venta) {
         venta.setEstado_venta(1);
         iVentaService.save(venta);
-        return "redirect:/ListasVenta";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/ListasVenta";/* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
 
     // -------------------------------------------------

@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Alexant.Models.entitys.Cargo;
+import com.example.Alexant.Models.entitys.Empleado;
 import com.example.Alexant.Models.entitys.TiempoCargo;
+import com.example.Alexant.Models.service.service.ICargoService;
+import com.example.Alexant.Models.service.service.IEmpleadoService;
 import com.example.Alexant.Models.service.service.ITiempoCargoService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +24,10 @@ public class TiempoCargoController {
 
     @Autowired
     private ITiempoCargoService tiempoCargoService;
+    @Autowired
+    private ICargoService iCargoService;
+    @Autowired
+    private IEmpleadoService empleadoService;
 
     // ========= Formulario para registrar =========
 
@@ -27,6 +36,12 @@ public class TiempoCargoController {
 
         model.addAttribute("tiempoCargo", new TiempoCargo());
         model.addAttribute("tiempoCargos", tiempoCargoService.findAll());
+
+        model.addAttribute("cargo", new Cargo());
+        model.addAttribute("cargo", iCargoService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
 
         return "alexant/formTiempoCargo"; /*
                                            * No tenemos formularios todavía
@@ -62,6 +77,12 @@ public class TiempoCargoController {
         model.addAttribute("tiempoCargo", new TiempoCargo());
         model.addAttribute("tiempoCargos", tiempoCargoService.findAll());
 
+        model.addAttribute("cargo", new Cargo());
+        model.addAttribute("cargo", iCargoService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
         return "listas/listaTiempoCargo";/* Falta el formulario */
     }
 
@@ -72,7 +93,15 @@ public class TiempoCargoController {
     public String getContentTiempoCargo(@PathVariable(value = "id_tiempo_cargo") Integer id_tiempo_cargo, Model model,
             HttpServletRequest request) {
 
-        model.addAttribute("tiempoCargo", tiempoCargoService.findOne(id_tiempo_cargo));
+        model.addAttribute("tiempoCargo", new TiempoCargo());
+        model.addAttribute("tiempoCargos", tiempoCargoService.findAll());
+
+        model.addAttribute("cargo", new Cargo());
+        model.addAttribute("cargo", iCargoService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+        
         return "contentDip :: contentTiempoCargo";
 
     }
@@ -83,6 +112,12 @@ public class TiempoCargoController {
 
         model.addAttribute("tiempoCargo", new TiempoCargo());
         model.addAttribute("tiempoCargos", tiempoCargoService.findAll());
+
+        model.addAttribute("cargo", new Cargo());
+        model.addAttribute("cargo", iCargoService.findAll());
+
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
         return "contentDip :: contentdip"; /* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */

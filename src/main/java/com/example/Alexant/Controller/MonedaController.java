@@ -15,21 +15,6 @@ import com.example.Alexant.Models.entitys.Venta;
 import com.example.Alexant.Models.service.service.IMonedaService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import com.example.Alexant.Models.entitys.Moneda;
-import com.example.Alexant.Models.entitys.Venta;
-import com.example.Alexant.Models.service.service.IMonedaService;
-
-import jakarta.servlet.http.HttpServletRequest;
-import com.example.Alexant.Models.entitys.Moneda;
-import com.example.Alexant.Models.entitys.Venta;
-import com.example.Alexant.Models.service.service.IMonedaService;
-
-import jakarta.servlet.http.HttpServletRequest;
-import com.example.Alexant.Models.entitys.Moneda;
-import com.example.Alexant.Models.entitys.Venta;
-import com.example.Alexant.Models.service.service.IMonedaService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class MonedaController {
@@ -44,8 +29,9 @@ public class MonedaController {
         model.addAttribute("moneda", new Moneda());
         model.addAttribute("monedas", monedaService.findAll());
 
-        return "alexant/formMoneda"; /*No tenemos formularios todavía
-     */
+        return "alexant/formMoneda"; /*
+                                      * No tenemos formularios todavía
+                                      */
     }
 
     /* ================= GUARDAR =================== */
@@ -54,10 +40,10 @@ public class MonedaController {
     public String guardarMoneda(@Validated Moneda moneda) {
         moneda.setEstado_moneda(1);
         monedaService.save(moneda);
-        return "redirect:/ListasMoneda"; /*No teneos listasVentas*/
+        return "redirect:/ListasMoneda"; /* No teneos listasVentas */
     }
 
-    /*=============== ELIMINAR =====================*/
+    /* =============== ELIMINAR ===================== */
 
     @RequestMapping(value = "/eliminarMoneda/{id_moneda}")
     public String eliminarMoneda(@PathVariable("id_moneda") Integer id_moneda) {
@@ -65,11 +51,11 @@ public class MonedaController {
         Moneda moneda = monedaService.findOne(id_moneda);
         moneda.setEstado_moneda(0);
         monedaService.save(moneda);
-        return "redirect:/ListasMoneda"; /*Falta el formulario*/ 
+        return "redirect:/ListasMoneda"; /* Falta el formulario */
 
     }
 
-    /*=============== LISTAR =====================*/
+    /* =============== LISTAR ===================== */
 
     @GetMapping(value = "/ListasMoneda")
     public String listarMoneda(Model model) {
@@ -77,16 +63,15 @@ public class MonedaController {
         model.addAttribute("moneda", new Venta());
         model.addAttribute("monedas", monedaService.findAll());
 
-        return "listas/listaMoneda";/*Falta el formulario*/ 
+        return "listas/listaMoneda";/* Falta el formulario */
     }
 
-  
-    /*=============== MODIFICAR =====================*/
+    /* =============== MODIFICAR ===================== */
 
     /* Modificación Modal */
     @RequestMapping(value = "/moneda/{id_moneda}")
     public String getContentMoneda(@PathVariable(value = "id_moneda") Integer id_moneda, Model model,
-        HttpServletRequest request) {
+            HttpServletRequest request) {
 
         model.addAttribute("moneda", monedaService.findOne(id_moneda));
 
@@ -102,7 +87,7 @@ public class MonedaController {
         model.addAttribute("monedas", monedaService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentMoneda :: contentMoneda"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "contentMoneda :: contentMoneda"; /* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
 
     // --------------------------------------------
@@ -112,7 +97,7 @@ public class MonedaController {
     public String guardarCambiosMoneda(@ModelAttribute Moneda moneda) {
         moneda.setEstado_moneda(1);
         monedaService.save(moneda);
-        return "redirect:/ListasMoneda";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/ListasMoneda";/* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
 
     // -------------------------------------------------

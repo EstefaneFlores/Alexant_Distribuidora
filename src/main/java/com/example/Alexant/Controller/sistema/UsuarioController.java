@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Alexant.Models.entitys.Empleado;
+import com.example.Alexant.Models.entitys.Ruta;
 import com.example.Alexant.Models.entitys.Usuario;
-import com.example.Alexant.Models.service.service.IPersonaService;
+import com.example.Alexant.Models.service.service.IEmpleadoService;
+import com.example.Alexant.Models.service.service.IRutaService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 
 @RestController
@@ -19,15 +22,22 @@ public class UsuarioController {
     
     @Autowired
     private IUsuarioService usuarioService;
-
     @Autowired
-    private IPersonaService personaService;
+    private IEmpleadoService empleadoService;
+    @Autowired
+    private IRutaService iRutaService;
 
     @GetMapping(value = "/formUs")
     public String vistaUs(Model model, @Validated Usuario usuarios) {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+        
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
 
 
         return "usuarios";
@@ -53,6 +63,12 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+        
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
 
         return "listas/listaUs";
 
@@ -69,6 +85,12 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+        
+        model.addAttribute("empleado", new Empleado());
+        model.addAttribute("empleados", empleadoService.findAll());
+
+        model.addAttribute("ruta", new Ruta());
+        model.addAttribute("rutas", iRutaService.findAll());
 
         return "redirect:/listaUs";
     }

@@ -1,7 +1,6 @@
 package com.example.Alexant.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +10,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Alexant.Models.entitys.Biene;
 import com.example.Alexant.Models.entitys.TipoBiene;
+import com.example.Alexant.Models.service.service.IBieneService;
 import com.example.Alexant.Models.service.service.ITipoBieneService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class TipoBieneController {
-     
+
     @Autowired
     private ITipoBieneService tipoBieneService;
+    @Autowired
+    private IBieneService bieneService;
 
     // ========= Formulario para registrar =========
 
@@ -30,8 +33,12 @@ public class TipoBieneController {
         model.addAttribute("tipoBiene", new TipoBiene());
         model.addAttribute("tieneBienes", tipoBieneService.findAll());
 
-        return "alexant/formVenta"; /*No tenemos formularios todavía
-     */
+        model.addAttribute("biene", new Biene());
+        model.addAttribute("bienes", bieneService.findAll());
+
+        return "alexant/formVenta"; /*
+                                     * No tenemos formularios todavía
+                                     */
     }
 
     /* ================= GUARDAR =================== */
@@ -40,10 +47,10 @@ public class TipoBieneController {
     public String guardarTipoBiene(@Validated TipoBiene tipoBiene) {
         tipoBiene.setEstado_tipo_biene(1);
         tipoBieneService.save(tipoBiene);
-        return "redirect:/ListasTipoBiene"; /*No teneos listasVentas*/
+        return "redirect:/ListasTipoBiene"; /* No teneos listasVentas */
     }
 
-    /*=============== ELIMINAR =====================*/
+    /* =============== ELIMINAR ===================== */
 
     @RequestMapping(value = "/eliminarTipoBiene/{id_tipo_biene}")
     public String eliminarTipoBiene(@PathVariable("id_tipo_biene") Integer id_tipo_biene) {
@@ -51,11 +58,11 @@ public class TipoBieneController {
         TipoBiene tipoBiene = tipoBieneService.findOne(id_tipo_biene);
         tipoBiene.setEstado_tipo_biene(0);
         tipoBieneService.save(tipoBiene);
-        return "redirect:/ListasTipoBiene"; /*Falta el formulario*/ 
+        return "redirect:/ListasTipoBiene"; /* Falta el formulario */
 
     }
 
-    /*=============== LISTAR =====================*/
+    /* =============== LISTAR ===================== */
 
     @GetMapping(value = "/ListasTipoBienes")
     public String listarTipoBienes(Model model) {
@@ -63,18 +70,24 @@ public class TipoBieneController {
         model.addAttribute("tipoBiene", new TipoBiene());
         model.addAttribute("tipoBienes", tipoBieneService.findAll());
 
-        return "listas/listaTipoBiene";/*Falta el formulario*/ 
+        model.addAttribute("biene", new Biene());
+        model.addAttribute("bienes", bieneService.findAll());
+
+        return "listas/listaTipoBiene";/* Falta el formulario */
     }
 
-    /*=============== MODIFICAR =====================*/
+    /* =============== MODIFICAR ===================== */
 
     /* Modificación Modal */
     @RequestMapping(value = "/biene/{id_tipo_biene}")
     public String getContentTipoBiene(@PathVariable(value = "id_tipo_biene") Integer id_tipo_biene, Model model,
-        HttpServletRequest request) {
+            HttpServletRequest request) {
 
-        model.addAttribute("tipoBiene", tipoBieneService.findOne(id_tipo_biene));
+        model.addAttribute("tipoBiene", new TipoBiene());
+        model.addAttribute("tieneBienes", tipoBieneService.findAll());
 
+        model.addAttribute("biene", new Biene());
+        model.addAttribute("bienes", bieneService.findAll());
         return "contentDip :: contentTipoBiene";
 
     }
@@ -86,8 +99,11 @@ public class TipoBieneController {
         model.addAttribute("tipoBiene", new TipoBiene());
         model.addAttribute("tipoBienes", tipoBieneService.findAll());
 
+        model.addAttribute("biene", new Biene());
+        model.addAttribute("bienes", bieneService.findAll());
+
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentDip :: contentdip"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "contentDip :: contentdip"; /* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
 
     // --------------------------------------------
@@ -97,7 +113,7 @@ public class TipoBieneController {
     public String guardarCambiosTipoBiene(@ModelAttribute TipoBiene tipoBiene) {
         tipoBiene.setEstado_tipo_biene(1);
         tipoBieneService.save(tipoBiene);
-        return "redirect:/ListasTipoBiene";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/ListasTipoBiene";/* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }
 
     // -------------------------------------------------

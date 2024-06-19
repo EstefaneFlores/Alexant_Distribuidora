@@ -14,7 +14,7 @@ import com.example.Alexant.Models.entitys.Detalle_lote;
 import com.example.Alexant.Models.entitys.Empleado;
 import com.example.Alexant.Models.entitys.Lote;
 import com.example.Alexant.Models.entitys.Ruta;
-import com.example.Alexant.Models.service.service.IDetalleLoteService;
+import com.example.Alexant.Models.service.service.IDetalleLoteServicee;
 import com.example.Alexant.Models.service.service.IEmpleadoService;
 import com.example.Alexant.Models.service.service.ILoteService;
 import com.example.Alexant.Models.service.service.IRutaService;
@@ -25,7 +25,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class DetalleLoteController {
     
     @Autowired
-    private IDetalleLoteService detalleLoteService;
+    private IDetalleLoteServicee detalleLoteService;
 
     @Autowired
     private ILoteService loteService;

@@ -51,7 +51,6 @@ public class Venta implements Serializable{
     private Integer estado_venta;
 
     /*========================================================*/
-    /*========================================================*/
 
     @Column(name = "fec_registroVe")
     @Temporal(TemporalType.TIMESTAMP)
