@@ -34,13 +34,19 @@ public class PersonaServiceImpl implements IPersonaService{
         personaDao.deleteById(id);
     }
 
-    /*@Override
-    public List<Persona> getListarPersonasActivas() {
-        return personaDao.getListarPersonasActivas();
-    }
     @Override
     public Persona buscarPorCi(String ci) {
         return personaDao.buscarPorCi(ci); 
     }
-    */
+    
+    
+	@Override
+	public List<Persona> getAllPersonaCiCorreo(String ci, String correo) {
+		return personaDao.getAllPersonaCiCorreo(ci, correo);
+	}
+
+    @Override
+    public List<Persona> getListarPersonasActivas() {
+        return personaDao.getListarPersonasActivas();
+    }
 }
