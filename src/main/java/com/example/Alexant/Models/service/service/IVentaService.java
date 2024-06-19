@@ -14,5 +14,7 @@ public interface IVentaService {
 
     public void delete(Integer id);
 
+    public List<Venta> getAllVentas();
+
 
 }

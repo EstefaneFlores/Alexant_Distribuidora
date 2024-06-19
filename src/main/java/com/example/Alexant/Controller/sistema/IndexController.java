@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.Alexant.Models.entitys.Persona;
 import com.example.Alexant.Models.entitys.Usuario;
@@ -20,32 +22,31 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/Alexant/")
 @SessionAttributes("persona")
 public class IndexController {
-    @Autowired
-    private IUsuarioService usuarioService;
-    @Autowired
-    private IVentaService iVentaService;
-    @Autowired
-    private IPersonaService iPersonaService;
+	@Autowired
+	private IUsuarioService usuarioService;
+	@Autowired
+	private IVentaService iVentaService;
+	@Autowired
+	private IPersonaService iPersonaService;
 
-    // Archive archive = new Archive();
-    @RequestMapping(value = "/buscar")
+	// Archive archive = new Archive();
+	@RequestMapping(value = "/buscar")
 	public String buscarP(Model model) {
 		model.addAttribute("persona", new Persona());
 
 		return "descarga";
 	}
 
-    @RequestMapping(value = "/buscar", method = RequestMethod.POST)
+	@RequestMapping(value = "/buscar", method = RequestMethod.POST)
 	public String buscarPersonas(@Validated Persona persona, Model model) {
 		if (persona.getCi().length() > 0 || persona.getEmail().length() > 0) {
-			model.addAttribute("personas", iPersonaService.getAllPersonaCiCorreo(persona.getCi(), persona.getEmail()));
+			model.addAttribute("personas", iPersonaService.getAllPersonaCiEmail(persona.getCi(), persona.getEmail()));
 		}
 		model.addAttribute("persona", new Persona());
 
 		return "descarga";
 	}
 
-    
 	@RequestMapping(value = "/aux")
 	public String login(Model model, HttpServletRequest request) {
 		if (request.getSession().getAttribute("userLog") != null) {
@@ -55,20 +56,39 @@ public class IndexController {
 		}
 	}
 
-    
-	// @RequestMapping(value = "/")
-	// public String index(Model model, HttpServletRequest request) {
-	// 	model.addAttribute("ventas", iVentaService.());
-	// 	if (request.getSession().getAttribute("userLog") != null) {
-	// 		Usuario user = (Usuario) request.getSession().getAttribute("userLog");
-	// 		Usuario userLog = usuarioService.findOne(user.getId_usuario());
-	// 		Persona persona = userLog.getPersona();
-	// 		model.addAttribute("userLog", userLog);
-	// 		return "index";
-	// 	} else {
-	// 		return "index";
-	// 	}
+	@RequestMapping(value = "/")
+	public String index(Model model, HttpServletRequest request) {
+		model.addAttribute("ventas", iVentaService.getAllVentas());
+		if (request.getSession().getAttribute("userLog") != null) {
+			Usuario user = (Usuario) request.getSession().getAttribute("userLog");
+			Usuario userLog = usuarioService.findOne(user.getId_usuario());
+			Persona persona = userLog.getPersona();
+			model.addAttribute("userLog", userLog);
+			return "index";
+		} else {
+			return "index";
+		}
 
-	// }
+	}
 
+	@RequestMapping(value = "/persona/{id}")
+    public String buscarPersonaPorId(@PathVariable(value = "id") Integer id, Model model, RedirectAttributes flash) {
+        Persona persona = null;
+
+        if (id > 0) {
+            persona = iPersonaService.findOne(id);
+            if (persona == null) {
+                flash.addFlashAttribute("error", "El ID de la persona no existe en la base de datos!");
+                return "redirect:/personas/";
+            }
+        } else {
+            flash.addFlashAttribute("error", "El ID de la persona no puede ser cero!");
+            return "redirect:/personas/";
+        }
+
+        model.addAttribute("persona", persona);
+        return "detallePersona";
+    }
 }
+
+

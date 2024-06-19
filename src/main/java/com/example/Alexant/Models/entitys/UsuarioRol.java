@@ -60,4 +60,5 @@ public class UsuarioRol implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_rol")
 	private Rol rol;
+
 }

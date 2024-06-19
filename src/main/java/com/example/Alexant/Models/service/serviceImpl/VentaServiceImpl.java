@@ -32,4 +32,9 @@ public class VentaServiceImpl implements IVentaService{
         iVentaDao.deleteById(id);
     }
 
+    @Override
+	public List<Venta> getAllVentas() {
+		return iVentaDao.getAllVentas();
+	}
+
 }

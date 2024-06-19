@@ -9,6 +9,7 @@ import com.example.Alexant.Models.service.service.IUsuarioService;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService{
+
     @Autowired
     private IUsuarioDao iUsuarioDao;
 
@@ -33,8 +34,11 @@ public class UsuarioServiceImpl implements IUsuarioService{
     }
 
     @Override
-    public List<Usuario> getListarUsuariosActivas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getListarUsuariosActivas'");
+    public List<Usuario> getListarUsuariosActivos() {
+       return iUsuarioDao.findUsuariosActivos();
+    }
+    @Override
+    public Usuario findByUsuarioAndContrasena(String usuario, String contrasena) {
+        return iUsuarioDao.findByUsuarioAndContrasena(usuario, contrasena);
     }
 }

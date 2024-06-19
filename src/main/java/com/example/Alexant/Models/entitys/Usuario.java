@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -58,7 +59,9 @@ public class Usuario implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Venta> venta;
 
-  
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_persona")
+	private Persona persona;
 	
 
 }

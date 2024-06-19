@@ -41,8 +41,8 @@ public class PersonaServiceImpl implements IPersonaService{
     
     
 	@Override
-	public List<Persona> getAllPersonaCiCorreo(String ci, String correo) {
-		return personaDao.getAllPersonaCiCorreo(ci, correo);
+	public List<Persona> getAllPersonaCiEmail(String ci, String email) {
+		return personaDao.getAllPersonaCiEmail(ci, email);
 	}
 
     @Override

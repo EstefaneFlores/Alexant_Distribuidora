@@ -18,5 +18,5 @@ public interface IPersonaService {
 
     Persona buscarPorCi(String ci);
 
-    public List<Persona> getAllPersonaCiCorreo(String ci, String correo);
+    public List<Persona> getAllPersonaCiEmail(String ci, String email);
 }
