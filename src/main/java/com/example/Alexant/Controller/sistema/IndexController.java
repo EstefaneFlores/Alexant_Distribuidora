@@ -31,7 +31,7 @@ public class IndexController {
 
 	// Archive archive = new Archive();
 
-	@RequestMapping(value = "/")
+	@RequestMapping(value = "/prueba")
 	public String index(Model model, HttpServletRequest request) {
 		// Verifica si el usuario está logueado
 		if (request.getSession().getAttribute("userLog") != null) {
