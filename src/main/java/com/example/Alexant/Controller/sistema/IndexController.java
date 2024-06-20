@@ -44,10 +44,10 @@ public class IndexController {
 			model.addAttribute("persona", persona);
 			
 			// Retorna la vista principal
-			return "index";
+			return "index2";
 		} else {
 			// Si no hay usuario logueado, también retorna la vista principal
-			return "index";
+			return "index2";
 		}
 	}
 	@RequestMapping(value = "/buscar")

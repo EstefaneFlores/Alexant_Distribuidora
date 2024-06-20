@@ -5,251 +5,23 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<title>:: Alpino Menu Rught ::</title>
-<link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Favicon-->
-<link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="/assets/plugins/morrisjs/morris.css" />
-<link rel="stylesheet" href="/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
-<!-- Custom Css -->
-<link rel="stylesheet" href="/assets/css/main.css">
-<link rel="stylesheet" href="/assets/css/color_skins.css">
 
-<link rel="stylesheet" href="/assets/">
+<title>:: Alpino Menu Rught ::</title>
+<!-- Favicon-->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+<!-- Custom Css -->
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/color_skins.css">
 </head>
 <body class="theme-black menu_dark">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="/assets/images/logoOficial.jpg" width="48" height="48" alt="Alpino"></div>
+        <div class="m-t-30"><img src="assets/images/logo.svg" width="48" height="48" alt="Alpino"></div>
         <p>Please wait...</p>        
     </div>
 </div>
-
-<!-- COMIENZO TEST -->
-<section class="content">  
-    <div class="container-fluid">
-        <div class="block-header">
-            <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración Persona</h2>
-                    <ul class="breadcrumb padding-0">
-                     <!--   <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>
-                         <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                        <li class="breadcrumb-item active">Form Validation</li> -->
-                    </ul>
-                </div>
-                <div class="col-lg-7 col-md-7 col-sm-12">
-                    <div class="input-group m-b-0">                
-                        <input type="text" class="form-control" placeholder="Buscar...">
-                        <span class="input-group-addon">
-                            <i class="zmdi zmdi-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Basic Validation -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Formulário </strong> Persona</h2>
-                        <ul class="header-dropdown">
-                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else</a></li>
-									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <form class="needs-validation" action="/guardarPersona" method="post" id="form1" novalidate>
-                            <input type="hidden" th:field="${persona.idPersona}">
-
-                            <div class="row">
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12"> 
-                                <input type="text" class="form-control" name="persona" id="validationCustom01" th:field="${persona.nombre_persona}" placeholder="Nombre" required >
-                            </div>
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Apellido Paterno" name="ap_paterno" th:field="${persona.apellido_paterno}" required>
-                            </div>
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Apellido Materno" name="ap_materno" th:field="${persona.apellido_materno}" required>
-                            </div>
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Ci" name="ci" th:field="${persona.ci}" required>
-                            </div>
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Telefono" name="telefono" th:field="${persona.numero_celular}" required>
-                            </div>
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Direccion" name="direccion" th:field="${persona.direccion}" required>
-                            </div>
-                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
-                                <input type="email" class="form-control" placeholder="Email" name="email" th:field="${persona.email}" required>
-                            </div>
-                           
-                      </div>
-                        <button class="btn btn-primary" type="submit">Registrar</button>
-                          </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- #END# Basic Validation --> 
-        <!-- Advanced Validation -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Recomendaciones</strong> </h2>
-                        <ul class="header-dropdown">
-                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else</a></li>
-									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <div class="body">
-                            <h2>Guía de Recomendaciones para el Registro de Personas</h2>
-                            
-                            <h3>Nombre</h3>
-                            <p><strong>Formato:</strong> Inicia con una letra mayúscula seguida de minúsculas.</p>
-                            <p><strong>Ejemplo:</strong> Juan, María</p>
-                            <p><strong>Nota:</strong> No utilices caracteres especiales ni números.</p>
-                            
-                            <h3>Apellido Paterno</h3>
-                            <p><strong>Formato:</strong> Inicia con una letra mayúscula seguida de minúsculas.</p>
-                            <p><strong>Ejemplo:</strong> Pérez, Gómez</p>
-                            <p><strong>Nota:</strong> No utilices caracteres especiales ni números.</p>
-                            
-                            <h3>Apellido Materno</h3>
-                            <p><strong>Formato:</strong> Inicia con una letra mayúscula seguida de minúsculas.</p>
-                            <p><strong>Ejemplo:</strong> Rodríguez, Sánchez</p>
-                            <p><strong>Nota:</strong> No utilices caracteres especiales ni números.</p>
-                            
-                            <h3>CI (Carnet de Identidad)</h3>
-                            <p><strong>Formato:</strong> Número sin letras ni caracteres especiales.</p>
-                            <p><strong>Ejemplo:</strong> 12345678</p>
-                            <p><strong>Nota:</strong> Asegúrate de que el número sea correcto y corresponda a tu documento oficial.</p>
-                            
-                            <h3>Teléfono</h3>
-                            <p><strong>Formato:</strong> Número sin espacios ni caracteres especiales.</p>
-                            <p><strong>Ejemplo:</strong> 78901234</p>
-                            <p><strong>Nota:</strong> Ingresa solo el número de teléfono sin el prefijo del país.</p>
-                            
-                            <h3>Dirección</h3>
-                            <p><strong>Formato:</strong> Texto alfanumérico que puede incluir caracteres especiales como comas, puntos, y guiones.</p>
-                            <p><strong>Ejemplo:</strong> Calle Falsa 123, Edificio Azul, Apt. 4B</p>
-                            <p><strong>Nota:</strong> Incluye todos los detalles necesarios para una correcta ubicación.</p>
-                            
-                            <h3>Email</h3>
-                            <p><strong>Formato:</strong> Debe seguir el formato estándar de email (ejemplo@dominio.com).</p>
-                            <p><strong>Ejemplo:</strong> juan.perez@example.com</p>
-                            <p><strong>Nota:</strong> Asegúrate de que el correo electrónico esté activo y que lo revises con frecuencia.</p>
-                        </div>
-                        
-                        <!-- <form id="form_advanced_validation" method="POST">
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" required>
-                                <small class="form-text text-muted">
-                                    Inicia con mayúscula y utiliza solo letras. Ejemplo: Juan, María
-                                </small>
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidoPaterno">Apellido Paterno:</label>
-                                <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno" required>
-                                <small class="form-text text-muted">
-                                    Inicia con mayúscula y utiliza solo letras. Ejemplo: Pérez, Gómez
-                                </small>
-                            </div>
-                            <div class="form-group">
-                                <label for="apellidoMaterno">Apellido Materno:</label>
-                                <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno" required>
-                                <small class="form-text text-muted">
-                                    Inicia con mayúscula y utiliza solo letras. Ejemplo: Rodríguez, Sánchez
-                                </small>
-                            </div>
-                            <div class="form-group">
-                                <label for="ci">CI (Carnet de Identidad):</label>
-                                <input type="text" class="form-control" id="ci" name="ci" required>
-                                <small class="form-text text-muted">
-                                    Ingresa solo números. Ejemplo: 12345678
-                                </small>
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono">Teléfono:</label>
-                                <input type="tel" class="form-control" id="telefono" name="telefono" required>
-                                <small class="form-text text-muted">
-                                    Ingresa solo números. Ejemplo: 78901234
-                                </small>
-                            </div>
-                            <div class="form-group">
-                                <label for="direccion">Dirección:</label>
-                                <input type="text" class="form-control" id="direccion" name="direccion" required>
-                                <small class="form-text text-muted">
-                                    Incluye todos los detalles necesarios para la dirección.
-                                </small>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                                <small class="form-text text-muted">
-                                    Ingresa un correo electrónico válido. Ejemplo: juan.perez@example.com
-                                </small>
-                            </div>
-                            <button class="btn btn-raised btn-primary btn-round waves-effect" type="submit">SUBMIT</button>
-                        </form> -->
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-        <!-- #END# Advanced Validation --> 
-        <!-- Validation Stats -->
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Validation</strong> Stats </h2>
-                        <ul class="header-dropdown">
-                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else</a></li>
-									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <form id="form_validation_stats">
-                            <div class="form-group has-success">
-                                <input type="text" value="Success" class="form-control form-control-success">
-                            </div>
-                            <div class="form-group has-danger">
-                                <input type="email" value="Error Input" class="form-control form-control-danger">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- #END# Validation Stats --> 
-    </div>
-</section>
-
-<!-- FIN TEST -->
 <div class="overlay_menu">
     <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-close"></i></button>
     <div class="container">        
@@ -257,7 +29,7 @@
             <div class="card">
                 <div class="body">
                     <div class="input-group m-b-0">                
-                        <input type="text" class="form-control"  placeholder="Search...">
+                        <input type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-addon">
                             <i class="zmdi zmdi-search"></i>
                         </span>
@@ -292,12 +64,11 @@
                         <div class="col-lg-3 col-md-6 col-sm-12">
                             <h6>Sample Pages</h6>
                             <ul class="list-unstyled">                            
-                                <li><a href="image-gallery.html">Image Gallery</a></li>
+                                <li><a href="image-gallery.html">Image Gallery</a> </li>
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="timeline.html">Timeline</a></li>
                                 <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="invoices.html">Invoices</a></li>
-                                <li><a href="faqs.html">FAQs</a></li>
+                                <li><a href="invoices.html">Invoices</a></li>                         <li><a href="faqs.html">FAQs</a></li>
                                 <li><a href="search-results.html">Search Results</a></li>
                             </ul>
                         </div>
@@ -318,7 +89,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12">
                 <div class="social">
-                    <a class="icon" href="https://www.facebook.com/profile.php?id=61561119215364" target="_blank"><i class="zmdi zmdi-facebook"></i></a>
+                    <a class="icon" href="https://www.facebook.com/thememakkerteam" target="_blank"><i class="zmdi zmdi-facebook"></i></a>
                     <a class="icon" href="https://www.behance.net/thememakker" target="_blank"><i class="zmdi zmdi-behance"></i></a>
                     <a class="icon" href="#"><i class="zmdi zmdi-twitter"></i></a>
                     <a class="icon" href="#"><i class="zmdi zmdi-linkedin"></i></a>                    
@@ -335,7 +106,7 @@
     <ul class="menu_list">
         <li>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="/index.html"><img src="/assets/images/logo.svg" alt="Alpino"></a>
+            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Alpino"></a>
         </li>
         <li><a href="javascript:void(0);" class="btn_overlay hidden-sm-down"><i class="zmdi zmdi-search"></i></a></li>        
         <li><a href="javascript:void(0);" class="menu-sm"><i class="zmdi zmdi-swap"></i></a></li>        
@@ -400,7 +171,7 @@
                         <li>
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar1.jpg" alt="">
+                                    <img class="media-object rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Alexander <small class="time">35min ago</small></span>
                                         <p class="message">New tasks needs to be done</p>                                        
@@ -411,7 +182,7 @@
                         <li>
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar2.jpg" alt="">
+                                    <img class="media-object rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Grayson <small class="time">1hr ago</small></span>
                                         <p class="message">New tasks needs to be done</p>                                        
@@ -422,7 +193,7 @@
                         <li>
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar3.jpg" alt="">
+                                    <img class="media-object rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Sophia <small class="time">31min ago</small></span>
                                         <p class="message">New tasks needs to be done</p>                                        
@@ -488,9 +259,9 @@
                         </div>
                         <ul class="list-unstyled team-info">
                             <li class="m-r-15"><small class="text-muted">Team</small></li>
-                            <li><img src="/assets/images/xs/avatar2.jpg" alt="Avatar"></li>
-                            <li><img src="/assets/images/xs/avatar3.jpg" alt="Avatar"></li>
-                            <li><img src="/assets/images/xs/avatar4.jpg" alt="Avatar"></li>
+                            <li><img src="assets/images/xs/avatar2.jpg" alt="Avatar"></li>
+                            <li><img src="assets/images/xs/avatar3.jpg" alt="Avatar"></li>
+                            <li><img src="assets/images/xs/avatar4.jpg" alt="Avatar"></li>
                         </ul>
                     </a>
                 </div>
@@ -502,8 +273,8 @@
                         </div>
                         <ul class="list-unstyled team-info">
                             <li class="m-r-15"><small class="text-muted">Team</small></li>
-                            <li><img src="/assets/images/xs/avatar6.jpg" alt="Avatar"></li>
-                            <li><img src="/assets/images/xs/avatar7.jpg" alt="Avatar"></li>
+                            <li><img src="assets/images/xs/avatar6.jpg" alt="Avatar"></li>
+                            <li><img src="assets/images/xs/avatar7.jpg" alt="Avatar"></li>
                         </ul>
                     </a>
                 </div>
@@ -699,11 +470,11 @@
                 <li>
                     <div class="user-info m-b-20">
                         <div class="image">
-                            <a href="profile.html"><img src="/assets/images/logoOficial.jpg" alt="User"></a>
+                            <a href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a>
                         </div>
                         <div class="detail">
-                            <h6>ECG VENTAS</h6>
-                            <p class="m-b-0">ecgventas@gmail.com</p>
+                            <h6>Michael</h6>
+                            <p class="m-b-0">info@example.com</p>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-facebook-box"></i></a>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-linkedin-box"></i></a>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-instagram"></i></a>
@@ -711,31 +482,19 @@
                         </div>
                     </div>
                 </li>
-                <li class="header"> ADMINISTRACIÓN PERSONA</li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>GESTIÓN PERSONAS</span> <span class="badge badge-warning float-right">9</span></a>
+                <li class="header">MAIN</li>
+                <li> <a href="index.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>App</span> <span class="badge badge-success float-right">7</span></a>
                     <ul class="ml-menu">
-                        <li><a href="index2.html">Formulario Persona</a></li>
-                        <li><a href="cliente.html">Formulario Cliente</a></li>
-                        <li><a href="proveedor.html">Formulario Proveedor</a></li>
+                        <li><a href="mail-inbox.html">Inbox</a></li>
+                        <li><a href="chat.html">Chat</a></li>
+                        <li><a href="events.html">Calendar</a></li>
+                        <li><a href="file-dashboard.html">File Manager</a></li>
+                        <li><a href="contact.html">Contact list</a></li>
+                        <li><a href="blog-dashboard.html">Blog</a></li>
+                        <li><a href="app-ticket.html">Support Ticket</a></li>
                     </ul>
-                </li> 
-                <li class="header">ADMINISTRACIÓN MERCANCIA</li>                    
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span>GESTIÓN VENTAS</span> <span class="badge badge-default float-right">3</span></a>
-                    <ul class="ml-menu">
-                    	<li><a href="producto.html">Formulario Producto</a></li>
-                        <li><a href="categoria.html">Formulario Categoria</a></li>
-                        <li><a href="venta.html">Formulario Venta</a></li>
-                        <li><a href="factura.html">Formulario Factura</a></li>
-                        <li><a href="pago.html">Formulario Venta</a></li>
-                        <li><a href="moneda.html">Formulario Factura</a></li>
-                    </ul>
-                </li>             
-                <li class="header">ADMINISTRACIÓN BIENES</li>                    
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span>GESTIÓN BIENES</span> <span class="badge badge-default float-right">3</span></a>
-                    <ul class="ml-menu">
-                    	<li><a href="biene.html">Formulario Biene</a></li>  
-                    </ul>
-                </li> 
+                </li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>UI Elements</span> <span class="badge badge-default float-right">15</span></a>
                     <ul class="ml-menu">
                         <li><a href="ui_kit.html">UI KIT</a></li>                    
@@ -789,7 +548,13 @@
                             <li><a href="chart-e.html">E Chart</a></li>
                     </ul>
                 </li>
-            
+                <li class="header">EXTRA COMPONENTS</li>                    
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span>Widgets</span> <span class="badge badge-default float-right">3</span></a>
+                    <ul class="ml-menu"><li><a href="widgets-app.html">Apps Widgetse</a></li>
+                        <li><a href="widgets-data.html">Data Widgetse</a></li>
+                        <li><a href="widgets-chart.html">Chart Widgetse</a></li>
+                    </ul>
+                </li>
                 <li class="sm_menu_btm"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-lock"></i><span>Authentication</span> <span class="badge badge-default float-right">9</span></a>
                     <ul class="ml-menu">
                         <li><a href="sign-in.html">Sign In</a></li>
@@ -803,7 +568,7 @@
                         <li><a href="locked.html">Locked Screen</a></li>
                     </ul>
                 </li>
-                <li class="sm_menu_btm"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-copy"></i><span>Sample Pages</span> <span class="badge badge-primary float-right">12</span></a>
+                <li class="sm_menu_btm active open"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-copy"></i><span>Sample Pages</span> <span class="badge badge-primary float-right">12</span></a>
                     <ul class="ml-menu">
                         <li><a href="blank.html">Blank Page</a></li>
                         <li><a href="teams-board.html">Teams Board</a></li>
@@ -814,7 +579,7 @@
                         <li><a href="horizontal-timeline.html">Horizontal Timeline</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="invoices.html">Invoices</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
+                        <li class="active"><a href="faqs.html">FAQs</a></li>
                         <li><a href="search-results.html">Search Results</a></li>
                         <li><a href="helper-class.html">Helper Classes</a></li>
                     </ul>
@@ -830,19 +595,118 @@
         </div>
     </div>
 </aside>
-<!-- Jquery Core Js -->
-<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-<script src="/assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
-<script src="/assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+<!-- Main Content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row clearfix">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h2>FAQs</h2>
+                    <ul class="breadcrumb padding-0">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>
+                        <li class="breadcrumb-item active">FAQs</li>
+                    </ul>
+                </div>            
+                <div class="col-lg-7 col-md-7 col-sm-12">
+                    <div class="input-group m-b-0">                
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-addon">
+                            <i class="zmdi zmdi-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Frequently</strong> Asked Questions <small>Extend the default collapse behavior to create an accordion with the panel component.</small> </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+                                    <li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="panel-group" id="accordion_1" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="headingOne_1">
+                                            <h4 class="panel-title"> <a role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseOne_1" aria-expanded="true" aria-controls="collapseOne_1">1. How can i delete my complaint/comment?</a> </h4>
+                                        </div>
+                                        <div id="collapseOne_1" class="panel-collapse collapse in show" role="tabpanel" aria-labelledby="headingOne_1">
+                                            <div class="panel-body">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="headingTwo_1">
+                                            <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseTwo_1" aria-expanded="false"
+                                                    aria-controls="collapseTwo_1">2. I have posted a complaint/comment, but it doesn’t appear on the website. Why? When my complaint will be posted?</a> </h4>
+                                        </div>
+                                        <div id="collapseTwo_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_1">
+                                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="headingThree_1">
+                                            <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseThree_1" aria-expanded="false"
+                                                    aria-controls="collapseThree_1">3. How can I edit a complaint I posted?</a> </h4>
+                                        </div>
+                                        <div id="collapseThree_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_1">
+                                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="heading4">
+                                            <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseThree_1" aria-expanded="false"
+                                                    aria-controls="collapseThree_1">4. How can i find out personal information of another user?</a> </h4>
+                                        </div>
+                                        <div id="collapseThree_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="heading5">
+                                            <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseThree_1" aria-expanded="false"
+                                                    aria-controls="collapseThree_1">5. How can i contact another user?</a> </h4>
+                                        </div>
+                                        <div id="collapseThree_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading" role="tab" id="heading6">
+                                            <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion_1" href="#collapseThree_1" aria-expanded="false"
+                                                    aria-controls="collapseThree_1">6. How much wood would a woodchuck chuck?</a> </h4>
+                                        </div>
+                                        <div id="collapseThree_1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                                            <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Jquery Core Js --> 
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
 
-<script src="/assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
-<script src="/assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
-<script src="/assets/bundles/morrisscripts.bundle.js"></script> <!-- Morris Plugin Js --> 
-<script src="/assets/bundles/sparkline.bundle.js"></script> <!-- sparkline Plugin Js --> 
-
-<script src="/assets/bundles/mainscripts.bundle.js"></script>
-<script src="/assets/js/pages/index.js"></script>
-<script src="/assets/js/pages/widgets/infobox/infobox-1.js"></script>
+<script src="assets/bundles/mainscripts.bundle.js"></script>
 </body>
 </html>
