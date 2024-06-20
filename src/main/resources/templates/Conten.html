@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+</head>
+
+<body>
+    <div th:fragment="contentPersona">
+        <input type="hidden" name="Personas" th:field="${persona.idPersona}">
+        <h4 class="header-title">DATOS DE PERSONAS</h4>
+       
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Nombre</label>
+                <input type="text" class="form-control" name="personas"
+                    th:field="${persona.nombre_persona}" placeholder="Introduce el nombre" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom02">Ap. Paterno</label>
+                <input type="text" class="form-control" name="personas" id="validationCustom02" th:field="${persona.apellido_paterno}"
+                    placeholder="Apellido Paterno" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">Ap. Materno</label>
+                <input type="text" class="form-control" name="personas" id="validationCustom03"
+                    th:field="${persona.apellido_materno}" placeholder="Apellido Materno" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">Carnet de Identidad</label>
+                <input type="text" class="form-control" name="personas" id="validationCustom04" th:field="${persona.ci}"
+                    placeholder="Carnet de Identidad" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">Numero de celular</label>
+                <input type="number" class="form-control" name="personas" id="validationCustom04" th:field="${persona.numero_celular}"
+                    placeholder="Numero de celular" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">Dirección</label>
+                <input type="text" class="form-control" name="personas" id="validationCustom04" th:field="${persona.direccion}"
+                    placeholder="Introdusca la Dirección" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">Correo Electronico</label>
+                <input type="email" class="form-control" name="personas" id="validationCustom04" th:field="${persona.email}"
+                    placeholder="Introducir el Correo Electronico" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    </html>

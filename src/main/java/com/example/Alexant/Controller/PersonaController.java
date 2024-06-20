@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.Alexant.Models.entitys.Cliente;
 import com.example.Alexant.Models.entitys.Persona;
 import com.example.Alexant.Models.entitys.Usuario;
-import com.example.Alexant.Models.service.service.IClienteService;
 import com.example.Alexant.Models.service.service.IPersonaService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 
@@ -27,8 +25,6 @@ public class PersonaController {
     @Autowired
     private IUsuarioService usuarioService;
 
-    @Autowired
-    private IClienteService clienteService;
 
     /*Listar persona */
 
@@ -71,23 +67,10 @@ public class PersonaController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
 
-        model.addAttribute("cliente", new Cliente());
-        model.addAttribute("clientes", clienteService.findAll());
-
         return "FormPersona";
     }
 
-    /* ------------- GUARDAR ------------ */
-
-    @PostMapping(value = "/guardarPersona")
-    public String RegistrarPersona(@Validated Persona persona) {
-
-        persona.setEstado_per("A");
-        iPersonaService.save(persona);
-
-        return "redirect:/formRegistroPersona";
-
-    }
+  
 
     // --------------------------------------------
 
@@ -99,7 +82,7 @@ public class PersonaController {
         Persona persona = iPersonaService.findOne(id_persona);
         persona.setEstado_per("X");
         iPersonaService.save(persona);
-        return "redirect:/ListasPersona";
+        return "redirect:/formRegistroPersona";
 
     }
 
@@ -126,7 +109,7 @@ public class PersonaController {
 
         model.addAttribute("persona", iPersonaService.findOne(idPersona));
 
-        return "contentPersona :: contentpersona";
+        return "Conten :: contentPersona";
 
     }
 
@@ -138,8 +121,20 @@ public class PersonaController {
         model.addAttribute("personas", iPersonaService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentPersona :: contentpersona";
+        return "Conten :: contentPersona";
     }
+
+      /* ------------- GUARDAR ------------ */
+
+      @PostMapping(value = "/guardarPersona")
+      public String RegistrarPersona(@Validated Persona persona) {
+  
+          persona.setEstado_per("A");
+          iPersonaService.save(persona);
+  
+          return "redirect:/formRegistroPersona";
+  
+      }
 
     // --------------------------------------------
 
@@ -148,7 +143,7 @@ public class PersonaController {
     public String guardarCambiosPersona(@ModelAttribute Persona persona) {
         persona.setEstado_per("A");
         iPersonaService.save(persona);
-        return "redirect:/ListasPersona";
+        return "redirect:/formRegistroPersona";
     }
     
 }
