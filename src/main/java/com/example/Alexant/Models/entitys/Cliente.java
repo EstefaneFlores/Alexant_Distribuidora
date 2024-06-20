@@ -72,8 +72,9 @@ public class Cliente  implements Serializable{
 
 // -----------------------------------
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "cliente")
-    private Persona persona;
+@OneToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_persona", nullable = false)
+private Persona persona;
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_ruta")

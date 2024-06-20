@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.Alexant.Models.entitys.Cliente;
 import com.example.Alexant.Models.entitys.Persona;
 import com.example.Alexant.Models.entitys.Usuario;
+import com.example.Alexant.Models.service.service.IClienteService;
 import com.example.Alexant.Models.service.service.IPersonaService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 
@@ -25,6 +27,9 @@ public class PersonaController {
     @Autowired
     private IUsuarioService usuarioService;
 
+    @Autowired
+    private IClienteService clienteService;
+
     /*Listar persona */
 
     @RequestMapping(value = "/listar-persona")
@@ -32,7 +37,9 @@ public class PersonaController {
 
         if (request.getSession().getAttribute("userLog") != null) {
             model.addAttribute("personas", iPersonaService.findAll());
+            
             // Persona pers = (Persona) request.getSession().getAttribute("userLog");
+
             Usuario user = (Usuario) request.getSession().getAttribute("userLog");
             Usuario userLog = usuarioService.findOne(user.getId_usuario());
             model.addAttribute("userLog", userLog);
@@ -58,22 +65,27 @@ public class PersonaController {
 
     // ----------- Formulario para registrar --------
 
-    // @GetMapping(value = "/formRegistroPersona")
-    // public String registroCliente(@Validated Persona persona, Model model) {
+    @GetMapping(value = "/formRegistroPersona")
+    public String registroCliente(@Validated Persona persona, Model model) {
 
-    //     model.addAttribute("persona", new Persona());
-    //     model.addAttribute("personas", iPersonaService.findAll());
+        model.addAttribute("persona", new Persona());
+        model.addAttribute("personas", iPersonaService.findAll());
 
-    //     return "formularios/formModeloPersona";
-    // }
+        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("clientes", clienteService.findAll());
+
+        return "FormPersona";
+    }
 
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarPersona")
     public String RegistrarPersona(@Validated Persona persona) {
+
         persona.setEstado_per("A");
         iPersonaService.save(persona);
-        return "redirect:/ListasPersona";
+
+        return "redirect:/formRegistroPersona";
 
     }
 

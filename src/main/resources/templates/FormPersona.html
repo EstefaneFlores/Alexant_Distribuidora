@@ -5,23 +5,186 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-
 <title>:: Alpino Menu Rught ::</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<!-- Favicon-->
-<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Favicon-->
+<link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/plugins/morrisjs/morris.css" />
+<link rel="stylesheet" href="/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
 <!-- Custom Css -->
-<link  rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/color_skins.css">
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/color_skins.css">
+
+<link rel="stylesheet" href="/assets/">
 </head>
 <body class="theme-black menu_dark">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="assets/images/logo.svg" width="48" height="48" alt="Alpino"></div>
+        <div class="m-t-30"><img src="/assets/images/logoOficial.jpg" width="48" height="48" alt="Alpino"></div>
         <p>Please wait...</p>        
     </div>
 </div>
+
+<!-- COMIENZO TEST -->
+<section class="content">  
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h2>Form Validation</h2>
+                    <ul class="breadcrumb padding-0">
+                     <!--   <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>
+                         <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                        <li class="breadcrumb-item active">Form Validation</li> -->
+                    </ul>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-12">
+                    <div class="input-group m-b-0">                
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-addon">
+                            <i class="zmdi zmdi-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Basic Validation -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Formulário </strong> Persona</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form class="needs-validation" action="/guardarPersona" method="post" id="form1" novalidate>
+                            <input type="hidden" th:field="${persona.idPersona}">
+
+                            <div class="row">
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12"> 
+                                <input type="text" class="form-control" name="persona" id="validationCustom01" th:field="${persona.nombre_persona}" placeholder="Nombre" required >
+                            </div>
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Apellido Paterno" name="ap_paterno" th:field="${persona.apellido_paterno}" required>
+                            </div>
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Apellido Materno" name="ap_materno" th:field="${persona.apellido_materno}" required>
+                            </div>
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Ci" name="ci" th:field="${persona.ci}" required>
+                            </div>
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Telefono" name="telefono" th:field="${persona.numero_celular}" required>
+                            </div>
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Direccion" name="direccion" th:field="${persona.direccion}" required>
+                            </div>
+                            <div class="form-group form-float col-lg-3 col-md-6 col-sm-12">
+                                <input type="email" class="form-control" placeholder="Email" name="email" th:field="${persona.email}" required>
+                            </div>
+                           
+                      </div>
+                        <button class="btn btn-primary" type="submit">Registrar</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Basic Validation --> 
+        <!-- Advanced Validation -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Advanced</strong> Validation</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form id="form_advanced_validation" method="POST">
+                            <div class="form-group form-float">
+                                <input type="text" class="form-control" name="minmaxlength" maxlength="10" minlength="3" required>                                
+                                <div class="help-info">Min. 3, Max. 10 characters</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <input type="text" class="form-control" name="minmaxvalue" min="10" max="200" required>                                
+                                <div class="help-info">Min. Value: 10, Max. Value: 200</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <input type="url" class="form-control" name="url" required>                                
+                                <div class="help-info">Starts with http://, https://, ftp:// etc</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <input type="text" class="form-control" name="date" required>                                
+                                <div class="help-info">YYYY-MM-DD format</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <input type="number" class="form-control" name="number" required>                                
+                                <div class="help-info">Numbers only</div>
+                            </div>
+                            <div class="form-group form-float">
+                                <input type="text" class="form-control" name="creditcard" pattern="[0-9]{13,16}" required>                                
+                                <div class="help-info">Ex: 1234-5678-9012-3456</div>
+                            </div>
+                            <button class="btn btn-raised btn-primary btn-round waves-effect" type="submit">SUBMIT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Advanced Validation --> 
+        <!-- Validation Stats -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Validation</strong> Stats </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else</a></li>
+									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form id="form_validation_stats">
+                            <div class="form-group has-success">
+                                <input type="text" value="Success" class="form-control form-control-success">
+                            </div>
+                            <div class="form-group has-danger">
+                                <input type="email" value="Error Input" class="form-control form-control-danger">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Validation Stats --> 
+    </div>
+</section>
+
+<!-- FIN TEST -->
 <div class="overlay_menu">
     <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-close"></i></button>
     <div class="container">        
@@ -29,7 +192,7 @@
             <div class="card">
                 <div class="body">
                     <div class="input-group m-b-0">                
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input type="text" class="form-control"  placeholder="Search...">
                         <span class="input-group-addon">
                             <i class="zmdi zmdi-search"></i>
                         </span>
@@ -64,11 +227,12 @@
                         <div class="col-lg-3 col-md-6 col-sm-12">
                             <h6>Sample Pages</h6>
                             <ul class="list-unstyled">                            
-                                <li><a href="image-gallery.html">Image Gallery</a> </li>
+                                <li><a href="image-gallery.html">Image Gallery</a></li>
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="timeline.html">Timeline</a></li>
                                 <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="invoices.html">Invoices</a></li>                         <li><a href="faqs.html">FAQs</a></li>
+                                <li><a href="invoices.html">Invoices</a></li>
+                                <li><a href="faqs.html">FAQs</a></li>
                                 <li><a href="search-results.html">Search Results</a></li>
                             </ul>
                         </div>
@@ -89,7 +253,7 @@
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12">
                 <div class="social">
-                    <a class="icon" href="https://www.facebook.com/thememakkerteam" target="_blank"><i class="zmdi zmdi-facebook"></i></a>
+                    <a class="icon" href="https://www.facebook.com/profile.php?id=61561119215364" target="_blank"><i class="zmdi zmdi-facebook"></i></a>
                     <a class="icon" href="https://www.behance.net/thememakker" target="_blank"><i class="zmdi zmdi-behance"></i></a>
                     <a class="icon" href="#"><i class="zmdi zmdi-twitter"></i></a>
                     <a class="icon" href="#"><i class="zmdi zmdi-linkedin"></i></a>                    
@@ -106,7 +270,7 @@
     <ul class="menu_list">
         <li>
             <a href="javascript:void(0);" class="bars"></a>
-            <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" alt="Alpino"></a>
+            <a class="navbar-brand" href="/index.html"><img src="/assets/images/logo.svg" alt="Alpino"></a>
         </li>
         <li><a href="javascript:void(0);" class="btn_overlay hidden-sm-down"><i class="zmdi zmdi-search"></i></a></li>        
         <li><a href="javascript:void(0);" class="menu-sm"><i class="zmdi zmdi-swap"></i></a></li>        
@@ -171,7 +335,7 @@
                         <li>
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
+                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar1.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Alexander <small class="time">35min ago</small></span>
                                         <p class="message">New tasks needs to be done</p>                                        
@@ -182,7 +346,7 @@
                         <li>
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
+                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar2.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Grayson <small class="time">1hr ago</small></span>
                                         <p class="message">New tasks needs to be done</p>                                        
@@ -193,7 +357,7 @@
                         <li>
                             <a href="javascript:void(0);">
                                 <div class="media">
-                                    <img class="media-object rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
+                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar3.jpg" alt="">
                                     <div class="media-body">
                                         <span class="name">Sophia <small class="time">31min ago</small></span>
                                         <p class="message">New tasks needs to be done</p>                                        
@@ -259,9 +423,9 @@
                         </div>
                         <ul class="list-unstyled team-info">
                             <li class="m-r-15"><small class="text-muted">Team</small></li>
-                            <li><img src="assets/images/xs/avatar2.jpg" alt="Avatar"></li>
-                            <li><img src="assets/images/xs/avatar3.jpg" alt="Avatar"></li>
-                            <li><img src="assets/images/xs/avatar4.jpg" alt="Avatar"></li>
+                            <li><img src="/assets/images/xs/avatar2.jpg" alt="Avatar"></li>
+                            <li><img src="/assets/images/xs/avatar3.jpg" alt="Avatar"></li>
+                            <li><img src="/assets/images/xs/avatar4.jpg" alt="Avatar"></li>
                         </ul>
                     </a>
                 </div>
@@ -273,8 +437,8 @@
                         </div>
                         <ul class="list-unstyled team-info">
                             <li class="m-r-15"><small class="text-muted">Team</small></li>
-                            <li><img src="assets/images/xs/avatar6.jpg" alt="Avatar"></li>
-                            <li><img src="assets/images/xs/avatar7.jpg" alt="Avatar"></li>
+                            <li><img src="/assets/images/xs/avatar6.jpg" alt="Avatar"></li>
+                            <li><img src="/assets/images/xs/avatar7.jpg" alt="Avatar"></li>
                         </ul>
                     </a>
                 </div>
@@ -473,8 +637,8 @@
                             <a href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a>
                         </div>
                         <div class="detail">
-                            <h6>Michael</h6>
-                            <p class="m-b-0">info@example.com</p>
+                            <h6>ECG VENTAS</h6>
+                            <p class="m-b-0">ecgventas@gmail.com.com</p>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-facebook-box"></i></a>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-linkedin-box"></i></a>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-instagram"></i></a>
@@ -483,7 +647,7 @@
                     </div>
                 </li>
                 <li class="header">MAIN</li>
-                <li> <a href="index.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+                <!-- <li class="active open"> <a href="index.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li> -->
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>App</span> <span class="badge badge-success float-right">7</span></a>
                     <ul class="ml-menu">
                         <li><a href="mail-inbox.html">Inbox</a></li>
@@ -495,7 +659,7 @@
                         <li><a href="app-ticket.html">Support Ticket</a></li>
                     </ul>
                 </li>
-                <li class="active open"><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>UI Elements</span> <span class="badge badge-default float-right">15</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>UI Elements</span> <span class="badge badge-default float-right">15</span></a>
                     <ul class="ml-menu">
                         <li><a href="ui_kit.html">UI KIT</a></li>                    
                         <li><a href="alerts.html">Alerts</a></li>                    
@@ -511,7 +675,7 @@
                         <li><a href="range-sliders.html">Range Sliders</a></li>
                         <li><a href="sortable-nestable.html">Sortable & Nestable</a></li>
                         <li><a href="tabs.html">Tabs</a></li>
-                        <li class="active"><a href="waves.html">Waves</a></li>
+                        <li><a href="waves.html">Waves</a></li>
                     </ul>
                 </li>
                 <li class="header">FORMS, CHARTS, TABLES</li>
@@ -550,7 +714,8 @@
                 </li>
                 <li class="header">EXTRA COMPONENTS</li>                    
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span>Widgets</span> <span class="badge badge-default float-right">3</span></a>
-                    <ul class="ml-menu"><li><a href="widgets-app.html">Apps Widgetse</a></li>
+                    <ul class="ml-menu">
+                    	<li><a href="widgets-app.html">Apps Widgetse</a></li>
                         <li><a href="widgets-data.html">Data Widgetse</a></li>
                         <li><a href="widgets-chart.html">Chart Widgetse</a></li>
                     </ul>
@@ -595,81 +760,19 @@
         </div>
     </div>
 </aside>
+<!-- Jquery Core Js -->
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-<section class="content">
-    <div class="container-fluid">
-        <div class="block-header">
-            <div class="row">
-                <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Waves</h2>
-                    <ul class="breadcrumb padding-0">
-                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i></a></li>
-                        <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                        <li class="breadcrumb-item active">Waves</li>
-                    </ul>
-                </div>
-                <div class="col-lg-7 col-md-7 col-sm-12">
-                    <div class="input-group m-b-0">                
-                        <input type="text" class="form-control" placeholder="Search...">
-                        <span class="input-group-addon">
-                            <i class="zmdi zmdi-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-lg-12 col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h2><strong>Color</strong> Variations</h2>
-                        <ul class="header-dropdown">
-                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="javascript:void(0);">Action</a></li>
-                                    <li><a href="javascript:void(0);">Another action</a></li>
-                                    <li><a href="javascript:void(0);">Something else</a></li>
-									<li><a href="javascript:void(0);" class="boxs-close">Delete</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="body">
-                        <ul class="row list-unstyled text-right">
-                            <li class="col-lg-3 col-md-6"> Default <a href="javascript:void(0);" class="btn btn-default waves-effect ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-light</code> <a href="javascript:void(0);" class="btn bg-blue waves-effect waves-light ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-red</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-red ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-pink</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-pink ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-purple</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-purple ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-deep-purple</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-deep-purple ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-indigo</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-indigo ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-blue</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-blue ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-light-blue</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-light-blue ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-cyan</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-cyan ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-teal</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-teal ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-green</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-green ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-light-green</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-light-green ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-lime</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-lime ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-yellow</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-yellow ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-amber</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-amber ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-orange</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-orange ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-deep-orange</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-deep-orange ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-brown</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-brown ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-grey</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-grey ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-blue-grey</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-blue-grey ">CLICK ME</a> </li>
-                            <li class="col-lg-3 col-md-6"> <code>waves-black</code> <a href="javascript:void(0);" class="btn btn-default waves-effect waves-black ">CLICK ME</a> </li>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Jquery Core Js --> 
-<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
-<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="/assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
+<script src="/assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
 
-<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="/assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
+<script src="/assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="/assets/bundles/morrisscripts.bundle.js"></script> <!-- Morris Plugin Js --> 
+<script src="/assets/bundles/sparkline.bundle.js"></script> <!-- sparkline Plugin Js --> 
+
+<script src="/assets/bundles/mainscripts.bundle.js"></script>
+<script src="/assets/js/pages/index.js"></script>
+<script src="/assets/js/pages/widgets/infobox/infobox-1.js"></script>
 </body>
 </html>

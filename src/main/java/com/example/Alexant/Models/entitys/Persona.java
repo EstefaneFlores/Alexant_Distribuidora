@@ -81,9 +81,7 @@ public class Persona implements Serializable {
  @ManyToMany
  @JoinTable(name = "persona_biene", joinColumns = @JoinColumn(name = "id_persona"), inverseJoinColumns = @JoinColumn(name = "id_biene"))
  private List<Biene> bienes;
-
- @OneToOne(fetch = FetchType.LAZY)
- @JoinColumn(name = "cliente_id", nullable = false)
+ @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
  private Cliente cliente;
  
  @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
