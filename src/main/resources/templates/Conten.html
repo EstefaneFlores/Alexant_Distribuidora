@@ -145,4 +145,44 @@
             </div>
         </div>
     </div>
+
+     <!-- ---------------------------------------------------------------------------------------------- -->
+     <div th:fragment="contentMoneda">
+        <input type="hidden" name="id_moneda" th:field="${moneda.id_moneda}">
+        <h4 class="header-title">DATOS DE MONEDAS</h4>
+        
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="nombreMoneda">Nombre Moneda</label>
+                <input type="text" class="form-control" name="nombreMoneda" th:field="${moneda.nombre_moneda}" placeholder="Nombre Moneda" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="simboloMoneda">Símbolo de la Moneda</label>
+                <input type="text" class="form-control" name="simboloMoneda" id="simboloMoneda" th:field="${moneda.simbolo_moneda}" placeholder="Simbolo Moneda, ej:US$, R$, Bs" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="valorMoneda">Valor Moneda</label>
+                <input type="text" class="form-control" name="valorMoneda" id="valorMoneda" th:field="${moneda.valor_moneda}" placeholder="Valor de la Moneda" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <!-- <div class="col-md-4 mb-3">
+                <label for="tipoCambio">tipoCambio</label>
+                <select id="tipoCambio" name="tipoCambio" class="form-control" th:field="${tipoCambio.tipoCambio.id_tipo_cambio}" required>
+                    <option value="" disabled selected>Seleccione un tipo de cambio</option>
+                    <option th:each="tipoCambio : ${tipoCambios}" th:value="${tipoCambio.id_tipo_cambio}" th:text="${tipoCambio.valor_tipo_cambio}"></option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+        </div>
+    </div>
     </html>

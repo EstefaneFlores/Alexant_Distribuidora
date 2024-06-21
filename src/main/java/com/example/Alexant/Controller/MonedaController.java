@@ -1,150 +1,102 @@
-// package com.example.Alexant.Controller;
+package com.example.Alexant.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.ui.Model;
-// import org.springframework.validation.annotation.Validated;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.ModelAttribute;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
+import com.example.Alexant.Models.entitys.Moneda;
+import com.example.Alexant.Models.entitys.Usuario;
+import com.example.Alexant.Models.service.service.IMonedaService;
+import com.example.Alexant.Models.service.service.ITipoCambioService;
+import com.example.Alexant.Models.service.service.IUsuarioService;
 
-// import com.example.Alexant.Models.entitys.Persona;
-// import com.example.Alexant.Models.entitys.Usuario;
-// import com.example.Alexant.Models.service.service.IMonedaService;
-// import com.example.Alexant.Models.service.service.IPersonaService;
-// import com.example.Alexant.Models.service.service.IUsuarioService;
+import jakarta.servlet.http.HttpServletRequest;
+@Controller
+public class MonedaController {
 
-// import jakarta.servlet.http.HttpServletRequest;
-
-// @Controller
-// public class MonedaController {
+    @Autowired
+    private IMonedaService monedaService;
+    @Autowired
+    private ITipoCambioService tipoCambioService;
     
-//     @Autowired
-//     private IMonedaService monedaService;
-//     @Autowired
-//     private IUsuarioService usuarioService;
+    @Autowired
+    private IUsuarioService usuarioService;
+   
 
+    @GetMapping("/listarMoneda")
+    public String listarMoneda(Model model, HttpServletRequest request) {
+        if (request.getSession().getAttribute("userLog") != null) {
+            model.addAttribute("monedas", monedaService.findAll());
+            model.addAttribute("tiposCambios", tipoCambioService.findAll());
 
-//     /*Listar persona */
+            Usuario user = (Usuario) request.getSession().getAttribute("userLog");
+            Usuario userLog = usuarioService.findOne(user.getId_usuario());
+            model.addAttribute("userLog", userLog);
+            return "listaMoneda";
+        } else {
+            return "redirect:/aux";
+        }
+    }
 
-//     @RequestMapping(value = "/listar-moneda")
-//     public String listar(Model model, HttpServletRequest request) {
+    @RequestMapping(value = "/ver-moneda/{id_moneda}")
+    public String verMoneda(@PathVariable(value = "id_moneda") Integer id_moneda, Model model) {
+        model.addAttribute("moneda", monedaService.findOne(id_moneda));
+        model.addAttribute("tiposCambios", tipoCambioService.findAll());
 
-//         if (request.getSession().getAttribute("userLog") != null) {
-//             model.addAttribute("personas", iPersonaService.findAll());
-            
-//             // Persona pers = (Persona) request.getSession().getAttribute("userLog");
+        return "Usuarios/formularioMoneda";
+    }
 
-//             Usuario user = (Usuario) request.getSession().getAttribute("userLog");
-//             Usuario userLog = usuarioService.findOne(user.getId_usuario());
-//             model.addAttribute("userLog", userLog);
-//             return "listaPersona";
-//         } else {
-//             return "redirect: /Alexant/aux";
-//         }
-//     }
+    @RequestMapping(value = "/form-nueva-moneda")
+    public String nuevaMoneda(Model model) {
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("tiposCambios", tipoCambioService.findAll());
+        return "Usuarios/formularioMoneda";
+    }
 
-//     @RequestMapping(value = "/ver-persona2/{id_persona}")
-// 	public String verPersona(@PathVariable(value = "id_persona") Integer id_persona, Model model) {
-// 		model.addAttribute("persona", iPersonaService.findOne(id_persona));
-// 		model.addAttribute("modal", "true");
-// 		return "Usuarios/formularioPersona";
-// 	}
+    @GetMapping(value = "/formRegistroMoneda")
+    public String registroMoneda(Model model) {
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("monedas", monedaService.findAll());
+        model.addAttribute("tiposCambios", tipoCambioService.findAll());
 
-//     @RequestMapping(value = "/form-nueva-persona")
-// 	public String nuevaPersona(Model model) {
-// 		model.addAttribute("persona", new Persona());
-// 		return "Usuarios/formularioPersona";
-// 	}
+        return "FormMoneda";
+    }
 
+    @RequestMapping(value = "/eliminarMoneda/{id_moneda}")
+    public String eliminarMoneda(@PathVariable("id_moneda") Integer id_moneda) {
+        Moneda moneda = monedaService.findOne(id_moneda);
+        moneda.setEstado_moneda("X");
+        monedaService.save(moneda);
+        return "redirect:/formRegistroMoneda";
+    }
 
-//     // ----------- Formulario para registrar --------
+    @RequestMapping(value = "/moneda/{id_moneda}")
+    public String getContentMoneda(@PathVariable(value = "id_moneda") Integer id_moneda, Model model) {
+        model.addAttribute("moneda", monedaService.findOne(id_moneda));
+        model.addAttribute("tiposCambios", tipoCambioService.findAll());
+        return "Conten :: contentMoneda";
+    }
 
-//     @GetMapping(value = "/formRegistroPersona")
-//     public String registroCliente(@Validated Persona persona, Model model) {
+    @RequestMapping(value = "/registrarMoneda")
+    public String getRegistroMoneda(Model model) {
+        model.addAttribute("moneda", new Moneda());
+        model.addAttribute("monedas", monedaService.findAll());
+        model.addAttribute("tiposCambios", tipoCambioService.findAll());
+        return "Conten :: contentMoneda";
+    }
 
-//         model.addAttribute("persona", new Persona());
-//         model.addAttribute("personas", iPersonaService.findAll());
+    @PostMapping(value = "/guardarMoneda")
+    public String registrarMoneda(@Validated Moneda moneda) {
+        moneda.setEstado_moneda("A");
+        monedaService.save(moneda);
+        return "redirect:/formRegistroMoneda";
+    }
 
-//         return "FormPersona";
-//     }
-
-  
-
-//     // --------------------------------------------
-
-//     /*--------------- eliminar -----------*/
-
-//     @RequestMapping(value = "/eliminarPersona/{id_persona}")
-//     public String eliminarPersona(@PathVariable("id_persona") Integer id_persona) {
-
-//         Persona persona = iPersonaService.findOne(id_persona);
-//         persona.setEstado_per("X");
-//         iPersonaService.save(persona);
-//         return "redirect:/formRegistroPersona";
-
-//     }
-
-//     // --------------------------------------------
-
-//     /* ------------ Lista ----------------- */
-
-//     // @GetMapping(value = "/Listaspersonas")
-//     // public String listarpersona(Model model) {
-
-//     //     model.addAttribute("persona", new Persona());
-//     //     model.addAttribute("personas", iPersonaService.findAll());
-
-//     //     return "listas/listaPersona";
-//     // }
-
-  
-//     // -------------------Para las modificaciones-------------------------
-
-//     /* Modificación Modal */
-//     @RequestMapping(value = "/persona/{idPersona}")
-//     public String getContentPersona(@PathVariable(value = "idPersona") Integer idPersona, Model model,
-//             HttpServletRequest request) {
-
-//         model.addAttribute("persona", iPersonaService.findOne(idPersona));
-
-//         return "Conten :: contentPersona";
-
-//     }
-
-//     /* Registrar Cargo model */
-//     @RequestMapping(value = "/registrarPersona")
-//     public String getRegistroPersona(Model model) {
-
-//         model.addAttribute("persona", new Persona());
-//         model.addAttribute("personas", iPersonaService.findAll());
-
-//         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-//         return "Conten :: contentPersona";
-//     }
-
-//       /* ------------- GUARDAR ------------ */
-
-//       @PostMapping(value = "/guardarPersona")
-//       public String RegistrarPersona(@Validated Persona persona) {
-  
-//           persona.setEstado_per("A");
-//           iPersonaService.save(persona);
-  
-//           return "redirect:/formRegistroPersona";
-  
-//       }
-
-//     // --------------------------------------------
-
-//     /* Guardar Cambios */
-//     @PostMapping(value = "/guardarCambiosPersona")
-//     public String guardarCambiosPersona(@ModelAttribute Persona persona) {
-//         persona.setEstado_per("A");
-//         iPersonaService.save(persona);
-//         return "redirect:/formRegistroPersona";
-//     }
-    
-// }
+    @PostMapping(value = "/guardarCambiosMoneda")
+    public String guardarCambiosMoneda(@ModelAttribute Moneda moneda) {
+        moneda.setEstado_moneda("A");
+        monedaService.save(moneda);
+        return "redirect:/formRegistroMoneda";
+    }
+}

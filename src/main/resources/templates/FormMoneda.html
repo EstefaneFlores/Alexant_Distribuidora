@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<title>Registro Forma Pago | ECG</title>
+<title>Registro Moneda | ECG</title>
 
 
  <!-- DataTables -->
@@ -53,7 +53,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración Forma Pago</h2>
+                    <h2>Administración Moneda</h2>
                     <ul class="breadcrumb padding-0">
                   
                     </ul>
@@ -76,7 +76,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>Forma de Pago Registrados</h4>
+                                        <h4 class="header-title"></i>Monedas Registradas</h4>
 
                                         <!-- ------------- -->
 
@@ -94,23 +94,25 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Forma de Pago</th>
-                                                    <th>Monto del Pago</th>
+                                                    <th>Nombre Moneda</th>
+                                                    <th>Símbolo Moneda</th>
+                                                    <th>Valor Moneda</th>
                                                      <th>Opciones</th>
 
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr th:each="forma_pago : ${forma_pagos}" th:if="${forma_pago.estado_forma_pago != 'X'}">
-                                                    <td th:text="${forma_pago.forma_pago}"></td>
-                                                    <td th:text="${forma_pago.monto}"></td>
+                                                <tr th:each="moneda : ${monedas}" th:if="${moneda.estado_moneda != 'X'}">
+                                                    <td th:text="${moneda.nombre_moneda}"></td>
+                                                    <td th:text="${moneda.simbolo_moneda}"></td>
+                                                    <td th:text="${moneda.valor_moneda}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarFormaPago/' + forma_pago.estado_forma_pago}">
+                                                                    th:href="${'../../../../eliminarMoneda/' + moneda.estado_moneda}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -126,7 +128,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-id_forma_pago="${forma_pago.id_forma_pago}"
+                                                                        th:data-id_moneda="${moneda.id_moneda}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -160,10 +162,10 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosFormaPago}"
+            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosMoneda}"
                 method="post" novalidate>
 
-                <div id="replace_forma_pago"></div>
+                <div id="replace_moneda"></div>
 
                 <div class="text-right mt-3">
                     <button type="submit" onclick="validarFormulario()"
@@ -383,7 +385,7 @@
                 <li class="header"> ADMINISTRACIÓN PERSONA</li>
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>GESTIÓN PERSONAS</span> <span class="badge badge-warning float-right">9</span></a>
                     <ul class="ml-menu">
-                        <li><a href="FormPersona.html">Formulario Persona</a></li>
+                        <li><a href="index2.html">Formulario Persona</a></li>
                         <li><a href="cliente.html">Formulario Cliente</a></li>
                         <li><a href="proveedor.html">Formulario Proveedor</a></li>
                     </ul>
@@ -391,13 +393,13 @@
                 <li class="header">ADMINISTRACIÓN MERCANCIA</li>                    
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-delicious"></i><span>GESTIÓN VENTAS</span> <span class="badge badge-default float-right">3</span></a>
                     <ul class="ml-menu">
-                    	<li><a href="FormProducto.html">Formulario Producto</a></li>
+                    	<li><a href="producto.html">Formulario Producto</a></li>
                         <li><a href="categoria.html">Formulario Categoria</a></li>
-                        <li><a href="FormFormaPago.html">Forma de Pago</a></li>
+                        <li><a href="FormFormaPago.html">Formulario Forma Pago</a></li>
                         <li><a href="venta.html">Formulario Venta</a></li>
                         <li><a href="factura.html">Formulario Factura</a></li>
                         <li><a href="pago.html">Formulario Venta</a></li>
-                        <li><a href="moneda.html">Formulario Factura</a></li>
+                        <li><a href="FormMoneda.html">Formulario Moneda</a></li>
                     </ul>
                 </li>             
                 <li class="header">ADMINISTRACIÓN BIENES</li>                    
@@ -415,22 +417,22 @@
 <script>
 
     function buscar(button) {
-        var id_forma_pago = $(button).data('id_forma_pago');
-        console.log("Prueba:" + id_forma_pago);
-        var url = "../../../../forma_pago/" + id_forma_pago;
+        var id_moneda = $(button).data('id_moneda');
+        console.log("Prueba:" + id_moneda);
+        var url = "../../../../moneda/" + id_moneda;
 
-        $('#replace_forma_pago').load(url, function () {
-            $('#modal-form').attr('action', '/guardarModificacionesFormaPago');
+        $('#replace_moneda').load(url, function () {
+            $('#modal-form').attr('action', '/guardarModificacionesMoneda');
             $('#bs-example-modal-center').modal('show');
         });
     }
 
     function NuevoRegistro() {
 
-        var url = "../../../../registrarFormaPago";
+        var url = "../../../../registrarMoneda";
 
-        $('#replace_forma_pago').load(url, function () {
-            $('#modal-form').attr('action', '/guardarNuevaFormaPago'); 
+        $('#replace_moneda').load(url, function () {
+            $('#modal-form').attr('action', '/guardarNuevaMoneda'); 
             $('#bs-example-modal-center').modal('show');
         });
     }
