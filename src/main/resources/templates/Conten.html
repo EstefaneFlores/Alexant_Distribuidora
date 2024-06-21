@@ -110,8 +110,6 @@
                     Looks good!
                 </div>
             </div>
-
-
             <div class="col-md-4 mb-3">
                 <label for="proveedor">Proveedor</label>
                 <select id="proveedor" name="proveedor" class="form-control" th:field="${producto.proveedor.id_proveedor}" required>
@@ -122,42 +120,29 @@
                     Looks good!
                 </div>
             </div>
-
-
-            <!-- <div class="col-md-4 mb-3">
-                <label for="venta">Venta</label>
-                <select id="venta" name="venta.id_venta" class="form-control" th:field="${det_Venta.venta.id_venta}" required>
-                    <option value="" disabled selected>Seleccione una venta</option>
-             
-                    <option th:each="venta : ${ventas}" th:value="${venta.id_venta}" th:text="${venta.nombre_venta}"></option>
-                </select>
-                <div class="valid-feedback">
-                    ¡Se ve bien!
-                </div>
-            </div> -->
-            
-            <!-- <div class="col-md-4 mb-3">
-                <label for="detalleVenta">Detalle Venta</label>
-                <select multiple id="detalleVenta" name="det_venta" class="form-control" th:field="${producto.det_venta}" required>
-                    <option th:each="detalle : ${detallesVenta}" th:value="${detalle.id_detalleVenta}" th:text="${detalle.cantidad_det_venta}"></option>
-                </select>
-                <div class="valid-feedback">Looks good!</div>
-            </div> -->
         </div>
     </div>
-    
 
-    <!-- <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Grado Académico</label>
-        <select class="custom-select" name="detalle_lote" required>
-            <option value="">Selecciona tu grado académico</option>
-            <th:block th:each="producto: ${productos}" th:if="${producto.estado_pro != 'X'}">
-                <option th:value="${producto.id_producto}" th:text="${producto.nombre_producto}"></option>
-            </th:block>
-        </select>
-        <div class="valid-feedback">
-            ¡Se ve bien!
+    <!---------------------------------------------------------------------------------------------------------------------->
+    <div th:fragment="contentFormaPago">
+        <input type="hidden" name="id_forma_pago" th:field="${forma_pago.id_forma_pago}">
+        <h4 class="header-title">DATOS DE PRODUCTOS</h4>
+        
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="forma_pago">Forma de Pago</label>
+                <input type="text" class="form-control" name="forma_pago" th:field="${forma_pago.forma_pago}" placeholder="Forma de Pago" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="codigoProducto">Monto de Pago</label>
+                <input type="text" class="form-control" name="monto" id="forma_pago" th:field="${forma_pago.monto}" placeholder="Monto del Pago" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
         </div>
-    </div> -->
-
+    </div>
     </html>

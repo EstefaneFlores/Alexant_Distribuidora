@@ -113,7 +113,8 @@ public class PersonaController {
 
     }
 
-    /* Registrar Cargo model */
+    /*------------REGISTRAR PERSONA--------------*/
+    
     @RequestMapping(value = "/registrarPersona")
     public String getRegistroPersona(Model model) {
 
