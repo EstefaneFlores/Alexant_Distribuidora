@@ -834,7 +834,6 @@
 
     function buscar(button) {
         var idPersona = $(button).data('idpersona');
-        console.log("Prueba:" + idPersona);
         var url = "../../../../persona/" + idPersona;
 
         $('#replace_persona').load(url, function () {

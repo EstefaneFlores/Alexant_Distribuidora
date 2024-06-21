@@ -40,13 +40,13 @@ public class Cliente  implements Serializable{
     private Integer nro_codigo;
 
     @Column(name = "tipo_cliente")
-    private Integer tipo_cliente;
+    private String tipo_cliente;
     
     @Column(name = "razon_social")
-    private Integer razon_social;
+    private String razon_social;
 
     @Column(name = "contacto_cliente")
-    private Integer contacto_cliente;
+    private String contacto_cliente;
     
     @Column(name = "estado_cliente")
     private String estado_cliente;
