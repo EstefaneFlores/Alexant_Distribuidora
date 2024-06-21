@@ -110,9 +110,11 @@
                     Looks good!
                 </div>
             </div>
+
+
             <div class="col-md-4 mb-3">
                 <label for="proveedor">Proveedor</label>
-                <select id="proveedor" name="proveedor.id_proveedor" class="form-control" th:field="${producto.proveedor.id_proveedor}" required>
+                <select id="proveedor" name="proveedor" class="form-control" th:field="${producto.proveedor.id_proveedor}" required>
                     <option value="" disabled selected>Seleccione un proveedor</option>
                     <option th:each="proveedor : ${proveedores}" th:value="${proveedor.id_proveedor}" th:text="${proveedor.nombre_proveedor}"></option>
                 </select>
@@ -120,6 +122,8 @@
                     Looks good!
                 </div>
             </div>
+
+
             <!-- <div class="col-md-4 mb-3">
                 <label for="venta">Venta</label>
                 <select id="venta" name="venta.id_venta" class="form-control" th:field="${det_Venta.venta.id_venta}" required>

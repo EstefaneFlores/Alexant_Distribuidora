@@ -15,10 +15,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -96,7 +92,7 @@ private List<Detalle_lote> detalle_lote;
 /*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
 @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "venta_detventa",
+        name = "producto_detventa",
         joinColumns = @JoinColumn(name = "id_producto"),
         inverseJoinColumns = @JoinColumn(name = "id_detalle_venta")
     )
