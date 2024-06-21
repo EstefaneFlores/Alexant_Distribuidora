@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -63,9 +64,6 @@ public class Proveedor implements Serializable {
     private Date usuario_modificacion;
 
 /*--------------------------RELACION CON PRODUCTO------------------------------------------- */
-
-@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "proveedor", joinColumns = @JoinColumn(name = "id_proveedor"), inverseJoinColumns = @JoinColumn(name = "id_producto"))
-    private Set<Producto> Producto;
-    
+@OneToMany(mappedBy = "proveedor", fetch = FetchType.LAZY)
+    private Set<Producto> productos;
 }

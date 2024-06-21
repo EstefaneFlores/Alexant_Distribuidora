@@ -2,6 +2,7 @@ package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -79,20 +80,26 @@ private Date usuario_modificacion;
 	private Recepcion_Producto recepcion_Producto;
 /*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
 
-@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_proveedor"))
-    private Set<Proveedor> proveedor;
+@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_proveedor", nullable = false)
+    private Proveedor proveedor;
 
 /*-----------------------------RELACION CON DETALLE LOTE----------------------------------------------------- */
 
-@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
-    private Set<Detalle_lote> detalle_lote;
+// @ManyToMany(fetch = FetchType.LAZY)
+//     @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
+//     private Set<Detalle_lote> detalle_lote;
+@ManyToMany
+@JoinTable(name = "producto_detalle_lote", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
+private List<Detalle_lote> detalle_lote;
 
 /*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
-
 @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalleVenta"))
+    @JoinTable(
+        name = "venta_detventa",
+        joinColumns = @JoinColumn(name = "id_producto"),
+        inverseJoinColumns = @JoinColumn(name = "id_detalle_venta")
+    )
     private Set<Det_Venta> det_venta;
 
 /*-------------------------------RELACION CON CATEGORIA--------------------------------------*/

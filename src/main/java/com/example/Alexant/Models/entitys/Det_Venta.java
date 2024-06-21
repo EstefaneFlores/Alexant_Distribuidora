@@ -76,11 +76,6 @@ public class Det_Venta  implements Serializable{
 	@JoinColumn(name = "id_venta")
 	private Venta venta;
 
-    @ManyToMany
-    @JoinTable(
-    name = "venta_detventa",
-    joinColumns = @JoinColumn(name = "det_venta_id"),
-    inverseJoinColumns = @JoinColumn(name = "producto_id")
-    )
-    private List<Producto> producto;
+    @ManyToMany(mappedBy = "det_venta")
+    private List<Producto> productos;
 }
