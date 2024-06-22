@@ -63,9 +63,8 @@ public class Empleado  implements Serializable{
 	@JoinColumn(name = "id_persona")
 	private Persona persona;
 
-    @OneToOne
-	@JoinColumn(name = "id_usuario")
-	private Usuario usuario;
+    @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Usuario usuario;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)
     private List<TiempoCargo> tiempoCargos;

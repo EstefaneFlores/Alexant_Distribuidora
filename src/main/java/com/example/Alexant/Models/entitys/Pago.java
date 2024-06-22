@@ -31,13 +31,13 @@ public class Pago implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pago")
-    private Integer id_cargo;
+    private Integer id_pago;
 
     @Column(name = "tipo_pago")
     private String Tipo_pago;
 
     @Column(name = "estado_pago")
-    private Integer estado_pago;
+    private String estado_pago;
 
     @Column(name = "fec_registro_inicial")
     @Temporal(TemporalType.TIMESTAMP)
@@ -72,9 +72,9 @@ public class Pago implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_moneda")
     private Moneda moneda;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "pagoVenta", joinColumns = @JoinColumn(name = "id_pago"), inverseJoinColumns = @JoinColumn(name = "id_venta"))
-    private Set<Venta> ventas;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_venta", nullable = false)
+    private Venta venta;
 
 }

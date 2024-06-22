@@ -173,16 +173,43 @@
                     Looks good!
                 </div>
             </div>
-            <!-- <div class="col-md-4 mb-3">
-                <label for="tipoCambio">tipoCambio</label>
-                <select id="tipoCambio" name="tipoCambio" class="form-control" th:field="${tipoCambio.tipoCambio.id_tipo_cambio}" required>
-                    <option value="" disabled selected>Seleccione un tipo de cambio</option>
-                    <option th:each="tipoCambio : ${tipoCambios}" th:value="${tipoCambio.id_tipo_cambio}" th:text="${tipoCambio.valor_tipo_cambio}"></option>
-                </select>
+        </div>
+    </div>
+
+       <!-- ---------------------------------------------------------------------------------------------- -->
+       <div th:fragment="contentPago">
+        <input type="hidden" name="id_pago" th:field="${pago.id_pago}">
+        <h4 class="header-title">DATOS DE PAGO</h4>
+        
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="tipoPago">Tipo de Pago</label>
+                <input type="text" class="form-control" name="tipoPago" th:field="${pago.Tipo_pago}" placeholder="Ej: A crédito, contado..." required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-            </div> -->
+            </div>
+             <div class="col-md-4 mb-3">
+            <label for="venta">Venta Asociada</label>
+            <select id="venta" name="venta" class="form-control" th:field="${pago.venta.id_venta}" required>
+                <option value="" disabled selected>Seleccione una Venta</option>
+                <option th:each="venta : ${ventas}" th:value="${venta.id_venta}" th:text="${venta.total_venta}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="moneda">Moneda Aplicada</label>
+            <select id="moneda" name="moneda" class="form-control" th:field="${pago.moneda.id_moneda}" required>
+                <option value="" disabled selected>Seleccione la Moneda</option>
+                <option th:each="moneda : ${monedas}" th:value="${moneda.id_moneda}" th:text="${moneda.valor_moneda}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+            
         </div>
     </div>
     </html>

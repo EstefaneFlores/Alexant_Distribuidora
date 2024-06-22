@@ -75,10 +75,8 @@ public class Venta implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "venta_pago", joinColumns = @JoinColumn(name = "id_venta"), inverseJoinColumns = @JoinColumn(name = "id_pago"))
-    private Set<Pago> pago;
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pago> pagos;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
     private List<Det_Venta> det_Ventas;
