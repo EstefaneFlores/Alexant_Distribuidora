@@ -45,7 +45,7 @@ public class LoteController {
 
     @PostMapping(value = "/guardarLote")
     public String guardarLote(@Validated Lote lote) {
-        lote.setEstado_lote(1);
+        lote.setEstado_lote("A");
         loteService.save(lote);
         return "redirect:/ListasLote"; /*No teneos listasVentas*/
     }
@@ -55,7 +55,7 @@ public class LoteController {
     @RequestMapping(value = "/eliminarLote/{id_lote}")
     public String eliminarLote(@PathVariable("id_lote") Integer id_lote) {
         Lote lote = loteService.findOne(id_lote);
-        lote.setEstado_lote(0);
+        lote.setEstado_lote("A");
         loteService.save(lote);
         return "redirect:/ListasLote"; /*Falta el formulario*/ 
 
@@ -107,7 +107,7 @@ public class LoteController {
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosLote")
     public String guardarCambiosLote(@ModelAttribute Lote lote) {
-        lote.setEstado_lote(1);
+        lote.setEstado_lote("X");
         loteService.save(lote);
         return "redirect:/ListasLote";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }

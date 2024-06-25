@@ -58,7 +58,6 @@ public class PersonaController {
 		return "Usuarios/formularioPersona";
 	}
 
-
     // ----------- Formulario para registrar --------
 
     @GetMapping(value = "/formRegistroPersona")

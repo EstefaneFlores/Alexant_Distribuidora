@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<title>Registro Producto | ECG</title>
+<title>Registro Recepción | ECG</title>
 
 
  <!-- DataTables -->
@@ -53,7 +53,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración Persona</h2>
+                    <h2>Administración Recepción</h2>
                     <ul class="breadcrumb padding-0">
                   
                     </ul>
@@ -76,7 +76,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>Productos Registradas</h4>
+                                        <h4 class="header-title"></i>Recepción de Productos Registradas</h4>
 
                                         <!-- ------------- -->
 
@@ -94,27 +94,26 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Nombre Prdocuto</th>
-                                                    <th>Codigo Producto</th>
-                                                    <th>Estoque Producto</th>
-                                                     <th>Cantidad Cajas</th>
+                                                    <th>Costo del producto</th>
+                                                    <th>cantidad caja</th>
+                                                     <th>Precio venta</th>
                                                      <th>Opciones</th>
 
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr th:each="producto : ${productos}" th:if="${producto.estado_pro != 'X'}">
-                                                    <td th:text="${producto.nombre_producto}"></td>
-                                                    <td th:text="${producto.codigo_producto}"></td>
-                                                    <td th:text="${producto.stock_producto}"></td>
-                                                    <td th:text="${producto.cantidad_caja}"></td>
+                                                <tr th:each="recProd : ${recepcion_productos}" th:if="${recProd.estado_recepcion_producto != 'X'}">
+                                                    <tr th:each="recProd : ${recepcion_productos}" th:if="${recProd.estado_recepcion_producto != 'X'}">
+                                                    <td th:text="${recProd.precio_producto}"></td>
+                                                    <td th:text="${recProd.cantidad_caja}"></td>
+                                                    <td th:text="${recProd.precio_venta}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarProducto/' + producto.estado_pro}">
+                                                                    th:href="${'../../../../eliminarRecepcion_Producto/' + recProd.id_registro}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -130,7 +129,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-id_producto="${producto.id_producto}"
+                                                                        th:data-idregpro="${recProd.id_registro}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -164,10 +163,10 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosProducto}"
+            <form id="miFormulario" class="needs-validation" th:action="@{/guardarRecepcion_Producto}"
                 method="post" novalidate>
 
-                <div id="replace_producto"></div>
+                <div id="replace_rproducto"></div>
 
                 <div class="text-right mt-3">
                     <button type="submit" onclick="validarFormulario()"
@@ -414,24 +413,24 @@
     </div>
 </aside>
 
-
 <script>
 
-    function buscar(button) {
-        var id_producto = $(button).data('id_producto');
-        var url = "../../../../producto/" + id_producto;
+function buscar(button) {
+        var idRecepcion = $(button).data('idregpro');
+        
+        var url = "../../../../registrarRecepcionProducto/" + idRecepcion;
 
-        $('#replace_producto').load(url, function () {
-            $('#modal-form').attr('action', '/guardarModificacionesProducto');
+        $('#replace_rproducto').load(url, function () {
+            $('#modal-form').attr('action', '/guardarModificacionesRecepcion');
             $('#bs-example-modal-center').modal('show');
         });
     }
 
     function NuevoRegistro() {
 
-        var url = "../../../../registrarProducto";
+        var url = "../../../../registrarRecepcionProducto";
 
-        $('#replace_producto').load(url, function () {
+        $('#replace_rproducto').load(url, function () {
             $('#modal-form').attr('action', '/guardarNuevoProducto'); 
             $('#bs-example-modal-center').modal('show');
         });

@@ -39,7 +39,7 @@ public class Lote  implements Serializable{
     private Date fecha_ingreso;
     
     @Column(name = "estado_lote")
-    private Integer estado_lote;
+    private String estado_lote;
     
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)

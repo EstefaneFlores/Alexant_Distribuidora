@@ -124,40 +124,110 @@
             </div>
 
 
-            <!-- <div class="col-md-4 mb-3">
-                <label for="venta">Venta</label>
-                <select id="venta" name="venta.id_venta" class="form-control" th:field="${det_Venta.venta.id_venta}" required>
-                    <option value="" disabled selected>Seleccione una venta</option>
-             
-                    <option th:each="venta : ${ventas}" th:value="${venta.id_venta}" th:text="${venta.nombre_venta}"></option>
-                </select>
-                <div class="valid-feedback">
-                    ¡Se ve bien!
-                </div>
-            </div> -->
-            
-            <!-- <div class="col-md-4 mb-3">
-                <label for="detalleVenta">Detalle Venta</label>
-                <select multiple id="detalleVenta" name="det_venta" class="form-control" th:field="${producto.det_venta}" required>
-                    <option th:each="detalle : ${detallesVenta}" th:value="${detalle.id_detalleVenta}" th:text="${detalle.cantidad_det_venta}"></option>
-                </select>
-                <div class="valid-feedback">Looks good!</div>
-            </div> -->
         </div>
     </div>
     
-
-    <!-- <div class="col-md-4 mb-3">
-        <label for="validationCustom03">Grado Académico</label>
-        <select class="custom-select" name="detalle_lote" required>
-            <option value="">Selecciona tu grado académico</option>
-            <th:block th:each="producto: ${productos}" th:if="${producto.estado_pro != 'X'}">
-                <option th:value="${producto.id_producto}" th:text="${producto.nombre_producto}"></option>
-            </th:block>
-        </select>
-        <div class="valid-feedback">
-            ¡Se ve bien!
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:fragment="contentRecepcionProducto">
+    <input type="hidden" name="id_registro" th:field="${recepcion_producto.id_registro}">
+    <h4 class="header-title">DATOS DE RECEPCIÓN</h4>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">Precio producto</label>
+            <input type="number" class="form-control" name="nombreProducto" th:field="${recepcion_producto.precio_producto}" placeholder="Cantidad caja" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
         </div>
-    </div> -->
+
+        <div class="col-md-6 mb-3">
+            <label for="codigoProducto">Cantidad caja</label>
+            <input type="number" class="form-control" name="codigoProducto" id="codigoProducto" th:field="${recepcion_producto.cantidad_caja}" placeholder="Cantidad caja" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="stockProducto">Precio venta</label>
+            <input type="number" class="form-control" name="stockProducto" id="stockProducto" th:field="${recepcion_producto.precio_venta}" placeholder="Precio venta" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="proveedor">Lote</label>
+            <select id="proveedor" name="proveedor" class="form-control" th:field="${recepcion_producto.lote.id_lote}" required>
+                <option disabled selected>Seleccione un Lote</option>
+                <option th:each="lots : ${lotes}" th:value="${lots.id_lote}" th:text="${lots.cantidad_Lote}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+
+    </div>
+</div>
+   <!-- ---------------------------------------------------------------------------------------------- -->
+   <div th:fragment="contentBiene">
+    <input type="hidden" name="biene" th:field="${biene.id_biene}">
+    <h4 class="header-title">DATOS DE BIENE</h4>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">Codigo</label>
+            <input type="text" class="form-control" name="codigo" th:field="${biene.codigo_biene}" placeholder="Codigo" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="codigoProducto">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="nombre_biene" th:field="${biene.nombre_biene}" placeholder="Nombre" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="stockProducto">Descripción</label>
+            <input type="text" class="form-control" name="descripcion" id="descripcion" th:field="${biene.descripcion_biene}" placeholder="Descripcion" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <!-- <div class="col-md-6 mb-3">
+            <label for="persona">Eleccionar Persona</label>
+            <select id="persona" name="persona" class="form-control" th:field="${biene.persona.id_persona}" required>
+                <option disabled selected>Seleccione un proveedor</option>
+                <option th:each="pers : ${personas}" th:value="${pers.id_persona}" th:text="${pers.nombre_persona}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div> -->
+
+    </div>
+</div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:fragment="contentCargo">
+    <input type="hidden" name="id_cargo" th:field="${cargo.id_cargo}">
+    <h4 class="header-title">DATOS DE CARGO</h4>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">Precio producto</label>
+            <input type="text" class="form-control" name="nombreCargo" th:field="${cargo.nombre_cargo}" placeholder="Cantidad caja" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
     </html>

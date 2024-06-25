@@ -2,7 +2,6 @@ package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,8 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -35,13 +32,13 @@ public class Biene  implements Serializable{
     private Integer id_biene;
 
     @Column(name = "codigo_biene")
-    private Integer codigo_biene;
+    private String codigo_biene;
 
     @Column(name = "nombre_biene")
-    private Integer nombre_biene;
+    private String nombre_biene;
 
     @Column(name = "estado_biene")
-    private Integer estado_biene;
+    private String estado_biene;
 
     @Column(name = "descripcion_biene")
     private String descripcion_biene;
@@ -67,8 +64,8 @@ public class Biene  implements Serializable{
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "biene", fetch = FetchType.LAZY)
 private List<TipoBiene> tipoBienes;
 
-@ManyToMany(fetch = FetchType.LAZY)
-@JoinTable(name = "bienePersona", joinColumns = @JoinColumn(name = "id_biene"), inverseJoinColumns = @JoinColumn(name = "id_persona"))
-private Set<Persona> personas;
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "id_persona")
+private Persona persona;
 
 }
