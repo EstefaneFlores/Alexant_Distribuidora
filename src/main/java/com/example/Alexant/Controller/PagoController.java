@@ -1,115 +1,122 @@
 package com.example.Alexant.Controller;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.Alexant.Models.entitys.Moneda;
 import com.example.Alexant.Models.entitys.Pago;
+import com.example.Alexant.Models.entitys.Usuario;
+import com.example.Alexant.Models.entitys.Venta;
 import com.example.Alexant.Models.service.service.IMonedaService;
 import com.example.Alexant.Models.service.service.IPagoService;
+import com.example.Alexant.Models.service.service.ITipoCambioService;
+import com.example.Alexant.Models.service.service.IUsuarioService;
+import com.example.Alexant.Models.service.service.IVentaService;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 @Controller
 public class PagoController {
-
     @Autowired
     private IPagoService pagoService;
 
     @Autowired
-    private IMonedaService iMonedaService;
+    private IVentaService ventaService;;
 
-    // ========= Formulario para registrar =========
+    @Autowired
+    private IMonedaService monedaService;
+    
+    @Autowired
+    private IUsuarioService usuarioService;
+   
+
+    @GetMapping("/listarPago")
+    public String listarPago(Model model, HttpServletRequest request) {
+        if (request.getSession().getAttribute("userLog") != null) {
+            model.addAttribute("pagos", pagoService.findAll());
+            model.addAttribute("ventas", ventaService.findAll());
+            model.addAttribute("monedas", monedaService.findAll());
+
+            Usuario user = (Usuario) request.getSession().getAttribute("userLog");
+            Usuario userLog = usuarioService.findOne(user.getId_usuario());
+            model.addAttribute("userLog", userLog);
+            return "listaPago";
+        } else {
+            return "redirect:/aux";
+        }
+    }
+
+    @RequestMapping(value = "/ver-pago/{id_pago}")
+    public String verPago(@PathVariable(value = "id_pago") Integer id_pago, Model model) {
+        model.addAttribute("pago", pagoService.findOne(id_pago));
+        model.addAttribute("ventas", ventaService.findAll());
+        model.addAttribute("monedas", monedaService.findAll());
+
+        return "Usuarios/formularioPago";
+    }
+
+    @RequestMapping(value = "/form-nuevo-pago")
+    public String nuevaPago(Model model) {
+        model.addAttribute("pago", new Pago());
+        model.addAttribute("ventas", ventaService.findAll());
+        model.addAttribute("monedas", monedaService.findAll());
+
+        return "Usuarios/formularioPago";
+    }
 
     @GetMapping(value = "/formRegistroPago")
-    public String registroPago(@Validated Pago pago, Model model) {
+    public String registroPago(Model model) {
         model.addAttribute("pago", new Pago());
         model.addAttribute("pagos", pagoService.findAll());
-
-        model.addAttribute("moneda", new Moneda());
-        model.addAttribute("monedas", iMonedaService.findAll());
-        return "alexant/formPago"; /*No tenemos formularios todavía
-     */
+        model.addAttribute("ventas", ventaService.findAll());
+        model.addAttribute("monedas", monedaService.findAll());
+    
+        return "FormPago";
     }
-
-    /* ================= GUARDAR =================== */
-
-    @PostMapping(value = "/guardarPago")
-    public String guardarPago(@Validated Pago pago) {
-        pago.setEstado_pago(1);
-        pagoService.save(pago);
-        return "redirect:/ListasPago"; /*No teneos listasVentas*/
-    }
-
-    /*=============== ELIMINAR =====================*/
+    
 
     @RequestMapping(value = "/eliminarPago/{id_pago}")
     public String eliminarPago(@PathVariable("id_pago") Integer id_pago) {
         Pago pago = pagoService.findOne(id_pago);
-        pago.setEstado_pago(0);
+        pago.setEstado_pago("X");
         pagoService.save(pago);
-        return "redirect:/ListasPago"; /*Falta el formulario*/ 
 
+        return "redirect:/formRegistroPago";
     }
 
-    /*=============== LISTAR =====================*/
-
-    @GetMapping(value = "/ListasPago")
-    public String listarPago(Model model) {
-        model.addAttribute("pago", new Pago());
-        model.addAttribute("pagos", pagoService.findAll());
-
-        model.addAttribute("moneda", new Moneda());
-        model.addAttribute("monedas", iMonedaService.findAll());
-
-        return "listas/listaPago";/*Falta el formulario*/ 
-    }
-
-  
-    /*=============== MODIFICAR =====================*/
-
-    /* Modificación Modal */
     @RequestMapping(value = "/pago/{id_pago}")
-    public String getContentPago(@PathVariable(value = "id_pago") Integer id_pago, Model model,
-        HttpServletRequest request) {
+    public String getContentPago(@PathVariable(value = "id_pago") Integer id_pago, Model model) {
         model.addAttribute("pago", pagoService.findOne(id_pago));
+        model.addAttribute("ventas", ventaService.findAll());
+        model.addAttribute("monedas", monedaService.findAll());      
 
-        model.addAttribute("moneda", new Moneda());
-        model.addAttribute("monedas", iMonedaService.findAll());
-
-        return "contentPago :: contentPago";
-
+        return "Conten :: contentPago";
     }
 
-    /* Registrar DIP model */
     @RequestMapping(value = "/registrarPago")
     public String getRegistroPago(Model model) {
         model.addAttribute("pago", new Pago());
         model.addAttribute("pagos", pagoService.findAll());
+        model.addAttribute("ventas", ventaService.findAll());
+        model.addAttribute("monedas", monedaService.findAll());     
 
-        model.addAttribute("moneda", new Moneda());
-        model.addAttribute("monedas", iMonedaService.findAll());
-
-        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentPago :: contentPago"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "Conten :: contentPago";
     }
 
-    // --------------------------------------------
+    @PostMapping(value = "/guardarPago")
+    public String registrarPago(@Validated Pago pago) {
+        pago.setEstado_pago("A");
+        pagoService.save(pago);
+        return "redirect:/formRegistroPago";
+    }
 
-    /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosPago")
     public String guardarCambiosPago(@ModelAttribute Pago pago) {
-        pago.setEstado_pago(1);
+        pago.setEstado_pago("A");
         pagoService.save(pago);
-        return "redirect:/ListasPago";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/formRegistroPago";
     }
-
-    // -------------------------------------------------
 }

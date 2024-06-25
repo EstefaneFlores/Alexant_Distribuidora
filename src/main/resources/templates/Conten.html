@@ -110,8 +110,6 @@
                     Looks good!
                 </div>
             </div>
-
-
             <div class="col-md-4 mb-3">
                 <label for="proveedor">Proveedor</label>
                 <select id="proveedor" name="proveedor" class="form-control" th:field="${producto.proveedor.id_proveedor}" required>
@@ -230,4 +228,70 @@
 </div>
 
 
+     <!-- ---------------------------------------------------------------------------------------------- -->
+     <div th:fragment="contentMoneda">
+        <input type="hidden" name="id_moneda" th:field="${moneda.id_moneda}">
+        <h4 class="header-title">DATOS DE MONEDAS</h4>
+        
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="nombreMoneda">Nombre Moneda</label>
+                <input type="text" class="form-control" name="nombreMoneda" th:field="${moneda.nombre_moneda}" placeholder="Nombre Moneda" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="simboloMoneda">Símbolo de la Moneda</label>
+                <input type="text" class="form-control" name="simboloMoneda" id="simboloMoneda" th:field="${moneda.simbolo_moneda}" placeholder="Simbolo Moneda, ej:US$, R$, Bs" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="valorMoneda">Valor Moneda</label>
+                <input type="text" class="form-control" name="valorMoneda" id="valorMoneda" th:field="${moneda.valor_moneda}" placeholder="Valor de la Moneda" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <!-- ---------------------------------------------------------------------------------------------- -->
+       <div th:fragment="contentPago">
+        <input type="hidden" name="id_pago" th:field="${pago.id_pago}">
+        <h4 class="header-title">DATOS DE PAGO</h4>
+        
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="tipoPago">Tipo de Pago</label>
+                <input type="text" class="form-control" name="tipoPago" th:field="${pago.Tipo_pago}" placeholder="Ej: A crédito, contado..." required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+             <div class="col-md-4 mb-3">
+            <label for="venta">Venta Asociada</label>
+            <select id="venta" name="venta" class="form-control" th:field="${pago.venta.id_venta}" required>
+                <option value="" disabled selected>Seleccione una Venta</option>
+                <option th:each="venta : ${ventas}" th:value="${venta.id_venta}" th:text="${venta.total_venta}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="moneda">Moneda Aplicada</label>
+            <select id="moneda" name="moneda" class="form-control" th:field="${pago.moneda.id_moneda}" required>
+                <option value="" disabled selected>Seleccione la Moneda</option>
+                <option th:each="moneda : ${monedas}" th:value="${moneda.id_moneda}" th:text="${moneda.valor_moneda}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+            
+        </div>
+    </div>
     </html>

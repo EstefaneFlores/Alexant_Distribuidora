@@ -2,6 +2,7 @@ package com.example.Alexant.Models.entitys;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Moneda {
     private String valor_moneda;
 
     @Column(name = "estado_moneda")
-    private Integer estado_moneda;
+    private String estado_moneda;
 
  /*==============================================================*/
  /*==============================================================*/
@@ -58,9 +59,8 @@ public class Moneda {
    @Temporal(TemporalType.TIMESTAMP)
    private Date usuario_modificacion;
 
-    @OneToOne
-	@JoinColumn(name = "id_tipo_cambio")
-	private TipoCambio tipoCambio;
+   @OneToOne(mappedBy = "moneda", cascade = CascadeType.ALL, orphanRemoval = true)
+   private TipoCambio tipoCambio;
  
     
 }
