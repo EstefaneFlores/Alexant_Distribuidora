@@ -53,7 +53,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración Lote</h2>
+                    <h2>Administración Lotes</h2>
                     <ul class="breadcrumb padding-0">
                   
                     </ul>
@@ -96,23 +96,20 @@
                                                 <tr>
                                                     <th>Cantidad Lote</th>
                                                     <th>Fecha Ingreso</th>
-                                                    <!-- <th>Proveedor</th> -->
                                                      <th>Opciones</th>
 
                                                 </tr>
                                             </thead>
-
                                             <tbody>
-                                                <tr th:each="lote : ${lotes}" th:if="${lote.id_lote != 'X'}">
-                                                    <td th:text="${lote.cantidad_Lote}"></td>
-                                                    <td th:text="${lote.fecha_ingreso}"></td>
-                                                    <!-- <td th:text="${lote.proveedor}"></td> -->
+                                                <tr th:each="lo : ${lotes}" th:if="${lo.estado_lote != 'X'}">
+                                                    <td th:text="${lo.cantidad_Lote}"></td>
+                                                    <td th:text="${lo.fecha_ingreso}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarLote/' + lote.id_lote}">
+                                                                    th:href="${'../../../../eliminarLote/' + lo.id_lote}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -128,7 +125,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-id_lote="${lote.id_lote}"
+                                                                        th:data-idlote="${lo.id_lote}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -155,16 +152,16 @@
 
 </section>
 
+<!-- Modal -->
+
 <div class="modal fade" id="bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-
             <div class="modal-body">
-
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosLote}"
+            <form id="miFormulario" class="needs-validation" th:action="@{/guardarLote}"
                 method="post" novalidate>
 
                 <div id="replace_lote"></div>
@@ -201,33 +198,12 @@
                 <div class="body">
                     <div class="row">
                         <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h6>App</h6>
-                            <ul class="list-unstyled">
-                                <li><a href="mail-inbox.html">Inbox</a></li>
-                                <li><a href="events.html">Calendar</a></li>
-                                <li><a href="contact.html">Contact list</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h6>User Interface (UI)</h6>
-                            <ul class="list-unstyled">
-                                <li><a href="ui_kit.html">UI KIT</a></li>
-                                <li><a href="tabs.html">Tabs</a></li>
-                                <li><a href="range-sliders.html">Range Sliders</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
-                            <h6>Sample Pages</h6>
-                            <ul class="list-unstyled">                            
-                                <li><a href="image-gallery.html">Image Gallery</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="search-results.html">Search Results</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12">
                             <h6>About</h6>
                             <ul class="list-unstyled">
                                 <li><a href="http://thememakker.com/about/" target="_blank">About</a></li>
+                                <li><a href="http://thememakker.com/contact/" target="_blank">Contact Us</a></li>
+                                <li><a href="http://thememakker.com/admin-templates/" target="_blank">Admin Templates</a></li>
+                                <li><a href="http://thememakker.com/services/" target="_blank">Services</a></li>
                                 <li><a href="http://thememakker.com/portfolio/" target="_blank">Portfolio</a></li>                            
                             </ul>
                         </div>
@@ -309,69 +285,6 @@
             </div>
         </div>
     </div>
-    <div class="notif-menu">
-        <div class="slim_scroll">
-            <div class="card">
-                <div class="header">
-                    <h2><strong>Messages</strong></h2>
-                </div>
-                <div class="body">
-                    <ul class="messages list-unstyled">
-                        <li>
-                            <a href="javascript:void(0);">
-                                <div class="media">
-                                    <img class="media-object rounded-circle" src="/assets/images/xs/avatar1.jpg" alt="">
-                                    <div class="media-body">
-                                        <span class="name">Alexander <small class="time">35min ago</small></span>
-                                        <p class="message">New tasks needs to be done</p>                                        
-                                    </div>
-                                </div>
-                            </a>
-                        </li>     
-                    </ul>  
-                </div>
-            </div>
-            <div class="card">
-                <div class="header">
-                    <h2><strong>Notifications</strong></h2>
-                </div>
-                <div class="body">
-                    <ul class="notification list-unstyled">
-                        <li>
-                            <i class="zmdi zmdi-balance-wallet text-success"></i>
-                            <strong>+$30 New sale</strong>
-                            <p><a href="javascript:void(0)">Admin Template</a></p>
-                            <small class="text-muted">7 min ago</small>
-                        </li>
-                        <li>
-                            <i class="zmdi zmdi-edit text-info"></i>
-                            <strong>You Edited file</strong>
-                            <p><a href="javascript:void(0)">Docs.doc</a></p>
-                            <small class="text-muted">15 min ago</small>
-                        </li>
-                        <li>
-                            <i class="zmdi zmdi-delete text-danger"></i>
-                            <strong>Project removed</strong>
-                            <p><a href="javascript:void(0)">AdminX BS4</a></p>
-                            <small class="text-muted">1 hours ago</small>
-                        </li>
-                        <li>
-                            <i class="zmdi zmdi-account text-success"></i>
-                            <strong>New user</strong>
-                            <p><a href="javascript:void(0)">UI Designer</a></p>
-                            <small class="text-muted">1 hours ago</small>
-                        </li>
-                        <li>
-                            <i class="zmdi zmdi-flag text-warning"></i>
-                            <strong>Alpino v1.0.0 is available</strong>
-                            <p><a href="javascript:void(0)">Update now</a></p>
-                            <small class="text-muted">5 hours ago</small>
-                        </li>
-                    </ul>  
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="task-menu">
         <div class="slim_scroll">
             <div class="card tasks">
@@ -387,8 +300,6 @@
                         <ul class="list-unstyled team-info">
                             <li class="m-r-15"><small class="text-muted">Team</small></li>
                             <li><img src="/assets/images/xs/avatar2.jpg" alt="Avatar"></li>
-                            <li><img src="/assets/images/xs/avatar3.jpg" alt="Avatar"></li>
-                            <li><img src="/assets/images/xs/avatar4.jpg" alt="Avatar"></li>
                         </ul>
                     </a>
                 </div>
@@ -402,19 +313,6 @@
                             <li class="m-r-15"><small class="text-muted">Team</small></li>
                             <li><img src="/assets/images/xs/avatar6.jpg" alt="Avatar"></li>
                             <li><img src="/assets/images/xs/avatar7.jpg" alt="Avatar"></li>
-                        </ul>
-                    </a>
-                </div>
-                <div class="body">
-                    <a href="javascript:void(0);">
-                        <span class="text-muted">Project Name 4 <span class="float-right">68%</span></span>
-                        <div class="progress">
-                            <div class="progress-bar l-coral" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
-                        </div>
-                        <ul class="list-unstyled team-info">
-                            <li class="m-r-15"><small class="text-muted">Team</small></li>
-                            <li><img src="assets/images/xs/avatar8.jpg" alt="Avatar"></li>
-                            <li><img src="assets/images/xs/avatar9.jpg" alt="Avatar"></li>
                         </ul>
                     </a>
                 </div>
@@ -437,24 +335,6 @@
                             <li data-theme="black" class="active">
                                 <div class="black"></div>
                             </li>
-                            <li data-theme="purple">
-                                <div class="purple"></div>
-                            </li>                   
-                            <li data-theme="blue">
-                                <div class="blue"></div>
-                            </li>
-                            <li data-theme="cyan">
-                                <div class="cyan"></div>                    
-                            </li>
-                            <li data-theme="green">
-                                <div class="green"></div>
-                            </li>
-                            <li data-theme="orange">
-                                <div class="orange"></div>
-                            </li>
-                            <li data-theme="blush">
-                                <div class="blush"></div>                    
-                            </li>
                         </ul>
                     </div>
                 </div>                
@@ -466,26 +346,9 @@
                         <ul class="setting-list list-unstyled m-b-0">
                             <li>
                                 <div class="checkbox">
-                                    <input id="checkbox1" type="checkbox">
-                                    <label for="checkbox1">Report Panel Usage</label>
-                                </div>
-                            </li>
-                                <div class="checkbox">
-                                    <input id="checkbox4" type="checkbox">
-                                    <label for="checkbox4">Auto Updates</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox">
-                                    <input id="checkbox5" type="checkbox" checked="">
-                                    <label for="checkbox5">Offline</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="checkbox m-b-0">
-                                    <input id="checkbox6" type="checkbox">
-                                    <label for="checkbox6">Location Permission</label>
-                                </div>
+                                    <input id="checkbox3" type="checkbox">
+                                    <label for="checkbox3">Notifications</label>
+                                </div>                        
                             </li>
                         </ul>
                     </div>
@@ -499,58 +362,6 @@
                     </div>
                 </div>               
             </div>
-            <div class="tab-pane slideLeft" id="activity">
-                <div class="card activities">
-                    <div class="header">
-                        <h2><strong>Recent</strong> Activity Feed</h2>
-                    </div>
-                    <div class="body">
-                        <div class="streamline b-accent">
-                            <div class="sl-item">
-                                <div class="sl-content">
-                                    <div class="text-muted">Just now</div>
-                                    <p>Finished task <a href="" class="text-info">#features 4</a>.</p>
-                                </div>
-                            </div>
-                            <div class="sl-item b-info">
-                                <div class="sl-content">
-                                    <div class="text-muted">10:30</div>
-                                    <p><a href="">@Jessi</a> retwit your post</p>
-                                </div>
-                            </div>
-                            <div class="sl-item b-primary">
-                                <div class="sl-content">
-                                    <div class="text-muted">12:30</div>
-                                    <p>Call to customer <a href="" class="text-info">Jacob</a> and discuss the detail.</p>
-                                </div>
-                            </div>
-                            <div class="sl-item b-warning">
-                                <div class="sl-content">
-                                    <div class="text-muted">1 days ago</div>
-                                    <p><a href="" class="text-info">Jessi</a> commented your post.</p>
-                                </div>
-                            </div>
-                            <div class="sl-item b-primary">
-                                <div class="sl-content">
-                                    <div class="text-muted">2 days ago</div>
-                                    <p>Call to customer <a href="" class="text-info">Jacob</a> and discuss the detail.</p>
-                                </div>
-                            </div>
-                            <div class="sl-item b-primary">
-                                <div class="sl-content">
-                                    <div class="text-muted">3 Week ago</div>
-                                    <p>Call to customer <a href="" class="text-info">Jacob</a> and discuss the detail.</p>
-                                </div>
-                            </div>
-                            <div class="sl-item b-warning">
-                                <div class="sl-content">
-                                    <div class="text-muted">1 Month ago</div>
-                                    <p><a href="" class="text-info">Jessi</a> commented your post.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -566,9 +377,7 @@
                             <h6>ECG VENTAS</h6>
                             <p class="m-b-0">ecgventas@gmail.com</p>
                             <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-facebook-box"></i></a>
-                            <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-linkedin-box"></i></a>
-                            <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-instagram"></i></a>
-                            <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-twitter-box"></i></a>                            
+                            <a href="#" title="" class=" waves-effect waves-block"><i class="zmdi zmdi-linkedin-box"></i></a>                         
                         </div>
                     </div>
                 </li>
@@ -585,7 +394,6 @@
                     <ul class="ml-menu">
                     	<li><a href="producto.html">Formulario Producto</a></li>
                         <li><a href="categoria.html">Formulario Categoria</a></li>
-                        <li><a href="FormLote.html">Formulario Lote</a></li>
                         <li><a href="venta.html">Formulario Venta</a></li>
                         <li><a href="factura.html">Formulario Factura</a></li>
                         <li><a href="pago.html">Formulario Venta</a></li>
@@ -598,140 +406,55 @@
                     	<li><a href="biene.html">Formulario Biene</a></li>  
                     </ul>
                 </li> 
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-swap-alt"></i><span>UI Elements</span> <span class="badge badge-default float-right">15</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="ui_kit.html">UI KIT</a></li>                    
-                        <li><a href="alerts.html">Alerts</a></li>                    
-                        <li><a href="collapse.html">Collapse</a></li>
-                        <li><a href="colors.html">Colors</a></li>
-                        <li><a href="dialogs.html">Dialogs</a></li>
-                        <li><a href="icons.html">Icons</a></li>                    
-                        <li><a href="list-group.html">List Group</a></li>
-                        <li><a href="media-object.html">Media Object</a></li>
-                        <li><a href="modals.html">Modals</a></li>
-                        <li><a href="notifications.html">Notifications</a></li>                    
-                        <li><a href="progressbars.html">Progress Bars</a></li>
-                        <li><a href="range-sliders.html">Range Sliders</a></li>
-                        <li><a href="sortable-nestable.html">Sortable & Nestable</a></li>
-                        <li><a href="tabs.html">Tabs</a></li>
-                        <li><a href="waves.html">Waves</a></li>
-                    </ul>
-                </li>
-                <li class="header">FORMS, CHARTS, TABLES</li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Forms</span> <span class="badge badge-warning float-right">9</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="basic-form-elements.html">Basic Elements</a></li>
-                        <li><a href="advanced-form-elements.html">Advanced Elements</a></li>
-                        <li><a href="form-examples.html">Form Examples</a></li>
-                        <li><a href="form-validation.html">Form Validation</a></li>
-                        <li><a href="form-wizard.html">Form Wizard</a></li>
-                        <li><a href="form-editors.html">Editors</a></li>
-                        <li><a href="form-upload.html">File Upload</a></li>
-                        <li><a href="form-img-cropper.html">Image Cropper</a></li>
-                        <li><a href="form-summernote.html">Summernote</a></li>
-                    </ul>
-                </li>
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-grid"></i><span>Tables</span> <span class="badge badge-info float-right">6</span></a>
-                    <ul class="ml-menu">                        
-                        <li><a href="normal-tables.html">Normal Tables</a></li>
-                        <li><a href="jquery-datatable.html">Jquery Datatables</a></li>
-                        <li><a href="editable-table.html">Editable Tables</a></li>
-                        
-                        <li><a href="table-color.html">Tables Color</a></li>
-						<li><a href="table-filter.html">Tables Filter</a></li>
-                    </ul>
-                </li>            
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-chart"></i><span>Charts</span> <span class="badge badge-default float-right">6</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="morris.html">Morris</a></li>
-                        <li><a href="flot.html">Flot</a></li>
-                        <li><a href="chartjs.html">ChartJS</a></li>
-                        <li><a href="sparkline.html">Sparkline</a></li>
-                        <li><a href="jquery-knob.html">Jquery Knob</a></li>
-                            <li><a href="chart-e.html">E Chart</a></li>
-                    </ul>
-                </li>
-            
-                <li class="sm_menu_btm"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-lock"></i><span>Authentication</span> <span class="badge badge-default float-right">9</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="sign-in.html">Sign In</a></li>
-                        <li><a href="sign-up.html">Sign Up</a></li>
-                        <li><a href="forgot-password.html">Forgot Password</a></li>
-                        <li><a href="404.html">Page 404</a></li>
-                        <li><a href="403.html">Page 403</a></li>
-                        <li><a href="500.html">Page 500</a></li>
-                        <li><a href="503.html">Page 503</a></li>
-                        <li><a href="page-offline.html">Page Offline</a></li>
-                        <li><a href="locked.html">Locked Screen</a></li>
-                    </ul>
-                </li>
-                <li class="sm_menu_btm"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-copy"></i><span>Sample Pages</span> <span class="badge badge-primary float-right">12</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="blank.html">Blank Page</a></li>
-                        <li><a href="teams-board.html">Teams Board</a></li>
-                        <li><a href="projects.html">Projects List</a></li>
-                        <li><a href="image-gallery.html">Image Gallery</a></li>
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="timeline.html">Timeline</a></li>
-                        <li><a href="horizontal-timeline.html">Horizontal Timeline</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="invoices.html">Invoices</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                        <li><a href="search-results.html">Search Results</a></li>
-                        <li><a href="helper-class.html">Helper Classes</a></li>
-                    </ul>
-                </li>
-                <li class="sm_menu_btm"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-map"></i><span>Maps</span> <span class="badge badge-default float-right">3</span></a>
-                    <ul class="ml-menu">
-                        <li><a href="google.html">Google Map</a></li>
-                        <li><a href="yandex.html">YandexMap</a></li>
-                        <li><a href="jvectormap.html">jVectorMap</a></li>
-                    </ul>
-                </li>                
             </ul>
         </div>
     </div>
 </aside>
 
-
 <script>
 
-    function buscar(button) {
-        var id_lote= $(button).data('id_lote');
-        var url = "../../../../lote/" + id_lote;
+function buscar(button) {
+        var idLote = $(button).data('idlote');
+        
+        var url = "../../../../registrarLote/" + idLote;
 
         $('#replace_lote').load(url, function () {
-            $('#modal-form').attr('action', '/guardarCambiosLote');
+            $('#modal-form').attr('action', '/guardarModificacionesLote');
             $('#bs-example-modal-center').modal('show');
         });
     }
 
     function NuevoRegistro() {
-
-        var url = "../../../../registrarLote";
-
-        $('#replace_lote').load(url, function () {
-            $('#modal-form').attr('action', '/guardarNuevoLote'); 
-            $('#bs-example-modal-center').modal('show');
-        });
-    }
+    var url = "/registrarLote";  // Asegúrate de que la URL sea correcta
+    $('#replace_lote').load(url, function () {
+        $('#modal-form').attr('action', '/guardarNuevoLote'); 
+        $('#bs-example-modal-center').modal('show');
+    });
+}
 
 
     document.addEventListener("DOMContentLoaded", function () {
+        // Selecciona el formulario por su id
         const form = document.getElementById("miFormulario");
 
         form.addEventListener("submit", function (event) {
-            let isValid = true; 
+            let isValid = true; // Variable para rastrear la validez del formulario
+
+            // Obtén todos los campos obligatorios (los que tienen el atributo "required")
             const requiredFields = form.querySelectorAll("[required]");
+
             requiredFields.forEach(function (field) {
                 if (!field.value) {
+                    // Si un campo obligatorio está vacío, muestra un mensaje de error
                     isValid = false;
                     field.classList.add("is-invalid");
                 } else {
                     field.classList.remove("is-invalid");
                 }
             });
+
             if (!isValid) {
+                // Si el formulario no es válido, evita que se envíe
                 event.preventDefault();
             }
         });

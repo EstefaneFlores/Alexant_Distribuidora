@@ -3,6 +3,7 @@ package com.example.Alexant.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,27 +30,21 @@ public class Recepcion_productoController {
     @Autowired
     private ILoteService iLoteService;
 
-    // ----------- Formulario para registrar --------
-
-    @GetMapping(value = "/formRegistroRecepcion_Producto")
-    public String registroRecepcion_Producto(@Validated Recepcion_Producto recepcion_producto, Model model) {
-
-        model.addAttribute("recepcion_producto", new Recepcion_Producto());
-        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
-
-        model.addAttribute("lote", new Lote());
-        model.addAttribute("lotes", iLoteService.findAll());
-
-        return "formularios/formModeloRecepcion_Producto";
-    }
-
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarRecepcion_Producto")
-    public String RegistrarRecepcion_Producto(@Validated Recepcion_Producto recepcion_producto) {
+    public String RegistrarRecepcion_Producto(@Validated Recepcion_Producto recepcion_producto, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        model.addAttribute("recepcion_producto", recepcion_producto);
+        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", iLoteService.findAll());
+        return "redirect:/formRecepcionProducto";
+    }
+        
         recepcion_producto.setEstado_recepcion_producto("A");
         iRecepcion_ProductoService.save(recepcion_producto);
-        return "redirect:/ListasRecepcion_Producto";
+        return "redirect:/formRecepcionProducto";
 
     }
 
@@ -63,7 +58,7 @@ public class Recepcion_productoController {
         Recepcion_Producto recepcion_producto = iRecepcion_ProductoService.findOne(id_registro);
         recepcion_producto.setEstado_recepcion_producto("X");
         iRecepcion_ProductoService.save(recepcion_producto);
-        return "redirect:/ListasRecepcion_Producto";
+        return "redirect:/formRecepcionProducto";
 
     }
 
@@ -71,7 +66,7 @@ public class Recepcion_productoController {
 
     /* ------------ Lista ----------------- */
 
-    @GetMapping(value = "/ListasRecepcion_Producto")
+    @GetMapping(value = "/formRecepcionProducto")
     public String listarRecepcion_Producto(Model model) {
 
         model.addAttribute("recepcion_producto", new Recepcion_Producto());
@@ -80,28 +75,26 @@ public class Recepcion_productoController {
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", iLoteService.findAll());
 
-        return "listas/listaRecepcion_Producto";
+        return "FormRecepcionProducto";
     }
 
-  
     // -------------------Para las modificaciones-------------------------
 
     /* Modificación Modal */
-    @RequestMapping(value = "/Recepcion_Producto/{idRegistro}")
+    @RequestMapping(value = "/registrarRecepcionProducto/{idRegistro}")
     public String getContentRecepcion_Producto(@PathVariable(value = "idRegistro") Integer idRegistro, Model model,
             HttpServletRequest request) {
 
-        model.addAttribute("Recepcion_Producto", iRecepcion_ProductoService.findOne(idRegistro));
+        model.addAttribute("recepcion_producto", iRecepcion_ProductoService.findOne(idRegistro));
 
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", iLoteService.findAll());
 
-        return "contentRecepcion_Producto :: contentRecepcion_Producto";
-
+        return "conten :: contentRecepcionProducto";
     }
 
-    /* Registrar Cargo model */
-    @RequestMapping(value = "/registrarRecepcion_Producto")
+    /* Registrar model */
+    @RequestMapping(value = "/registrarRecepcionProducto")
     public String getRegistroRecepcion_Producto(Model model) {
 
         model.addAttribute("recepcion_producto", new Recepcion_Producto());
@@ -111,16 +104,24 @@ public class Recepcion_productoController {
         model.addAttribute("lotes", iLoteService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentRecepcion_Producto :: contentpRecepcion_Producto";
+        return "conten :: contentRecepcionProducto";
     }
 
     // --------------------------------------------
 
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosRecepcion_Producto")
-    public String guardarCambiosRecepcion_Producto(@ModelAttribute Recepcion_Producto recepcion_producto) {
+    public String guardarCambiosRecepcion_Producto(@ModelAttribute Recepcion_Producto recepcion_producto, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("recepcion_producto", recepcion_producto);
+            model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+            model.addAttribute("lote", new Lote());
+            model.addAttribute("lotes", iLoteService.findAll());
+            return "redirect:/formRecepcionProducto";
+        }
+           
         recepcion_producto.setEstado_recepcion_producto("A");
         iRecepcion_ProductoService.save(recepcion_producto);
-        return "redirect:/ListasProveedor";
+        return "redirect:/formRecepcionProducto";
     }
 }

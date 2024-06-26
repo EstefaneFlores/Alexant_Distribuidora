@@ -11,11 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -78,15 +74,9 @@ public class Persona implements Serializable {
    private Date usuario_modificacion;
  /*------------------------------------------------------- */
 
- @ManyToMany
- @JoinTable(name = "persona_biene", joinColumns = @JoinColumn(name = "id_persona"), inverseJoinColumns = @JoinColumn(name = "id_biene"))
- private List<Biene> bienes;
- @OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
- private Cliente cliente;
+ @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
+ private List<Biene> biene;
  
  @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
  private List<Usuario> usuario;
-
-    
-    
 }
