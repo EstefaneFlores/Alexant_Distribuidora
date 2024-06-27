@@ -3,7 +3,6 @@ package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +33,7 @@ public class Recepcion_Producto implements Serializable{
     private Integer id_registro;
 
     @Column (name = "precio_producto")
-    private String precio_producto;
+    private Float precio_producto;
 
     @Column (name = "cantidad_caja")
     private Integer cantidad_caja;

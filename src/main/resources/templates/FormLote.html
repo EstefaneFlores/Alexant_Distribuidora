@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<title>Registro Producto | ECG</title>
+<title>Registro Lote | ECG</title>
 
 
  <!-- DataTables -->
@@ -53,7 +53,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración Producto</h2>
+                    <h2>Administración Lotes</h2>
                     <ul class="breadcrumb padding-0">
                   
                     </ul>
@@ -76,7 +76,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>Productos Registrados</h4>
+                                        <h4 class="header-title"></i>Lotes Registrados</h4>
 
                                         <!-- ------------- -->
 
@@ -94,27 +94,22 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Nombre Prdocuto</th>
-                                                    <th>Codigo Producto</th>
-                                                    <th>Estoque Producto</th>
-                                                     <th>Cantidad Cajas</th>
+                                                    <th>Cantidad Lote</th>
+                                                    <th>Fecha Ingreso</th>
                                                      <th>Opciones</th>
 
                                                 </tr>
                                             </thead>
-
                                             <tbody>
-                                                <tr th:each="producto : ${productos}" th:if="${producto.estado_pro != 'X'}">
-                                                    <td th:text="${producto.nombre_producto}"></td>
-                                                    <td th:text="${producto.codigo_producto}"></td>
-                                                    <td th:text="${producto.stock_producto}"></td>
-                                                    <td th:text="${producto.cantidad_caja}"></td>
+                                                <tr th:each="lo : ${lotes}" th:if="${lo.estado_lote != 'X'}">
+                                                    <td th:text="${lo.cantidad_Lote}"></td>
+                                                    <td th:text="${lo.fecha_ingreso}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarProducto/' + producto.estado_pro}">
+                                                                    th:href="${'../../../../eliminarLote/' + lo.id_lote}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -130,7 +125,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-id_producto="${producto.id_producto}"
+                                                                        th:data-idlote="${lo.id_lote}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -157,6 +152,8 @@
 
 </section>
 
+<!-- Modal -->
+
 <div class="modal fade" id="bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -164,10 +161,10 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCambiosProducto}"
+            <form id="miFormulario" class="needs-validation" th:action="@{/guardarLote}"
                 method="post" novalidate>
 
-                <div id="replace_producto"></div>
+                <div id="replace_lote"></div>
 
                 <div class="text-right mt-3">
                     <button type="submit" onclick="validarFormulario()"
@@ -414,28 +411,26 @@
     </div>
 </aside>
 
-
 <script>
 
-    function buscar(button) {
-        var id_producto = $(button).data('id_producto');
-        var url = "../../../../producto/" + id_producto;
+function buscar(button) {
+        var idLote = $(button).data('idlote');
+        
+        var url = "../../../../registrarLote/" + idLote;
 
-        $('#replace_producto').load(url, function () {
-            $('#modal-form').attr('action', '/guardarModificacionesProducto');
+        $('#replace_lote').load(url, function () {
+            $('#modal-form').attr('action', '/guardarModificacionesLote');
             $('#bs-example-modal-center').modal('show');
         });
     }
 
     function NuevoRegistro() {
-
-        var url = "../../../../registrarProducto";
-
-        $('#replace_producto').load(url, function () {
-            $('#modal-form').attr('action', '/guardarNuevoProducto'); 
-            $('#bs-example-modal-center').modal('show');
-        });
-    }
+    var url = "/registrarLote";  // Asegúrate de que la URL sea correcta
+    $('#replace_lote').load(url, function () {
+        $('#modal-form').attr('action', '/guardarNuevoLote'); 
+        $('#bs-example-modal-center').modal('show');
+    });
+}
 
 
     document.addEventListener("DOMContentLoaded", function () {

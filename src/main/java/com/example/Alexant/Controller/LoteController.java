@@ -1,116 +1,156 @@
 package com.example.Alexant.Controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.*;
+import com.example.Alexant.Models.entitys.Detalle_lote;
 import com.example.Alexant.Models.entitys.Lote;
 import com.example.Alexant.Models.entitys.Proveedor;
+import com.example.Alexant.Models.entitys.Recepcion_Producto;
+import com.example.Alexant.Models.service.service.IDetalleLoteServicee;
 import com.example.Alexant.Models.service.service.ILoteService;
 import com.example.Alexant.Models.service.service.IProveedorService;
+import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
 
 import jakarta.servlet.http.HttpServletRequest;
-
 @Controller
 public class LoteController {
-    
-    
+
     @Autowired
     private ILoteService loteService;
 
     @Autowired
-    private IProveedorService iProveedorService;
+    private IDetalleLoteServicee detalleLoteService;
 
-    // ========= Formulario para registrar =========
+    @Autowired
+    private IRecepcion_ProductoService recepcionProductoService;
 
-    @GetMapping(value = "/formRegistroLote")
-    public String registroLote(@Validated Lote lote, Model model) {
-        model.addAttribute("lote", new Lote());
-        model.addAttribute("lotes", loteService.findAll());
+    @Autowired
+    private IProveedorService proveedorService;
 
-        model.addAttribute("proveedor", new Proveedor());
-        model.addAttribute("proveedores", iProveedorService.findAll());
-
-        return "alexant/formLote"; /*No tenemos formularios todavía
-     */
-    }
-
-    /* ================= GUARDAR =================== */
+    
+    /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarLote")
-    public String guardarLote(@Validated Lote lote) {
-        lote.setEstado_lote(1);
-        loteService.save(lote);
-        return "redirect:/ListasLote"; /*No teneos listasVentas*/
-    }
-
-    /*=============== ELIMINAR =====================*/
-
-    @RequestMapping(value = "/eliminarLote/{id_lote}")
-    public String eliminarLote(@PathVariable("id_lote") Integer id_lote) {
-        Lote lote = loteService.findOne(id_lote);
-        lote.setEstado_lote(0);
-        loteService.save(lote);
-        return "redirect:/ListasLote"; /*Falta el formulario*/ 
-
-    }
-
-    /*=============== LISTAR =====================*/
-
-    @GetMapping(value = "/ListasLote")
-    public String listarLote(Model model) {
-        model.addAttribute("lote", new Lote());
+    public String RegistrarLote(@Validated Lote lote, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        model.addAttribute("lote", lote);
         model.addAttribute("lotes", loteService.findAll());
 
-        model.addAttribute("proveedor", new Proveedor());
-        model.addAttribute("proveedores", iProveedorService.findAll());
-
-        return "listas/listaLote";/*Falta el formulario*/ 
-    }
-
-  
-    /*=============== MODIFICAR =====================*/
-
-    /* Modificación Modal */
-    @RequestMapping(value = "/lote/{id_lote}")
-    public String getContentLote(@PathVariable(value = "id_lote") Integer id_lote, Model model,
-        HttpServletRequest request) {
-        model.addAttribute("lote", loteService.findOne(id_lote));
-
-        model.addAttribute("proveedor", new Proveedor());
-        model.addAttribute("proveedores", iProveedorService.findAll());
-
-        return "contentLote :: contentLote";
-
-    }
-
-    /* Registrar DIP model */
-    @RequestMapping(value = "/registrarLote")
-    public String getRegistroLote(Model model) {
-        model.addAttribute("lote", new Lote());
-        model.addAttribute("lotes", loteService.findAll());
+        model.addAttribute("detalleLotes", detalleLoteService.findAll());
+        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
+        model.addAttribute("proveedores", proveedorService.findAll());
         
-        model.addAttribute("proveedor", new Proveedor());
-        model.addAttribute("proveedores", iProveedorService.findAll());
-        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentLote :: contentLote"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/formAdministrarLote";
+    }
+    lote.setEstado_lote("A");
+    loteService.save(lote);
+        return "redirect:/formAdministrarLote";
+
     }
 
     // --------------------------------------------
 
-    /* Guardar Cambios */
-    @PostMapping(value = "/guardarCambiosLote")
-    public String guardarCambiosLote(@ModelAttribute Lote lote) {
-        lote.setEstado_lote(1);
+    /*--------------- eliminar -----------*/
+
+    @RequestMapping(value = "/eliminarLote/{id_lote}")
+    public String eliminarLote(@PathVariable("id_lote") Integer id_lote) {
+
+        Lote lote = loteService.findOne(id_lote);
+        lote.setEstado_lote("X");
         loteService.save(lote);
-        return "redirect:/ListasLote";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/formAdministrarLote";
+
     }
 
-    // -------------------------------------------------
+    // --------------------------------------------
+
+    /* ------------ Lista ----------------- */
+
+    @GetMapping(value = "/formAdministrarLote")
+    public String listarLote(Model model) {
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("detalleLote", new Detalle_lote());
+        model.addAttribute("detalleLotes", detalleLoteService.findAll());
+        
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", proveedorService.findAll());
+
+        return "FormLote";
+    }
+
+    // -------------------Para las modificaciones-------------------------
+
+    /* Modificación Modal */
+    @RequestMapping(value = "/registrarLote/{idLote}")
+    public String getContentLote(@PathVariable(value = "idLote") Integer idLote, Model model,
+            HttpServletRequest request) {
+
+        model.addAttribute("lote", loteService.findOne(idLote));
+
+        model.addAttribute("detalleLote", new Detalle_lote());
+        model.addAttribute("detalleLotes", detalleLoteService.findAll());
+        
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", proveedorService.findAll());
+
+        return "conten :: contentLote";
+    }
+
+    /* Registrar model */
+    @RequestMapping(value = "/registrarLote")
+    public String getRegistroLote(Model model) {
+
+        model.addAttribute("lote", new Lote());
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("detalleLote", new Detalle_lote());
+        model.addAttribute("detalleLotes", detalleLoteService.findAll());
+
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", proveedorService.findAll());
+
+        return "conten :: contentLote";
+    }
+
+    // --------------------------------------------
+ 
+    /* Guardar Cambios */
+    @PostMapping(value = "/guardarCambiosLote")
+    public String guardarCambiosLote(@ModelAttribute Lote lote, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+        model.addAttribute("lote", lote);
+        model.addAttribute("lotes", loteService.findAll());
+
+        model.addAttribute("detalleLote", new Detalle_lote());
+        model.addAttribute("detalleLotes", detalleLoteService.findAll());
+        
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
+
+        model.addAttribute("proveedor", new Proveedor());
+        model.addAttribute("proveedores", proveedorService.findAll());   
+    
+            return "redirect:/formAdministrarLote";
+        }
+           
+        lote.setEstado_lote("A");
+        loteService.save(lote);
+        return "redirect:/formAdministrarLote";
+    }
+    
 }
