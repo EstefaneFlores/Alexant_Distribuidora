@@ -11,6 +11,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -31,7 +33,7 @@ public class Categoria  implements Serializable{
     private Integer id_categoria;
 
     @Column(name = "tipo_categoria")
-    private Integer tipo_categoria;
+    private String tipo_categoria;
 
     @Column(name = "estado_categoria")
     private String estado_categoria;
@@ -53,9 +55,9 @@ public class Categoria  implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionCa;
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
-    private List<Producto> producto;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_producto")
+    private Producto producto;
 
 
 }

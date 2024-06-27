@@ -291,7 +291,6 @@
                 Looks good!
             </div>
         </div>
-            
         </div>
     </div>
     
@@ -319,6 +318,21 @@
                 </select>
                 <div class="valid-feedback">¡Perfecto!</div>
             </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:replace="~{conten :: contentCategoria}">
+    <div th:fragment="contentCategoria">
+        <input type="hidden" name="categoria" th:field="${categoria.id_categoria}">
+        <h4 class="header-title">DATOS DE CATEGORIA</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="categoria">Tipo de Categoria</label>
+                <input type="text" class="form-control" name="categoria" th:field="${categoria.tipo_categoria}" placeholder="Tipo de Categoria" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
         </div>
     </div>
 </div>
