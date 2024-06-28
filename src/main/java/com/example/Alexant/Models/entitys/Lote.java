@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,6 +37,7 @@ public class Lote  implements Serializable{
     @Column(name = "cantidad_Lote")
     private Integer cantidad_Lote;
 
+     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_ingreso")
     private Date fecha_ingreso;
     

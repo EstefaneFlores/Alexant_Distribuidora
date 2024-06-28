@@ -1,109 +1,115 @@
 package com.example.Alexant.Controller;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.example.Alexant.Models.entitys.Cargo;
 import com.example.Alexant.Models.entitys.Categoria;
+import com.example.Alexant.Models.entitys.Producto;
 import com.example.Alexant.Models.service.service.ICategoriaService;
+import com.example.Alexant.Models.service.service.IProductoService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@RestController
+@Controller
 public class CategoriaController {
 
     @Autowired
     private ICategoriaService iCategoriaService;
 
-    // ----------- Formulario para registrar --------
-
-    @GetMapping(value = "/formRegistroCategoria")
-    public String registroCategoria(@Validated Categoria categoria, Model model) {
-
-        model.addAttribute("categoria", new Categoria());
-        model.addAttribute("categorias", iCategoriaService.findAll());
-
-        return "formularios/formModeloCategoria";
-    }
+    @Autowired
+    private IProductoService productoService;
 
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarCategoria")
-    public String RegistrarCategoria(@Validated Categoria categoria) {
-        categoria.setEstado_categoria("A");
-        iCategoriaService.save(categoria);
-        return "redirect:/ListasCategoria";
+    public String RegistrarCategoria(@Validated Categoria categoria, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        model.addAttribute("categoria", categoria);
+        model.addAttribute("categorias", iCategoriaService.findAll());
+     
+        model.addAttribute("productos", productoService.findAll());
+        
+        return "redirect:/formAdministrarCategoria";
+    }
+    categoria.setEstado_categoria("A");
+    iCategoriaService.save(categoria);
+        return "redirect:/formAdministrarCategoria";
+
     }
 
-    // --------------------------------------------
 
-    /*--------------- eliminar -----------*/
+    /*--------------- ELIMINAR -----------*/
 
-    @RequestMapping(value = "/eliminarCategoria/{id_Categoria}")
+    @RequestMapping(value = "/eliminarCategoria/{id_categoria}")
     public String eliminarCategoria(@PathVariable("id_categoria") Integer id_categoria) {
-
         Categoria categoria = iCategoriaService.findOne(id_categoria);
         categoria.setEstado_categoria("X");
         iCategoriaService.save(categoria);
-        return "redirect:/ListasCategoria";
+        return "redirect:/formAdministrarCategoria";
 
     }
 
-    // --------------------------------------------
 
-    /* ------------ Lista ----------------- */
+    /* --------------- LISTA ----------------- */
 
-    @GetMapping(value = "/ListasCategoria")
+    @GetMapping(value = "/formAdministrarCategoria")
     public String listarCategoria(Model model) {
+        model.addAttribute("categoria", new Categoria());
+        model.addAttribute("categorias", iCategoriaService.findAll());
+      
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", productoService.findAll());
 
-        model.addAttribute("Categoria", new Categoria());
-        model.addAttribute("Categorias", iCategoriaService.findAll());
-
-        return "listas/listaCategoria";
+        return "formCategoria";
     }
 
-  
-    // -------------------Para las modificaciones-------------------------
+    // -----------Para las modificaciones---------------
 
-    /* Modificación Modal */
-    @RequestMapping(value = "/categoria/{idCategoria}")
+    @RequestMapping(value = "/registrarCategoria/{idCategoria}")
     public String getContentCategoria(@PathVariable(value = "idCategoria") Integer idCategoria, Model model,
             HttpServletRequest request) {
-
         model.addAttribute("categoria", iCategoriaService.findOne(idCategoria));
 
-        return "contentCategoria :: contentcategoria";
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", productoService.findAll());
 
+        return "conten :: contentCategoria";
     }
 
-    /* Registrar Cargo model */
+    /* Registrar model */
     @RequestMapping(value = "/registrarCategoria")
     public String getRegistroCategoria(Model model) {
-
-        model.addAttribute("categoria", new Cargo());
+        model.addAttribute("categoria", new Categoria());
         model.addAttribute("categorias", iCategoriaService.findAll());
+       
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", productoService.findAll());
 
-        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentCategoria :: contentcategoria";
+        return "conten :: contentCategoria";
     }
 
-    // --------------------------------------------
-
-    /* Guardar Cambios */
+    // ------------------Guardar Cambios--------------------
+ 
     @PostMapping(value = "/guardarCambiosCategoria")
-    public String guardarCambiosCategoria(@ModelAttribute Categoria categoria) {
+    public String guardarCambiosCategoria(@ModelAttribute Categoria categoria, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("categoria", categoria);
+            model.addAttribute("categorias", iCategoriaService.findAll());
+          
+            model.addAttribute("producto", new Producto());
+            model.addAttribute("productos", productoService.findAll());    
+    
+            return "redirect:/formAdministrarCategoria";
+        }
+           
         categoria.setEstado_categoria("A");
         iCategoriaService.save(categoria);
-        return "redirect:/ListasCategoria";
+        return "redirect:/formAdministrarCategoria";
     }
-
-    // -------------------------------------------------
 }

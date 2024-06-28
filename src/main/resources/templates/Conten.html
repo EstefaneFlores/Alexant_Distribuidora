@@ -291,169 +291,130 @@
                 Looks good!
             </div>
         </div>
+        </div>
+    </div>
+    
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:replace="~{conten :: contentLote}">
+    <div th:fragment="contentLote">
+        <input type="hidden" name="lote" th:field="${lote.id_lote}">
+        <h4 class="header-title">DATOS DE LOTE</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="cantidadLote">Cantidad Lote</label>
+                <input type="text" class="form-control" name="cantidadLote" th:field="${lote.cantidad_Lote}" placeholder="Cantidad Lote" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="fechaIngreso">Fecha de Ingreso</label>
+                <input type="date" class="form-control" id="fechaIngreso" th:field="${lote.fecha_ingreso}" required>
+                <div class="valid-feedback">¡Perfecto!</div>
+            </div>
+            <!-- <div class="col-md-6 mb-3">
+                <label for="proveedor">Proveedor</label>
+                <select id="proveedor" name="proveedor" class="form-control" th:field="${lote.proveedor.id_proveedor}" required>
+                    <option disabled selected>Seleccione un Proveedor</option>
+                    <option th:each="proveedor : ${proveedores}" th:value="${proveedor.id_proveedor}" th:text="${proveedor.nombre_proveedor}"></option>
+                </select>
+                <div class="valid-feedback">¡Perfecto!</div>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:replace="~{conten :: contentCategoria}">
+    <div th:fragment="contentCategoria">
+        <input type="hidden" name="categoria" th:field="${categoria.id_categoria}">
+        <h4 class="header-title">DATOS DE CATEGORIA</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="categoria">Tipo de Categoria</label>
+                <input type="text" class="form-control" name="categoria" th:field="${categoria.tipo_categoria}" placeholder="Tipo de Categoria" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- ---------------------------------------------------------------------------------------------- -->
+ <!-- <div th:fragment="contentFactura">
+    <input type="hidden" name="id_factura" th:field="${factura.id_factura}">
+    <h4 class="header-title">DATOS DE FACTURAS</h4>
+    
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="numeroFactura">Número Factura</label>
+            <input type="number" class="form-control" name="numeroFactura" th:field="${factura.nro_factura}" placeholder="Número Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="descripcionFactura">Descripcion Factura</label>
+            <input type="text" class="form-control" name="descripcionFactura" id="descripcionFactura" th:field="${factura.descripcion_factura}" placeholder="Descripcion Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="fechaFactura">Fecha Factura</label>
+            <input type="text" class="form-control" name="fechaFactura" id="fechaFactura" th:field="${factura.fecha_factura}" placeholder="Fecha Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div> 
+         <div class="col-md-4 mb-3">
+            <label for="totalDescuento">Total Descuento</label>
+            <input type="text" class="form-control" name="totalDescuento" id="totalDescuento" th:field="${factura.total_descuento}" placeholder="total_descuento" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="totalFactura">Total Factura</label>
+            <input type="text" class="form-control" name="totalFactura" id="totalFactura" th:field="${factura.total_factura}" placeholder="Total Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+ <!-- ---------------------------------------------------------------------------------------------- -->
+ <div th:replace="~{conten :: contentFactura}">
+    <div th:fragment="contentFactura">
+        <input type="hidden" name="factura" th:field="${factura.id_factura}">
+        <h4 class="header-title">DATOS DE FACTURA</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="factura">Número de Factura</label>
+                <input type="number" class="form-control" name="factura" th:field="${factura.nro_factura}" placeholder="Numero Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Descripción de Factura</label>
+                <input type="text" class="form-control" name="factura" th:field="${factura.descripcion_factura}" placeholder="Descripción de Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Fecha de Factura</label>
+                <input type="date" class="form-control" name="factura" th:field="${factura.fecha_factura}" placeholder="Fecha de Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Total de Descuento</label>
+                <input type="number" class="form-control" name="factura" th:field="${factura.total_descuento}" placeholder="Total de Descuento" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Total de Factura</label>
+                <input type="number" class="form-control" name="factura" th:field="${factura.total_factura}" placeholder="Total de Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
             
         </div>
     </div>
-
-    
-     <!-- ---------------------------------------------------------------------------------------------- -->
-     <div th:fragment="contentVenta">
-        <input type="hidden" name="id_venta" th:field="${venta.id_venta}">
-        <h4 class="header-title">DATOS DE VENTAS</h4>
-        
-        <div class="row">
-            <div class="col-md-4 mb-3">
-                <label for="Numero">Numero</label>
-                <input type="text" class="form-control" name="nro_venta" th:field="${venta.nro_venta}" placeholder="Numero de la venta" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="descuento">Descuento</label>
-                <input type="number" class="form-control" name="descuento" id="descuento" th:field="${venta.descuento}" placeholder="Descuento de la venta" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="total_venta">Total</label>
-                <input type="number" class="form-control" name="total_venta" id="total_venta" th:field="${venta.total_venta}" placeholder="Total de la venta" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="fecha_venta">Fecha Venta</label>
-                <input type="date" name="fecha_venta"  th:field="${venta.fecha_venta}" placeholder="yyyy-MM-dd" id="customDateInput"
-                class="form-control datepicker-here" data-language="en" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label for="cliente">Clientes</label>
-                <select id="cliente" name="cliente" class="form-control" th:field="${venta.cliente.id_cliente}" required>
-                    <option value="" disabled selected>Seleccione el cliente</option>
-                    <option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}" th:text="${cliente.razon_social}"></option>
-                </select>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label for="usuario">Usuarios</label>
-                <select id="usuario" name="usuario" class="form-control" th:field="${venta.usuario.id_usuario}" required>
-                    <option value="" disabled selected>Seleccione el usuario</option>
-                    <option th:each="usuario : ${usuarios}" th:value="${usuario.id_usuario}" th:text="${usuario.usuario}"></option>
-                </select>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ---------------------------------------------------------------------------------------------- -->
-<div th:fragment="contentDet_Venta">
-    <input type="hidden" name="id_detalleVenta" th:field="${det_Venta.id_detalleVenta}">
-    <h4 class="header-title">DATOS DE DETALLES DE VENTA</h4>
-    
-    <div class="row">
-        <div class="col-md-4 mb-3">
-            <label for="nombreProducto">CANTIDAD</label>
-            <input type="text" class="form-control" name="cantidad_det_venta" th:field="${det_Venta.cantidad_det_venta}" placeholder="Cantidad de la venta" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-  
-        <div class="col-md-4 mb-3">
-            <label for="nombreProducto">SUBTOTAL</label>
-            <input type="text" class="form-control" name="sub_total" th:field="${det_Venta.sub_total}" placeholder="SubToral de la venta" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-   
-        <div class="col-md-4 mb-3">
-            <label for="nombreProducto">SUBTOTAL DESCUENTO</label>
-            <input type="text" class="form-control" name="sub_total_descuento" th:field="${det_Venta.sub_total_descuento}" placeholder="SubToral de la venta" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-   
-        <div class="col-md-4 mb-3">
-            <label for="nombreProducto">UNIDAD MEDIA</label>
-            <input type="text" class="form-control" name="unidad_medida" th:field="${det_Venta.unidad_medida}" placeholder="SubToral de la venta" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-   
-
-    <div class="col-md-4 mb-3">
-        <label for="usuario">Usuarios</label>
-        <select id="usuario" name="venta" class="form-control" th:field="${det_Venta.venta.id_venta}" required>
-            <option value="" disabled selected>Seleccione el usuario</option>
-            <option th:each="venta : ${ventas}" th:value="${venta.id_venta}" th:text="${venta.nro_venta}"></option>
-        </select>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-
 </div>
-
-<!-- ---------------------------------------------------------------------------------------------- -->
-<div th:fragment="contentDetalle_lote">
-    <input type="hidden" name="id_detalle_lote" th:field="${detalle_lote.id_detalle_lote}">
-    <h4 class="header-title">DATOS DE Detalle Lote</h4>
-    
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="fecha_vencimento">Fecha de Vencimiento</label>
-            <input type="date" name="fecha_vencimento"  th:field="${detalle_lote.fecha_vencimento}" placeholder="yyyy-MM-dd" id="customDateInput"
-            class="form-control datepicker-here" data-language="en" required>
-                        <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- ---------------------------------------------------------------------------------------------- -->
-<div th:fragment="contentTipoBiene">
-    <input type="hidden" name="id_tipo_biene" th:field="${tipoBiene.id_tipo_biene}">
-    <h4 class="header-title">DATOS DE TIPO BIENE</h4>
-    
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="nombreTipoBiene">Nombre tipo biene</label>
-            <input type="text" class="form-control" name="nombre_tipo_biene" th:field="${tipoBiene.nombre_tipo_biene}" placeholder="Nombre del tipo biene" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="col-md-4 mb-3">
-        <label for="usuario">Biene</label>
-        <select id="usuario" name="biene" class="form-control" th:field="${tipoBiene.biene.id_biene}" required>
-            <option value="" disabled selected>Seleccione el codigo del biene</option>
-            <option th:each="biene : ${bienes}" th:value="${biene.id_biene}" th:text="${biene.codigo_biene}"></option>
-        </select>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
-
-</div>
-
     </html>
