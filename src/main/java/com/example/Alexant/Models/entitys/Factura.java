@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,19 +38,20 @@ public class Factura  implements Serializable{
     private Integer nro_factura;
 
     @Column(name = "descripcion_factura")
-    private Integer descripcion_factura;
+    private String descripcion_factura;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_factura")
-    private Integer fecha_factura;
-    
-    @Column(name = "estado_fac")
-    private String estado_fac;
+    private Date fecha_factura;
 
     @Column(name = "total_descuento")
     private Integer total_descuento;
     
     @Column(name = "total_factura")
-    private Integer total_factura;
+    private float total_factura;
+        
+    @Column(name = "estado_fac")
+    private String estado_fac;
     
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)

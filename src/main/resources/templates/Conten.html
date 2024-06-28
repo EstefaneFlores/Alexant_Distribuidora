@@ -336,4 +336,85 @@
         </div>
     </div>
 </div>
+
+ <!-- ---------------------------------------------------------------------------------------------- -->
+ <!-- <div th:fragment="contentFactura">
+    <input type="hidden" name="id_factura" th:field="${factura.id_factura}">
+    <h4 class="header-title">DATOS DE FACTURAS</h4>
+    
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="numeroFactura">Número Factura</label>
+            <input type="number" class="form-control" name="numeroFactura" th:field="${factura.nro_factura}" placeholder="Número Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="descripcionFactura">Descripcion Factura</label>
+            <input type="text" class="form-control" name="descripcionFactura" id="descripcionFactura" th:field="${factura.descripcion_factura}" placeholder="Descripcion Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="fechaFactura">Fecha Factura</label>
+            <input type="text" class="form-control" name="fechaFactura" id="fechaFactura" th:field="${factura.fecha_factura}" placeholder="Fecha Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div> 
+         <div class="col-md-4 mb-3">
+            <label for="totalDescuento">Total Descuento</label>
+            <input type="text" class="form-control" name="totalDescuento" id="totalDescuento" th:field="${factura.total_descuento}" placeholder="total_descuento" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="totalFactura">Total Factura</label>
+            <input type="text" class="form-control" name="totalFactura" id="totalFactura" th:field="${factura.total_factura}" placeholder="Total Factura" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+ <!-- ---------------------------------------------------------------------------------------------- -->
+ <div th:replace="~{conten :: contentFactura}">
+    <div th:fragment="contentFactura">
+        <input type="hidden" name="factura" th:field="${factura.id_factura}">
+        <h4 class="header-title">DATOS DE FACTURA</h4>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="factura">Número de Factura</label>
+                <input type="number" class="form-control" name="factura" th:field="${factura.nro_factura}" placeholder="Numero Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Descripción de Factura</label>
+                <input type="text" class="form-control" name="factura" th:field="${factura.descripcion_factura}" placeholder="Descripción de Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Fecha de Factura</label>
+                <input type="date" class="form-control" name="factura" th:field="${factura.fecha_factura}" placeholder="Fecha de Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Total de Descuento</label>
+                <input type="number" class="form-control" name="factura" th:field="${factura.total_descuento}" placeholder="Total de Descuento" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="factura">Total de Factura</label>
+                <input type="number" class="form-control" name="factura" th:field="${factura.total_factura}" placeholder="Total de Factura" required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            
+        </div>
+    </div>
+</div>
     </html>
