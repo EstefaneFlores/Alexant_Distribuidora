@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.Alexant.Models.entitys.Persona;
+import com.example.Alexant.Models.entitys.Rol;
 import com.example.Alexant.Models.entitys.Usuario;
+import com.example.Alexant.Models.entitys.UsuarioRol;
 import com.example.Alexant.Models.service.service.IPersonaService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 import com.example.Alexant.Models.service.service.IVentaService;
@@ -28,6 +31,15 @@ public class IndexController {
 	private IVentaService iVentaService;
 	@Autowired
 	private IPersonaService iPersonaService;
+
+	  @GetMapping(value = "/Inicio")
+    public String listarUsuarioRol(Model model) {
+
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+
+        return "index2";/* Falta el formulario */
+    }
 
 	// Archive archive = new Archive();
 

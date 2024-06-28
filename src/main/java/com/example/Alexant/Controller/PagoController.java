@@ -1,5 +1,4 @@
 package com.example.Alexant.Controller;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,13 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.Alexant.Models.entitys.Moneda;
 import com.example.Alexant.Models.entitys.Pago;
 import com.example.Alexant.Models.entitys.Usuario;
-import com.example.Alexant.Models.entitys.Venta;
 import com.example.Alexant.Models.service.service.IMonedaService;
 import com.example.Alexant.Models.service.service.IPagoService;
-import com.example.Alexant.Models.service.service.ITipoCambioService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 import com.example.Alexant.Models.service.service.IVentaService;
 
@@ -36,6 +32,7 @@ public class PagoController {
     @GetMapping("/listarPago")
     public String listarPago(Model model, HttpServletRequest request) {
         if (request.getSession().getAttribute("userLog") != null) {
+            
             model.addAttribute("pagos", pagoService.findAll());
             model.addAttribute("ventas", ventaService.findAll());
             model.addAttribute("monedas", monedaService.findAll());
@@ -69,6 +66,7 @@ public class PagoController {
 
     @GetMapping(value = "/formRegistroPago")
     public String registroPago(Model model) {
+
         model.addAttribute("pago", new Pago());
         model.addAttribute("pagos", pagoService.findAll());
         model.addAttribute("ventas", ventaService.findAll());

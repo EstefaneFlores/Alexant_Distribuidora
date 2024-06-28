@@ -1,9 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,8 +15,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -39,7 +39,8 @@ public class Venta implements Serializable{
     private float total_venta;
 
     @Column(name = "fecha_venta")
-    private Date fecha_venta;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fecha_venta;
 
     @Column(name = "descuento")
     private float descuento;
@@ -48,7 +49,7 @@ public class Venta implements Serializable{
     private Integer nro_venta;
 
     @Column(name = "estado_venta")
-    private Integer estado_venta;
+    private String estado_venta;
 
     /*========================================================*/
 
@@ -68,6 +69,8 @@ public class Venta implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date usuario_modificacionVe;
 
+    // -------------------------------
+
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
@@ -75,7 +78,9 @@ public class Venta implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
     private List<Pago> pagos;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)

@@ -13,7 +13,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -50,12 +49,13 @@ public class Usuario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modificacion;
 
+
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<UsuarioRol> UsuarioRol;
 
 	@OneToOne
-    @MapsId
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_Empleado")
     private Empleado empleado;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)

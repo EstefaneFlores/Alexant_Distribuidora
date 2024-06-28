@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,13 +34,15 @@ public class Detalle_lote  implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column(name = "id_detalle_lote")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Integer id_detalle_lote;
 
     @Column(name = "fecha_vencimento")
-    private Integer fecha_vencimento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fecha_vencimento;
 
     @Column(name = "estado_det_lote")
-    private Integer estado_det_lote;
+    private String estado_det_lote;
 
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)

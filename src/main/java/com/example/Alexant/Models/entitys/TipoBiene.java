@@ -1,9 +1,6 @@
 package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,10 +27,10 @@ public class TipoBiene implements Serializable {
     private Integer id_tipo_biene;
 
     @Column(name = "nombre_tipo_biene")
-    private Integer nombre_tipo_biene;
+    private String nombre_tipo_biene;
 
     @Column(name = "estado_tipo_biene")
-    private Integer estado_tipo_biene;
+    private String estado_tipo_biene;
 
 /*========================================================= */
 /*========================================================= */
