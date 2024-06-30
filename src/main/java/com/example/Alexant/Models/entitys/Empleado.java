@@ -39,7 +39,7 @@ public class Empleado  implements Serializable{
     private Integer nro_codigo;
     
     @Column(name = "estado_empleado")
-    private Integer estado_empleado;
+    private String estado_empleado;
     
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
@@ -63,7 +63,8 @@ public class Empleado  implements Serializable{
 	@JoinColumn(name = "id_persona")
 	private Persona persona;
 
-    @OneToOne(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empleado", fetch = FetchType.LAZY)

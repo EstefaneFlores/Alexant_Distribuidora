@@ -417,4 +417,96 @@
         </div>
     </div>
 </div>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:fragment="contentproveedor">
+    <input type="hidden" name="id_proveedor" th:field="${proveedor.id_proveedor}">
+    <h4 class="header-title">DATOS DE PROVEEDOR</h4>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">nombre Proveedor</label>
+            <input type="text" class="form-control" name="nombreCargo" th:field="${proveedor.nombre_proveedor}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">telefono</label>
+            <input type="number" class="form-control" name="telefonoProveedor" th:field="${proveedor.telefono_proveedor}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">descripcion</label>
+            <input type="text" class="form-control" name="descripcionProveedor" th:field="${proveedor.descripcion_proveedor}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:fragment="contentEmpleado">
+    <input type="hidden" name="id_empleado" th:field="${empleado.id_empleado}">
+    <h4 class="header-title">DATOS DE EMPLEADO</h4>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">Ruta</label>
+            <input type="number" class="form-control" name="ruta_empleado" th:field="${empleado.ruta_empleado}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="nombreProducto">Codigo</label>
+            <input type="number" class="form-control" name="nro_codigo" th:field="${empleado.nro_codigo}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+<div th:fragment="contentUs">
+    <input type="hidden" name="id_usuario" th:field="${usuario.id_usuario}">
+    <h4 class="header-title">DATOS DE USUARIO</h4>
+    
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label for="nombreUs">Nombre</label>
+            <input type="text" class="form-control" name="usuario" th:field="${usuario.usuario}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="contrasena">Contraseña</label>
+            <input type="text" class="form-control" name="contrasena" th:field="${usuario.contrasena}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
     </html>

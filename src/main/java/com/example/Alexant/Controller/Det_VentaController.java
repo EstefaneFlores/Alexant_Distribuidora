@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.Alexant.Models.entitys.Biene;
 import com.example.Alexant.Models.entitys.Det_Venta;
-import com.example.Alexant.Models.entitys.Persona;
 import com.example.Alexant.Models.entitys.Venta;
 import com.example.Alexant.Models.service.service.IDet_VentaService;
 import com.example.Alexant.Models.service.service.IVentaService;

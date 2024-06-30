@@ -1,14 +1,14 @@
 package com.example.Alexant.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping; 
 
 import com.example.Alexant.Models.entitys.Empleado;
 import com.example.Alexant.Models.entitys.Persona;
@@ -17,7 +17,7 @@ import com.example.Alexant.Models.service.service.IPersonaService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
-@RestController
+@Controller
 public class EmpleadoController {
     @Autowired
     private IEmpleadoService empleadoService;
@@ -25,30 +25,14 @@ public class EmpleadoController {
     @Autowired
     private IPersonaService IpersonaService;
 
-
-    // ========= Formulario para registrar =========
-
-    @GetMapping(value = "/formRegistroEmpleado")
-    public String registroVenta(@Validated Empleado empleado, Model model) {
-
-        model.addAttribute("empleado", new Empleado());
-        model.addAttribute("empleados", empleadoService.findAll());
-
-        
-        model.addAttribute("persona", new Persona());
-        model.addAttribute("personas", IpersonaService.findAll());
-
-        return "alexant/formEmpleado"; /*No tenemos formularios todavía
-     */
-    }
-
     /* ================= GUARDAR =================== */
 
     @PostMapping(value = "/guardarEmpleado")
     public String guardarEmpleado(@Validated Empleado empleado) {
-        empleado.setEstado_empleado(1);
+        empleado.setEstado_empleado("A");
         empleadoService.save(empleado);
-        return "redirect:/ListasEmpleado"; /*No teneos listasVentas*/
+
+      return "redirect:/ListasEmpleado";
     }
 
     /*=============== ELIMINAR =====================*/
@@ -57,9 +41,10 @@ public class EmpleadoController {
     public String eliminarEmpleado(@PathVariable("id_empleado") Integer id_empleado) {
 
         Empleado empleado = empleadoService.findOne(id_empleado);
-        empleado.setEstado_empleado(0);
+        empleado.setEstado_empleado("X");
         empleadoService.save(empleado);
-        return "redirect:/ListasEmpleado"; /*Falta el formulario*/ 
+
+        return "redirect:/ListasEmpleado";  
 
     }
 
@@ -74,7 +59,7 @@ public class EmpleadoController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", IpersonaService.findAll());
 
-        return "listas/listaEmpleado";/*Falta el formulario*/ 
+        return "/FormEmpleado"; 
     }
 
   
@@ -90,11 +75,11 @@ public class EmpleadoController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", IpersonaService.findAll());
 
-        return "contentEmpleado :: contentEmpleado";
+        return "conten :: contentEmpleado";
 
     }
 
-    /* Registrar DIP model */
+    /* Registrar model */
     @RequestMapping(value = "/registrarEmpleado")
     public String getRegistroEmpleado(Model model) {
 
@@ -103,9 +88,8 @@ public class EmpleadoController {
 
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", IpersonaService.findAll());
-
-        // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentEmpleado :: contentEmpleado"; /*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+ 
+        return "conten :: contentEmpleado";  
     }
 
     // --------------------------------------------
@@ -113,10 +97,10 @@ public class EmpleadoController {
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosEmpleado")
     public String guardarCambiosEmpleado(@ModelAttribute Empleado empleado) {
-        empleado.setEstado_empleado(1);
+        empleado.setEstado_empleado("A");
         empleadoService.save(empleado);
-        return "redirect:/ListasEmpleado";/*Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
+        return "redirect:/ListasEmpleado"; 
     }
 
-    // -------------------------------------------------
+   
 }

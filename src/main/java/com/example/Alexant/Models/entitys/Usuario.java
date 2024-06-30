@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario_credencial")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -39,7 +39,7 @@ public class Usuario implements Serializable {
 	private String contrasena;
 
 	@Column(name = "estado_usuario")
-	private Integer estado_usuario;
+	private String estado_usuario;
 
 	@Column(name = "registro")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -54,8 +54,7 @@ public class Usuario implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<UsuarioRol> UsuarioRol;
 
-	@OneToOne
-    @JoinColumn(name = "id_Empleado")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private Empleado empleado;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)

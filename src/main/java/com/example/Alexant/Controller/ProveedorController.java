@@ -23,16 +23,16 @@ public class ProveedorController {
     @Autowired
     private IProveedorService iProveedorService;
 
-    // ----------- Formulario para registrar --------
+    // // ----------- Formulario para registrar --------
 
-    @GetMapping(value = "/formRegistroProveedor")
-    public String registroProveedor(@Validated Proveedor proveedor, Model model) {
+    // @GetMapping(value = "/formRegistroProveedor")
+    // public String registroProveedor(@Validated Proveedor proveedor, Model model) {
 
-        model.addAttribute("proveedor", new Proveedor());
-        model.addAttribute("proveedores", iProveedorService.findAll());
+    //     model.addAttribute("proveedor", new Proveedor());
+    //     model.addAttribute("proveedores", iProveedorService.findAll());
 
-        return "formularios/formModeloProveedor";
-    }
+    //     return "formularios/formModeloProveedor";
+    // }
 
     /* ------------- GUARDAR ------------ */
 
@@ -44,9 +44,9 @@ public class ProveedorController {
 
     }
 
-    // --------------------------------------------
 
-    /*--------------- eliminar -----------*/
+
+   
 
     @RequestMapping(value = "/eliminarProveedor/{id_proveedor}")
     public String eliminarProveedor(@PathVariable("id_proveedor") Integer id_proveedor) {
@@ -62,13 +62,13 @@ public class ProveedorController {
 
     /* ------------ Lista ----------------- */
 
-    @GetMapping(value = "/Listasproveedor")
+    @GetMapping(value = "/ListasProveedor")
     public String listarproveedor(Model model) {
 
         model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", iProveedorService.findAll());
 
-        return "listas/listaProveedor";
+        return "FormProvedor";
     }
 
   
@@ -81,7 +81,7 @@ public class ProveedorController {
 
         model.addAttribute("proveedor", iProveedorService.findOne(idProveedor));
 
-        return "contentProveedor :: contentproveedor";
+        return "conten :: contentproveedor";
 
     }
 
@@ -93,7 +93,7 @@ public class ProveedorController {
         model.addAttribute("proveedores", iProveedorService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentProveedor :: contentproveedor";
+        return "conten :: contentproveedor";
     }
 
     // --------------------------------------------

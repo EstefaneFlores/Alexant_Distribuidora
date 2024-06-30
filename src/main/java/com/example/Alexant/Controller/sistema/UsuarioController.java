@@ -1,6 +1,7 @@
 package com.example.Alexant.Controller.sistema;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,29 +9,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.example.Alexant.Models.entitys.Empleado;
-import com.example.Alexant.Models.entitys.Ruta;
-import com.example.Alexant.Models.entitys.Usuario;
-import com.example.Alexant.Models.service.service.IEmpleadoService;
-import com.example.Alexant.Models.service.service.IRutaService;
+ 
+import com.example.Alexant.Models.entitys.Usuario; 
 import com.example.Alexant.Models.service.service.IUsuarioService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-@RestController
+@Controller
 @RequestMapping("/sistema/usuario")
 public class UsuarioController {
 
     @Autowired
-    private IUsuarioService usuarioService;
-    @Autowired
-    private IEmpleadoService empleadoService;
-    @Autowired
-    private IRutaService iRutaService;
+    private IUsuarioService usuarioService;  
 
     @GetMapping("/login")
     public String showLoginForm() {
@@ -69,30 +61,23 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
-
-        model.addAttribute("empleado", new Empleado());
-        model.addAttribute("empleados", empleadoService.findAll());
-
-        model.addAttribute("ruta", new Ruta());
-        model.addAttribute("rutas", iRutaService.findAll());
+   
 
         return "usuarios";
     }
-    @GetMapping(value = "/")
-    public String init() {
-        return "redirect:/Alexant/";
-    }
+
+ 
 
     // -------------------------GUARDAR---------------------------------------
 
     @PostMapping(value = "/saveUs")
     public String saveUsiario(@Validated Usuario usuarios) {
 
-        usuarios.setEstado_usuario(1);
+        usuarios.setEstado_usuario("A");
 
         usuarioService.save(usuarios);
 
-        return "redirect:/listaUs";
+        return "redirect:/sistema/usuario/listaUs";
 
     }
 
@@ -103,52 +88,50 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
+  
 
-        model.addAttribute("empleado", new Empleado());
-        model.addAttribute("empleados", empleadoService.findAll());
-
-        model.addAttribute("ruta", new Ruta());
-        model.addAttribute("rutas", iRutaService.findAll());
-
-        return "listas/listaUs";
-
-    }
-    //
-    // -------------------------EDITAR---------------------------------------
-
-    @GetMapping(value = "/editarUs/{idUsuario}")
-    public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
-
-        Usuario usuario = usuarioService.findOne(idUsuario);
-
-        usuario.setEstado_usuario(1);
-
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios", usuarioService.findAll());
-
-        model.addAttribute("empleado", new Empleado());
-        model.addAttribute("empleados", empleadoService.findAll());
-
-        model.addAttribute("ruta", new Ruta());
-        model.addAttribute("rutas", iRutaService.findAll());
-
-        return "redirect:/listaUs";
+        return "FormUs";
     }
 
     // -------------------------ELIMINAR---------------------------------------
 
-    @GetMapping(value = "/eliminarUs/{idUsuario}")
+    @RequestMapping(value = "/eliminarUs/{idUsuario}")
     public String deleteUs(@PathVariable("idUsuario") Integer idUsuario) {
 
         Usuario usuario = usuarioService.findOne(idUsuario);
 
-        usuario.setEstado_usuario(0);
+        usuario.setEstado_usuario("X");
 
         usuarioService.save(usuario);
 
-        return "redirect:/listaUs";
+        return "redirect:/sistema/usuario/listaUs";
 
     }
     
+        /* Registrar model */
+    @RequestMapping(value = "/registrarUs")
+    public String getRegistroUs(Model model) {
+
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+ 
+        return "conten :: contentUs";
+    }
+
+    // -------------------------EDITAR---------------------------------------
+
+    @RequestMapping(value = "/editarUs/{idUsuario}")
+    public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
+
+        Usuario usuario = usuarioService.findOne(idUsuario);
+
+        usuario.setEstado_usuario("A");
+
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+ 
+
+        return "conten :: contentUs";
+    }
 
 }
