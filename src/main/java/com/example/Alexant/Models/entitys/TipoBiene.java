@@ -1,6 +1,10 @@
 package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -36,26 +41,35 @@ public class TipoBiene implements Serializable {
 /*========================================================= */
 /*========================================================= */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
- 
-   @PrePersist
+	// -------------------------------------
+
+	@Column(name = "registroTipoBiene", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroTipoBiene;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroTipoBiene = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificaion;
+	@Column(name = "modificacionTipoBiene")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionTipoBiene;
+
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionTipoBiene = LocalDate.now();
+    }
+
+	// ----------------
  
-    @Column(name = "usuario_registro")
+    @Column(name = "usuario_registroTipoBiene")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    private Date usuario_registroTipoBiene;
  
-    @Column(name = "usuario_modificacion")
+    @Column(name = "usuario_modificacionTipoBiene")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_modificacionTipoBiene;
 
 
     // ------------------------

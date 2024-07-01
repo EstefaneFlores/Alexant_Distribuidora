@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -58,26 +62,35 @@ public class Persona implements Serializable {
 
  /*------------------------------------------------------- */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+   	// -------------------------------------
 
-    @PrePersist
+	@Column(name = "registroPersona", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroPersona;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroPersona = LocalDate.now();
     }
+
+	@Column(name = "modificacionPersona")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionPersona;
+
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionPersona = LocalDate.now();
+    }
+
+	// ----------------
  
-   @Column(name = "fec_modificacion")
+   @Column(name = "usuario_registroPersona")
    @Temporal(TemporalType.TIMESTAMP)
-   private Date modificaion;
+   private Date usuario_registroPersona;
  
-   @Column(name = "usuario_registro")
+   @Column(name = "usuario_modificacionPersona")
    @Temporal(TemporalType.TIMESTAMP)
-   private Date usuario_registro;
- 
-   @Column(name = "usuario_modificacion")
-   @Temporal(TemporalType.TIMESTAMP)
-   private Date usuario_modificacion;
+   private Date usuario_modificacionPersona;
  /*------------------------------------------------------- */
 
  @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)

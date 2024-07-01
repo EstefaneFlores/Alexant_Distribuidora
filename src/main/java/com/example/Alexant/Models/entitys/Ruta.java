@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -40,26 +44,35 @@ public class Ruta implements Serializable{
 
 /*--------------------------------------------------- */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+   	// -------------------------------------
 
-    @PrePersist
+	@Column(name = "registroRuta", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroRuta;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroRuta = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-    
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+	@Column(name = "modificacionRuta")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionRuta;
 
-    @Column(name = "usuario_modificacion")
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionRuta = LocalDate.now();
+    }
+
+	// ----------------
+    
+    @Column(name = "usuario_registroRuta")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroRuta;
+
+    @Column(name = "usuario_modificacionRuta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionRuta;
 
 /*--------------------RELACION CON CLIENTE------------------------------ */
 

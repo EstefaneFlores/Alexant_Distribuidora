@@ -17,6 +17,9 @@ import com.example.Alexant.Models.service.service.IDet_VentaService;
 import com.example.Alexant.Models.service.service.IVentaService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class Det_VentaController {
@@ -31,14 +34,14 @@ public class Det_VentaController {
 
     @PostMapping(value = "/guardarDet_Venta")
     public String RegistrarDet_Venta(@Validated Det_Venta det_Venta, BindingResult result, Model model) {
-    if (result.hasErrors()) {
+    // if (result.hasErrors()) {
         model.addAttribute("det_Venta", new Det_Venta());
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
         model.addAttribute("ventas", iVentaService.findAll());
         
-        return "redirect:/formAdministrarDetVenta";
-    }
+    //     return "redirect:/formAdministrarDetVenta";
+    // }
     det_Venta.setEstado_det_venta("A");
     iDet_VentaService.save(det_Venta);
         return "redirect:/formAdministrarDetVenta";
@@ -62,7 +65,6 @@ public class Det_VentaController {
     // --------------------------------------------
 
     /* ------------ Lista ----------------- */
-
     @GetMapping(value = "/formAdministrarDetVenta")
     public String listarDet_Venta(Model model) {
 
@@ -90,6 +92,8 @@ public class Det_VentaController {
         return "conten :: contentDet_Venta";
     }
 
+ 
+
     /* Registrar model */
     @RequestMapping(value = "/registrarDetVenta")
     public String getRegistroDet_Venta(Model model) {
@@ -108,18 +112,21 @@ public class Det_VentaController {
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosDetVenta")
     public String guardarCambiosDet_Venta(@ModelAttribute Det_Venta det_Venta, BindingResult result, Model model) {
-        if (result.hasErrors()) {
+        // if (result.hasErrors()) {
+
             model.addAttribute("det_Venta", new Det_Venta());
-            model.addAttribute("det_Venta", iDet_VentaService.findAll());
+            model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
             model.addAttribute("venta", new Venta());
             model.addAttribute("ventas", iVentaService.findAll());    
     
-            return "redirect:/formAdministrarDetVenta";
-        }
+        //     return "redirect:/formAdministrarDetVenta";
+        // }
            
         det_Venta.setEstado_det_venta("A");
         iDet_VentaService.save(det_Venta);
+
         return "redirect:/formAdministrarDetVenta";
     }
+
 }

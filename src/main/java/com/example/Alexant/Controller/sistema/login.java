@@ -40,7 +40,6 @@ public class login {
         return "index2";
         
     }
-
  
     @RequestMapping(value = "VerificarUS", method = RequestMethod.POST)
     public String verificarUsuario(@RequestParam("usuario") String usuario, @RequestParam("Contrasena") String contrasena, Model model) {

@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -38,28 +42,37 @@ public class Categoria  implements Serializable{
 
     @Column(name = "estado_categoria")
     private String estado_categoria;
-    
-    
-    @Column(name = "fec_registroCa")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroCa;
+	// -------------------------------------
 
-         @PrePersist
+	@Column(name = "registroCargo", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroCategoria;
+
+	@PrePersist
     protected void onCreate() {
-        registroCa = new Date();
+        this.registroCategoria = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacionCa")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionCa;
+	@Column(name = "modificacionCargo")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionCategoria;
 
-    @Column(name = "usuario_registroCa")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroCa;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionCategoria = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacionCa")
+	// ----------------
+
+    @Column(name = "usuario_registroCargo")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionCa;
+    private Date usuario_registroCategoria;
+
+    @Column(name = "usuario_modificacionCargo")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionCategoria;
+
+// ----------------------------
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_producto")

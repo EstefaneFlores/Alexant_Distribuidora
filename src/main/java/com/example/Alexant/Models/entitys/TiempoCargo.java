@@ -1,7 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -39,26 +44,35 @@ public class TiempoCargo implements Serializable {
 
     /* ========================================================= */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+ 	// -------------------------------------
 
-    @PrePersist
+	@Column(name = "registroTiempoCargo", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroTiempoCargo;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroTiempoCargo = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificaion;
+	@Column(name = "modificacionTiempoCargo")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionTiempoCargo;
 
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionTiempoCargo = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacion")
+	// ----------------
+
+    @Column(name = "usuario_registroTiempoCargo")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroTiempoCargo;
+
+    @Column(name = "usuario_modificacionTiempoCargo")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionTiempoCargo;
 
     /* ========================================================= */
 

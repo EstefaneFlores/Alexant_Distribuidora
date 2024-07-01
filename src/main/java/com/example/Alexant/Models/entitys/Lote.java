@@ -1,6 +1,7 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -45,26 +47,35 @@ public class Lote  implements Serializable{
     @Column(name = "estado_lote")
     private String estado_lote;
     
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+	// -------------------------------------
 
-       @PrePersist
+	@Column(name = "registroLote", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroLote;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroLote = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+	@Column(name = "modificacionLote")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionLote;
 
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionLote = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacion")
+	// ----------------
+
+    @Column(name = "usuario_registroLote")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroLote;
+
+    @Column(name = "usuario_modificacionLote")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionLote;
 
     // -------------------------------
 

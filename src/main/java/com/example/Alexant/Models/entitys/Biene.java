@@ -1,7 +1,10 @@
 package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -14,6 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -44,26 +48,34 @@ public class Biene  implements Serializable{
     @Column(name = "descripcion_biene")
     private String descripcion_biene;
     
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroB;
+	// -------------------------------------
 
-         @PrePersist
+	@Column(name = "registroBiene", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroBiene;
+
+	@PrePersist
     protected void onCreate() {
-        registroB = new Date();
+        this.registroBiene = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionB;
-    
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+	@Column(name = "modificacionBiene")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionBiene;
 
-    @Column(name = "usuario_modificacion")
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionBiene = LocalDate.now();
+    }
+
+	// ----------------
+    @Column(name = "usuario_registroBiene")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroBiene;
+
+    @Column(name = "usuario_modificacionBiene")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionBiene;
 
 // -----------------
 

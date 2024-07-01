@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -11,12 +14,12 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn; 
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -45,33 +48,42 @@ public class Det_Venta  implements Serializable{
     private Integer sub_total_descuento;
     
     @Column(name = "unidad_medida")
-    private Integer unidad_medida;
+    private String unidad_medida;
     
     @Column(name = "estado_det_venta")
     private String estado_det_venta;
 
     
     
-    @Column(name = "fec_registroDet_v")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroDet_v;
+	// -------------------------------------
 
-      @PrePersist
+	@Column(name = "registroDet_Venta", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroDet_Venta;
+
+	@PrePersist
     protected void onCreate() {
-        registroDet_v = new Date();
+        this.registroDet_Venta = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacionDet_v")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionDet_v;
+	@Column(name = "modificacionDet_Venta")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionDet_Venta;
 
-    @Column(name = "usuario_registroDet_v")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroDet_v;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionDet_Venta = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacionDet_v")
+	// ----------------
+
+    @Column(name = "usuario_registroDet_Venta")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionDet_v;
+    private Date usuario_registroDet_Venta;
+
+    @Column(name = "usuario_modificacionDet_Venta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionDet_Venta;
 
     // ------------------------------------
 

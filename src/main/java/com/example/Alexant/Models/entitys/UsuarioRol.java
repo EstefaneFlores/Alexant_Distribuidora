@@ -1,6 +1,7 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import lombok.Getter;
@@ -39,28 +41,37 @@ public class UsuarioRol implements Serializable{
 
 /*========================================================= */
 /*========================================================= */
+	// -------------------------------------
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-        @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date registro;
+	@Column(name = "registroUsuarioRol", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroUsuarioRol;
 
-       @PrePersist
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroUsuarioRol = LocalDate.now();
     }
+
+	@Column(name = "modificacionUsuarioRol")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionUsuarioRol;
+
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionUsuarioRol = LocalDate.now();
+    }
+
+	// ----------------
  
-    @Column(name = "fec_modificacion")
+    @Column(name = "usuario_registroUsuarioRol")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modificaion;
+    private Date usuario_registroUsuarioRol;
  
-    @Column(name = "usuario_registro")
+    @Column(name = "usuario_modificacionUsuarioRol")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
- 
-    @Column(name = "usuario_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_modificacionUsuarioRol;
+
+    // -------------------------------
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")

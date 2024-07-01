@@ -1,8 +1,12 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -56,26 +61,35 @@ public class Recepcion_Producto implements Serializable{
 
 /*--------------------------------------------------- */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+  	// -------------------------------------
 
-    @PrePersist
+	@Column(name = "registroRecepcion_Producto", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroRecepcion_Producto;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroRecepcion_Producto = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-    
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+	@Column(name = "modificacionRecepcion_Producto")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionRecepcion_Producto;
 
-    @Column(name = "usuario_modificacion")
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionRecepcion_Producto = LocalDate.now();
+    }
+
+	// ----------------
+    
+    @Column(name = "usuario_registroRecepcion_Producto")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroRecepcion_Producto;
+
+    @Column(name = "usuario_modificacionRecepcion_Producto")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionRecepcion_Producto;
 
 /*-------------------RELACION CON PRODUCTO----------------------------------- */    
 

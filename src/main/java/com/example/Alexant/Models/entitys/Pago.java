@@ -1,9 +1,12 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,6 +19,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -48,26 +52,35 @@ public class Pago implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fec_registro_final;
 
-    @Column(name = "fec_registroC")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroC;
+	// -------------------------------------
 
-   @PrePersist
+	@Column(name = "registroPago", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroPago;
+
+	@PrePersist
     protected void onCreate() {
-        registroC = new Date();
+        this.registroPago = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacionC")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionC;
+	@Column(name = "modificacionPago")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionPago;
 
-    @Column(name = "usuario_registroC")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroC;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionPago = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacionC")
+	// ----------------
+
+    @Column(name = "usuario_registroPago")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionC;
+    private Date usuario_registroPago;
+
+    @Column(name = "usuario_modificacionPago")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionPago;
 
     // ----------------RELACIÓN PAGO-----------------------
 

@@ -410,8 +410,71 @@
             </div> -->
         </div>
     </div>
+ 
+  <!-- ---------------------------------------------------------------------------------------------- -->
+<div th:fragment="contentDet_Venta">
+    <input type="hidden" name="id_detalleVenta" th:field="${det_Venta.id_detalleVenta}">
+    <h4 class="header-title">DATOS DE DETALLES DE VENTA</h4>
 
-<!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">CANTIDAD</label>
+            <input type="text" class="form-control" name="cantidad_det_venta" th:field="${det_Venta.cantidad_det_venta}" placeholder="Cantidad de la venta" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">SUBTOTAL</label>
+            <input type="text" class="form-control" name="sub_total" th:field="${det_Venta.sub_total}" placeholder="SubToral de la venta" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">SUBTOTAL DESCUENTO</label>
+            <input type="text" class="form-control" name="sub_total_descuento" th:field="${det_Venta.sub_total_descuento}" placeholder="SubToral de la venta" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="producto">UNIDAD DE MEDIDA</label>
+                <select id="unidad_medida" name="unidad_medida" class="form-control" th:field="${det_Venta.unidad_medida}" required>
+                    <option value="" disabled selected>PESO</option>
+                    <option value="Gramos(g)"  >Gramos</option>
+                    <option value="Kilogramos(kg)" >Kilogramos</option>
+                    <option value="Onzas(oz)" >Onzas</option>
+                    <option value="Libras(lb)" >Libras</option>
+                    <option value="" disabled selected>VOLUMEN</option> 
+                    <option value="Litros(L)"  >Litros</option>
+                    <option value="Mililitros(mL)" >Mililitros</option>
+                    <option value="Galones(gal)" >Galones</option>
+                    <option value="Pintas(pt)" >Pintas</option>
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>  
+
+    <div class="col-md-4 mb-3">
+        <label for="usuario">Ventas</label>
+        <select id="usuario" name="venta" class="form-control" th:field="${det_Venta.venta.id_venta}" required>
+            <option value="" disabled selected>Seleccione el numero de venta</option>
+            <option th:each="venta : ${ventas}" th:value="${venta.id_venta}" th:text="${venta.nro_venta}"></option>
+        </select>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+
+</div>
+</div>
+<!-- -- ---------------------------------- -->
 <div th:fragment="contentproveedor">
     <input type="hidden" name="id_proveedor" th:field="${proveedor.id_proveedor}">
     <h4 class="header-title">DATOS DE PROVEEDOR</h4>

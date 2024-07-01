@@ -1,7 +1,10 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,6 +15,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -42,27 +46,35 @@ public class Detalle_Factura  implements Serializable{
     @Column(name = "estado_det_f")
     private String estado_det_f;
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
-  
-     @PrePersist
+	// -------------------------------------
+
+	@Column(name = "registroDetalle_Factura", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroDetalle_Factura;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroDetalle_Factura = LocalDate.now();
     }
 
+	@Column(name = "modificacionDetalle_Factura")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionDetalle_Factura;
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionDetalle_Factura = LocalDate.now();
+    }
 
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+	// ----------------
 
-    @Column(name = "usuario_modificacion")
+    @Column(name = "usuario_registroDetalle_Factura")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroDetalle_Factura;
+
+    @Column(name = "usuario_modificacionDetalle_Factura")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionDetalle_Factura;
 
     // -----------------------
 

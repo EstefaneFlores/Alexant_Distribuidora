@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -43,26 +47,35 @@ public class Rol implements Serializable {
 
 /*--------------------------------------------------- */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+ 	// -------------------------------------
 
-    @PrePersist
+	@Column(name = "registroRol", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroRol;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroRol = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
-    
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+	@Column(name = "modificacionRol")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionRol;
 
-    @Column(name = "usuario_modificacion")
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionRol = LocalDate.now();
+    }
+
+	// ----------------
+    
+    @Column(name = "usuario_registroRolRol")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroRol;
+
+    @Column(name = "usuario_modificacionRol")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionRol;
 
 /*-------------------------------RELACION CON USrROL--------------------------------------------*/
 

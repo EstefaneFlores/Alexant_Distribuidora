@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +16,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -38,26 +42,35 @@ public class Cargo implements Serializable{
     @Column(name = "estado_cargo")
     private String estado_cargo;
 
-    @Column(name = "fec_registroC")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroC;
+ 	// -------------------------------------
 
-     @PrePersist
+	@Column(name = "registroCargo", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroCargo;
+
+	@PrePersist
     protected void onCreate() {
-        registroC = new Date();
+        this.registroCargo = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacionC")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionC;
-    
-    @Column(name = "usuario_registroC")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroC;
+	@Column(name = "modificacionCargo")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionCargo;
 
-    @Column(name = "usuario_modificacionC")
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionCargo = LocalDate.now();
+    }
+
+	// ----------------
+    
+    @Column(name = "usuario_registroCargo")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionC;
+    private Date usuario_registroCargo;
+
+    @Column(name = "usuario_modificacionCargo")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionCargo;
     
     // ---------------------------------------
 

@@ -18,6 +18,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -54,26 +55,35 @@ public class Venta implements Serializable{
 
     /*========================================================*/
 
-    @Column(name = "fec_registroVe")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroVe;
+ 	// -------------------------------------
 
-       @PrePersist
+	@Column(name = "registroVenta", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroVenta;
+
+	@PrePersist
     protected void onCreate() {
-        registroVe = new Date();
+        this.registroVenta = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacionVe")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionVe;
-    
-    @Column(name = "usuario_registroVe")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroVe;
+	@Column(name = "modificacionVenta")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionVenta;
 
-    @Column(name = "usuario_modificacionVe")
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionVenta = LocalDate.now();
+    }
+
+	// ----------------
+    
+    @Column(name = "usuario_registroVenta")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionVe;
+    private Date usuario_registroVenta;
+
+    @Column(name = "usuario_modificacionVenta")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionVenta;
 
     // -------------------------------
 

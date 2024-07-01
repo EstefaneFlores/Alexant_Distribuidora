@@ -1,7 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -37,30 +42,39 @@ public class TipoCambio implements Serializable{
 /*========================================================= */
 /*========================================================= */
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+   	// -------------------------------------
 
-       @PrePersist
+	@Column(name = "registroTipoCambio", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroTipoCambio;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroTipoCambio = LocalDate.now();
     }
+
+	@Column(name = "modificacionTipoCambio")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionTipoCambio;
+
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionTipoCambio = LocalDate.now();
+    }
+
+	// ----------------
  
-    @Column(name = "fec_modificacion")
+    @Column(name = "usuario_registroTipoCambio")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date modificaion;
+    private Date usuario_registroTipoCambio;
  
-    @Column(name = "usuario_registro")
+    @Column(name = "usuario_modificacionTipoCambio")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
- 
-    @Column(name = "usuario_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_modificacionTipoCambio;
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_modena")
     private Moneda moneda;
 
  }

@@ -1,8 +1,11 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,6 +19,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -51,30 +55,35 @@ public class Cliente  implements Serializable{
     
     @Column(name = "estado_cliente")
     private String estado_cliente;
-    
+	// -------------------------------------
 
+	@Column(name = "registroCliente", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroCliente;
 
-    
-    @Column(name = "fec_registroCl")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registroCl;
-
-       @PrePersist
+	@PrePersist
     protected void onCreate() {
-        registroCl = new Date();
+        this.registroCliente = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacionCl")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacionCl;
+	@Column(name = "modificacionCliente")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionCliente;
 
-    @Column(name = "usuario_registroCl")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registroCl;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionCliente = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacionCl")
+	// ----------------
+
+    @Column(name = "usuario_registroCliente")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacionCl;
+    private Date usuario_registroCliente;
+
+    @Column(name = "usuario_modificacionCliente")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionCliente;
 
 // -----------------------------------
 

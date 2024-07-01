@@ -18,6 +18,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -45,26 +46,35 @@ public class Detalle_lote  implements Serializable{
     @Column(name = "estado_det_lote")
     private String estado_det_lote;
 
-    @Column(name = "fec_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date registro;
+	// -------------------------------------
 
-      @PrePersist
+	@Column(name = "registroDetalle_lote", updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private  LocalDate  registroDetalle_lote;
+
+	@PrePersist
     protected void onCreate() {
-        registro = new Date();
+        this.registroDetalle_lote = LocalDate.now();
     }
 
-    @Column(name = "fec_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date modificacion;
+	@Column(name = "modificacionDetalle_lote")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modificacionDetalle_lote;
 
-    @Column(name = "usuario_registro")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_registro;
+    @PreUpdate
+    protected void onUpdate() {
+		this.modificacionDetalle_lote = LocalDate.now();
+    }
 
-    @Column(name = "usuario_modificacion")
+	// ----------------
+
+    @Column(name = "usuario_registroDetalle_lote")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date usuario_modificacion;
+    private Date usuario_registroDetalle_lote;
+
+    @Column(name = "usuario_modificacionDetalle_lote")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date usuario_modificacionDetalle_lote;
 
     /*======================================== */
 

@@ -1,8 +1,7 @@
 package com.example.Alexant.Models.entitys;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDate; 
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,9 +19,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.Table; 
 import lombok.Getter;
 import lombok.Setter;
 
@@ -48,22 +45,22 @@ public class Usuario implements Serializable {
 
 	// -------------------------------------
 
-	@Column(name = "registro", updatable = false)
+	@Column(name = "registroUsuario", updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private  LocalDate  registro;
+	private  LocalDate  registroUsuario;
 
 	@PrePersist
     protected void onCreate() {
-        this.registro = LocalDate.now();
+        this.registroUsuario = LocalDate.now();
     }
 
-	@Column(name = "modificacion")
+	@Column(name = "modificacionUsuario")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private LocalDate modificacion;
+	private LocalDate modificacionUsuario;
 
     @PreUpdate
     protected void onUpdate() {
-		this.modificacion = LocalDate.now();
+		this.modificacionUsuario = LocalDate.now();
     }
 
 	// ----------------

@@ -68,6 +68,7 @@
                 </div>
             </div>
         </div>
+
         <!-- #Lista de registros -->  
          <div class="page-content-wrapper">
                     <div class="container-fluid">
@@ -95,6 +96,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Número Venta</th>
+                                                    <th>Cantidad Det. Venta</th>
                                                     <th>Producto</th>
                                                     <th>Precio Unitário</th>
                                                     <th>Descripción</th>
@@ -105,6 +107,7 @@
 
                                             <tbody>
                                                 <tr th:each="dv : ${det_Ventas}" th:if="${dv.estado_det_venta != 'X'}">
+                                                    <td th:text="${dv.venta.nro_venta}"></td>
                                                     <td th:text="${dv.cantidad_det_venta}"></td>
                                                     <td th:text="${dv.sub_total}"></td>
                                                     <td th:text="${dv.sub_total_descuento}"></td>
@@ -430,10 +433,8 @@
             $('#bs-example-modal-center').modal('show');
         });
     }
-
-
+ 
     document.addEventListener("DOMContentLoaded", function () {
-        // Selecciona el formulario por su id
         const form = document.getElementById("miFormulario");
 
         form.addEventListener("submit", function (event) {
