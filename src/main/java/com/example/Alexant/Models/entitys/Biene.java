@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -46,6 +47,11 @@ public class Biene  implements Serializable{
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registroB;
+
+         @PrePersist
+    protected void onCreate() {
+        registroB = new Date();
+    }
 
     @Column(name = "fec_modificacion")
     @Temporal(TemporalType.TIMESTAMP)

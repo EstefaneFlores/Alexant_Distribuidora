@@ -6,14 +6,14 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-<title>:: Alpino Menu Rught ::</title>
+<title>:: LOGIN ::</title>
 <!-- Favicon-->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="icon" href="../../../../assets/images/logoOficial.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../../assets/plugins/bootstrap/css/bootstrap.min.css">
 
 <!-- Custom Css -->
-<link rel="stylesheet" href="assets/css/main.css">    
-<link rel="stylesheet" href="assets/css/color_skins.css">
+<link rel="stylesheet" href="../../assets/css/main.css">    
+<link rel="stylesheet" href="../../assets/css/color_skins.css">
 </head>
 <body class="theme-black">
 <div class="authentication">
@@ -22,10 +22,8 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="company_detail">
-                        <h4 class="logo"><img src="assets/images/logo.svg" alt=""> Alpino</h4>
-                        <h3>The ultimate <strong>Bootstrap 4</strong> Admin Dashboard</h3>
-                        <p>Alpino is fully based on HTML5 + CSS3 Standards. Is fully responsive and clean on every device and every browser</p>                        
-                        <div class="footer">
+                            <h3 class="logo" ><img src="../../../../assets/images/logoOficial.jpg" alt="">BIENVENIDO A <strong>ECG</strong> EL MEJOR SISTEMA PARA LA GESTION DE VENTAS</h3>                     
+                        <!-- <div class="footer">
                             <ul  class="social_link list-unstyled">
                                 <li><a href="https://thememakker.com" title="ThemeMakker"><i class="zmdi zmdi-globe"></i></a></li>
                                 <li><a href="https://themeforest.net/user/thememakker" title="Themeforest"><i class="zmdi zmdi-shield-check"></i></a></li>
@@ -42,29 +40,44 @@
                                 <li><a href="http://thememakker.com/services/" target="_blank">Services</a></li>
                                 <li><a href="javascript:void(0);">FAQ</a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>                    
                 </div>
                 <div class="col-lg-5 col-md-12 offset-lg-1">
                     <div class="card-plain">
                         <div class="header">
-                            <h5>Log in</h5>
+                            <h5>Iniciar sesión</h5>
                         </div>
-                        <form class="form">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="User Name">
-                                <span class="input-group-addon"><i class="zmdi zmdi-account-circle"></i></span>
+                        <form class="form-horizontal" action="/Alexant/VerificarUS" method="POST">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-custom mb-4">
+                                        
+                                        <div class="input-group">
+                                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Numero de Usuario" required>
+                                        <span class="input-group-addon"><i class="zmdi zmdi-account-circle"></i></span>
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group form-group-custom mb-4">
+    
+                                        <div class="input-group">
+                                        <input type="password" class="form-control" id="Contrasena" name="Contrasena" placeholder="Contraseña" required>
+                                        <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
+                                    </div>
+                                    
+                                    </div>
+                                     <div class="mt-4">
+                                        <button class="btn btn-primary btn-round btn-block" type="submit">Ingresar</button>
+                                    </div>
+                                    
+                             <!--    <div class="mt-4 text-center">
+                                        <a href="auth-register.html" class="text-muted"><i class="mdi mdi-account-circle mr-1"></i> Create an account</a>
+                                    </div> -->
+                          </div>
                             </div>
-                            <div class="input-group">
-                                <input type="password" placeholder="Password" class="form-control" />
-                                <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
-                            </div>                            
-                        </form>
-                        <div class="footer">
-                            <a href="index.html" class="btn btn-primary btn-round btn-block">SIGN IN</a>
-                            <a href="sign-up.html" class="btn btn-primary btn-simple btn-round btn-block">SIGN UP</a>
-                        </div>
-                        <a href="forgot-password.html" class="link">Forgot Password?</a>
+                             </form>
+                        <!-- <a href="forgot-password.html" class="link"></a> -->
                     </div>
                 </div>
             </div>

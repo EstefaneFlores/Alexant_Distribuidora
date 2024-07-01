@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -57,6 +58,11 @@ public class Venta implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date registroVe;
 
+       @PrePersist
+    protected void onCreate() {
+        registroVe = new Date();
+    }
+
     @Column(name = "fec_modificacionVe")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacionVe;
@@ -70,10 +76,6 @@ public class Venta implements Serializable{
     private Date usuario_modificacionVe;
 
     // -------------------------------
-
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_cliente")
-	private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_usuario")

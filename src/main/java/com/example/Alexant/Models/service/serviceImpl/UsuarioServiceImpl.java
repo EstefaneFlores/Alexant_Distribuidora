@@ -38,7 +38,16 @@ public class UsuarioServiceImpl implements IUsuarioService{
        return iUsuarioDao.findUsuariosActivos();
     }
     @Override
-    public Usuario findByUsuarioAndContrasena(String usuario, String contrasena) {
-        return iUsuarioDao.findByUsuarioAndContrasena(usuario, contrasena);
+    public boolean verificarUsuario(String usuario, String Contrasena) {
+        Usuario usuario1 = iUsuarioDao.findByUsuarioAndContrasena(usuario, Contrasena);
+        return usuario1 != null && usuario1.getContrasena().equals(Contrasena);
     }
+
+    @Override
+    public Usuario findByUsuarioAndContrasena(String usuario, String contrasena) {
+       return iUsuarioDao.findByUsuarioAndContrasena(usuario, contrasena);
+       
+    }
+
+    
 }

@@ -3,8 +3,10 @@ package com.example.Alexant.Controller.sistema;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +26,7 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService usuarioService;  
 
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "login";
-    }
+ 
 
     @PostMapping("/login")
     public String login(@RequestParam("usuario") String usuario, @RequestParam("contrasena") String contrasena,
@@ -56,30 +55,24 @@ public class UsuarioController {
 
     }
 
-    @GetMapping(value = "/formUs")
-    public String vistaUs(Model model, @Validated Usuario usuarios) {
-
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios", usuarioService.findAll());
    
-
-        return "usuarios";
-    }
-
- 
-
     // -------------------------GUARDAR---------------------------------------
 
     @PostMapping(value = "/saveUs")
-    public String saveUsiario(@Validated Usuario usuarios) {
-
+    public String saveUsiario(@Validated Usuario usuarios,BindingResult result, Model model) {
+        if (result.hasErrors()) {
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", usuarioService.findAll());
+    }
         usuarios.setEstado_usuario("A");
 
         usuarioService.save(usuarios);
 
         return "redirect:/sistema/usuario/listaUs";
 
-    }
+    }   // --------------------------------------------
+ 
+ 
 
     // -------------------------LISTAR---------------------------------------
 
@@ -88,7 +81,6 @@ public class UsuarioController {
 
         model.addAttribute("usuario", new Usuario());
         model.addAttribute("usuarios", usuarioService.findAll());
-  
 
         return "FormUs";
     }
@@ -122,15 +114,9 @@ public class UsuarioController {
 
     @RequestMapping(value = "/editarUs/{idUsuario}")
     public String editarUs(Model model, @PathVariable("idUsuario") Integer idUsuario) {
-
-        Usuario usuario = usuarioService.findOne(idUsuario);
-
-        usuario.setEstado_usuario("A");
-
-        model.addAttribute("usuario", new Usuario());
-        model.addAttribute("usuarios", usuarioService.findAll());
  
-
+        model.addAttribute("usuario", usuarioService.findOne(idUsuario));
+  
         return "conten :: contentUs";
     }
 

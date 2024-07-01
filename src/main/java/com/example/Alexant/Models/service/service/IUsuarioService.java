@@ -16,6 +16,8 @@ public interface IUsuarioService {
 
     public List<Usuario> getListarUsuariosActivos();
 
+    public boolean verificarUsuario(String usuario, String clave);
+
     Usuario findByUsuarioAndContrasena(String usuario, String contrasena);
     
 } 

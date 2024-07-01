@@ -15,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -58,6 +59,11 @@ public class Cliente  implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date registroCl;
 
+       @PrePersist
+    protected void onCreate() {
+        registroCl = new Date();
+    }
+
     @Column(name = "fec_modificacionCl")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modificacionCl;
@@ -80,8 +86,7 @@ private Persona persona;
 	@JoinColumn(name = "id_ruta")
 	private Ruta ruta;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
-	private List<Venta> preinscripciones;
+  
 
     
 }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.Alexant.Models.dao.IUsuarioRolDao;
+import com.example.Alexant.Models.entitys.Usuario;
 import com.example.Alexant.Models.entitys.UsuarioRol;
 import com.example.Alexant.Models.service.service.IUsuarioRolService;
 
@@ -31,4 +32,9 @@ public class UsuarioRolServiceImpl implements IUsuarioRolService{
     public void delete(Integer id) {
         iUsuarioRolDao.deleteById(id);
     }
+
+    // @Override
+    // public List<UsuarioRol> listRolesUsuario(Usuario usuario) {
+    //     return iUsuarioRolDao.listRolesUsuario(usuario);
+    // }
 }

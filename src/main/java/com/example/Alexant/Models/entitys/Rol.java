@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -45,6 +46,11 @@ public class Rol implements Serializable {
     @Column(name = "fec_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registro;
+
+    @PrePersist
+    protected void onCreate() {
+        registro = new Date();
+    }
 
     @Column(name = "fec_modificacion")
     @Temporal(TemporalType.TIMESTAMP)

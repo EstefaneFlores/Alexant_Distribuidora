@@ -13,4 +13,6 @@ public interface IUsuarioDao extends CrudRepository<Usuario, Integer> {
     List<Usuario> findUsuariosActivos();
 
     Usuario findByUsuarioAndContrasena(String usuario, String contrasena);
+
+    Usuario findByUsuario(String usuario);
 }

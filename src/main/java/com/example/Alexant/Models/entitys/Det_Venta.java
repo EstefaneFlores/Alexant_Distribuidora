@@ -16,6 +16,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -54,6 +55,11 @@ public class Det_Venta  implements Serializable{
     @Column(name = "fec_registroDet_v")
     @Temporal(TemporalType.TIMESTAMP)
     private Date registroDet_v;
+
+      @PrePersist
+    protected void onCreate() {
+        registroDet_v = new Date();
+    }
 
     @Column(name = "fec_modificacionDet_v")
     @Temporal(TemporalType.TIMESTAMP)

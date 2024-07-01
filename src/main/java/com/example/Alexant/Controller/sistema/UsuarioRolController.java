@@ -53,7 +53,7 @@ public class UsuarioRolController {
 
     @PostMapping(value = "/guardarUsuarioRol")
     public String guardarUsuarioRol(@Validated UsuarioRol usuarioRol) {
-        usuarioRol.setEstado_usr_rol(1);
+        usuarioRol.setEstado_usr_rol("A");
         usuarioRolService.save(usuarioRol);
         return "redirect:/ListasUsuarioRol"; /* No teneos listasVentas */
     }
@@ -64,7 +64,7 @@ public class UsuarioRolController {
     public String eliminarUsuarioRol(@PathVariable("id_usuario_rol") Integer id_usuario_rol) {
 
         UsuarioRol usuarioRol = usuarioRolService.findOne(id_usuario_rol);
-        usuarioRol.setEstado_usr_rol(0);
+        usuarioRol.setEstado_usr_rol("X");
         usuarioRolService.save(usuarioRol);
         return "redirect:/ListasUsuarioRol"; /* Falta el formulario */
 
@@ -129,7 +129,7 @@ public class UsuarioRolController {
     /* Guardar Cambios */
     @PostMapping(value = "/guardarCambiosUsuarioRol")
     public String guardarCambiosUsuarioRol(@ModelAttribute UsuarioRol usuarioRol) {
-        usuarioRol.setEstado_usr_rol(1);
+        usuarioRol.setEstado_usr_rol("A");
         usuarioRolService.save(usuarioRol);
         return "redirect:/ListasUsuarioRol";/* Faltaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
     }

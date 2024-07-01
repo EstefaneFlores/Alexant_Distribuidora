@@ -96,6 +96,9 @@
                                                 <tr>
                                                     <th>Nombre</th>
                                                     <th>Contraseña</th> 
+                                                    <th>Fecha Registro</th> 
+                                                    <th>Fecha Modificación</th> 
+
                                                      <th>Opciones</th>
 
                                                 </tr>
@@ -103,8 +106,10 @@
 
                                             <tbody>
                                                 <tr th:each="Us : ${usuarios}" th:if="${Us.estado_usuario != 'X'}">
-                                                    <td th:text="${Us.nombre_usuario}"></td>
+                                                    <td th:text="${Us.usuario}"></td>
                                                     <td th:text="${Us.contrasena}"></td> 
+                                                    <td th:text="${Us.registro}"></td> 
+                                                    <td th:text="${Us.modificacion}"></td> 
 
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -234,7 +239,7 @@
         <li><a href="javascript:void(0);" class="fullscreen" data-provide="fullscreen"><i class="zmdi zmdi-fullscreen"></i></a></li>
         <li class="power">
             <a href="javascript:void(0);" class="js-right-sidebar"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>            
-            <a href="sign-in.html" class="mega-menu"><i class="zmdi zmdi-power"></i></a>
+           <a href="/Alexant/login" class="mega-menu"><i class="zmdi zmdi-power"></i></a>
         </li>
     </ul>    
 </aside>
@@ -344,7 +349,7 @@
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PERSONAS</span> <span class="badge badge-primary float-right">5</span></a>
                     <ul class="ml-menu">
                        
-                    	<li><a href="/listaUs">Usuario</a></li>
+                    	<li><a href="/sistema/usuario/listaUs">Usuario</a></li>
                     	<li><a href="/ListasCliente">Cliente</a></li>
                     	<li><a href="/ListasEmpleado">Empleado</a></li>
                     	<li><a href="/formRegistroPersona">Persona</a></li>
@@ -364,6 +369,7 @@
 
                 <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>BIENES</span> <span class="badge badge-danger float-right">1</span></a>
                     <ul class="ml-menu">
+                        <li><a href="/formAdministrarBiene">Biene</a></li>
                     	<li><a href="/ListasTipoBiene">Tipo Biene</a></li>
             
                     </ul>
@@ -409,7 +415,7 @@ function buscar(button) {
         var idUs = $(button).data('idus');
         
         var url = "../../../../sistema/usuario/editarUs/" + idUs;
-
+   
         $('#replace_us').load(url, function () {
             $('#modal-form').attr('action', '/guardarModificacionesUsuario');
             $('#bs-example-modal-center').modal('show');
