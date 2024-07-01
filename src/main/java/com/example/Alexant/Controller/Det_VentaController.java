@@ -72,7 +72,7 @@ public class Det_VentaController {
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iDet_VentaService.findAll());
 
-        return "FormDetVenta";
+        return "formDetVenta";
     }
 
     // -------------------Para las modificaciones-------------------------

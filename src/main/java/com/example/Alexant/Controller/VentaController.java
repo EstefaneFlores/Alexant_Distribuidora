@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Alexant.Models.entitys.Cliente;
+import com.example.Alexant.Models.entitys.Factura;
 import com.example.Alexant.Models.entitys.Usuario;
 import com.example.Alexant.Models.entitys.Venta;
 import com.example.Alexant.Models.service.service.IClienteService;
+import com.example.Alexant.Models.service.service.IFacturaService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 import com.example.Alexant.Models.service.service.IVentaService;
 
@@ -23,13 +25,15 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class VentaController {
-    
     @Autowired
     private IVentaService iVentaService;
-        @Autowired
+    @Autowired
     private IUsuarioService usuarioService;
     @Autowired
     private IClienteService iClienteService;
+    @Autowired
+    private IFacturaService facturaService;
+
 
     /* ------------- GUARDAR ------------ */
 
@@ -45,6 +49,9 @@ public class VentaController {
 
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
+        
+        model.addAttribute("factura", new Factura());
+        model.addAttribute("facturas", facturaService.findAll());
         
     //     return "redirect:/formAdministrarVenta";
     // }
@@ -84,6 +91,9 @@ public class VentaController {
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
 
+        model.addAttribute("factura", new Factura());
+        model.addAttribute("facturas", facturaService.findAll());
+
         return "formVenta";
     }
 
@@ -101,8 +111,10 @@ public class VentaController {
 
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
-
-        return "conten :: contentVenta";
+        
+        model.addAttribute("factura", new Factura());
+        model.addAttribute("facturas", facturaService.findAll());
+        return "conten :: contentVenta1";
     }
 
     /* Registrar model */
@@ -117,8 +129,11 @@ public class VentaController {
 
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
+        
+        model.addAttribute("factura", new Factura());
+        model.addAttribute("facturas", facturaService.findAll());
        
-        return "conten :: contentVenta";
+        return "conten :: contentVenta1";
     }
 
     // --------------------------------------------

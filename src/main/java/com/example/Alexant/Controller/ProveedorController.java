@@ -44,10 +44,6 @@ public class ProveedorController {
 
     }
 
-
-
-   
-
     @RequestMapping(value = "/eliminarProveedor/{id_proveedor}")
     public String eliminarProveedor(@PathVariable("id_proveedor") Integer id_proveedor) {
 
@@ -58,7 +54,6 @@ public class ProveedorController {
 
     }
 
-    // --------------------------------------------
 
     /* ------------ Lista ----------------- */
 
@@ -70,7 +65,6 @@ public class ProveedorController {
 
         return "FormProvedor";
     }
-
   
     // -------------------Para las modificaciones-------------------------
 

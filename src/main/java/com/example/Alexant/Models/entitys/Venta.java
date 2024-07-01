@@ -79,7 +79,6 @@ public class Venta implements Serializable{
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
     private List<Pago> pagos;
 
