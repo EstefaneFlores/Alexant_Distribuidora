@@ -1,4 +1,4 @@
-﻿<!doctype html>
+﻿<!-- <!doctype html>
 <html class="no-js " lang="en">
 <head>
 <meta charset="utf-8">
@@ -8,38 +8,29 @@
 <title>Registro Detalle Lote | ECG</title>
 
 
- <!-- DataTables -->
+
  <link href="../../../../assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
  type="text/css" />
 <link href="../../../../assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet"
  type="text/css" />
-
-<!-- Responsive datatable examples -->
 <link href="../../../../assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
  rel="stylesheet" type="text/css" />
-
 <link href="../../../../assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
 <link href="../../../../assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
-
-<!-- Bootstrap Css -->
 <link href="../../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<!-- Icons Css -->
 <link href="../../../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-<!-- App Css-->
 <link href="../../../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
 <link rel="icon" href="/assets/images/logoOficial.ico" type="image/x-icon"> 
 <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/assets/plugins/morrisjs/morris.css" />
 <link rel="stylesheet" href="/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
-<!-- Custom Css -->
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="stylesheet" href="/assets/css/color_skins.css">
 
 <link rel="stylesheet" href="/assets/">
 </head>
 <body class="theme-black menu_dark">
-<!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="m-t-30"><img src="/assets/images/logoOficial.jpg" width="48" height="48" alt="Alpino"></div>
@@ -47,7 +38,6 @@
     </div>
 </div>
 
-<!-- COMIENZO TEST -->
 <section class="content">  
     <div class="container-fluid">
         <div class="block-header">
@@ -68,7 +58,6 @@
                 </div>
             </div>
         </div>
-        <!-- #Lista de registros -->  
          <div class="page-content-wrapper">
                     <div class="container-fluid">
                         <div class="row">
@@ -78,7 +67,6 @@
 
                                         <h4 class="header-title"></i>Detalle Lotes Registrados</h4>
 
-                                        <!-- ------------- -->
 
                                        
                                         <div class="text-right mb-3">
@@ -87,7 +75,6 @@
                                                 onclick="NuevoRegistro()">Registrar</button>
                                         </div>
 
-                                        <!-- ------------- -->
 
                                         <table id="datatable-buttons"
                                             class="table table-striped table-bordered dt-responsive nowrap botonesH"
@@ -103,7 +90,6 @@
                                             <tbody>
                                                 <tr th:each="dl : ${detalle_lotes}" th:if="${dl.estado_det_lote != 'X'}">
                                                     <td th:text="${dl.fecha_vencimento}"></td>
-
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
@@ -117,7 +103,6 @@
                                                                     </button>
                                                                 </a>
                                                             </div>
-
                                                             <div class="mb-2">
                                                                 <a>
                                                                     <button type="button" 
@@ -132,7 +117,6 @@
                                                                     </button>
                                                                 </a>
                                                             </div>
-
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -140,11 +124,9 @@
                                         </table>
                                     </div> 
                               </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-
+                            </div>
+                        </div>
                     </div>
-                    <!-- end container-fluid -->
                 </div>
 
     </div>
@@ -176,7 +158,6 @@
 </div>
 </div>
 
-<!-- FIN TEST -->
 <div class="overlay_menu">
     <button class="btn btn-primary btn-icon btn-icon-mini btn-round"><i class="zmdi zmdi-close"></i></button>
     <div class="container">        
@@ -221,14 +202,10 @@
         </div>
     </div>
 </div>
-<div class="overlay"></div><!-- Overlay For Sidebars -->
-
-<!-- Left Sidebar -->
+<div class="overlay"></div>
 <aside id="minileftbar" class="minileftbar">
     <ul class="menu_list">
-
         <li><a href="javascript:void(0);" class="menu-sm"><i class="zmdi zmdi-swap"></i></a></li>        
-        <!-- <li class="menuapp-btn"><a href="javascript:void(0);"><i class="zmdi zmdi-apps"></i></a></li> -->
         <li><a href="javascript:void(0);" class="fullscreen" data-provide="fullscreen"><i class="zmdi zmdi-fullscreen"></i></a></li>
         <li class="power">
             <a href="javascript:void(0);" class="js-right-sidebar"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>            
@@ -238,37 +215,13 @@
 </aside>
 
 <aside class="right_menu">
-    <!-- <div class="menu-app">
-        <div class="slim_scroll">
-            <div class="card">
-                <div class="header">
-                    <h2><strong>App</strong> Menu</h2>
-                </div>
-                <div class="body">
-                    <ul class="list-unstyled menu">
-                        <li><a href="events.html"><i class="zmdi zmdi-calendar-note"></i><span>Calendar</span></a></li>
-                        <li><a href="file-dashboard.html"><i class="zmdi zmdi-file-text"></i><span>File Manager</span></a></li>
-                        <li><a href="blog-dashboard.html"><i class="zmdi zmdi-blogger"></i><span>Blog</span></a></li>
-                        <li><a href="javascript:void(0)"><i class="zmdi zmdi-arrows"></i><span>Notes</span></a></li>
-                        <li><a href="javascript:void(0)"><i class="zmdi zmdi-view-column"></i><span>Taskboard</span></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div> -->
- 
     <div id="rightsidebar" class="right-sidebar">
-        
         <div class="tab-content slim_scroll">
             <div class="tab-pane slideRight active" id="setting">
-             
-
-
                 <div class="card">
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item"><a class="nav-link active" data-toggle="tab">PERSONALIZAR MENUS</a></li>        
-                        <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#activity">Activity</a></li> -->
                     </ul>
                     <div class="header">
                         <h2><strong>DERECHO</strong> </h2>
@@ -425,18 +378,15 @@ function buscar(button) {
 
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Selecciona el formulario por su id
         const form = document.getElementById("miFormulario");
 
         form.addEventListener("submit", function (event) {
-            let isValid = true; // Variable para rastrear la validez del formulario
+            let isValid = true; 
 
-            // Obtén todos los campos obligatorios (los que tienen el atributo "required")
             const requiredFields = form.querySelectorAll("[required]");
 
             requiredFields.forEach(function (field) {
                 if (!field.value) {
-                    // Si un campo obligatorio está vacío, muestra un mensaje de error
                     isValid = false;
                     field.classList.add("is-invalid");
                 } else {
@@ -445,7 +395,6 @@ function buscar(button) {
             });
 
             if (!isValid) {
-                // Si el formulario no es válido, evita que se envíe
                 event.preventDefault();
             }
         });
@@ -462,11 +411,9 @@ function buscar(button) {
 <script src="../../../../assets/libs/node-waves/waves.min.js"></script>
 <script src="https://unicons.iconscout.com/release/v2.0.1/script/monochrome/bundle.js"></script>
 
-<!-- Required datatable js -->
 <script src="../../../../assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../../../assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Buttons examples -->
 <script src="../../../../assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../../../../assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
 <script src="../../../../assets/libs/jszip/jszip.min.js"></script>
@@ -475,35 +422,30 @@ function buscar(button) {
 <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
 <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="../../../../assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
-<!-- Responsive examples -->
 <script src="../../../../assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../../../assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
 
-<!-- Datatable init js -->
 <script src="../../../../assets/js/pages/datatables.init.js"></script>
 
-<!-- alert -->
 <script src="../../../../assets/libs/alertifyjs/build/alertify.min.js"></script>
 <script src="../../../../assets/js/pages/alertifyjs.init.js"></script>
 
 
 
-<!-- Jquery Core Js -->
-
 
 
 <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-<script src="/assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
-<script src="/assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+<script src="/assets/bundles/libscripts.bundle.js"></script> 
+<script src="/assets/bundles/vendorscripts.bundle.js"></script> 
 
-<script src="/assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob-->
-<script src="/assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
-<script src="/assets/bundles/morrisscripts.bundle.js"></script> <!-- Morris Plugin Js --> 
-<script src="/assets/bundles/sparkline.bundle.js"></script> <!-- sparkline Plugin Js --> 
+<script src="/assets/bundles/knob.bundle.js"></script> 
+<script src="/assets/bundles/jvectormap.bundle.js"></script> 
+<script src="/assets/bundles/morrisscripts.bundle.js"></script> 
+<script src="/assets/bundles/sparkline.bundle.js"></script> 
 
 <script src="/assets/bundles/mainscripts.bundle.js"></script>
 <script src="/assets/js/pages/index.js"></script>
 <script src="/assets/js/pages/widgets/infobox/infobox-1.js"></script>
 </body>
-</html>
+</html> -->
