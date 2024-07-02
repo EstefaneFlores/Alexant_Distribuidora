@@ -177,7 +177,7 @@
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarPersona/' + pers.idPersona}">
+                                                                    th:href="${'../../../../eliminarPersona/' + pers.id_persona}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -193,7 +193,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-idpersona="${pers.idPersona}"
+                                                                        th:data-idpersona="${pers.id_persona}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -476,8 +476,8 @@
                     <ul class="ml-menu">
                         <li><a href="/formRegistroProducto">Producto</a></li>
                         <li><a href="/formRecepcionProducto">Recepción del Producto</a></li>
-                        <li><a href="/ListasCategoria">Categorias</a></li>
-                        <li><a href="/ListasLote">Lote</a></li>
+                         <li><a href="/formAdministrarCategoria">Categorias</a></li>
+                               <li><a href="/formAdministrarLote">Lote</a></li>
                         <li><a href="/ListasDetalle_lote">Det. Lote</a></li> 
                     </ul>
                 </li> 

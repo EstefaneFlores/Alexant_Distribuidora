@@ -91,6 +91,10 @@ public class Venta implements Serializable{
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venta", fetch = FetchType.LAZY)
     private List<Pago> pagos;
 

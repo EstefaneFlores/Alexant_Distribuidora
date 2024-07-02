@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<title>Registro Recepción | ECG</title>
+<title>Registro Cliente | ECG</title>
 
 
  <!-- DataTables -->
@@ -53,7 +53,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración Recepción</h2>
+                    <h2>Administración Cliente</h2>
                     <ul class="breadcrumb padding-0">
                   
                     </ul>
@@ -76,7 +76,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>Recepción de Productos Registradas</h4>
+                                        <h4 class="header-title"></i>Cliente Registradas</h4>
 
                                         <!-- ------------- -->
 
@@ -94,26 +94,29 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Costo del producto</th>
-                                                    <th>cantidad caja</th>
-                                                     <th>Precio venta</th>
+                                                    <th>Numero NIT</th>
+                                                    <th>Codigo</th>
+                                                    <th>Tipo</th>
+                                                    <th>Razon Social</th>
+                                                    <th>Contacto</th>
                                                      <th>Opciones</th>
 
                                                 </tr>
                                             </thead>
 
                                             <tbody>
-                                                <tr th:each="recProd : ${recepcion_productos}" th:if="${recProd.estado_recepcion_producto != 'X'}">
-                                                    <tr th:each="recProd : ${recepcion_productos}" th:if="${recProd.estado_recepcion_producto != 'X'}">
-                                                    <td th:text="${recProd.precio_producto}"></td>
-                                                    <td th:text="${recProd.cantidad_caja}"></td>
-                                                    <td th:text="${recProd.precio_venta}"></td>
-
+                                                <tr th:each="cl : ${clientes}" th:if="${cl.estado_cliente != 'X'}">
+                                                    <td th:text="${cl.nro_nit}"></td>
+                                                    <td th:text="${cl.nro_codigo}"></td>
+                                                    <td th:text="${cl.tipo_cliente}"></td>
+                                                    <td th:text="${cl.razon_social}"></td>
+                                                    <td th:text="${cl.contacto_cliente}"></td>
+        
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarRecepcion_Producto/' + recProd.id_registro}">
+                                                                    th:href="${'../../../../eliminarCliente/' + cl.id_cliente}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -129,7 +132,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-idregpro="${recProd.id_registro}"
+                                                                        th:data-idcliente="${cl.id_cliente}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -163,10 +166,10 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <form id="miFormulario" class="needs-validation" th:action="@{/guardarRecepcion_Producto}"
+            <form id="miFormulario" class="needs-validation" th:action="@{/guardarCliente}"
                 method="post" novalidate>
 
-                <div id="replace_rproducto"></div>
+                <div id="replace_cliente"></div>
 
                 <div class="text-right mt-3">
                     <button type="submit" onclick="validarFormulario()"
@@ -356,9 +359,8 @@
                     </ul>
                 </li>
 
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>FUNCIONES</span> <span class="badge badge-success float-right">4</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>FUNCIONES</span> <span class="badge badge-success float-right">3</span></a>
                     <ul class="ml-menu">
-                        <li><a href="/formAdministrarCargo">Cargo</a></li> 
                     	<li><a href="/ListasTiempoCargo">Tiempo en Cargo</a></li>
                     	<li><a href="/ListasUsuarioRol">Rol</a></li>
                     	<li><a href="/Listasruta">Ruta</a></li>
@@ -373,9 +375,10 @@
                     </ul>
                 </li>
 
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PROD/LOTE</span> <span class="badge badge-warning  float-right">4</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PROD/LOTE</span> <span class="badge badge-warning  float-right">5</span></a>
                     <ul class="ml-menu">
                         <li><a href="/formRegistroProducto">Producto</a></li>
+                        <li><a href="/formRecepcionProducto">Recepción del Producto</a></li>
                          <li><a href="/formAdministrarCategoria">Categorias</a></li>
                                <li><a href="/formAdministrarLote">Lote</a></li>
                         <li><a href="/ListasDetalle_lote">Det. Lote</a></li> 
@@ -406,25 +409,26 @@
     </div>
 </aside>
 
+
 <script>
 
-function buscar(button) {
-        var idRecepcion = $(button).data('idregpro');
+    function buscar(button) {
+        var id_cliente = $(button).data('idcliente');
         
-        var url = "../../../../registrarRecepcionProducto/" + idRecepcion;
+        var url = "../../../../cliente/" + id_cliente;
 
-        $('#replace_rproducto').load(url, function () {
-            $('#modal-form').attr('action', '/guardarModificacionesRecepcion');
+        $('#replace_cliente').load(url, function () {
+            $('#modal-form').attr('action', '/guardarModificacionesCliente');
             $('#bs-example-modal-center').modal('show');
         });
     }
 
     function NuevoRegistro() {
 
-        var url = "../../../../registrarRecepcionProducto";
+        var url = "../../../../registrarCliente";
 
-        $('#replace_rproducto').load(url, function () {
-            $('#modal-form').attr('action', '/guardarNuevoProducto'); 
+        $('#replace_cliente').load(url, function () {
+            $('#modal-form').attr('action', '/guardarNuevoCliente'); 
             $('#bs-example-modal-center').modal('show');
         });
     }

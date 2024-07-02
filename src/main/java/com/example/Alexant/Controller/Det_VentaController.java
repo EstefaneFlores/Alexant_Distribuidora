@@ -34,14 +34,14 @@ public class Det_VentaController {
 
     @PostMapping(value = "/guardarDet_Venta")
     public String RegistrarDet_Venta(@Validated Det_Venta det_Venta, BindingResult result, Model model) {
-    // if (result.hasErrors()) {
+    if (result.hasErrors()) {
         model.addAttribute("det_Venta", new Det_Venta());
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
         model.addAttribute("ventas", iVentaService.findAll());
         
-    //     return "redirect:/formAdministrarDetVenta";
-    // }
+        return "redirect:/formAdministrarDetVenta";
+    }
     det_Venta.setEstado_det_venta("A");
     iDet_VentaService.save(det_Venta);
         return "redirect:/formAdministrarDetVenta";

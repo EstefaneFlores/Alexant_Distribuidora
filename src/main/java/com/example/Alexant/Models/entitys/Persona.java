@@ -34,7 +34,7 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_persona")
-    private Integer idPersona;
+    private Integer id_persona;
 
     @Column(name = "nombre_persona")
     private String nombre_persona;
@@ -98,4 +98,7 @@ public class Persona implements Serializable {
  
  @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
  private List<Usuario> usuario;
+
+ @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona", fetch = FetchType.LAZY)
+ private List<Cliente> cliente;
 }

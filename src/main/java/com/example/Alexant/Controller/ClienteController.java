@@ -2,14 +2,15 @@ package com.example.Alexant.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.Alexant.Models.entitys.Cliente;
 import com.example.Alexant.Models.entitys.Persona;
@@ -18,11 +19,9 @@ import com.example.Alexant.Models.service.service.IClienteService;
 import com.example.Alexant.Models.service.service.IPersonaService;
 import com.example.Alexant.Models.service.service.IRutaService;
 
-
-
 import jakarta.servlet.http.HttpServletRequest;
 
-@RestController
+@Controller
 public class ClienteController {
 
     @Autowired
@@ -32,11 +31,11 @@ public class ClienteController {
     @Autowired
     private IPersonaService iPersonaService;
 
-    // ----------- Formulario para registrar --------
+    /* ------------- GUARDAR ------------ */
 
-    @GetMapping(value = "/formRegistroCliente")
-    public String registroCliente(@Validated Cliente cliente, Model model) {
-
+    @PostMapping(value = "/guardarCliente")
+    public String RegistrarCliente(@Validated Cliente cliente, BindingResult result, Model model) {
+    if (result.hasErrors()) {
         model.addAttribute("cliente", new Cliente());
         model.addAttribute("clientes", iClienteService.findAll());
 
@@ -45,14 +44,9 @@ public class ClienteController {
 
          model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
-
-        return "formularios/formModeloCliente";
+        
+        return "redirect:/ListasCliente";
     }
-
-    /* ------------- GUARDAR ------------ */
-
-    @PostMapping(value = "/guardarCliente")
-    public String RegistrarCliente(@Validated Cliente cliente) {
 
         cliente.setEstado_cliente("A");
         iClienteService.save(cliente);
@@ -64,7 +58,7 @@ public class ClienteController {
 
     /*--------------- eliminar -----------*/
 
-    @RequestMapping(value = "/eliminarCliente/{id_Cliente}")
+    @RequestMapping(value = "/eliminarCliente/{id_cliente}")
     public String eliminarCliente(@PathVariable("id_cliente") Integer id_cliente) {
 
         Cliente cliente = iClienteService.findOne(id_cliente);
@@ -72,7 +66,6 @@ public class ClienteController {
         iClienteService.save(cliente);
 
         return "redirect:/ListasCliente";
-
     }
 
     // --------------------------------------------
@@ -91,7 +84,7 @@ public class ClienteController {
          model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
 
-        return "listas/listaCliente";
+        return "FormCliente";
     }
 
   
@@ -102,8 +95,7 @@ public class ClienteController {
     public String getContentCliente(@PathVariable(value = "idCliente") Integer idCliente, Model model,
             HttpServletRequest request) {
 
-              model.addAttribute("cliente", new Cliente());
-        model.addAttribute("clientes", iClienteService.findAll());
+                model.addAttribute("cliente", iClienteService.findOne(idCliente));
 
         model.addAttribute("ruta", new Ruta());
         model.addAttribute("rutas", iRutaService.findAll());
@@ -111,7 +103,7 @@ public class ClienteController {
          model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
 
-        return "contentCliente :: contentcliente";
+        return "conten :: contentCliente";
 
     }
 
@@ -129,7 +121,7 @@ public class ClienteController {
         model.addAttribute("personas", iPersonaService.findAll());
 
         // Puedes agregar cualquier inicialización necesaria para un registro nuevo.
-        return "contentCliente :: contentcliente";
+        return "conten :: contentCliente";
     }
 
     // --------------------------------------------

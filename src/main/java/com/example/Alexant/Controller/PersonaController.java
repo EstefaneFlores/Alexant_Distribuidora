@@ -102,11 +102,11 @@ public class PersonaController {
     // -------------------Para las modificaciones-------------------------
 
     /* Modificación Modal */
-    @RequestMapping(value = "/persona/{idPersona}")
-    public String getContentPersona(@PathVariable(value = "idPersona") Integer idPersona, Model model,
+    @RequestMapping(value = "/persona/{id_persona}")
+    public String getContentPersona(@PathVariable(value = "id_persona") Integer id_persona, Model model,
             HttpServletRequest request) {
 
-        model.addAttribute("persona", iPersonaService.findOne(idPersona));
+        model.addAttribute("persona", iPersonaService.findOne(id_persona));
 
         return "Conten :: contentPersona";
 

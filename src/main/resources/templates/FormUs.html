@@ -108,8 +108,8 @@
                                                 <tr th:each="Us : ${usuarios}" th:if="${Us.estado_usuario != 'X'}">
                                                     <td th:text="${Us.usuario}"></td>
                                                     <td th:text="${Us.contrasena}"></td> 
-                                                    <td th:text="${Us.registro}"></td> 
-                                                    <td th:text="${Us.modificacion}"></td> 
+                                                    <td th:text="${Us.registroUsuario}"></td> 
+                                                    <td th:text="${Us.modificacionUsuario}"></td> 
 
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -346,10 +346,9 @@
                 </li>
                 <li class="header"> ADMINISTRACIÓN</li>
 
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PERSONAS</span> <span class="badge badge-primary float-right">5</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PERSONAS</span> <span class="badge badge-primary float-right">4</span></a>
                     <ul class="ml-menu">
                        
-                    	<li><a href="/sistema/usuario/listaUs">Usuario</a></li>
                     	<li><a href="/ListasCliente">Cliente</a></li>
                     	<li><a href="/ListasEmpleado">Empleado</a></li>
                     	<li><a href="/formRegistroPersona">Persona</a></li>
@@ -379,8 +378,8 @@
                     <ul class="ml-menu">
                         <li><a href="/formRegistroProducto">Producto</a></li>
                         <li><a href="/formRecepcionProducto">Recepción del Producto</a></li>
-                        <li><a href="/ListasCategoria">Categorias</a></li>
-                        <li><a href="/ListasLote">Lote</a></li>
+                         <li><a href="/formAdministrarCategoria">Categorias</a></li>
+                               <li><a href="/formAdministrarLote">Lote</a></li>
                         <li><a href="/ListasDetalle_lote">Det. Lote</a></li> 
                     </ul>
                 </li> 

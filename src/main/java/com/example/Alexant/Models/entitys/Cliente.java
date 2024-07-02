@@ -87,15 +87,16 @@ public class Cliente  implements Serializable{
 
 // -----------------------------------
 
-@OneToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "id_persona", nullable = false)
-private Persona persona;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_persona")
+    private Persona persona;
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_ruta")
 	private Ruta ruta;
 
-  
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Venta> venta;
 
     
 }
