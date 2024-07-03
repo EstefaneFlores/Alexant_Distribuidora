@@ -2,15 +2,15 @@ package com.example.Alexant.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.example.Alexant.Models.entitys.Detalle_Factura;
 import com.example.Alexant.Models.entitys.Factura;
 import com.example.Alexant.Models.service.service.IDetalle_FacturaService;
@@ -19,56 +19,48 @@ import com.example.Alexant.Models.entitys.Det_Venta;
 import com.example.Alexant.Models.service.service.IDet_VentaService;
 import jakarta.servlet.http.HttpServletRequest;
 
-@RestController
+@Controller
 public class Detalle_FacturaController {
 
     @Autowired
-    private IDetalle_FacturaService iDetalle_FacturaService;
+    private IDetalle_FacturaService detalle_FacturaService;
     @Autowired
-    private IFacturaService iFacturaService;
+    private IFacturaService facturaService;
     @Autowired
     private IDet_VentaService iDet_VentaService;
+ /* ------------- GUARDAR ------------ */
 
-    // ----------- Formulario para registrar --------
-
-    @GetMapping(value = "/formRegistroDetalle_Factura")
-    public String registroDetalle_Factura(@Validated Detalle_Factura detalle_Factura, Model model) {
-
-        model.addAttribute("detalle_Factura", new Detalle_Factura());
-        model.addAttribute("detalle_Facturas", iDetalle_FacturaService.findAll());
+    @PostMapping(value = "/guardarDetalleFactura")
+    public String RegistrarDetalleFactura(@Validated Detalle_Factura detalle_Factura, BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        model.addAttribute("detalleFactura", detalle_Factura);
+        model.addAttribute("detalleFacturas", detalle_FacturaService.findAll());
 
         model.addAttribute("factura", new Factura());
-        model.addAttribute("facturas", iFacturaService.findAll());
+        model.addAttribute("facturas", facturaService.findAll());
 
-         model.addAttribute("det_Venta", new Det_Venta());
+        model.addAttribute("det_Venta", new Det_Venta());
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
-        return "formularios/formModeloDetalle_Factura";
+        return "redirect:/formAdministrarDetalleFactura";
     }
+    detalle_Factura.setEstado_det_f("A");
+    detalle_FacturaService.save(detalle_Factura);
+        return "redirect:/formAdministrarDetalleFactura";
 
-    /* ------------- GUARDAR ------------ */
-
-    @PostMapping(value = "/guardarDetalle_Factura")
-    public String RegistrarCliente(@Validated Detalle_Factura detalle_Factura) {
-
-        detalle_Factura.setEstado_det_f("A");
-        iDetalle_FacturaService.save(detalle_Factura);
-
-        return "redirect:/ListasDetalle_Factura";
     }
 
     // --------------------------------------------
 
     /*--------------- eliminar -----------*/
 
-    @RequestMapping(value = "/eliminarDetalle_Factura/{id_Detalle_Factura}")
-    public String eliminarDetalle_Factura(@PathVariable("id_detalle_Factura") Integer id_detalle_Factura) {
+    @RequestMapping(value = "/eliminaDetalleFactura/{id_detalleFactura}")
+    public String eliminarDetalleFactura(@PathVariable("id_detalleFactura") Integer id_detalleFactura) {
 
-        Detalle_Factura detalle_Factura = iDetalle_FacturaService.findOne(id_detalle_Factura);
+        Detalle_Factura detalle_Factura = detalle_FacturaService.findOne(id_detalleFactura);
         detalle_Factura.setEstado_det_f("X");
-        iDetalle_FacturaService.save(detalle_Factura);
-
-        return "redirect:/ListasDetalle_Factura";
+        detalle_FacturaService.save(detalle_Factura);
+        return "redirect:/formAdministrarDetalleFactura";
 
     }
 
@@ -76,67 +68,75 @@ public class Detalle_FacturaController {
 
     /* ------------ Lista ----------------- */
 
-    @GetMapping(value = "/ListasDetalle_Factura")
-    public String listarDetalle_Factura(Model model) {
+    @GetMapping(value = "/formAdministrarDetalleFactura")
+    public String listarDetalleFactura(Model model) {
 
-        model.addAttribute("detalle_Factura", new Detalle_Factura());
-        model.addAttribute("detalle_Facturas", iDetalle_FacturaService.findAll());
+        model.addAttribute("detalleFactura", new Detalle_Factura());
+        model.addAttribute("detalleFacturas", detalle_FacturaService.findAll());
 
         model.addAttribute("factura", new Factura());
-        model.addAttribute("facturas", iFacturaService.findAll());
+        model.addAttribute("facturas", facturaService.findAll());
 
-         model.addAttribute("det_Venta", new Det_Venta());
+        model.addAttribute("det_Venta", new Det_Venta());
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
-        return "listas/listaDetalle_Factura";
+        return "formDetalleFactura";
     }
 
-  
     // -------------------Para las modificaciones-------------------------
 
     /* Modificación Modal */
-    @RequestMapping(value = "/detalle_Factura/{idDetalle_Factura}")
-    public String getContentDetalle_Factura(@PathVariable(value = "idDetalle_Factura") Integer idDetalle_Factura, Model model,
+    @RequestMapping(value = "/registrarDetalleFactura/{idDetalleFactura}")
+    public String getContentDetalleFactura(@PathVariable(value = "idDetalleFactura") Integer idDetalleFactura, Model model,
             HttpServletRequest request) {
 
-                model.addAttribute("detalle_Factura", new Detalle_Factura());
-                model.addAttribute("detalle_Facturas", iDetalle_FacturaService.findAll());
-        
-                model.addAttribute("factura", new Factura());
-                model.addAttribute("facturas", iFacturaService.findAll());
-        
-                 model.addAttribute("det_Venta", new Det_Venta());
-                model.addAttribute("det_Ventas", iDet_VentaService.findAll());
-
-        return "contentDetalle_Factura :: contentdetalle_Factura";
-
-    }
-
-    /* Registrar Detalle_Factura model */
-    @RequestMapping(value = "/registrarDetalle_Factura")
-    public String getRegistroDetalle_Factura(Model model) {
-
-        model.addAttribute("detalle_Factura", new Detalle_Factura());
-        model.addAttribute("detalle_Facturas", iDetalle_FacturaService.findAll());
+        model.addAttribute("detalleFactura", detalle_FacturaService.findOne(idDetalleFactura));
 
         model.addAttribute("factura", new Factura());
-        model.addAttribute("facturas", iFacturaService.findAll());
+        model.addAttribute("facturas", facturaService.findAll());
 
-         model.addAttribute("det_Venta", new Det_Venta());
+        model.addAttribute("det_Venta", new Det_Venta());
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
-        return "contentDetalle_Factura :: contentdetalle_Factura";
+        return "conten :: contentDetalleFactura";
+    }
+
+    /* Registrar model */
+    @RequestMapping(value = "/registrarDetalleFactura")
+    public String getRegistroDetalleFactura(Model model) {
+
+        model.addAttribute("detalleFactura", new Detalle_Factura());
+        model.addAttribute("detalleFacturas", detalle_FacturaService.findAll());
+
+        model.addAttribute("factura", new Factura());
+        model.addAttribute("facturas", facturaService.findAll());
+
+        model.addAttribute("det_Venta", new Det_Venta());
+        model.addAttribute("det_Ventas", iDet_VentaService.findAll());
+
+        return "conten :: contentDetalleFactura";
     }
 
     // --------------------------------------------
-
+ 
     /* Guardar Cambios */
-    @PostMapping(value = "/guardarCambiosDetalle_Factura")
-    public String guardarCambiosDetalle_Factura(@ModelAttribute Detalle_Factura detalle_Factura) {
-        detalle_Factura.setEstado_det_f("A");
-        iDetalle_FacturaService.save(detalle_Factura);
-        return "redirect:/ListasDetalle_Factura";
-    }
+    @PostMapping(value = "/guardarCambiosDetalleFactura")
+    public String guardarCambiosDetalleFactura(@ModelAttribute Detalle_Factura detalle_Factura, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("detalleFactura", detalle_Factura);
+            model.addAttribute("detalleFacturas", detalle_FacturaService.findAll());
 
-    // -------------------------------------------------
+            model.addAttribute("factura", new Factura());
+            model.addAttribute("facturas", facturaService.findAll());
+    
+            model.addAttribute("det_Venta", new Det_Venta());
+            model.addAttribute("det_Ventas", iDet_VentaService.findAll());  
+    
+            return "redirect:/formAdministrarDetalleFactura";
+        }
+           
+        detalle_Factura.setEstado_det_f("A");
+        detalle_FacturaService.save(detalle_Factura);
+        return "redirect:/formAdministrarDetalleFactura";
+    }
 }
