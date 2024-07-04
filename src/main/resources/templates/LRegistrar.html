@@ -6,14 +6,13 @@
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-<title>:: Alpino Menu Rught ::</title>
+<title>:: Sign Up ::</title>
 <!-- Favicon-->
-<link rel="icon" href="favicon.ico" type="image/x-icon">
-<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-
+<link rel="icon" href="../../../../assets/images/logoOficial.ico" type="image/x-icon">
+<link rel="stylesheet" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
 <!-- Custom Css -->
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/color_skins.css">
+<link rel="stylesheet" href="../../assets/css/main.css">    
+<link rel="stylesheet" href="../../assets/css/color_skins.css">
 </head>
 
 <body class="theme-black">
@@ -23,10 +22,8 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="company_detail">
-                        <h4 class="logo"><img src="assets/images/logo.svg" alt=""> Alpino</h4>
-                        <h3>The ultimate <strong>Bootstrap 4</strong> Admin Dashboard</h3>
-                        <p>Alpino is fully based on HTML5 + CSS3 Standards. Is fully responsive and clean on every device and every browser</p>                        
-                        <div class="footer">
+                        <h3 class="logo" ><img src="../../../../assets/images/logoOficial.jpg" alt="">REGISTRATE PARA PODER ACCEDER A LOS PRODUCTOS DE  <strong>ECG</strong> </h3>                     
+                        <!-- <div class="footer">
                             <ul  class="social_link list-unstyled">
                                 <li><a href="https://thememakker.com" title="ThemeMakker"><i class="zmdi zmdi-globe"></i></a></li>
                                 <li><a href="https://themeforest.net/user/thememakker" title="Themeforest"><i class="zmdi zmdi-shield-check"></i></a></li>
@@ -43,37 +40,41 @@
                                 <li><a href="http://thememakker.com/services/" target="_blank">Services</a></li>
                                 <li><a href="javascript:void(0);">FAQ</a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>                    
                 </div>
                 <div class="col-lg-5 col-md-12 offset-lg-1">
                     <div class="card-plain">
                         <div class="header">
-                            <h5>Sign Up</h5>
-                            <span>Register a new membership</span>
+                            <h5>Unirse</h5>
+                           
                         </div>
-                        <form class="form">                            
+
+                        <div th:if="${successMessage}" class="alert alert-success" role="alert">
+                            <span th:text="${successMessage}"></span>
+                        </div>
+                        <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+                            <span th:text="${errorMessage}"></span>
+                        </div>
+                        
+                        <form id="miFormulario" class="needs-validation" th:action="@{/Alexant/saveRegistro}" method="POST">
+                            
+                            
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Enter User Name">
+                                <input type="text" class="form-control" name="usuario" th:field="${usuario.usuario}" placeholder="Numero de Usuario" required>
                                 <span class="input-group-addon"><i class="zmdi zmdi-account-circle"></i></span>
                             </div>
+                            
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Enter Email">
-                                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
-                            </div>
-                            <div class="input-group">
-                                <input type="password" placeholder="Password" class="form-control" />
+                                <input type="password" class="form-control" name="contrasena" th:field="${usuario.contrasena}" placeholder="Contraseña" required>
                                 <span class="input-group-addon"><i class="zmdi zmdi-lock"></i></span>
                             </div>
-                            <div class="checkbox">
-                                <input id="terms" type="checkbox">
-                                <label for="terms">I read and Agree to the <a href="javascript:void(0);">Terms of Usage</a></label>
-                            </div>                            
+
+                            <button class="btn btn-primary" type="submit">Registrar</button>
+                                                    
                         </form>
-                        <div class="footer">
-                            <a href="index.html" class="btn btn-primary btn-round btn-block">SIGN UP</a>
-                        </div>
-                        <a class="link" href="sign-in.html">You already have a membership?</a>
+                        
+                        <a class="link" href="/Alexant/login">¿Ya tienes una Cuenta?</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +83,7 @@
 </div>
 
 <!-- Jquery Core Js -->
-<script src="assets/bundles/libscripts.bundle.js"></script>
-<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="../../../assets/bundles/libscripts.bundle.js"></script>
+<script src="../../../assets/bundles/vendorscripts.bundle.js"></script>  
 </body>
 </html>

@@ -34,13 +34,15 @@ public class TiempoCargo implements Serializable {
     private Integer id_tiempo_cargo;
 
     @Column(name = "inicio_tcargo")
-    private String inicio_tcargo;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate inicio_tcargo;
 
     @Column(name = "final_tcargo")
-    private String final_tcargo;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate final_tcargo;
 
     @Column(name = "estado_tcargo")
-    private Integer estado_tcargo;
+    private String estado_tcargo;
 
     /* ========================================================= */
 

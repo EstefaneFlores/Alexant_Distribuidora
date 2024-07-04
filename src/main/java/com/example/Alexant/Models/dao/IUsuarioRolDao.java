@@ -1,11 +1,7 @@
 package com.example.Alexant.Models.dao;
-
-import java.util.List;
-
-import org.springframework.data.jpa.repository.Query;
+ 
 import org.springframework.data.repository.CrudRepository;
-
-import com.example.Alexant.Models.entitys.Usuario;
+ 
 import com.example.Alexant.Models.entitys.UsuarioRol;
 
 public interface IUsuarioRolDao extends CrudRepository<UsuarioRol, Integer> {

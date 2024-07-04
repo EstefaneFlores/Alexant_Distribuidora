@@ -14,8 +14,6 @@ public interface IUsuarioService {
 
     public void delete(Integer id);
 
-    public List<Usuario> getListarUsuariosActivos();
-
     public boolean verificarUsuario(String usuario, String clave);
 
     Usuario findByUsuarioAndContrasena(String usuario, String contrasena);

@@ -32,22 +32,17 @@ public class UsuarioServiceImpl implements IUsuarioService{
     public void delete(Integer id) {
         iUsuarioDao.deleteById(id);
     }
-
-    @Override
-    public List<Usuario> getListarUsuariosActivos() {
-       return iUsuarioDao.findUsuariosActivos();
-    }
-    @Override
-    public boolean verificarUsuario(String usuario, String Contrasena) {
-        Usuario usuario1 = iUsuarioDao.findByUsuarioAndContrasena(usuario, Contrasena);
-        return usuario1 != null && usuario1.getContrasena().equals(Contrasena);
-    }
-
+    
     @Override
     public Usuario findByUsuarioAndContrasena(String usuario, String contrasena) {
        return iUsuarioDao.findByUsuarioAndContrasena(usuario, contrasena);
        
     }
 
+    @Override
+    public boolean verificarUsuario(String usuario, String Contrasena) {
+        Usuario usuario1 = iUsuarioDao.findByUsuarioAndContrasena(usuario, Contrasena);
+        return usuario1 != null && usuario1.getContrasena().equals(Contrasena);
+    }
     
 }

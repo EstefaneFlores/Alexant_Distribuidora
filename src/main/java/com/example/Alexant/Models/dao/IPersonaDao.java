@@ -33,5 +33,4 @@ public interface IPersonaDao extends CrudRepository<Persona, Integer> {
     @Query("select p from Persona p where p.estado_per != 'X'")
     public List<Persona> getListarPersonasActivas();
     
-
 }

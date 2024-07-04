@@ -9,7 +9,7 @@ import com.example.Alexant.Models.entitys.Usuario;
 
 public interface IUsuarioDao extends CrudRepository<Usuario, Integer> {
     
-    @Query("SELECT u FROM Usuario u WHERE u.estado_usuario = 'A'")
+     @Query("SELECT u FROM Usuario u WHERE u.estado_usuario = 'A'")
     List<Usuario> findUsuariosActivos();
 
     Usuario findByUsuarioAndContrasena(String usuario, String contrasena);

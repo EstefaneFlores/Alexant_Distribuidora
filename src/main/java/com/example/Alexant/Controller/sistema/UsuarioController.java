@@ -6,14 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
- 
-import com.example.Alexant.Models.entitys.Usuario; 
+
+import com.example.Alexant.Models.entitys.Usuario;
 import com.example.Alexant.Models.service.service.IUsuarioService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,23 +27,25 @@ public class UsuarioController {
 
  
 
-    @PostMapping("/login")
-    public String login(@RequestParam("usuario") String usuario, @RequestParam("contrasena") String contrasena,
-            HttpServletRequest request, RedirectAttributes flash) {
-        Usuario usuarioObj = usuarioService.findByUsuarioAndContrasena(usuario, contrasena);
+    // ---------
 
-        if (usuarioObj != null) {
-            // Usuario encontrado, establecer la sesión
-            HttpSession session = request.getSession();
-            session.setAttribute("userLog", usuarioObj);
-            flash.addFlashAttribute("success", "Inicio de sesión exitoso!");
-            return "redirect:/home"; // Redirigir a la página de inicio u otra página
-        } else {
-            // Usuario no encontrado, mostrar mensaje de error
-            flash.addFlashAttribute("error", "Nombre de usuario o contraseña incorrectos!");
-            return "redirect:/login";
-        }
-    }
+    // @PostMapping("/login")
+    // public String login(@RequestParam("usuario") String usuario, @RequestParam("contrasena") String contrasena,
+    //         HttpServletRequest request, RedirectAttributes flash) {
+    //     Usuario usuarioObj = usuarioService.findByUsuarioAndContrasena(usuario, contrasena);
+
+    //     if (usuarioObj != null) {
+    //         // Usuario encontrado, establecer la sesión
+    //         HttpSession session = request.getSession();
+    //         session.setAttribute("userLog", usuarioObj);
+    //         flash.addFlashAttribute("success", "Inicio de sesión exitoso!");
+    //         return "redirect:/home"; // Redirigir a la página de inicio u otra página
+    //     } else {
+    //         // Usuario no encontrado, mostrar mensaje de error
+    //         flash.addFlashAttribute("error", "Nombre de usuario o contraseña incorrectos!");
+    //         return "redirect:/login";
+    //     }
+    // }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, RedirectAttributes flash) {

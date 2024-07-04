@@ -19,14 +19,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table; 
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario", uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario", "contrasena"})})
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
