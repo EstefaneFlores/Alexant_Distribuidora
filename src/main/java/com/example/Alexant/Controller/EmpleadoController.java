@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Alexant.Models.entitys.Empleado;
 import com.example.Alexant.Models.entitys.Persona;
+import com.example.Alexant.Models.entitys.Usuario;
 import com.example.Alexant.Models.service.service.IEmpleadoService;
 import com.example.Alexant.Models.service.service.IPersonaService;
+import com.example.Alexant.Models.service.service.IUsuarioService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -24,6 +26,9 @@ public class EmpleadoController {
 
     @Autowired
     private IPersonaService IpersonaService;
+
+    @Autowired
+    private IUsuarioService iUsuarioService;
 
     /* ================= GUARDAR =================== */
 
@@ -59,6 +64,9 @@ public class EmpleadoController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", IpersonaService.findAll());
 
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", iUsuarioService.findAll());
+
         return "/FormEmpleado"; 
     }
 
@@ -75,6 +83,9 @@ public class EmpleadoController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", IpersonaService.findAll());
 
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", iUsuarioService.findAll());
+
         return "conten :: contentEmpleado";
 
     }
@@ -88,6 +99,9 @@ public class EmpleadoController {
 
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", IpersonaService.findAll());
+
+        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuarios", iUsuarioService.findAll());
  
         return "conten :: contentEmpleado";  
     }

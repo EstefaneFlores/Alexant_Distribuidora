@@ -96,11 +96,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>Número Venta</th>
+                                                    <th>Número Det. Venta</th>
                                                     <th>Producto</th>
                                                     <th>Cantidad</th>
                                                     <th>Subtotal</th>
                                                     <th>Precio Unitário</th>
-                                                    <th>Descripción</th>
+                                                    <th>Unidad de Medida</th>
                                                      <th>Opciones</th>
 
                                                 </tr>
@@ -109,6 +110,7 @@
                                             <tbody>
                                                 <tr th:each="dv : ${det_Ventas}" th:if="${dv.estado_det_venta != 'X'}">
                                                     <td th:text="${dv.venta.nro_venta}"></td>
+                                                    <td th:text="${dv.numero_det_Venta}"></td>
                                                     <td th:text="${dv.producto.nombre_producto}"></td>
                                                     <td th:text="${dv.cantidad_det_venta}"></td>
                                                     <td th:text="${dv.sub_total}"></td>
@@ -119,7 +121,7 @@
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">
                                                                 <a 
-                                                                    th:href="${'../../../../eliminarDet_Venta/' + dv.id_detalleVenta}">
+                                                                    th:href="${'../../../../eliminarDet_Venta/' + dv.id_detalle_Venta}">
                                                                   
                                                                     <button type="submit" class="btn btn-primary"
                                                                     
@@ -135,7 +137,7 @@
                                                                         class="btn btn-primary btn-sm waves-effect waves-light editarButton"
                                                                         data-toggle="modal"
                                                                         th:data-target="${'#bs-example-modal-center'}"
-                                                                        th:data-iddetalleventa="${dv.id_detalleVenta}"
+                                                                        th:data-iddetalleventa="${dv.id_detalle_Venta}"
                                                                         style="padding: 2px;" 
                                                                         onclick="buscar(this)"> 
                                                                         <i class="material-icons" style="color: rgb(209, 196, 16);">mode_edit</i>
@@ -402,8 +404,8 @@
                     <ul class="ml-menu">
                    
                         <li><a href="/formAdministrarVenta"> Venta</a></li>
-                        <li><a href="/ListasDeFactura"> Factura</a></li>
-                        <li><a href="/ListasDetalle_Factura"> Det. Factura</a></li>
+                          <li><a href="/formAdministrarFactura"> Factura</a></li>
+                        <li><a href="/formAdministrarDetalleFactura"> Det. Factura</a></li>
                     </ul>
                 </li>
             

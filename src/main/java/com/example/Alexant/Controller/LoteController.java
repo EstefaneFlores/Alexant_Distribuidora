@@ -4,15 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import com.example.Alexant.Models.entitys.Detalle_lote;
+import org.springframework.web.bind.annotation.*; 
 import com.example.Alexant.Models.entitys.Lote;
-import com.example.Alexant.Models.entitys.Proveedor;
-import com.example.Alexant.Models.entitys.Recepcion_Producto;
-import com.example.Alexant.Models.service.service.IDetalleLoteServicee;
+import com.example.Alexant.Models.entitys.Proveedor; 
 import com.example.Alexant.Models.service.service.ILoteService;
-import com.example.Alexant.Models.service.service.IProveedorService;
-import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
+import com.example.Alexant.Models.service.service.IProveedorService; 
 
 import jakarta.servlet.http.HttpServletRequest;
 @Controller
@@ -21,11 +17,7 @@ public class LoteController {
     @Autowired
     private ILoteService loteService;
 
-    @Autowired
-    private IDetalleLoteServicee detalleLoteService;
-
-    @Autowired
-    private IRecepcion_ProductoService recepcionProductoService;
+ 
 
     @Autowired
     private IProveedorService proveedorService;
@@ -39,8 +31,7 @@ public class LoteController {
         model.addAttribute("lote", lote);
         model.addAttribute("lotes", loteService.findAll());
 
-        model.addAttribute("detalleLotes", detalleLoteService.findAll());
-        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
+        model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", proveedorService.findAll());
         
         return "redirect:/formAdministrarLote";
@@ -74,13 +65,7 @@ public class LoteController {
 
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", loteService.findAll());
-
-        model.addAttribute("detalleLote", new Detalle_lote());
-        model.addAttribute("detalleLotes", detalleLoteService.findAll());
-        
-        model.addAttribute("recepcion_producto", new Recepcion_Producto());
-        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
-
+  
         model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", proveedorService.findAll());
 
@@ -95,13 +80,7 @@ public class LoteController {
             HttpServletRequest request) {
 
         model.addAttribute("lote", loteService.findOne(idLote));
-
-        model.addAttribute("detalleLote", new Detalle_lote());
-        model.addAttribute("detalleLotes", detalleLoteService.findAll());
-        
-        model.addAttribute("recepcion_producto", new Recepcion_Producto());
-        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
-
+       
         model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", proveedorService.findAll());
 
@@ -114,13 +93,7 @@ public class LoteController {
 
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", loteService.findAll());
-
-        model.addAttribute("detalleLote", new Detalle_lote());
-        model.addAttribute("detalleLotes", detalleLoteService.findAll());
-
-        model.addAttribute("recepcion_producto", new Recepcion_Producto());
-        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
-
+ 
         model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", proveedorService.findAll());
 
@@ -135,13 +108,7 @@ public class LoteController {
         if (result.hasErrors()) {
         model.addAttribute("lote", lote);
         model.addAttribute("lotes", loteService.findAll());
-
-        model.addAttribute("detalleLote", new Detalle_lote());
-        model.addAttribute("detalleLotes", detalleLoteService.findAll());
-        
-        model.addAttribute("recepcion_producto", new Recepcion_Producto());
-        model.addAttribute("recepcion_productos", recepcionProductoService.findAll());
-
+ 
         model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", proveedorService.findAll());   
     

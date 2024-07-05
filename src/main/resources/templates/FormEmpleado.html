@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
-<title>Registro empleados | ECG</title>
+<title>Registro Empleados | ECG</title>
 
 
  <!-- DataTables -->
@@ -53,7 +53,7 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <h2>Administración de empleados</h2>
+                    <h2>Administración de Empleados</h2>
                     <ul class="breadcrumb padding-0">
                   
                     </ul>
@@ -79,7 +79,7 @@
                                 <div class="card">
                                     <div class="card-body">
 
-                                        <h4 class="header-title"></i>empleados Registrados</h4>
+                                        <h4 class="header-title"></i>Empleados Registrados</h4>
 
                                         <!-- ------------- -->
 
@@ -102,6 +102,8 @@
                                                     
                                                     <th>numero de codigo </th>                                                  
                                                      <th>ruta</th>
+                                                     <th>Nombre</th>
+                                                     <th>Usuario</th> 
                                                      <th>Opciones</th>
                                                   
                                                 </tr>
@@ -112,6 +114,8 @@
                                                 <tr th:each="emple : ${empleados}" th:if="${emple.estado_empleado != 'X'}">
                                                     <td th:text="${emple.ruta_empleado}"></td>
                                                     <td th:text="${emple.nro_codigo}"></td>
+                                                    <td th:text="${emple.persona.nombre_persona}"></td>
+                                                    <td th:text="${emple.usuario.usuario}"></td>
                                                    
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -386,13 +390,13 @@
                 </li>
                 <li class="header"> ADMINISTRACIÓN</li>
 
-                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PERSONAS</span> <span class="badge badge-primary float-right">5</span></a>
+                <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>PERSONAS</span> <span class="badge badge-primary float-right">4</span></a>
                     <ul class="ml-menu">
                        
                     	<li><a href="/sistema/usuario/listaUs">Usuario</a></li>
                     	<li><a href="/ListasCliente">Cliente</a></li>
                     	<li><a href="/formRegistroPersona">Persona</a></li>
-                    	<li><a href="/Listasproveedor">Proveedor</a></li>
+                        <li><a href="/ListasProveedor">Proveedor</a></li>
                             
                     </ul>
                 </li>
@@ -438,8 +442,8 @@
                    
                         <li><a href="/formAdministrarVenta"> Venta</a></li>
                         <li><a href="/formAdministrarDetVenta"> Det. Venta</a></li>
-                        <li><a href="/ListasDeFactura"> Factura</a></li>
-                        <li><a href="/ListasDetalle_Factura"> Det. Factura</a></li>
+                          <li><a href="/formAdministrarFactura"> Factura</a></li>
+                        <li><a href="/formAdministrarDetalleFactura"> Det. Factura</a></li>
                     </ul>
                 </li>
             

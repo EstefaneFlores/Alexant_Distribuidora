@@ -74,9 +74,8 @@ public class Categoria  implements Serializable{
 
 // ----------------------------
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_producto")
-    private Producto producto;
+@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+private List<Producto> producto;
 
 
 }

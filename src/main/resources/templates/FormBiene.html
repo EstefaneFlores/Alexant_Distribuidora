@@ -96,6 +96,8 @@
                                                     <th>Codigo</th>
                                                     <th>Nombre</th>
                                                      <th>Descripción</th>
+                                                     <th>Tipo</th>
+                                                     <th>Encargado</th>
                                                      <th>Opciones</th>
 
                                                 </tr>
@@ -106,6 +108,8 @@
                                                     <td th:text="${bi.codigo_biene}"></td>
                                                     <td th:text="${bi.nombre_biene}"></td>
                                                     <td th:text="${bi.descripcion_biene}"></td>
+                                                    <td th:text="${bi.tipo_biene.nombre_tipo_biene}"></td>
+                                                    <td th:text="${bi.persona.nombre_persona}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -397,8 +401,8 @@
                    
                         <li><a href="/formAdministrarVenta"> Venta</a></li>
                         <li><a href="/formAdministrarDetVenta"> Det. Venta</a></li>
-                        <li><a href="/ListasDeFactura"> Factura</a></li>
-                        <li><a href="/ListasDetalle_Factura"> Det. Factura</a></li>
+                          <li><a href="/formAdministrarFactura"> Factura</a></li>
+                        <li><a href="/formAdministrarDetalleFactura"> Det. Factura</a></li>
                     </ul>
                 </li>
             

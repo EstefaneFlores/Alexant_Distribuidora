@@ -110,16 +110,18 @@
                     Looks good!
                 </div>
             </div>
+
             <div class="col-md-4 mb-3">
-                <label for="proveedor">Proveedor</label>
-                <select id="proveedor" name="proveedor" class="form-control" th:field="${producto.proveedor.id_proveedor}" required>
-                    <option value="" disabled selected>Seleccione un proveedor</option>
-                    <option th:each="proveedor : ${proveedores}" th:value="${proveedor.id_proveedor}" th:text="${proveedor.nombre_proveedor}"></option>
+                <label for="categoria">Categorias</label>
+                <select id="categoria" name="categoria" class="form-control" th:field="${producto.categoria.id_categoria}" required>
+                    <option  value="" selected>Seleccione una Categoria</option>
+                    <option th:each="categoria : ${categorias}" th:value="${categoria.id_categoria}" th:text="${categoria.tipo_categoria}"></option>
                 </select>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
+       
         </div>
     </div>
     
@@ -129,7 +131,7 @@
     <h4 class="header-title">DATOS DE RECEPCIÓN</h4>
     
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="nombreProducto">Precio producto</label>
             <input type="number" class="form-control" name="nombreProducto" th:field="${recepcion_producto.precio_producto}" placeholder="Cantidad caja" required>
             <div class="valid-feedback">
@@ -137,7 +139,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="codigoProducto">Cantidad caja</label>
             <input type="number" class="form-control" name="codigoProducto" id="codigoProducto" th:field="${recepcion_producto.cantidad_caja}" placeholder="Cantidad caja" required>
             <div class="valid-feedback">
@@ -145,7 +147,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="stockProducto">Precio venta</label>
             <input type="number" class="form-control" name="stockProducto" id="stockProducto" th:field="${recepcion_producto.precio_venta}" placeholder="Precio venta" required>
             <div class="valid-feedback">
@@ -153,17 +155,16 @@
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
-            <label for="proveedor">Lote</label>
-            <select id="proveedor" name="proveedor" class="form-control" th:field="${recepcion_producto.lote.id_lote}" required>
-                <option disabled selected>Seleccione un Lote</option>
+        <div class="col-md-4 mb-3">
+            <label for="lote">Lotes</label>
+            <select id="lote" name="lote" class="form-control" th:field="${recepcion_producto.Lote.id_lote}" required>
+                <option  value="" selected>Seleccione un Lote</option>
                 <option th:each="lots : ${lotes}" th:value="${lots.id_lote}" th:text="${lots.cantidad_Lote}"></option>
             </select>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
-
 
     </div>
 </div>
@@ -173,21 +174,21 @@
     <h4 class="header-title">DATOS DE BIENE</h4>
     
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="nombreProducto">Codigo</label>
             <input type="text" class="form-control" name="codigo" th:field="${biene.codigo_biene}" placeholder="Codigo" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="codigoProducto">Nombre</label>
             <input type="text" class="form-control" name="nombre" id="nombre_biene" th:field="${biene.nombre_biene}" placeholder="Nombre" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="stockProducto">Descripción</label>
             <input type="text" class="form-control" name="descripcion" id="descripcion" th:field="${biene.descripcion_biene}" placeholder="Descripcion" required>
             <div class="valid-feedback">
@@ -195,16 +196,27 @@
             </div>
         </div>
 
-        <!-- <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="persona">Eleccionar Persona</label>
             <select id="persona" name="persona" class="form-control" th:field="${biene.persona.id_persona}" required>
-                <option disabled selected>Seleccione un proveedor</option>
+                <option value="" selected>Seleccione una Persona</option>
                 <option th:each="pers : ${personas}" th:value="${pers.id_persona}" th:text="${pers.nombre_persona}"></option>
             </select>
             <div class="valid-feedback">
                 Looks good!
             </div>
-        </div> -->
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="tipobiene">Eleccionar El Tipo</label>
+            <select id="tipobiene" name="tipobiene" class="form-control" th:field="${biene.tipo_biene.id_tipo_biene}" required>
+                <option value="" selected>Seleccionar Tipo del Biene</option>
+                <option th:each="tipo_biene : ${tipo_bienes}" th:value="${tipo_biene.id_tipo_biene}" th:text="${tipo_biene.nombre_tipo_biene}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
 
     </div>
 </div>
@@ -214,7 +226,7 @@
     <h4 class="header-title">DATOS DE CARGO</h4>
     
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="nombreProducto">Nombre</label>
             <input type="text" class="form-control" name="nombreCargo" th:field="${cargo.nombre_cargo}" placeholder="Nombre del cargo" required>
             <div class="valid-feedback">
@@ -293,32 +305,42 @@
     </div>
     
 <!-- ---------------------------------------------------------------------------------------------- -->
-<div th:replace="~{conten :: contentLote}">
+ 
     <div th:fragment="contentLote">
         <input type="hidden" name="lote" th:field="${lote.id_lote}">
         <h4 class="header-title">DATOS DE LOTE</h4>
         <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="cantidadLote">Cantidad Lote</label>
-                <input type="text" class="form-control" name="cantidadLote" th:field="${lote.cantidad_Lote}" placeholder="Cantidad Lote" required>
+
+            <div class="col-md-4 mb-3">
+                <label for="cantidadLote">Numero del Lote</label>
+                <input type="number" class="form-control" name="cantidadLote" th:field="${lote.numero_lote}"  required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+
+            <div class="col-md-4 mb-3">
+                <label for="cantidadLote">Cantidad Lote</label>
+                <input type="text" class="form-control" name="cantidadLote" th:field="${lote.cantidad_Lote}"  required>
+                <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-4 mb-3">
                 <label for="fechaIngreso">Fecha de Ingreso</label>
                 <input type="date" class="form-control" id="fechaIngreso" th:field="${lote.fecha_ingreso}" required>
                 <div class="valid-feedback">¡Perfecto!</div>
             </div>
-            <!-- <div class="col-md-6 mb-3">
-                <label for="proveedor">Proveedor</label>
+
+            <div class="col-md-4 mb-3">
+                <label for="proveedor">Proveedores</label>
                 <select id="proveedor" name="proveedor" class="form-control" th:field="${lote.proveedor.id_proveedor}" required>
-                    <option disabled selected>Seleccione un Proveedor</option>
+                    <option value="" disabled selected>Seleccione un Proveedor</option>
                     <option th:each="proveedor : ${proveedores}" th:value="${proveedor.id_proveedor}" th:text="${proveedor.nombre_proveedor}"></option>
                 </select>
                 <div class="valid-feedback">¡Perfecto!</div>
-            </div> -->
+            </div>
+
+
         </div>
     </div>
-</div>
+ 
 
 <!-- ---------------------------------------------------------------------------------------------- -->
 <div th:replace="~{conten :: contentCategoria}">
@@ -326,7 +348,7 @@
         <input type="hidden" name="categoria" th:field="${categoria.id_categoria}">
         <h4 class="header-title">DATOS DE CATEGORIA</h4>
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="categoria">Tipo de Categoria</label>
                 <input type="text" class="form-control" name="categoria" th:field="${categoria.tipo_categoria}" placeholder="Tipo de Categoria" required>
                 <div class="valid-feedback">Looks good!</div>
@@ -342,27 +364,27 @@
         <input type="hidden" name="factura" th:field="${factura.id_factura}">
         <h4 class="header-title">DATOS DE FACTURA</h4>
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="factura">Número de Factura</label>
                 <input type="number" class="form-control" name="factura" th:field="${factura.nro_factura}" placeholder="Numero Factura" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="factura">Descripción de Factura</label>
                 <input type="text" class="form-control" name="factura" th:field="${factura.descripcion_factura}" placeholder="Descripción de Factura" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="factura">Fecha de Factura</label>
                 <input type="date" class="form-control" name="factura" th:field="${factura.fecha_factura}" placeholder="Fecha de Factura" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="factura">Total de Descuento</label>
                 <input type="number" class="form-control" name="factura" th:field="${factura.total_descuento}" placeholder="Total de Descuento" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="factura">Total de Factura</label>
                 <input type="number" class="form-control" name="factura" th:field="${factura.total_factura}" placeholder="Total de Factura" required>
                 <div class="valid-feedback">Looks good!</div>
@@ -372,62 +394,79 @@
     </div>
 </div>
 
-<!-- ---------------------------------------------------------------------------------------------- -->
-<div th:replace="~{conten :: contentFactura}">
-    <div th:fragment="contentFactura">
-        <input type="hidden" name="factura" th:field="${factura.id_factura}">
-        <h4 class="header-title">DATOS DE FACTURA</h4>
+ <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div th:fragment="contentDetalleFactura">
+        <input type="hidden" name="factura" th:field="${detalleFactura.id_detalleFactura}">
+        <h4 class="header-title">DATOS DE DETALLE FACTURA</h4>
+
         <div class="row">
-            <div class="col-md-6 mb-3">
-                <label for="factura">Número de Factura</label>
-                <input type="number" class="form-control" name="factura" th:field="${factura.nro_factura}" placeholder="Numero Factura" required>
+
+            <div class="col-md-4 mb-3">
+                <label for="detalleFactura">Número de Det. Factura</label>
+                <input type="number" class="form-control" name="detalleFactura" th:field="${detalleFactura.cantidad_factura}" placeholder="Numero Factura" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="factura">Descripción de Factura</label>
-                <input type="text" class="form-control" name="factura" th:field="${factura.descripcion_factura}" placeholder="Descripción de Factura" required>
+            <div class="col-md-4 mb-3">
+                <label for="detalleFactura">SUBTOTAL</label>
+                <input type="number" class="form-control" name="detalleFactura" th:field="${detalleFactura.sub_totalFactura}" placeholder="Descripción de Factura" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="factura">Fecha de Factura</label>
-                <input type="date" class="form-control" name="factura" th:field="${factura.fecha_factura}" placeholder="Fecha de Factura" required>
+
+            <div class="col-md-4 mb-3">
+                <label for="detalleFactura">SUBTOTAL DESCUENTO</label>
+                <input type="number" class="form-control" name="detalleFactura" th:field="${detalleFactura.subtotal_descuento}" placeholder="Descripción de Factura" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="factura">Total de Descuento</label>
-                <input type="number" class="form-control" name="factura" th:field="${factura.total_descuento}" placeholder="Total de Descuento" required>
-                <div class="valid-feedback">Looks good!</div>
+
+            <div class="col-md-4 mb-3">
+                <label for="det_Venta">Det. Venta</label>
+                <select id="det_Venta" name="det_Venta" class="form-control" th:field="${detalleFactura.det_venta.id_detalle_Venta}" required>
+                    <option value="" disabled selected>Seleccione el Det. Venta</option>
+                    <option th:each="det_Venta : ${det_Ventas}" th:value="${det_Venta.id_detalle_Venta}" th:text="${det_Venta.numero_det_Venta}"></option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label for="factura">Total de Factura</label>
-                <input type="number" class="form-control" name="factura" th:field="${factura.total_factura}" placeholder="Total de Factura" required>
-                <div class="valid-feedback">Looks good!</div>
+
+            <div class="col-md-4 mb-3">
+                <label for="factura">Facturas</label>
+                <select id="factura" name="factura" class="form-control" th:field="${detalleFactura.factura.id_factura}" required>
+                    <option value="" disabled selected>Seleccione la Factura</option>
+                    <option th:each="factura : ${facturas}" th:value="${factura.id_factura}" th:text="${factura.nro_factura}"></option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
             </div>
-            
+
+    
         </div>
     </div>
-</div>
+ 
+
 <!-- ---------------------------------------------------------------------------------------------- -->
     <div th:fragment="contentVenta1">
         <input type="hidden" name="venta" th:field="${venta.id_venta}">
         <h4 class="header-title">DATOS DE VENTAS</h4>
         <div class="row">
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="venta">Número de Venta</label>
                 <input type="number" class="form-control" name="venta" th:field="${venta.nro_venta}" placeholder="Numero de Venta" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="venta">Total Venta</label>
                 <input type="number" class="form-control" name="venta" th:field="${venta.total_venta}" placeholder="Total Venta" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="venta">Fecha Venta</label>
                 <input type="date" class="form-control" name="venta" th:field="${venta.fecha_venta}" placeholder="Fecha Venta" required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="venta">Total de Descuento</label>
                 <input type="number" class="form-control" name="venta" th:field="${venta.descuento}" placeholder="Total de Descuento" required>
                 <div class="valid-feedback">Looks good!</div>
@@ -448,10 +487,19 @@
  
   <!-- ---------------------------------------------------------------------------------------------- -->
 <div th:fragment="contentDet_Venta">
-    <input type="hidden" name="id_detalleVenta" th:field="${det_Venta.id_detalleVenta}">
+    <input type="hidden" name="id_detalle_Venta" th:field="${det_Venta.id_detalle_Venta}">
     <h4 class="header-title">DATOS DE DETALLES DE VENTA</h4>
 
+    
     <div class="row">
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">Numero</label>
+            <input type="text" class="form-control" name="cantidad_det_venta" th:field="${det_Venta.numero_det_Venta}" placeholder="Numero de Det. Venta" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+ 
         <div class="col-md-4 mb-3">
             <label for="nombreProducto">CANTIDAD</label>
             <input type="text" class="form-control" name="cantidad_det_venta" th:field="${det_Venta.cantidad_det_venta}" placeholder="Cantidad de la venta" required>
@@ -508,7 +556,7 @@
     </div>
 
     <div class="col-md-4 mb-3">
-        <label for="usuario">Prosuctos</label>
+        <label for="usuario">Productos</label>
         <select id="usuario" name="producto" class="form-control" th:field="${det_Venta.producto.id_producto}" required>
             <option value="" disabled selected>Seleccione el Producto</option>
             <option th:each="producto : ${productos}" th:value="${producto.id_producto}" th:text="${producto.nombre_producto}"></option>
@@ -526,24 +574,24 @@
     <h4 class="header-title">DATOS DE PROVEEDOR</h4>
     
     <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="nombreProducto">nombre Proveedor</label>
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">Nombre</label>
             <input type="text" class="form-control" name="nombreCargo" th:field="${proveedor.nombre_proveedor}" placeholder="" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
-            <label for="nombreProducto">telefono</label>
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">Telefono</label>
             <input type="number" class="form-control" name="telefonoProveedor" th:field="${proveedor.telefono_proveedor}" placeholder="" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
-            <label for="nombreProducto">descripcion</label>
+        <div class="col-md-4 mb-3">
+            <label for="nombreProducto">Descripcion</label>
             <input type="text" class="form-control" name="descripcionProveedor" th:field="${proveedor.descripcion_proveedor}" placeholder="" required>
             <div class="valid-feedback">
                 Looks good!
@@ -560,7 +608,7 @@
     <h4 class="header-title">DATOS DE EMPLEADO</h4>
     
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="nombreProducto">Ruta</label>
             <input type="number" class="form-control" name="ruta_empleado" th:field="${empleado.ruta_empleado}" placeholder="" required>
             <div class="valid-feedback">
@@ -568,9 +616,31 @@
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="nombreProducto">Codigo</label>
             <input type="number" class="form-control" name="nro_codigo" th:field="${empleado.nro_codigo}" placeholder="" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="persona">Persona</label>
+            <select id="persona" name="persona" class="form-control" th:field="${empleado.persona.id_persona}" required>
+                <option value="" disabled selected>Seleccione una Persona</option>
+                <option th:each="persona : ${personas}" th:value="${persona.id_persona}" th:text="${persona.nombre_persona}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label for="usuario">Usuario</label>
+            <select id="usuario" name="usuario" class="form-control" th:field="${empleado.usuario.id_usuario}" required>
+                <option value="" disabled selected>Seleccione un Usuario</option>
+                <option th:each="usuario : ${usuarios}" th:value="${usuario.id_usuario}" th:text="${usuario.usuario}"></option>
+            </select>
             <div class="valid-feedback">
                 Looks good!
             </div>
@@ -586,7 +656,7 @@
     <h4 class="header-title">DATOS DE USUARIO</h4>
     
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="nombreUs">Numero Usuario</label>
             <input type="number" class="form-control" name="usuario" th:field="${usuario.usuario}" placeholder="" required>
             <div class="valid-feedback">
@@ -594,7 +664,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="contrasena">Contraseña</label>
             <input type="text" class="form-control" name="contrasena" th:field="${usuario.contrasena}" placeholder="" required>
             <div class="valid-feedback">
@@ -687,7 +757,7 @@
     <h4 class="header-title">DATOS DE Detalle Lote</h4>
 
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-md-4 mb-3">
             <label for="fecha_vencimento">Fecha de Vencimiento</label>
             <input type="date" name="fecha_vencimento"  th:field="${detalle_lote.fecha_vencimento}" placeholder="yyyy-MM-dd" id="customDateInput"
             class="form-control datepicker-here" data-language="en" required>
@@ -695,6 +765,8 @@
                 Looks good!
             </div>
         </div>
+
+      
 
     </div>
 </div>
@@ -712,17 +784,6 @@
                 Looks good!
             </div>
         </div>
-
-    <div class="col-md-4 mb-3">
-        <label for="usuario">Biene</label>
-        <select id="usuario" name="biene" class="form-control" th:field="${tipoBiene.biene.id_biene}" required>
-            <option value="" disabled selected>Seleccione el codigo del biene</option>
-            <option th:each="biene : ${bienes}" th:value="${biene.id_biene}" th:text="${biene.codigo_biene}"></option>
-        </select>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-    </div>
 </div>
 
 </div>

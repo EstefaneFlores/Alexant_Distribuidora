@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.Alexant.Models.entitys.Biene;
 import com.example.Alexant.Models.entitys.Persona;
+import com.example.Alexant.Models.entitys.TipoBiene;
 import com.example.Alexant.Models.service.service.IBieneService;
 import com.example.Alexant.Models.service.service.IPersonaService;
+import com.example.Alexant.Models.service.service.ITipoBieneService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -27,15 +29,24 @@ public class BieneController {
      @Autowired
     private IPersonaService iPersonaService;
 
+    
+    @Autowired
+    private ITipoBieneService ITipoBieneService;
+
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarBiene")
     public String RegistrarBiene(@Validated Biene biene, BindingResult result, Model model) {
     if (result.hasErrors()) {
+
         model.addAttribute("biene", biene);
         model.addAttribute("bienes", iBieneService.findAll());
 
+
         model.addAttribute("personas", iPersonaService.findAll());
+
+        model.addAttribute("tipo_biene", new TipoBiene ());
+        model.addAttribute("tipo_bienes", ITipoBieneService.findAll());
         
         return "redirect:/formAdministrarBiene";
     }
@@ -72,6 +83,9 @@ public class BieneController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
 
+        model.addAttribute("tipo_biene", new TipoBiene ());
+        model.addAttribute("tipo_bienes", ITipoBieneService.findAll());
+
         return "formBiene";
     }
 
@@ -87,6 +101,9 @@ public class BieneController {
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
 
+        model.addAttribute("tipo_biene", new TipoBiene ());
+        model.addAttribute("tipo_bienes", ITipoBieneService.findAll());
+
         return "conten :: contentBiene";
     }
 
@@ -99,6 +116,9 @@ public class BieneController {
 
         model.addAttribute("persona", new Persona());
         model.addAttribute("personas", iPersonaService.findAll());
+
+        model.addAttribute("tipo_biene", new TipoBiene ());
+        model.addAttribute("tipo_bienes", ITipoBieneService.findAll());
 
         return "conten :: contentBiene";
     }
@@ -114,6 +134,9 @@ public class BieneController {
 
             model.addAttribute("persona", new Persona());
             model.addAttribute("personas", iPersonaService.findAll());    
+
+            model.addAttribute("tipo_biene", new TipoBiene ());
+            model.addAttribute("tipo_bienes", ITipoBieneService.findAll());
     
             return "redirect:/formAdministrarBiene";
         }

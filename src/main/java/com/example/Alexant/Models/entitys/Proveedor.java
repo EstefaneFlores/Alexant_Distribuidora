@@ -3,10 +3,10 @@ package com.example.Alexant.Models.entitys;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.Set;
-
+import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,7 +44,7 @@ public class Proveedor implements Serializable {
     @Column (name = "descripcion_proveedor")
     private String descripcion_proveedor;
 
-    @Column (name = "estado proveedor")
+    @Column (name = "estado_proveedor")
     private String estado_proveedor;
 
     /*----------------------------------------------------- */
@@ -81,7 +81,7 @@ public class Proveedor implements Serializable {
 
 /*--------------------------RELACION CON PRODUCTO------------------------------------------- */
 
-@OneToMany(mappedBy = "proveedor", fetch = FetchType.LAZY)
-    private Set<Producto> productos;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "proveedor", fetch = FetchType.LAZY)
+    private List<Lote> lote;
 
 }

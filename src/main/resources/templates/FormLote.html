@@ -93,7 +93,9 @@
                                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                             <thead>
                                                 <tr>
+                                                    <th>Numero Lote</th>
                                                     <th>Cantidad Lote</th>
+                                                    <th>Fecha Ingreso</th>
                                                     <th>Fecha Ingreso</th>
                                                      <th>Opciones</th>
 
@@ -101,8 +103,10 @@
                                             </thead>
                                             <tbody>
                                                 <tr th:each="lo : ${lotes}" th:if="${lo.estado_lote != 'X'}">
+                                                    <td th:text="${lo.numero_lote}"></td>
                                                     <td th:text="${lo.cantidad_Lote}"></td>
                                                     <td th:text="${lo.fecha_ingreso}"></td>
+                                                    <td th:text="${lo.proveedor.nombre_proveedor}"></td>
 
                                                     <td>
                                                         <div class="row justify-content-center">
@@ -392,8 +396,8 @@
                    
                         <li><a href="/formAdministrarVenta"> Venta</a></li>
                         <li><a href="/formAdministrarDetVenta"> Det. Venta</a></li>
-                        <li><a href="/ListasDeFactura"> Factura</a></li>
-                        <li><a href="/ListasDetalle_Factura"> Det. Factura</a></li>
+                          <li><a href="/formAdministrarFactura"> Factura</a></li>
+                        <li><a href="/formAdministrarDetalleFactura"> Det. Factura</a></li>
                     </ul>
                 </li>
             

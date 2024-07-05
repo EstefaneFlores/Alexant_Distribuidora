@@ -97,9 +97,7 @@ private Date usuario_modificacionProducto;
 	private Recepcion_Producto recepcion_Producto;
 /*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
 
-@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_proveedor", nullable = false)
-    private Proveedor proveedor;
+ 
 
 /*-----------------------------RELACION CON DETALLE LOTE----------------------------------------------------- */
 
@@ -116,11 +114,9 @@ private List<Det_Venta> det_Ventas;
 
 /*-------------------------------RELACION CON CATEGORIA--------------------------------------*/
 
-@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Categoria> categorias;
-
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
 
 }
 

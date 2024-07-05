@@ -37,6 +37,9 @@ public class Lote  implements Serializable{
     @Column(name = "id_lote")
     private Integer id_lote;
 
+    @Column(name = "numero_lote")
+    private Integer numero_lote;
+
     @Column(name = "cantidad_Lote")
     private Integer cantidad_Lote;
 
@@ -80,12 +83,12 @@ public class Lote  implements Serializable{
     // -------------------------------
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote", fetch = FetchType.LAZY)
-	private List<Recepcion_Producto> recepcion_Producto;
+	private List<Recepcion_Producto> recepcion_producto;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lote", fetch = FetchType.LAZY)
 	private List<Detalle_lote> detalle_lote;
 
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_proveedor")
-	private Proveedor proveedors;
+	private Proveedor proveedor;
 }

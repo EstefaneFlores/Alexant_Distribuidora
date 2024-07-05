@@ -26,7 +26,6 @@ public class Recepcion_productoController {
     @Autowired
     private IRecepcion_ProductoService iRecepcion_ProductoService;
 
-    
     @Autowired
     private ILoteService iLoteService;
 
@@ -37,8 +36,10 @@ public class Recepcion_productoController {
     if (result.hasErrors()) {
         model.addAttribute("recepcion_producto", recepcion_producto);
         model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
         model.addAttribute("lote", new Lote());
         model.addAttribute("lotes", iLoteService.findAll());
+        
         return "redirect:/formRecepcionProducto";
     }
         
@@ -115,6 +116,7 @@ public class Recepcion_productoController {
         if (result.hasErrors()) {
             model.addAttribute("recepcion_producto", recepcion_producto);
             model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
             model.addAttribute("lote", new Lote());
             model.addAttribute("lotes", iLoteService.findAll());
             return "redirect:/formRecepcionProducto";

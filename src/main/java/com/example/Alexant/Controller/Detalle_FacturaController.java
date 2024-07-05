@@ -95,7 +95,7 @@ public class Detalle_FacturaController {
         model.addAttribute("factura", new Factura());
         model.addAttribute("facturas", facturaService.findAll());
 
-        model.addAttribute("det_Venta", new Det_Venta());
+        model.addAttribute("det_venta", new Det_Venta());
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
         return "conten :: contentDetalleFactura";

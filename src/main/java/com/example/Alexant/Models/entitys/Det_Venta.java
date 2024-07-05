@@ -14,8 +14,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn; 
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;  
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
@@ -35,8 +34,11 @@ public class Det_Venta  implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_detalleVenta")
-    private Integer id_detalleVenta;
+    @Column(name = "id_detalle_Venta")
+    private Integer id_detalle_Venta;
+
+    @Column(name = "numero_det_Venta")
+    private Integer numero_det_Venta;
 
     @Column(name = "cantidad_det_venta")
     private Integer cantidad_det_venta;

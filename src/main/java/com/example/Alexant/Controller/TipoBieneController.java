@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.example.Alexant.Models.entitys.Biene;
-import com.example.Alexant.Models.entitys.TipoBiene;
-import com.example.Alexant.Models.service.service.IBieneService;
+ 
+import com.example.Alexant.Models.entitys.TipoBiene; 
 import com.example.Alexant.Models.service.service.ITipoBieneService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,9 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class TipoBieneController {
 
     @Autowired
-    private ITipoBieneService tipoBieneService;
-    @Autowired
-    private IBieneService bieneService;
+    private ITipoBieneService tipoBieneService; 
 
     /* ================= GUARDAR =================== */
 
@@ -54,9 +50,7 @@ public class TipoBieneController {
 
         model.addAttribute("tipoBiene", new TipoBiene());
         model.addAttribute("tipoBienes", tipoBieneService.findAll());
-
-        model.addAttribute("biene", new Biene());
-        model.addAttribute("bienes", bieneService.findAll());
+ 
 
         return "FormTipoBiene";
     }
@@ -72,9 +66,7 @@ public class TipoBieneController {
 
         model.addAttribute("tipoBiene", tipoBieneService.findOne(id_tipo_biene));
 
-        model.addAttribute("biene", new Biene());
-        model.addAttribute("bienes", bieneService.findAll());
-        
+      
         return "conten :: contentTipoBiene";
 
     }
@@ -85,10 +77,7 @@ public class TipoBieneController {
 
         model.addAttribute("tipoBiene", new TipoBiene());
         model.addAttribute("tipoBienes", tipoBieneService.findAll());
-
-        model.addAttribute("biene", new Biene());
-        model.addAttribute("bienes", bieneService.findAll());
-
+ 
         return "conten :: contentTipoBiene"; 
     }
 

@@ -23,17 +23,6 @@ public class ProveedorController {
     @Autowired
     private IProveedorService iProveedorService;
 
-    // // ----------- Formulario para registrar --------
-
-    // @GetMapping(value = "/formRegistroProveedor")
-    // public String registroProveedor(@Validated Proveedor proveedor, Model model) {
-
-    //     model.addAttribute("proveedor", new Proveedor());
-    //     model.addAttribute("proveedores", iProveedorService.findAll());
-
-    //     return "formularios/formModeloProveedor";
-    // }
-
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarProveedor")
@@ -63,7 +52,7 @@ public class ProveedorController {
         model.addAttribute("proveedor", new Proveedor());
         model.addAttribute("proveedores", iProveedorService.findAll());
 
-        return "FormProvedor";
+        return "FormProveedor";
     }
   
     // -------------------Para las modificaciones-------------------------
