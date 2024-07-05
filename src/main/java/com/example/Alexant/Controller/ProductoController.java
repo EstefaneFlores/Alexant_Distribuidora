@@ -8,10 +8,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.Alexant.Models.entitys.Categoria;
-import com.example.Alexant.Models.entitys.Persona;
+import com.example.Alexant.Models.entitys.Detalle_lote;
 import com.example.Alexant.Models.entitys.Producto;
+import com.example.Alexant.Models.entitys.Recepcion_Producto;
 import com.example.Alexant.Models.entitys.Usuario;
-import com.example.Alexant.Models.service.service.ICategoriaService; 
+import com.example.Alexant.Models.service.service.ICategoriaService;
+import com.example.Alexant.Models.service.service.IDetalleLoteServicee;
 import com.example.Alexant.Models.service.service.IProductoService; 
 import com.example.Alexant.Models.service.service.IRecepcion_ProductoService;
 import com.example.Alexant.Models.service.service.IUsuarioService;
@@ -30,24 +32,9 @@ public class ProductoController {
     private IRecepcion_ProductoService iRecepcion_ProductoService;
     
     @Autowired
-    private IUsuarioService usuarioService;
+    private IDetalleLoteServicee iDetalleLoteServicee;
 
-    @GetMapping("/listar")
-    public String listarProductos(Model model, HttpServletRequest request) {
-        if (request.getSession().getAttribute("userLog") != null) {
-            model.addAttribute("productos", iProductoService.findAll()); 
-
-               model.addAttribute("categoria", new Categoria());
-        model.addAttribute("categorias", iCategoriaService.findAll());
-
-            Usuario user = (Usuario) request.getSession().getAttribute("userLog");
-            Usuario userLog = usuarioService.findOne(user.getId_usuario());
-            model.addAttribute("userLog", userLog);
-            return "listaProducto";
-        } else {
-            return "redirect:/aux";
-        }
-    }
+   
 
     @RequestMapping(value = "/ver-producto/{id_producto}")
     public String verProducto(@PathVariable(value = "id_producto") Integer id_producto, Model model) {
@@ -56,6 +43,13 @@ public class ProductoController {
 
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("categorias", iCategoriaService.findAll());
+
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("detalle_lote", new Detalle_lote());
+        model.addAttribute("detalle_lotes", iDetalleLoteServicee.findAll());
+
         return "Usuarios/formularioProducto";
     }
 
@@ -67,6 +61,12 @@ public class ProductoController {
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("categorias", iCategoriaService.findAll());
 
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("detalle_lote", new Detalle_lote());
+        model.addAttribute("detalle_lotes", iDetalleLoteServicee.findAll());
+
         return "Usuarios/formularioProducto";
     }
 
@@ -77,6 +77,12 @@ public class ProductoController {
 
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("categorias", iCategoriaService.findAll());
+
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("detalle_lote", new Detalle_lote());
+        model.addAttribute("detalle_lotes", iDetalleLoteServicee.findAll());
 
         return "FormProducto";
     }
@@ -96,6 +102,12 @@ public class ProductoController {
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("categorias", iCategoriaService.findAll());
   
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("detalle_lote", new Detalle_lote());
+        model.addAttribute("detalle_lotes", iDetalleLoteServicee.findAll());
+
         return "Conten :: contentProducto";
     }
 
@@ -106,7 +118,13 @@ public class ProductoController {
 
         model.addAttribute("categoria", new Categoria());
         model.addAttribute("categorias", iCategoriaService.findAll());
- 
+        
+        model.addAttribute("recepcion_producto", new Recepcion_Producto());
+        model.addAttribute("recepcion_productos", iRecepcion_ProductoService.findAll());
+
+        model.addAttribute("detalle_lote", new Detalle_lote());
+        model.addAttribute("detalle_lotes", iDetalleLoteServicee.findAll());
+
         return "Conten :: contentProducto";
     }
 

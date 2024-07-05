@@ -82,14 +82,19 @@
                                             <thead>
                                                 <tr>
                                                     <th>Fecha Vencimiento</th>
+                                                    <th>Numero del Lote</th>
+                                                    <th>Supervisado Por:</th>
+
                                                      <th>Opciones</th>
 
                                                 </tr>
                                             </thead>
-
+                                           
                                             <tbody>
                                                 <tr th:each="dl : ${detalle_lotes}" th:if="${dl.estado_det_lote != 'X'}">
                                                     <td th:text="${dl.fecha_vencimento}"></td>
+                                                    <td th:text="${dl.lote.numero_lote}"></td>
+                                                    <td th:text="${dl.empleado.persona.nombre_persona +'   CI: '+ dl.empleado.persona.ci }"></td>
                                                     <td>
                                                         <div class="row justify-content-center">
                                                             <div class="mb-2">

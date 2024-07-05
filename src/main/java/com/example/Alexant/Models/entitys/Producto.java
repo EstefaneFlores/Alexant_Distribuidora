@@ -42,15 +42,15 @@ public class Producto implements Serializable {
 	@Column (name = "id_producto")
 	private Long id_producto;
 
+	@Column (name = "stock_producto")
+	private String stock_producto;
+
 	@Column (name = "nombre_producto")
 	private String nombre_producto;
 
 	@Column (name = "codigo_producto")
 	private String codigo_producto;
 	
-	@Column (name = "stock_producto")
-	private String stock_producto;
-
 	@Column (name = "cantidad_caja")
 	private String cantidad_caja;
 
@@ -94,19 +94,13 @@ private Date usuario_modificacionProducto;
 
 @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_registro")
-	private Recepcion_Producto recepcion_Producto;
-/*----------------------------RELACION CON PROVEEDOR--------------------------------------------------- */
-
- 
+	private Recepcion_Producto recepcion_producto;
 
 /*-----------------------------RELACION CON DETALLE LOTE----------------------------------------------------- */
-
-// @ManyToMany(fetch = FetchType.LAZY)
-//     @JoinTable(name = "producto", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
-//     private Set<Detalle_lote> detalle_lote;
-@ManyToMany
-@JoinTable(name = "producto_detalle_lote", joinColumns = @JoinColumn(name = "id_producto"), inverseJoinColumns = @JoinColumn(name = "id_detalle_lote"))
-private List<Detalle_lote> detalle_lote;
+ 
+@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_detalle_lote")
+	private Detalle_lote detalle_lote;
 
 /*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)

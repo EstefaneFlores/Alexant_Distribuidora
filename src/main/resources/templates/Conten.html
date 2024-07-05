@@ -82,36 +82,36 @@
         <h4 class="header-title">DATOS DE PRODUCTOS</h4>
         
         <div class="row">
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="nombreProducto">Nombre Producto</label>
                 <input type="text" class="form-control" name="nombreProducto" th:field="${producto.nombre_producto}" placeholder="Nombre Producto" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="codigoProducto">Codigo Producto</label>
                 <input type="text" class="form-control" name="codigoProducto" id="codigoProducto" th:field="${producto.codigo_producto}" placeholder="Codigo Producto" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="stockProducto">Estoque Producto</label>
-                <input type="text" class="form-control" name="stockProducto" id="stockProducto" th:field="${producto.stock_producto}" placeholder="stock producto" required>
+                <input type="number" class="form-control" name="stockProducto" id="stockProducto" th:field="${producto.stock_producto}" placeholder="stock producto" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="cantidadCaja">Cantidad Cajas</label>
-                <input type="text" class="form-control" name="cantidadCaja" id="cantidadCaja" th:field="${producto.cantidad_caja}" placeholder="cantidad caja" required>
+                <input type="number" class="form-control" name="cantidadCaja" id="cantidadCaja" th:field="${producto.cantidad_caja}" placeholder="cantidad caja" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
             </div>
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="categoria">Categorias</label>
                 <select id="categoria" name="categoria" class="form-control" th:field="${producto.categoria.id_categoria}" required>
                     <option  value="" selected>Seleccione una Categoria</option>
@@ -122,6 +122,28 @@
                 </div>
             </div>
        
+            <div class="col-md-3 mb-3">
+                <label for="recepcion_producto">Precio / Costo</label>
+                <select id="recepcion_producto" name="recepcion_producto" class="form-control" th:field="${producto.recepcion_producto.id_registro}" required>
+                    <option  value="" selected>Seleccione una Categoria</option>
+                    <option th:each="recepcion_producto : ${recepcion_productos}" th:value="${recepcion_producto.id_registro}" th:text="${recepcion_producto.precio_venta+ ' / ' + recepcion_producto.precio_producto}"></option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="detalle_lote">Fecha Vencimiento</label>
+                <select id="detalle_lote" name="detalle_lote" class="form-control" th:field="${producto.detalle_lote.id_detalle_lote}" required>
+                    <option  value="" selected>Seleccione la Fecha de Vencimiento</option>
+                    <option th:each="detalle_lote : ${detalle_lotes}" th:value="${detalle_lote.id_detalle_lote}" th:text="${detalle_lote.fecha_vencimento}"></option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
         </div>
     </div>
     
@@ -311,24 +333,24 @@
         <h4 class="header-title">DATOS DE LOTE</h4>
         <div class="row">
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="cantidadLote">Numero del Lote</label>
                 <input type="number" class="form-control" name="cantidadLote" th:field="${lote.numero_lote}"  required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="cantidadLote">Cantidad Lote</label>
                 <input type="text" class="form-control" name="cantidadLote" th:field="${lote.cantidad_Lote}"  required>
                 <div class="valid-feedback">Looks good!</div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="fechaIngreso">Fecha de Ingreso</label>
                 <input type="date" class="form-control" id="fechaIngreso" th:field="${lote.fecha_ingreso}" required>
                 <div class="valid-feedback">¡Perfecto!</div>
             </div>
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="proveedor">Proveedores</label>
                 <select id="proveedor" name="proveedor" class="form-control" th:field="${lote.proveedor.id_proveedor}" required>
                     <option value="" disabled selected>Seleccione un Proveedor</option>
@@ -476,7 +498,7 @@
                 <label for="producto">Cliente</label>
                 <select id="cliente" name="cliente" class="form-control" th:field="${venta.cliente.id_cliente}" required>
                     <option value="" disabled selected>Seleccione el numero del cliente</option>
-                    <option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}" th:text="${cliente.nro_nit}"></option>
+                    <option th:each="cliente : ${clientes}" th:value="${cliente.id_cliente}" th:text="${cliente.razon_social}"></option>
                 </select>
                 <div class="valid-feedback">
                     Looks good!
@@ -757,7 +779,7 @@
     <h4 class="header-title">DATOS DE Detalle Lote</h4>
 
     <div class="row">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-3 mb-3">
             <label for="fecha_vencimento">Fecha de Vencimiento</label>
             <input type="date" name="fecha_vencimento"  th:field="${detalle_lote.fecha_vencimento}" placeholder="yyyy-MM-dd" id="customDateInput"
             class="form-control datepicker-here" data-language="en" required>
@@ -766,7 +788,27 @@
             </div>
         </div>
 
-      
+        <div class="col-md-3 mb-3">
+            <label for="lote">Lotes</label>
+            <select id="lote" name="lote" class="form-control" th:field="${detalle_lote.lote.id_lote}" required>
+                <option value="" disabled selected>Seleccione el Numero de Lote</option>
+                <option th:each="lote : ${lotes}" th:value="${lote.id_lote}" th:text="${lote.numero_lote}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <label for="empleado">Numeros Empleados</label>
+            <select id="empleado" name="empleado" class="form-control" th:field="${detalle_lote.empleado.id_empleado}" required>
+                <option value="" disabled selected>Seleccione el Numero de Lote</option>
+                <option th:each="empleado : ${empleados}" th:value="${empleado.id_empleado}" th:text="${empleado.nro_codigo}"></option>
+            </select>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
 
     </div>
 </div>

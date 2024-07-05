@@ -37,11 +37,11 @@ public class Det_Venta  implements Serializable{
     @Column(name = "id_detalle_Venta")
     private Integer id_detalle_Venta;
 
-    @Column(name = "numero_det_Venta")
-    private Integer numero_det_Venta;
-
     @Column(name = "cantidad_det_venta")
     private Integer cantidad_det_venta;
+
+    @Column(name = "numero_det_Venta")
+    private Integer numero_det_Venta;
 
     @Column(name = "sub_total")
     private Integer sub_total;

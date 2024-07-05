@@ -92,7 +92,7 @@ public class Pago implements Serializable {
     @JoinColumn(name = "id_moneda")
     private Moneda moneda;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_venta", nullable = false)
     private Venta venta;
 
