@@ -507,6 +507,17 @@
         </div>
     </div>
 
+    <div class="col-md-4 mb-3">
+        <label for="usuario">Prosuctos</label>
+        <select id="usuario" name="producto" class="form-control" th:field="${det_Venta.producto.id_producto}" required>
+            <option value="" disabled selected>Seleccione el Producto</option>
+            <option th:each="producto : ${productos}" th:value="${producto.id_producto}" th:text="${producto.nombre_producto}"></option>
+        </select>
+        <div class="valid-feedback">
+            Looks good!
+        </div>
+    </div>
+
 </div>
 </div>
 <!-- -- ---------------------------------- -->

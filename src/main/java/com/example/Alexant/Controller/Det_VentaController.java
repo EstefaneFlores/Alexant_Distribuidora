@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.Alexant.Models.dao.IProductoDao;
 import com.example.Alexant.Models.entitys.Det_Venta;
+import com.example.Alexant.Models.entitys.Producto;
 import com.example.Alexant.Models.entitys.Venta;
 import com.example.Alexant.Models.service.service.IDet_VentaService;
+import com.example.Alexant.Models.service.service.IProductoService;
 import com.example.Alexant.Models.service.service.IVentaService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 public class Det_VentaController {
@@ -30,6 +30,10 @@ public class Det_VentaController {
      @Autowired
     private IVentaService iVentaService;
 
+    @Autowired
+    private IProductoService iProductoService;
+
+
     /* ------------- GUARDAR ------------ */
 
     @PostMapping(value = "/guardarDet_Venta")
@@ -39,6 +43,8 @@ public class Det_VentaController {
         model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
         model.addAttribute("ventas", iVentaService.findAll());
+
+        model.addAttribute("productos", iProductoService.findAll());
         
         return "redirect:/formAdministrarDetVenta";
     }
@@ -74,6 +80,9 @@ public class Det_VentaController {
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iDet_VentaService.findAll());
 
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", iProductoService.findAll());
+
         return "formDetVenta";
     }
 
@@ -88,6 +97,9 @@ public class Det_VentaController {
 
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iVentaService.findAll());
+
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", iProductoService.findAll());
 
         return "conten :: contentDet_Venta";
     }
@@ -104,6 +116,9 @@ public class Det_VentaController {
         model.addAttribute("venta", new Venta());
         model.addAttribute("ventas", iVentaService.findAll());
 
+        model.addAttribute("producto", new Producto());
+        model.addAttribute("productos", iProductoService.findAll());
+
         return "conten :: contentDet_Venta";
     }
 
@@ -118,7 +133,10 @@ public class Det_VentaController {
             model.addAttribute("det_Ventas", iDet_VentaService.findAll());
 
             model.addAttribute("venta", new Venta());
-            model.addAttribute("ventas", iVentaService.findAll());    
+            model.addAttribute("ventas", iVentaService.findAll());   
+            
+            model.addAttribute("producto", new Producto());
+            model.addAttribute("productos", iProductoService.findAll());
     
         //     return "redirect:/formAdministrarDetVenta";
         // }

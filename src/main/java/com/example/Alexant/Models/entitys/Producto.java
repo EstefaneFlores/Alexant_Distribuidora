@@ -111,13 +111,8 @@ private Date usuario_modificacionProducto;
 private List<Detalle_lote> detalle_lote;
 
 /*----------------------------------RELACION CON DET VENTA---------------------------------------------------- */
-@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "producto_detventa",
-        joinColumns = @JoinColumn(name = "id_producto"),
-        inverseJoinColumns = @JoinColumn(name = "id_detalle_venta")
-    )
-    private Set<Det_Venta> det_venta;
+@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto", fetch = FetchType.LAZY)
+private List<Det_Venta> det_Ventas;
 
 /*-------------------------------RELACION CON CATEGORIA--------------------------------------*/
 

@@ -94,6 +94,7 @@ public class Det_Venta  implements Serializable{
 	@JoinColumn(name = "id_venta")
 	private Venta venta;
 
-    @ManyToMany(mappedBy = "det_venta")
-    private List<Producto> productos;
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_producto")
+	private Producto producto;
 }
